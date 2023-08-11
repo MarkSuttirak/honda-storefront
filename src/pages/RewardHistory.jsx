@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import TitleHeader from '../components/TitleHeader'
 import coinHand from '../img/coins-hand.svg'
 import spentCoins from '../img/spentCoins.png'
+import { Link } from 'react-router-dom';
 
 function RewardHistory() {
     const [currentTab, setCurrentTab] = useState('คะแนนที่ได้รับ');
@@ -43,7 +44,7 @@ function RewardHistory() {
                     <p className='font-normal text-[#424242] text-xs leading-[17.4px]'>21 คะแนนจะหมดอายุ 31 ม.ค. 2024 </p>
                 </div>
                 <div>
-                    <button className='bg-[#F0592A] text-sm font-bold px-[6px] py-[4px] font-sm rounded-md  text-white leading-[20.3px]'>รางวัลของฉัน</button>
+                    <Link to='/my-order' className='bg-[#F0592A] text-sm font-bold px-[6px] py-[4px] font-sm rounded-md  text-white leading-[20.3px]'>รางวัลของฉัน</Link>
                 </div>
             </div>
 
