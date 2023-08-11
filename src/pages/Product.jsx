@@ -24,6 +24,7 @@ import Accordion from '../components/Accordion';
 import ProductCard from '../components/ProductCard';
 
 const Product = () => {
+  const [rewardReddem, setRewardRedeem] = useState(false);
     const { id } = useParams();
     const { get, products } = useProducts();
     const { cart, addToCart, cartCount, setIsOpen } = useCart();
@@ -158,11 +159,11 @@ const Product = () => {
           </button>
         </nav>
         <main className="mx-auto">
-            <div className="relative flex w-full max-h-[600px] aspect-[4/3] ">
+            <div className="relative flex w-full max-h-[600px] aspect-[4/3]">
               <SfScrollable
                 className="relative w-full h-full snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                 direction="vertical"
-                wrapperClassName="h-full"
+                wrapperClassName="w-full"
                 buttonsPlacement="none"
                 drag={{ containerWidth: true }}
               >
@@ -173,121 +174,62 @@ const Product = () => {
                 <div className="flex justify-center h-full basis-full shrink-0 grow snap-center">
                   <img
                     src={`https://dev.zaviago.com${product?.website_image}`}
-                    className="object-contain w-auto h-full"
+                    className="object-cover w-full h-full"
                     aria-label={product?.website_image}
                     alt={product?.website_image}
                   />
                 </div>
               </SfScrollable>
             </div>
-            <section className="md:max-w-[640px] mt-4 px-4">
-              <div className='flex justify-between w-full'>
-                <h1 className="mb-1 font-bold typography-headline-4 inter">
-                  {product?.item_name}
-                </h1>
-                <strong className="block font-bold typography-headline-3 inter">{product?.formatted_price}</strong>
-              </div>
-              <p className='text-[#625C5C] text-sm inter'>Women’s Pullover Training Hoodie</p>
-
-              <div className='mt-6 mb-3'>
-                <p>สี: {colour}</p>
-
-                <div className='flex mt-3 gap-x-[10px]'>
-                  <div className={`w-6 h-6 bg-[#F54E06] rounded-[99px] border-[2px] border-white ${colour === "ส้ม" ? "outline outline-black" : "outline outline-white"}`} onClick={() => setColour("ส้ม")}></div>
-                  <div className={`w-6 h-6 bg-black rounded-[99px] border-[2px] border-white ${colour === "ดำ" ? "outline outline-black" : "outline outline-white"}`} onClick={() => setColour("ดำ")}></div>
-                </div>
-              </div>
-                <div dangerouslySetInnerHTML={{ __html: product?.short_description }} />
+            <section className="-mt-2 px-4">
                 <div className='pt-2'>
-                    {
+                    {/* {
                         cart[product?.item_code] && (
                             <div className="bg-primary-100 text-primary-700 flex justify-center gap-1.5 py-1.5 typography-text-sm items-center mb-4 rounded-md">
                                 <SfIconShoppingCartCheckout />{cart[product?.item_code]} in cart
                             </div>
                         )
-                    }
-                    <div className="items-start flex">
-                      <SfButton onClick={() => addToCart(product?.item_code, value)} type="button" size="lg" className="w-full" style={{backgroundColor:"black"}}>
-                        สั่งซื้อสินค้า
-                      </SfButton>
-                        <SfButton
-                            type="button"
-                            variant="tertiary"
-                            size="lg"
-                            square
-                            className="bg-white border border-black ml-4 basis-[20%] text-center py-3 w-[62px] h-[48px]"
-                            aria-label="Add to wishlist"
-                        >
-                            {/* <SfIconFavorite size="sm" color='black'/> */}
-                            <Heart color={liked ? "red" : "black"} />
-                        </SfButton>
-                      {/* <div className="flex flex-col items-stretch xs:items-center xs:inline-flex ml-4">
-                        
-                        <div className="flex border border-neutral-300 rounded-md">
-                            <SfButton
-                                type="button"
-                                variant="tertiary"
-                                square
-                                className="rounded-r-none p-3"
-                                disabled={value <= min}
-                                aria-controls={inputId}
-                                aria-label="Decrease value"
-                                onClick={() => dec()}
-                            >
-                                <SfIconRemove />
-                            </SfButton>
-                            <input
-                                id={inputId}
-                                type="number"
-                                role="spinbutton"
-                                className="grow appearance-none mx-2 w-8 text-center bg-transparent font-medium [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-inner-spin-button]:display-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-outer-spin-button]:display-none [&::-webkit-outer-spin-button]:m-0 [-moz-appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none disabled:placeholder-disabled-900 focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm"
-                                min={min}
-                                max={max}
-                                value={value}
-                                onChange={handleOnChange}
-                            />
-                            <SfButton
-                                type="button"
-                                variant="tertiary"
-                                square
-                                className="rounded-l-none p-3"
-                                disabled={value >= max}
-                                aria-controls={inputId}
-                                aria-label="Increase value"
-                                onClick={() => inc()}
-                            >
-                                <SfIconAdd />
-                            </SfButton>
+                    } */}
+
+                    <div className="w-full relative mx-auto z-10 bg-white p-4 rounded-[10px] -mt-[18px]" style={{ boxShadow: "0px 4px 20px 0px #EBE9EA", }}>
+                        <div className='text-center'>
+                            <button className='bg-[#E9F6ED] w-[66px] h-[19px] rounded-full px-[10px] py-[4px] text-[#00B14F] font-bold text-[10px] leading-[11.1px]' style={{ fontFamily: "Eventpop" }} >ใช้หน้าร้าน</button>
+                            {rewardReddem && (
+                                <div className='mt-[5px]'>
+                                    <button className='bg-[#F0F0F0] h-[19px] rounded-full px-[10px] py-[4px] text-[#8A8A8A] font-bold text-[10px] leading-[11.1px]' style={{ fontFamily: "Eventpop" }} >แลกของรางวัลแล้ว</button>
+                                </div>
+                            )}
+                            <p className='font-bold text-sm leading-[17px] text-[#111111] mt-2' style={{ fontFamily: "Eventpop" }}>{product?.item_name}</p>
                         </div>
-                        <p className="self-center mt-1 mb-4 text-xs text-neutral-500 xs:mb-0">
-                          <strong className="text-neutral-900">{product?.in_stock ? "✔ In Stock" : "❌ sold out"}</strong>
-                        </p>
-                      </div> */}
+                        <div className='w-[224px] flex justify-between mt-[22px] mx-auto'>
+                            <div>
+                                <p className='text-[#00000061] font-normal text-xs leading-[17.4px]' style={{ fontFamily: "Eventpop" }}>คะแนนที่ใช้</p>
+                                <p className='font-bold text-sm text-[#00B14F] leading-[24px]' style={{ fontFamily: "Eventpop" }}>40 คะแนน</p>
+                                <p className='text-[#00000061] font-normal text-[10px] leading-[14.5px]' style={{ fontFamily: "Eventpop" }}>มูลค่า 350 บาท</p>
+                            </div>
+                            <hr className='w-[1px] h-[63px] border-r border-[#0000001A]' />
+                            <div>
+                                <p className='text-[#00000061] font-normal text-xs leading-[17.4px]' style={{ fontFamily: "Eventpop" }}>สามารถใช้ได้ถึง</p>
+                                <p className='font-bold text-sm text-[#00B14F] leading-[24px]' style={{ fontFamily: "Eventpop" }}>22 ม.ค. 2022</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='px-[18px] pt-[30px]'>
+                        <h4 className='font-bold text-[#424242] text-sm leading-[23.2px]' style={{ fontFamily: "Eventpop" }}>รายละเอียด</h4>
+                        <ul className='mt-[9px] pr-[18px] pl-[22px] w-[294px]'>
+                            <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>สมาชิกหลักเท่านั้นที่มีสิทธิใช้คะแนนเพื่อแลกรับ ของรางวัล</li>
+                            <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>ขอสงวนสิทธิ์งดรับการแก้ไขเปลี่ยนแปลงใด หลังจากที่สมาชิกหลักแจ้งความประสงค์ขอแลก คะแนนสะสมไปยังบริษัทฯแล้ว</li>
+                            <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>บริษัทฯขอแจ้งเปลี่ยนแปลงเงื่อนไขการแลกของรางวัล โดยมิได้แจ้งให้ทราบก่อนล่วงหน้า</li>
+                        </ul>
+                    </div>
+                    <div className="items-start flex pb-3 pt-[120px]">
+                      <SfButton onClick={() => addToCart(product?.item_code, value)} type="button" size="lg" className="w-full" style={{backgroundColor:"black"}}>
+                        แลกของรางวัล
+                      </SfButton>
                     </div>
                 </div>
-                <div dangerouslySetInnerHTML={{ __html: product?.web_long_description }} />
             </section>
-
-            <Accordion items={items} />
-
-            <div className='mt-[22px]'>
-              <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
-                หากคุณชอบสไตล์นี้
-                <SfIconArrowForward className="w-[18px] text-black ml-2"/>
-              </h2>
-
-                <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
-                  {(products ?? []).map((product) => (
-                    <ProductCard
-                      key={product.item_code}
-                      title={product.name}
-                      productId={product.name}
-                      itemCode={product.item_code}
-                      price={product.formatted_price}
-                      thumbnail={product.website_image ? product.website_image : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} />
-                  ))}
-                </div>
-            </div>
         </main>
       </>
     )
