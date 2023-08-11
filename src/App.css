@@ -1,0 +1,156 @@
+/* src/style.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.loading {
+  filter: blur(10px);
+  clip-path: inset(0);
+}
+.loaded {
+  filter: blur(0px);
+  transition: filter 0.5s linear;
+}
+
+@font-face {
+  font-family: Eventpop;
+  src: url('../src/fonts/eventpop/eventpop-medium.ttf');
+}
+
+@font-face {
+  font-family: Eventpop;
+  src: url('../src/fonts/eventpop/eventpop-bold.ttf');
+  font-weight: bold
+}
+
+* {
+  font-family:Eventpop, Inter
+}
+
+.inter {
+  font-family:'Inter', sans-serif
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.accordion-btn .accordion-arrow-anim {
+  transform:rotate(0deg);
+  transition:all 200ms;
+}
+
+.accordion-btn.active .accordion-arrow-anim {
+  transform:rotate(90deg);
+  transition:all 200ms;
+}
+
+.border-anim {
+  animation:borderAnim 300ms;
+}
+
+.accordion-btn + .accordion-detail {
+  visibility:hidden;
+  opacity:0;
+  max-height:0;
+  transition:visibility 200ms, opacity 200ms, max-height 300ms;
+}
+
+.accordion-btn.active + .accordion-detail {
+  visibility:visible;
+  opacity:1;
+  transition:visibility 200ms, opacity 200ms, max-height 300ms;
+}
+
+.container-admin {
+  margin-left:280px;
+}
+
+.payment-check,.shop-filter-check,.product-type-input,.size-input,.product-colour-input {
+  position:absolute;
+  opacity:0;
+}
+
+.product-type-checkbox {
+  width:20px;
+  height:20px;
+  border:1px solid #333333;
+  box-sizing:border-box;
+  display:inline-block;
+  border-radius:4px;
+}
+
+.product-type-input:checked ~ .product-type-checkbox {
+  background-color:#333333;
+  background-image:url('img/checked-box.svg');
+  background-position:center;
+  background-repeat:no-repeat
+}
+
+.shop-filter-check:checked ~ .shop-filter-radios {
+  background-color:black;
+  border:2px solid white;
+  outline:1px solid black;
+}
+
+.payment-check:checked ~ .payment-radios {
+  background-color:#00B14F;
+  border-color:#00B14F;
+  background-image:url('img/checked-box.svg');
+  background-position:center;
+  background-repeat:no-repeat
+}
+
+.payment-radios, .shop-filter-radios {
+  border:3px solid #C1C1C1;
+  background-color:white;
+  width:23px;
+  height:23px;
+  display:inline-block;
+  border-radius:99px;
+}
+
+.size-btn {
+  height:36px;
+}
+
+.size-input:checked ~ .size-text {
+  border-color:#111111;
+}
+
+.size-text {
+  border:1px solid #D8DADC;
+  padding:5px;
+  display:inline-block;
+  border-radius:6px;
+  width:55px;
+  text-align:center;
+}
+
+.product-colour-input:checked ~ .product-colour-checkbox {
+  outline:2px solid black;
+}
+
+.product-colour-checkbox {
+  width:32px;
+  height:32px;
+  display:inline-block;
+  border-radius:99px;
+  margin:0 auto 10px;
+  border:2px solid white;
+}
+
+.theMainBannerReardHome{
+  background-image: url('./img/mainBannerRewardHome.png');
+  width: 354px;
+  height: 209px;
+}
+
+@keyframes borderAnim {
+  from {
+    width:0;
+  }
+  to {
+    width:100%
+  }
+}
