@@ -16,6 +16,7 @@ import activity5 from '../img/activity5.svg'
 import activity6 from '../img/activity6.svg'
 import activity7 from '../img/activity7.svg'
 import activity8 from '../img/activity8.svg'
+import hondaLogo from '../img/hondaLogo.png'
 import discountfive from '../img/discountfive.png'
 import promotion1 from '../img/promotion1.png'
 import promotion2 from '../img/promotion2.png'
@@ -44,19 +45,19 @@ const Home = () => {
             <header className="py-6 px-5 w-full">
               {data && (
                 <div className='flex'>
-                  <div className='flex items-center w-1/2'>
+                  <div className='flex items-center w-[85%]'>
                     <img src={data.user_image} width="64" className='rounded-[99px]'/>
                     <div className='ml-3 flex flex-col'>
                       <span className='font-bold'>{data.full_name}</span>
                     </div>
                   </div>
-                  <div className='flex flex-col items-end justify-center w-1/2'>
+                  <div className='flex flex-col items-end justify-end  w-[15%]'>
                     <div className='inter text-xs text-[#4C4B4F]'>
                       Coins
                     </div>
                     <div className='flex gap-x-1 text-[13px]'>
                       <img src={coin}/>
-                      230
+                      <span className='text-2xl'>230</span>
                     </div>
                   </div>
                 </div>
@@ -83,17 +84,17 @@ const Home = () => {
               )}
             </header>
             {/* <img src={banner} className='w-full left-0 max-h-[240px] object-cover'/> */}
-            <div className='w-full bg-[#ADB1BB] pt-[160px] p-5 flex justify-between items-center'>
+            <div className='w-full bg-[#ADB1BB] pt-[160px] p-5 flex justify-between items-end'>
               <div>
-                <h2>Silver</h2>
-                <p>อีก 11 คะแนนเลื่อนเป็น Gold</p>
+                <h2 className='text-[32px] text-white'>Silver</h2>
+                <p className='text-white'>อีก 11 คะแนนเลื่อนเป็น Gold</p>
               </div>
               <div>
-                <button>รางวัลของฉัน</button>
+                <button className='bg-white text-[#F0592A] rounded-full py-1 px-3'>รางวัลของฉัน</button>
               </div>
             </div>
             
-            <button style={{background:"green"}} className='p-4 w-full'>วิธีเก็บคะแนน</button>
+            <button style={{background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}} className='p-4 text-white w-full'>วิธีเก็บคะแนน</button>
 
             <main className='relative top-[-10px] pb-[94px]'>
 

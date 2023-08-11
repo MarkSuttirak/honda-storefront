@@ -25,7 +25,7 @@ const ProductCard = ({
                         height="300"
                       />
                     </SfLink>
-                    <SfButton
+                    {/* <SfButton
                         type="button"
                         variant="tertiary"
                         size="sm"
@@ -34,7 +34,7 @@ const ProductCard = ({
                         aria-label="Add to wishlist"
                     >
                         <SfIconFavorite size="sm" />
-                    </SfButton>
+                    </SfButton> */}
                 </div>
                 <div className="py-4">
                     <SfLink href="#" variant="secondary" className="no-underline text-[#111111] text-xs">
@@ -52,7 +52,7 @@ const ProductCard = ({
                     </p> */}
                     <div className='flex items-center gap-x-[2px]'>
                       <span className="block pb-2 font-medium text-sm text-black">{price}</span>
-                      <span className="block pb-2 font-medium ml-1 text-[10px] text-[#8A8A8A] line-through">฿ 30</span>
+                      <span className="block pb-2 font-medium ml-1 text-xs text-[#F0592A] line-through">฿ 30</span>
                     </div>
                     {/* <SfButton type="button" size="sm" slotPrefix={<SfIconShoppingCart size="sm" />} onClick={(e) => {
                         e.preventDefault();
