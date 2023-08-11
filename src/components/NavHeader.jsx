@@ -14,6 +14,7 @@ import { useFrappeAuth } from 'frappe-react-sdk';
 import { useCart } from '../hooks/useCart';
 import { useNavigate } from 'react-router-dom';
 import { ShoppingBag01, MessageCircle01  } from '@untitled-ui/icons-react'; 
+import hondaLogo from '../img/hondaLogo.png'
 
 const NavHeader = () => {
     const navigate = useNavigate();
@@ -46,9 +47,9 @@ const NavHeader = () => {
                   className="flex mr-4 focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0"
                 >
                   <picture>
-                    <source srcSet={brandLogo} media="(min-width: 768px)" />
+                    <source srcSet={hondaLogo} media="(min-width: 768px)" />
                     <img
-                      src={brandLogo}
+                      src={hondaLogo}
                       alt="Sf Logo"
                       className="w-[100px]"
                     />
