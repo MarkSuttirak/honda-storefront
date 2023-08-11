@@ -15,7 +15,6 @@ export const ProductsProvider = ({ children }) => {
         onSuccess: (data) => setProducts(data.message.items)
     })
 
-
     const get = (name) => {
         // if product is already in the list, return it & refetch it in the background
         const p = products.find((product) => product.name === name)

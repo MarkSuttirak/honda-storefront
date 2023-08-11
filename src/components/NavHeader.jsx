@@ -38,8 +38,8 @@ const NavHeader = () => {
     ];
 
     return (
-        <header className="flex justify-center w-full z-[999] fixed top-0">
-            <div className="flex flex-wrap lg:flex-nowrap items-center flex-row justify-start h-full max-w-[1536px] w-full bg-[#FFFFFF94] py-2 px-4 mx-5 my-3 rounded-[9px]" style={{backdropFilter:"blur(3px)"}}>
+        <header className="flex justify-center w-full z-[999]">
+            <div className="flex flex-wrap lg:flex-nowrap items-center flex-row justify-start h-full max-w-[1536px] w-full py-2 px-4 mx-5 my-3 rounded-[9px] justify-center" style={{backdropFilter:"blur(3px)"}}>
                 <a
                   href="/"
                   aria-label="SF Homepage"
@@ -54,29 +54,6 @@ const NavHeader = () => {
                     />
                   </picture>
                 </a>
-
-                <nav className="flex-1 flex justify-end lg:order-last lg:ml-4">
-                    <div className="flex flex-row flex-nowrap">
-                        {actionItems.map((actionItem) => (
-                            <SfButton
-                              key={actionItem.ariaLabel}
-                              className="relative ml-1 rounded-[99px] hover:bg-white"
-                              aria-label={actionItem.ariaLabel}
-                              variant="tertiary"
-                              square
-                              slotPrefix={actionItem.icon}
-                              onClick={actionItem.onClick}
-                            >
-                              {actionItem.ariaLabel === 'Cart' && (
-                                <SfBadge content={cartCount} />
-                              )}
-                              {actionItem.role === 'login' && (
-                                <p className="hidden xl:inline-flex whitespace-nowrap">{actionItem.label}</p>
-                              )}
-                            </SfButton>
-                        ))}
-                    </div>
-                </nav>
             </div>
         </header>
     )

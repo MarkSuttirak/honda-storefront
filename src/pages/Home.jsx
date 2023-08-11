@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import ProductCard from '../components/ProductCard'
 import PromotionCard from '../components/PromotionCard';
 import { useProducts } from '../hooks/useProducts'
-import { useFrappeAuth } from 'frappe-react-sdk';
+import { useFrappeAuth, useFrappeGetDoc } from 'frappe-react-sdk';
 import banner from '../img/banner.png'
 import coin from '../img/coin.svg'
 import coupon from '../img/coupon.svg'
@@ -24,19 +24,66 @@ import bannerDiscount2 from '../img/banner-discount2.png'
 import BlogCard from '../components/BlogCard';
 import NavHeader from '../components/NavHeader'
 import FooterMenu from '../components/FooterMenu';
+import { ChevronRight } from '@untitled-ui/icons-react';
 
 const Home = () => {
-    const { updateCurrentUser } = useFrappeAuth();
+    const { currentUser, updateCurrentUser } = useFrappeAuth();
     const { products } = useProducts()
 
     useEffect(() => {
         updateCurrentUser()
     }, [updateCurrentUser])
 
+    const { data, isLoading, error } = useFrappeGetDoc('User', currentUser, {
+      filters: ['name', 'full_name', 'user_image']
+    })
+
     return (
         <>
           <NavHeader />
-            <img src={banner} className='w-full left-0 max-h-[240px] object-cover'/>
+            <header className="py-6 px-5 w-full">
+              {data && (
+                <div className='flex'>
+                  <div className='flex items-center w-1/2'>
+                    <img src={data.user_image} width="64" className='rounded-[99px]'/>
+                    <div className='ml-3 flex flex-col'>
+                      <span className='font-bold'>{data.full_name}</span>
+                    </div>
+                  </div>
+                  <div className='flex flex-col items-end justify-center w-1/2'>
+                    <div className='flex gap-x-1 text-[13px]'>
+                      <img src={coin}/>
+                      230
+                    </div>
+                    <div className='inter text-xs text-[#4C4B4F]'>
+                      Coins
+                    </div>
+                  </div>
+                </div>
+              )}
+              {isLoading || error && (
+                <>
+                  <div className='flex items-center w-1/2'>
+                    <svg className="h-[64px] w-[64px] bg-white text-gray-300 rounded-[99px]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <div className='ml-3 flex flex-col'>
+                      <span className='font-bold'>Loading...</span>
+                    </div>
+                  </div>
+                  <div className='flex items-center w-1/2'>
+                    <svg className="h-[64px] w-[64px] bg-white text-gray-300 rounded-[99px]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <div className='ml-3 flex flex-col'>
+                      <span className='font-bold'>Loading...</span>
+                    </div>
+                </div>
+                </>
+              )}
+            </header>
+            {/* <img src={banner} className='w-full left-0 max-h-[240px] object-cover'/> */}
+            <div className='w-full bg-[#ADB1BB] h-[240px]' />
             <header className='m-3 bg-white relative pl-5 py-1 m-auto rounded-[6px] top-[-30px] flex' style={{filter:"drop-shadow(0 4px 20px #6363630D)",width:"calc(100% - 40px)"}}>
               <div className='w-[80%] py-2'>
                 <div className='flex'>
