@@ -28,7 +28,7 @@ const FooterMenu = ({active}) => {
     {
       icon:(<ClockRewind />),
       title:"ประวัติ",
-      link:"/reward",
+      link:"/reward-history",
       current:2
     },
     {
