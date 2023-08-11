@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Home02, Grid01, Award03, User02 } from "@untitled-ui/icons-react"
+import { Home02, Grid01, Award03, User02, Gift01, ClockRewind } from "@untitled-ui/icons-react"
 import { useState } from "react"
 
 const FooterMenu = ({active}) => {
@@ -20,14 +20,14 @@ const FooterMenu = ({active}) => {
       current:0
     },
     {
-      icon:(<Grid01 />),
-      title:"หมวดหมู่",
+      icon:(<Gift01 />),
+      title:"แลกรางวัล",
       link:"/categories",
       current:1
     },
     {
-      icon:(<Award03 />),
-      title:"สะสมแต้ม",
+      icon:(<ClockRewind />),
+      title:"ประวัติ",
       link:"/reward",
       current:2
     },
