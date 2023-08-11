@@ -2,7 +2,8 @@ import { Link, useParams } from "react-router-dom"
 import { ArrowLeft, CreditCard02, ChevronRight, MarkerPin01, ShoppingBag01, AnnotationDots, Share04, SwitchHorizontal01 } from "@untitled-ui/icons-react"
 import { useFrappeGetDoc, useFrappeGetDocList } from "frappe-react-sdk"
 import testImg from '../img/test-img.png'
-// import qrcodeMock from '../img/qrcode-redeem.svg'
+import qrcodeMock from '../img/qrcode-redeem.svg'
+import barcodeMock from '../img/barcode-mock.svg'
 import { useState } from 'react'
 import {
   SfButton,
@@ -86,7 +87,7 @@ const MyOrderDetails = () => {
                 </div>
               </SfScrollable>
             </div>
-            <div className="px-5">
+            <div className="px-5 mb-4">
               <div className="w-full relative mx-auto z-10 bg-white py-4 rounded-[10px] -mt-[18px]" style={{ boxShadow: "0px 4px 20px 0px #EBE9EA", }}>
                 <div className='text-center'>
                     <button className='bg-[#E9F6ED] w-[66px] h-[19px] rounded-full px-[10px] py-[4px] text-[#00B14F] font-bold text-[10px] leading-[11.1px]' style={{ fontFamily: "Eventpop" }} >ใช้หน้าร้าน</button>
@@ -122,13 +123,28 @@ const MyOrderDetails = () => {
                   <div className="mt-[44px]">
                     <button className="bg-[#00B14F] text-white text-center block w-[80%] m-auto p-[11px] rounded-[8px]">{data.name}</button>
 
-                    <p className="text-[#8A8A8A] text-xs mt-[35px]"></p>
+                    <p className="text-[#8A8A8A] text-xs mt-[35px] text-center">กรุณากรอกหรือส่งโค้ดนี้ให้พนักงาน<br/>ที่หน้าร้านเพื่อรับของรางวัล</p>
                   </div>
                 )}
 
                 {qrcode && (
                   <div className="mt-[44px]">
-                    {/* <img src={qrcodeMock} /> */}
+                    <img src={qrcodeMock} className="m-auto" />
+
+                    <p className="text-[#00000061] text-xs text-center mt-6">
+                      ใช้ภายใน 
+                      <strong className="text-[#00B14F] ml-1">15:00</strong>
+                    </p>
+
+                    <p className="text-[#8A8A8A] text-xs mt-4 text-center">กรุณานำ QR Code นี้ให้พนักงานสแกน<br/>ที่หน้าร้านเพื่อรับของรางวัล</p>
+                  </div>
+                )}
+
+                {barcode && (
+                  <div className="mt-[44px]">
+                    <img src={barcodeMock} className="m-auto" />
+                    <p className="text-[#000000] text-xs text-center mt-2"></p>
+                    <p className="text-[#8A8A8A] text-xs mt-4 text-center">กรุณานำ Barcode นี้ให้พนักงานสแกน<br/>ที่หน้าร้านเพื่อรับของรางวัล</p>
                   </div>
                 )}
               </div>
