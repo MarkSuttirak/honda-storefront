@@ -41,6 +41,7 @@ import BlogAdd from "./pages/admin/BlogAdd";
 import RewardDetails from "./pages/RewardDetails";
 import RewardCouponPage from "./pages/RewardCouponPage";
 import RewardHomePage from "./pages/RewardHomePage";
+import RewardHistory from "./pages/RewardHistory";
 
 function App() {
   const navigate = useNavigate();
@@ -93,6 +94,7 @@ function App() {
               <Route path="/reward-coupon" element={<RewardCouponPage />}/>
               <Route path="/reward-home" element={<RewardHomePage />}/>
               <Route path="/gifts" element={<Gifts />}/>
+              <Route path="/reward-history" element={<RewardHistory />}/>
 
 
               <Route path="/blog-admin" element={<BlogAdmin />}/>
