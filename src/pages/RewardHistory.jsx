@@ -32,7 +32,7 @@ function RewardHistory() {
 
     return (
         <>
-            <TitleHeader link={''} title={'ประวัติการใช้งานคะแนน'} />
+            <TitleHeader link='/' title='ประวัติการใช้งานคะแนน' />
 
             <div className='bg-[#FDF0E4] flex justify-between p-[18px] items-center'>
                 <div className=''>
