@@ -78,7 +78,7 @@ const Home = () => {
                     <div className='ml-3 flex flex-col'>
                       <span className='font-bold'>Loading...</span>
                     </div>
-                </div>
+                  </div>
                 </>
               )}
             </header>

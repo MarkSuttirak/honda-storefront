@@ -147,17 +147,25 @@ const Product = () => {
 
     return (
       <>
-        <header className='p-[8px] bg-black w-full text-center text-white'>
-          <p>สมาชิกใหม่รับ ของขวัญฟรี กดรับเลย !! 🎁</p>
+        <header className='p-[14px] border-b border-b-[#F2F2F2] flex items-center justify-between gap-x-[7px]'>
+          <div className='flex items-center'>
+            <Link to="/">
+              <ArrowLeft />
+            </Link>
+            สมัครสมาชิก
+          </div>
+          <button className='p-[9px] rounded-[99px] bg-[#FFFFFF94]' style={{backdropFilter:"blur(6px)"}} onClick={() => setIsOpen(true)}>
+            <ShoppingBag01 />
+          </button>
         </header>
-        <nav className='flex justify-between p-4 absolute top-[40px] z-[999] w-full'>
+        {/* <nav className='flex justify-between p-4 absolute top-[40px] z-[999] w-full'>
           <Link to="/" className='p-[9px] rounded-[99px] bg-[#FFFFFF94]' style={{backdropFilter:"blur(6px)"}}>
             <ArrowLeft />
           </Link>
           <button className='p-[9px] rounded-[99px] bg-[#FFFFFF94]' style={{backdropFilter:"blur(6px)"}} onClick={() => setIsOpen(true)}>
             <ShoppingBag01 />
           </button>
-        </nav>
+        </nav> */}
         <main className="mx-auto">
             <div className="relative flex w-full max-h-[600px] aspect-[4/3]">
               <SfScrollable
@@ -167,10 +175,6 @@ const Product = () => {
                 buttonsPlacement="none"
                 drag={{ containerWidth: true }}
               >
-                <div className="absolute inline-flex items-center justify-center text-sm font-medium text-white bg-secondary-600 py-1.5 px-3 mb-4">
-                  <SfIconSell size="sm" className="mr-1.5" />
-                  Sale
-                </div>
                 <div className="flex justify-center h-full basis-full shrink-0 grow snap-center">
                   <img
                     src={`https://dev.zaviago.com${product?.website_image}`}
@@ -181,7 +185,7 @@ const Product = () => {
                 </div>
               </SfScrollable>
             </div>
-            <section className="-mt-2 px-4">
+            <section className="-mt-2 px-4 pb-[120px]">
                 <div className='pt-2'>
                     {/* {
                         cart[product?.item_code] && (
@@ -216,6 +220,16 @@ const Product = () => {
                     </div>
 
                     <div className='px-[18px] pt-[30px]'>
+                      <h4 className='font-bold text-[#424242] text-sm leading-[23.2px]' style={{ fontFamily: "Eventpop" }}>รายละเอียดรางวัล</h4>
+                      {/* <ul className='mt-[9px] pr-[18px] pl-[22px] w-[294px]'>
+                        <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>สมาชิกหลักเท่านั้นที่มีสิทธิใช้คะแนนเพื่อแลกรับ ของรางวัล</li>
+                        <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>ขอสงวนสิทธิ์งดรับการแก้ไขเปลี่ยนแปลงใด หลังจากที่สมาชิกหลักแจ้งความประสงค์ขอแลก คะแนนสะสมไปยังบริษัทฯแล้ว</li>
+                        <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>บริษัทฯขอแจ้งเปลี่ยนแปลงเงื่อนไขการแลกของรางวัล โดยมิได้แจ้งให้ทราบก่อนล่วงหน้า</li>
+                      </ul> */}
+                      <div dangerouslySetInnerHTML={{__html:product?.web_long_description}} className='text-[#424242] font-normal text-xs list-disc leading-[18px]'/>
+                    </div>
+
+                    <div className='px-[18px] pt-[30px]'>
                         <h4 className='font-bold text-[#424242] text-sm leading-[23.2px]' style={{ fontFamily: "Eventpop" }}>รายละเอียด</h4>
                         <ul className='mt-[9px] pr-[18px] pl-[22px] w-[294px]'>
                             <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>สมาชิกหลักเท่านั้นที่มีสิทธิใช้คะแนนเพื่อแลกรับ ของรางวัล</li>
@@ -223,8 +237,8 @@ const Product = () => {
                             <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>บริษัทฯขอแจ้งเปลี่ยนแปลงเงื่อนไขการแลกของรางวัล โดยมิได้แจ้งให้ทราบก่อนล่วงหน้า</li>
                         </ul>
                     </div>
-                    <div className="items-start flex pb-3 pt-[120px]">
-                      <SfButton onClick={() => addToCart(product?.item_code, value)} type="button" size="lg" className="w-full" style={{backgroundColor:"black"}}>
+                    <div className="items-start flex fixed bottom-0 w-full pb-3 bg-white">
+                      <SfButton onClick={() => location.href='/checkout'} type="button" size="lg" style={{backgroundColor:"black",width:"calc(100% - 32px)"}}> {/*onClick={() => addToCart(product?.item_code, value)} */}
                         แลกของรางวัล
                       </SfButton>
                     </div>

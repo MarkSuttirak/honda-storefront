@@ -7,14 +7,14 @@ import { ArrowLeft } from '@untitled-ui/icons-react'
 import successIcon from '../img/success.svg'
 import { Link } from "react-router-dom"
 import { useUser } from '../hooks/useUser';
+import { useFrappeUpdateDoc } from "frappe-react-sdk"
 
 
 const EditProfile = () => {
   
   const { user } = useUser()
   console.log(user)
- 
-  
+
   const [editPro, setEditPro] = useState(true)
   const [changePhone, setChangePhone] = useState(false)
   const [changedSuccessfully, setChangedSuccessfully] = useState(false);
@@ -26,8 +26,6 @@ const EditProfile = () => {
   const [filledAllOtp, setFilledAllOtp] = useState('')
   const [phoneError, setPhoneError] = useState(false);
   const [otperror, setOtperror] = useState(false)
-    
-   
 
   const telRef = useRef(null)
 
@@ -66,7 +64,7 @@ const EditProfile = () => {
         <>
           <TitleHeader title="แก้ไขโปรไฟล์" link="/my-account"/>
           <main className='p-5'>
-            <form action="#" className='flex flex-col gap-y-5'>
+            <form action="/my-account" className='flex flex-col gap-y-5'>
               <div className='flex flex-col'>
              
                 <label htmlFor='name'>ชื่อ</label> 
@@ -92,27 +90,12 @@ const EditProfile = () => {
                 <button className="absolute translate-y-[38px] right-[4px] bg-black text-white px-3 py-[6px] rounded-[6px]" onClick={changeToChangePhone}>แก้ไข</button>
               </div>
             </form>
-          </main>
-          <footer className="p-5 w-full">
-            <h2>เชื่อมต่อบัญชีที่เข้าสู่ระบบ</h2>
-            <div>
+            <footer className="w-full">
               <button className={`block mt-5 w-1/2 text-white rounded-[9px] p-3 w-full bg-[#1877F2] flex items-center justify-center gap-x-4 inter`}>
                 Save
               </button>
-              <button className={`block mt-5 w-1/2 text-white rounded-[9px] p-3 w-full bg-[#1877F2] flex items-center justify-center gap-x-4 inter`}>
-                <img src={fblogo} />
-                Sign In with Facebook
-              </button>
-              <button className={`block mt-5 w-1/2 text-[#0000008A] rounded-[9px] p-3 w-full bg-white flex items-center justify-center gap-x-4 inter`} style={{filter:"drop-shadow(0 0 3px #00000014)"}}>
-                <img src={googlelogo} />
-                Sign In with Google
-              </button>
-              <button className={`block mt-5 w-1/2 text-white rounded-[9px] p-3 w-full bg-black flex items-center justify-center gap-x-4 inter`} style={{filter:"drop-shadow(0 0 3px #00000014)"}}>
-                <img src={applelogo} />
-                Sign In with Apple
-              </button>
-            </div>
-          </footer>
+            </footer>
+          </main>
         </>
       )}
 

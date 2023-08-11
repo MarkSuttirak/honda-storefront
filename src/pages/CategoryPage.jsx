@@ -2,47 +2,95 @@ import FooterMenu from "../components/FooterMenu"
 import searchIcon from '../img/search-md-black.svg'
 import { useCart } from '../hooks/useCart';
 import { ShoppingBag01, ChevronRight } from "@untitled-ui/icons-react";
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { useProducts } from '../hooks/useProducts'
+import { useState } from "react";
+import {
+  SfButton,
+  SfLink,
+  SfIconShoppingCart,
+  SfIconSell,
+  SfIconPackage,
+  SfIconRemove,
+  SfIconAdd,
+  SfIconWarehouse,
+  SfIconSafetyCheck,
+  SfIconShoppingCartCheckout,
+  SfIconFavorite,
+  SfIconArrowForward,
+  SfScrollable
+} from '@storefront-ui/react';
+import ProductCard from '../components/ProductCard';
+import TitleHeader from "../components/TitleHeader";
 
 const CategoryPage = () => {
   const { cartCount, setIsOpen } = useCart()
 
-  const allCates = ['ไอเท็มใหม่', 'เสื้อ', 'กางเกง', 'กระโปรง', 'รองเท้า']
+  const { get, products } = useProducts();
+  const min = 1;
+  const max = 999;
+
+  const [liked, setLiked] = useState(false)
 
   return (
     <>
-      <header className='py-[7px] px-[18px] border-b border-b-[#F2F2F2] text-md font-bold bg-white flex gap-x-2 items-center'>
-        <img src={searchIcon} className="absolute translate-x-[10px]"/>
-        <input type="search" className="p-[7px] pl-10 bg-[#E6E6E6] h-[34px] rounded-[9px] font-medium w-full text-[13px]" placeholder='พิมพ์ชื่อสินค้า แบรนด์ ลักษณะสินค้า' />
-        <button className="p-2" onClick={() => setIsOpen(true)}>
-          <ShoppingBag01 viewBox='0 0 24 24' width="22" height="22"/>
-        </button>
-      </header>
-      <header className='bg-black text-white text-center py-[10px]'>
-        สมาชิกใหม่รับ ของขวัญฟรี กดรับเลย !! 🎁
-      </header>
-      <main>
-        <nav className="border-b border-b-[#F2F2F2] overflow-auto">
-          <ul className="flex">
-            <li className="px-[60px] py-5">ALL</li>
-            <li className="px-[60px] py-5">WOMEN</li>
-            <li className="px-[60px] py-5">MEN</li>
-          </ul>
-        </nav>
-        <div className="flex relative">
-          <div className="flex flex-col grow">
-            {allCates.map((cate) => {
-              return (
-                <Link to='/shop' className='flex justify-between items-center px-5 py-[17px] w-full border-b border-b-[#E3E3E3]'>
-                  <div className='flex gap-x-[10px]'>
-                    {cate}
-                  </div>
-                  <div>
-                    <ChevronRight />
-                  </div>
-                </Link>
-              )
-            })}
+
+      <TitleHeader link='/categories' title='รางวัล'/>
+      <main className='relative top-[-10px] pb-[94px]'>
+        <div className='mt-[22px]'>
+          <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
+            สินค้าลดราคา
+            <SfIconArrowForward className="w-[18px] text-black ml-2"/>
+          </h2>
+
+          <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
+            {(products ?? []).map((product) => (
+              <ProductCard
+                key={product.item_code}
+                title={product.name}
+                productId={product.name}
+                itemCode={product.item_code}
+                price={product.formatted_price}
+                thumbnail={product.website_image ? product.website_image : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} />
+            ))}
+          </div>
+        </div>
+
+        <div className='mt-[22px]'>
+          <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
+            สินค้าลดราคา
+            <SfIconArrowForward className="w-[18px] text-black ml-2"/>
+          </h2>
+
+          <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
+            {(products ?? []).map((product) => (
+              <ProductCard
+                key={product.item_code}
+                title={product.name}
+                productId={product.name}
+                itemCode={product.item_code}
+                price={product.formatted_price}
+                thumbnail={product.website_image ? product.website_image : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} />
+            ))}
+          </div>
+        </div>
+
+        <div className='mt-[22px]'>
+          <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
+            สินค้าลดราคา
+            <SfIconArrowForward className="w-[18px] text-black ml-2"/>
+          </h2>
+
+          <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
+            {(products ?? []).map((product) => (
+              <ProductCard
+                key={product.item_code}
+                title={product.name}
+                productId={product.name}
+                itemCode={product.item_code}
+                price={product.formatted_price}
+                thumbnail={product.website_image ? product.website_image : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} />
+            ))}
           </div>
         </div>
       </main>

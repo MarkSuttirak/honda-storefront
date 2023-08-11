@@ -71,11 +71,6 @@ const MyAccount = () => {
       link: '#'
     },
     {
-      icon: <Globe02 />,
-      title: 'ประเทศและภาษา',
-      link: '#'
-    },
-    {
       icon: <Shield01 />,
       title: 'ข้อกำหนดและเงื่อนไข',
       link: '#'
@@ -143,7 +138,7 @@ const MyAccount = () => {
   return (
     <div className='bg-[#F4F4F4] h-full'>
       <NavHeader />
-      <header className="pt-20 pb-[60px] px-5 bg-[#BBE5BB] w-full">
+      <header className="p-5 w-full">
         {data && (
           <div className='flex items-center'>
             <img src={data.user_image} width="64" className='rounded-[99px]'/>
@@ -171,7 +166,7 @@ const MyAccount = () => {
           </div>
         )}
       </header>
-      <main className='px-5 relative top-[-40px] pb-[100px]'>
+      <main className='px-5 relative pb-[100px]'>
         <div className='bg-white rounded-[6px] items-center' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
           <div className='flex justify-between p-5'>
             <div className='flex items-center gap-x-[14px]'>
@@ -179,7 +174,7 @@ const MyAccount = () => {
               <div className='text-[#333333] font-bold'>ระดับ : {silverLevel ? "Silver" : ""}</div>
             </div>
             <div>
-              <Link to="/my-id" className='bg-[#00B14F] flex gap-x-2 text-white items-center text-sm p-1 rounded-[4px]'>
+              <Link to="/my-id" className='bg-[#F0592A] flex gap-x-2 text-white items-center text-sm p-1 rounded-[4px]'>
                 <img src={qrcode} />
                 ID ของฉัน
               </Link>
@@ -188,45 +183,22 @@ const MyAccount = () => {
 
           <div className='p-5'>
             <div className='flex'>
-              <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
-                Wallet
-              </div>
-              <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
+              <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 Coins
               </div>
-              <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
+              <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 <Link to="/my-coupon">Coupon</Link>
               </div>
             </div>
 
             <div className='flex'>
-              <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
-                <span className='text-[#1BB040]'>฿ </span>850
-              </div>
-              <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
+              <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 230 <span className='text-[#FFA800]'>coins</span>
               </div>
-              <div className='basis-1/3 flex gap-x-1 text-[13px] justify-center'>
+              <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 8 <span className='text-[#BC0000]'>codes</span>
               </div>
             </div>
-          </div>
-
-          <hr style={{borderColor:"#F2F2F2"}}/>
-
-          <div className='p-5 w-full flex'>
-            <Link to="/wishlist" className='basis-1/3 text-sm flex flex-col items-center text-center text-[#333333] gap-y-[10px]'>
-              <Heart color='#333333'/>
-              รายการสินค้า<br/>ที่ถูกใจ
-            </Link>
-            <Link to="/my-order" className='basis-1/3 text-sm flex flex-col items-center text-center text-[#333333] gap-y-[10px]'>
-              <File06 color='#333333'/>
-              คำสั่งซื้อ<br/>ของฉัน
-            </Link>
-            <Link to="#" className='basis-1/3 text-sm flex flex-col items-center text-center text-[#333333] gap-y-[10px]'>
-              <ClockRewind color='#333333'/>
-              สินค้าที่<br/>ดูล่าสุด
-            </Link>
           </div>
 
           <hr style={{borderColor:"#F2F2F2"}}/>
