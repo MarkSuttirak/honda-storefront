@@ -1,17 +1,18 @@
 import { FrappeProvider } from "frappe-react-sdk";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Login from "./pages/Login";
+import Cookies from 'js-cookie';
 import Home from "./pages/Home";
 import Product from "./pages/Product";
 import './App.css'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ProductsProvider } from "./hooks/useProducts";
 import { CartProvider } from "./hooks/useCart";
 import Cart from "./components/Cart";
 import Checkout from "./pages/Checkout";
 import Profile from "./pages/Profile";
 import { UserProvider } from "./hooks/useUser";
-import { getToken } from "./utils/helper";
+import { getToken, setToken } from "./utils/helper";
 import BankInfoPage from "./pages/BankInfoPage";
 import MyAccount from "./pages/MyAccount";
 import ShippingAddress from "./pages/address/ShippingAddress";
@@ -34,7 +35,7 @@ import ShopPageType from "./pages/ShopPage-type";
 import Wishlist from "./pages/Wishlist";
 import RewardPage from "./pages/RewardPage";
 import Gifts from "./pages/Gifts";
-
+import Phonverify from "./pages/Phoneverifcation";
 import BlogAdmin from "./pages/admin/BlogAdmin";
 import BlogCategories from "./pages/admin/BlogCategories";
 import BlogAdd from "./pages/admin/BlogAdd";
@@ -43,10 +44,36 @@ import RewardCouponPage from "./pages/RewardCouponPage";
 import RewardHomePage from "./pages/RewardHomePage";
 import RewardHistory from "./pages/RewardHistory";
 import GiftCheckout from "./pages/GiftCheckout";
+import { useFrappeGetCall } from 'frappe-react-sdk';
+
 
 function App() {
   const navigate = useNavigate();
+  const search = useLocation().search;
+  const token = new URLSearchParams(search).get("token");
+  const phoneverify = new URLSearchParams(search).get("phoneverify");
+  const username = new URLSearchParams(search).get("username");
+  const [Userverify, SetUserverify] = useState(phoneverify);
+
   useEffect(() => {
+    if (token) {
+      setToken(token)
+      if (phoneverify == 'true') {
+        Cookies.set('username', username);
+        Cookies.set('phoneverify', true);
+        navigate("/phonverify");
+      }
+      else {
+        navigate("/");
+      }
+
+    }
+    else {
+      if (getToken() && Cookies.get('phoneverify')) {
+        navigate("/phonverify");
+      }
+    }
+
     if (!getToken()) {
       navigate("/login");
     }
@@ -97,8 +124,7 @@ function App() {
               <Route path="/reward-home" element={<RewardHomePage />} />
               <Route path="/gifts" element={<Gifts />} />
               <Route path="/reward-history" element={<RewardHistory />} />
-
-
+              <Route path="/phonverify" element={<Phonverify />} />
               <Route path="/blog-admin" element={<BlogAdmin />} />
               <Route path="/blog-categories" element={<BlogCategories />} />
               <Route path="/blog-add" element={<BlogAdd />} />
