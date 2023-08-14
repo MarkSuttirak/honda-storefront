@@ -1,3 +1,4 @@
+
 const verifyotpnow = (userphone,myotp,username) => {
     var myHeaders = new Headers();
     myHeaders.append("Cookie", "full_name=Guest; sid=Guest; system_user=no; user_id=Guest; user_image=");
@@ -28,8 +29,7 @@ const phonverifynow = (phone) => {
                 "Content-Type": "application/json",
             }
         }).then((response) => response.json()).then((data) => {
-            setShow()
-            setDisabled(true)
+            return data;
         })
 
     } catch (error) {
