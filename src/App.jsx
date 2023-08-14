@@ -42,6 +42,7 @@ import RewardDetails from "./pages/RewardDetails";
 import RewardCouponPage from "./pages/RewardCouponPage";
 import RewardHomePage from "./pages/RewardHomePage";
 import RewardHistory from "./pages/RewardHistory";
+import GiftCheckout from "./pages/GiftCheckout";
 
 function App() {
   const navigate = useNavigate();
@@ -68,36 +69,37 @@ function App() {
               <Route path="products/:id" element={<Product />} />
               <Route path="product-compare/:id" element={<ProductCompare />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/:itemCode/gift-checkout" element={<GiftCheckout />} />
               <Route path="/thankyou" element={<BankInfoPage />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/my-account" element={<MyAccount />}/>
-              <Route path="/my-id" element={<MyID />}/>
-              <Route path="/my-order" element={<MyOrder />}/>
-              <Route path="/my-order-details/:id" element={<MyOrderDetails />}/>
-              <Route path="/my-coupon" element={<MyCoupon />}/>
-              <Route path="/welcome" element={<Welcome />}/>
-              <Route path="/signup" element={<Signup />}/>
-              <Route path="/fill-info" element={<FillInfo />}/>
-              <Route path="/success" element={<Success />}/>
-              <Route path="/shipping-address" element={<ShippingAddress />}/>
-              <Route path="/shipping-address/add" element={<AddShippingAddress />}/>
-              <Route path="/shipping-address/edit" element={<EditShippingAddress />}/>
-              <Route path="/edit-profile" element={<EditProfile />}/>
-              <Route path="/categories" element={<CategoryPage />}/>
-              <Route path="/shop" element={<ShopPage />}/>
-              <Route path="/shop/filter" element={<ShopPageFilter />}/>
-              <Route path="/shop/type" element={<ShopPageType />}/>
-              <Route path="/wishlist" element={<Wishlist />}/>
-              <Route path="/reward" element={<RewardPage />}/>
-              <Route path="/reward-details" element={<RewardDetails />}/>
-              <Route path="/reward-coupon" element={<RewardCouponPage />}/>
-              <Route path="/reward-home" element={<RewardHomePage />}/>
-              <Route path="/gifts" element={<Gifts />}/>
-              <Route path="/reward-history" element={<RewardHistory />}/>
+              <Route path="/my-account" element={<MyAccount />} />
+              <Route path="/my-id" element={<MyID />} />
+              <Route path="/my-order" element={<MyOrder />} />
+              <Route path="/my-order-details/:id" element={<MyOrderDetails />} />
+              <Route path="/my-coupon" element={<MyCoupon />} />
+              <Route path="/welcome" element={<Welcome />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/fill-info" element={<FillInfo />} />
+              <Route path="/success" element={<Success />} />
+              <Route path="/shipping-address" element={<ShippingAddress />} />
+              <Route path="/shipping-address/add" element={<AddShippingAddress />} />
+              <Route path="/shipping-address/edit" element={<EditShippingAddress />} />
+              <Route path="/edit-profile" element={<EditProfile />} />
+              <Route path="/categories" element={<CategoryPage />} />
+              <Route path="/shop" element={<ShopPage />} />
+              <Route path="/shop/filter" element={<ShopPageFilter />} />
+              <Route path="/shop/type" element={<ShopPageType />} />
+              <Route path="/wishlist" element={<Wishlist />} />
+              <Route path="/reward" element={<RewardPage />} />
+              <Route path="/reward-details" element={<RewardDetails />} />
+              <Route path="/reward-coupon" element={<RewardCouponPage />} />
+              <Route path="/reward-home" element={<RewardHomePage />} />
+              <Route path="/gifts" element={<Gifts />} />
+              <Route path="/reward-history" element={<RewardHistory />} />
 
 
-              <Route path="/blog-admin" element={<BlogAdmin />}/>
+              <Route path="/blog-admin" element={<BlogAdmin />} />
               <Route path="/blog-categories" element={<BlogCategories />} />
               <Route path="/blog-add" element={<BlogAdd />} />
             </Routes>
