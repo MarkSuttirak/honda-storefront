@@ -1,5 +1,5 @@
 import { FrappeProvider } from "frappe-react-sdk";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate ,useLocation} from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
@@ -42,12 +42,23 @@ import RewardDetails from "./pages/RewardDetails";
 import RewardCouponPage from "./pages/RewardCouponPage";
 import RewardHomePage from "./pages/RewardHomePage";
 import RewardHistory from "./pages/RewardHistory";
+import { useFrappeGetCall } from 'frappe-react-sdk';
+
 
 function App() {
   const navigate = useNavigate();
+  const search = useLocation().search;
+  const token = new URLSearchParams(search).get("token");
   useEffect(() => {
+
+    if(token){
+      //setToken(token)
+      useFrappeGetCall('headless_e_commerce.api.get_profile', {}, 'user-profile', {onSuccess: (data) => { console.log(data) }})
+     // navigate("/");
+    }
+ 
     if (!getToken()) {
-      navigate("/login");
+      //navigate("/login");
     }
   }, [navigate]);
 
