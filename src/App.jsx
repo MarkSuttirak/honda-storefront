@@ -1,5 +1,5 @@
 import { FrappeProvider } from "frappe-react-sdk";
-import { Routes, Route, useNavigate ,useLocation} from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Login from "./pages/Login";
 import Cookies from 'js-cookie';
 import Home from "./pages/Home";
@@ -12,7 +12,7 @@ import Cart from "./components/Cart";
 import Checkout from "./pages/Checkout";
 import Profile from "./pages/Profile";
 import { UserProvider } from "./hooks/useUser";
-import { getToken,setToken } from "./utils/helper";
+import { getToken, setToken } from "./utils/helper";
 import BankInfoPage from "./pages/BankInfoPage";
 import MyAccount from "./pages/MyAccount";
 import ShippingAddress from "./pages/address/ShippingAddress";
@@ -43,6 +43,7 @@ import RewardDetails from "./pages/RewardDetails";
 import RewardCouponPage from "./pages/RewardCouponPage";
 import RewardHomePage from "./pages/RewardHomePage";
 import RewardHistory from "./pages/RewardHistory";
+import GiftCheckout from "./pages/GiftCheckout";
 import { useFrappeGetCall } from 'frappe-react-sdk';
 
 
@@ -55,14 +56,14 @@ function App() {
   const [Userverify, SetUserverify] = useState(phoneverify);
 
   useEffect(() => {
-    if(token){
+    if (token) {
       setToken(token)
-      if(phoneverify == 'true'){
+      if (phoneverify == 'true') {
         Cookies.set('username', username);
         Cookies.set('phoneverify', true);
         navigate("/phonverify");
       }
-      else{
+      else {
         navigate("/");
       }
     } 
@@ -74,7 +75,7 @@ function App() {
         navigate("/");
       }
     }
- 
+
     if (!getToken()) {
       navigate("/login");
     }
@@ -97,36 +98,36 @@ function App() {
               <Route path="products/:id" element={<Product />} />
               <Route path="product-compare/:id" element={<ProductCompare />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/:itemCode/gift-checkout" element={<GiftCheckout />} />
               <Route path="/thankyou" element={<BankInfoPage />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/my-account" element={<MyAccount />}/>
-              <Route path="/my-id" element={<MyID />}/>
-              <Route path="/my-order" element={<MyOrder />}/>
-              <Route path="/my-order-details/:id" element={<MyOrderDetails />}/>
-              <Route path="/my-coupon" element={<MyCoupon />}/>
-              <Route path="/welcome" element={<Welcome />}/>
-              <Route path="/signup" element={<Signup />}/>
-              <Route path="/fill-info" element={<FillInfo />}/>
-              <Route path="/success" element={<Success />}/>
-              <Route path="/shipping-address" element={<ShippingAddress />}/>
-              <Route path="/shipping-address/add" element={<AddShippingAddress />}/>
-              <Route path="/shipping-address/edit" element={<EditShippingAddress />}/>
-              <Route path="/edit-profile" element={<EditProfile />}/>
-              <Route path="/categories" element={<CategoryPage />}/>
-              <Route path="/shop" element={<ShopPage />}/>
-              <Route path="/shop/filter" element={<ShopPageFilter />}/>
-              <Route path="/shop/type" element={<ShopPageType />}/>
-              <Route path="/wishlist" element={<Wishlist />}/>
-              <Route path="/reward" element={<RewardPage />}/>
-              <Route path="/reward-details" element={<RewardDetails />}/>
-              <Route path="/reward-coupon" element={<RewardCouponPage />}/>
-              <Route path="/reward-home" element={<RewardHomePage />}/>
-              <Route path="/gifts" element={<Gifts />}/>
-              <Route path="/reward-history" element={<RewardHistory />}/>
-              <Route path="/phonverify" element={<Phonverify />}/>
-
-              <Route path="/blog-admin" element={<BlogAdmin />}/>
+              <Route path="/my-account" element={<MyAccount />} />
+              <Route path="/my-id" element={<MyID />} />
+              <Route path="/my-order" element={<MyOrder />} />
+              <Route path="/my-order-details/:id" element={<MyOrderDetails />} />
+              <Route path="/my-coupon" element={<MyCoupon />} />
+              <Route path="/welcome" element={<Welcome />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/fill-info" element={<FillInfo />} />
+              <Route path="/success" element={<Success />} />
+              <Route path="/shipping-address" element={<ShippingAddress />} />
+              <Route path="/shipping-address/add" element={<AddShippingAddress />} />
+              <Route path="/shipping-address/edit" element={<EditShippingAddress />} />
+              <Route path="/edit-profile" element={<EditProfile />} />
+              <Route path="/categories" element={<CategoryPage />} />
+              <Route path="/shop" element={<ShopPage />} />
+              <Route path="/shop/filter" element={<ShopPageFilter />} />
+              <Route path="/shop/type" element={<ShopPageType />} />
+              <Route path="/wishlist" element={<Wishlist />} />
+              <Route path="/reward" element={<RewardPage />} />
+              <Route path="/reward-details" element={<RewardDetails />} />
+              <Route path="/reward-coupon" element={<RewardCouponPage />} />
+              <Route path="/reward-home" element={<RewardHomePage />} />
+              <Route path="/gifts" element={<Gifts />} />
+              <Route path="/reward-history" element={<RewardHistory />} />
+              <Route path="/phonverify" element={<Phonverify />} />
+              <Route path="/blog-admin" element={<BlogAdmin />} />
               <Route path="/blog-categories" element={<BlogCategories />} />
               <Route path="/blog-add" element={<BlogAdd />} />
             </Routes>
