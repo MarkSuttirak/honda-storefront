@@ -61,6 +61,7 @@ function App() {
       if (phoneverify == 'true') {
         Cookies.set('username', username);
         Cookies.set('phoneverify', true);
+        navigate("/phonverify");
       }
       else {
         navigate("/login");
