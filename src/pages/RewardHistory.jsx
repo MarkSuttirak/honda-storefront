@@ -56,7 +56,7 @@ function RewardHistory() {
 
             <div className='bg-[#FDF0E4] flex justify-between p-[18px] items-center'>
                 <div className=''>
-                    <div className='flex items-end'>
+                    <div className='flex items-center'>
                         <h4 className='font-bold text-[#F0592A] text-[26px] mr-[7px]'>{user?.loyalty_points}</h4>
                         <p className='font-normal font-xs text-[17px] text-[#F0592A] bg-none'>คะแนนที่ใช้ได้</p>
                     </div>
