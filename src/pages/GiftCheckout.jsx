@@ -124,15 +124,19 @@ const GiftCheckout = () => {
                             <span className="sr-only">Close panel</span>
                             <ArrowLeft />
                         </button>
-                        ทั้งหมด ฿ {getTotal()}
+                        การแลกรางวัล
                     </header>
                     <header className='bg-black text-white text-center py-[10px]'>
                         กดรับของขวัญฟรี 🎁
                     </header>
                     <div className='flex flex-col md:flex-row justify-center'>
-                        <form className='mt-3 mx-2'>
-                            <label className='text-[#333333] text-sm font-bold mt-[14px]'>ชื่อผู้รับ
-                                <BranchSelect name="branch" value={formik.values.branch} onChange={formik.handleChange} error={formik.errors.branch} />
+                        <form className='p-5'>
+                            <label className='text-[#333333] text-sm font-bold mt-[14px]'>
+                              <div className='flex gap-x-[10px] mb-[18px]'>
+                                <MarkerPin01 />
+                                ที่อยู่ในการจัดส่ง
+                              </div>
+                              <BranchSelect name="branch" value={formik.values.branch} onChange={formik.handleChange} error={formik.errors.branch} />
                             </label>
                         </form>
                         <div className='p-4 md:w-2/5'>
@@ -144,25 +148,43 @@ const GiftCheckout = () => {
                             </div>
                             <div className="md:shadow-lg md:rounded-md md:border md:border-neutral-100">
                                 <ul role="list" className="divide-y divide-gray-200">
-                                    <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                    {/* <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                         <img src={product?.website_image} alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." className="h-full w-full object-cover object-center" />
-                                    </div>
+                                    </div> */}
 
-                                    <div className="ml-4 flex flex-1 flex-col">
+                                    <div className="flex flex-1 flex-col pb-[18px]">
                                         <div>
                                             <div className="flex justify-between text-base font-medium text-gray-900">
-                                                <h3>
-                                                    <a href="#">{product?.name}</a>
+                                                <h3 className='font-bold text-[15px]'>
+                                                    <a href="#">{product?.name}Test</a>
                                                 </h3>
-                                                <p className="ml-4">{product?.loyalty_points_based_price} points</p>
+                                                <p className="ml-4 text-sm">{product?.loyalty_points_based_price} คะแนน</p>
                                             </div>
                                             <p className="mt-1 text-sm text-gray-500">Salmon</p>
                                         </div>
                                     </div>
                                 </ul>
-                                <div className="py-4 mt-3 md:pb-6 md:mt-0 border-t border-neutral-200">
-                                    <SfButton disabled={user?.loyalty_points < product?.loyalty_points_based_price} size="lg" className="w-full" style={{ backgroundColor: "black" }} onClick={(e) => { e.preventDefault(); formik.handleSubmit() }}>
-                                        จ่ายโดยใช้ {product?.loyalty_points_based_price} คะแนน
+
+                                <ul role="list" className="divide-y divide-gray-200 border-t border-neutral-200">
+                                    {/* <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                        <img src={product?.website_image} alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." className="h-full w-full object-cover object-center" />
+                                    </div> */}
+
+                                    <div className="flex flex-1 flex-col pt-[18px]">
+                                        <h2 className='mb-[18px] font-bold text-[15px]'>รายละเอียดการแลกรางวัล</h2>
+                                        <div>
+                                            <div className="flex justify-between text-base font-medium text-gray-900">
+                                                <h3 className='text-sm text-[#010101]'>
+                                                  ยอดรวม
+                                                </h3>
+                                                <p className="ml-4 text-sm">{product?.loyalty_points_based_price} คะแนน</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ul>
+                                <div className="py-4 mt-3 md:pb-6 md:mt-0">
+                                    <SfButton disabled={user?.loyalty_points < product?.loyalty_points_based_price} size="lg" className="w-full shadow-none" style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}} onClick={(e) => { e.preventDefault(); formik.handleSubmit() }}>
+                                        แลกรางวัลโดยใช้ {product?.loyalty_points_based_price} คะแนน
                                     </SfButton>
                                 </div>
                             </div>
