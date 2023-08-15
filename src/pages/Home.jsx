@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard'
 import PromotionCard from '../components/PromotionCard';
 import { useProducts } from '../hooks/useProducts'
@@ -30,6 +30,7 @@ import { useUser } from '../hooks/useUser';
 import iconRightHead from "../img/iconRightHead.svg"
 import bookClosed from "../img/book-closed.svg"
 import giftIcon from "../img/goftIconOrange.svg"
+import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/skeleton';
 
 const Home = () => {
   document.body.style.background = "white"
@@ -63,35 +64,34 @@ const Home = () => {
               </div>
               <div className='flex gap-x-1 text-[13px]'>
                 <img src={coin} />
-                <span className='text-2xl font-semibold'>230</span>
+                <span className='text-2xl font-semibold'>{user?.loyalty_points}</span>
               </div>
             </div>
           </div>
         )}
         {isLoading || error && (
-          <>
-            <div className='flex items-center w-1/2'>
-              <svg className="h-[64px] w-[64px] bg-white text-gray-300 rounded-[99px]" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
+          <div className='flex'>
+            <div className='flex items-center w-[85%]'>
+              <img src={data.user_image} width="64" className='rounded-[99px]' />
               <div className='ml-3 flex flex-col'>
-                <span className='font-bold'>Loading...</span>
+                <span className='font-bold'>{data.full_name}</span>
               </div>
             </div>
-            <div className='flex items-center w-1/2'>
-              <svg className="h-[64px] w-[64px] bg-white text-gray-300 rounded-[99px]" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-              <div className='ml-3 flex flex-col'>
-                <span className='font-bold'>Loading...</span>
+            <div className='flex flex-col items-end justify-end w-[15%]'>
+              <div className='inter text-xs text-[#4C4B4F]'>
+                Loading...
+              </div>
+              <div className='flex gap-x-1 text-[13px]'>
+                <img src={coin} />
+                <span className='text-2xl font-semibold'>{user?.loyalty_points}</span>
               </div>
             </div>
-          </>
+          </div>
         )}
       </header>
       {/* <img src={banner} className='w-full left-0 max-h-[240px] object-cover'/> */}
 
-      <div className='w-[354px] h-[209px] bg-[#ADB1BB] pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome'>
+      <div className='bg-[#ADB1BB] pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome'>
         <div>
           <h2 className='text-[32px] text-white'>Silver</h2>
           <p className='text-white text-[14px]'>อีก 11 คะแนนเลื่อนเป็น Gold</p>
@@ -109,7 +109,7 @@ const Home = () => {
               <button style={{background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}} className='p-4 text-white w-[100%] rounded-lg'>วิธีเก็บคะแนน</button>
             </div> */}
 
-      <div className='flex justify-between items-center my-[32px] w-[354px] h-[54px] rounded-lg mx-auto px-5' style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)" }}>
+      <div className='flex justify-between items-center my-[32px] mx-5 p-5 h-[54px] rounded-lg' style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)",width:"calc(100% - 40px)"}}>
         <div className='flex items-center'>
           <img className='w-[17px] h-[17px]' src={bookClosed} alt="" />
           <p className='font-normal font-sm leading-[20px] ml-2 text-white'>วิธีเก็บคะแนน</p>

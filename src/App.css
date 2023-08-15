@@ -142,8 +142,10 @@
 
 .theMainBannerReardHome{
   background-image: url('./img/mainBannerRewardHome.png');
-  width: 354px;
-  height: 209px;
+  background-size: cover;
+  width:calc(100% - 40px);
+  margin:20px;
+  height:209px;
 }
 
 @keyframes borderAnim {
