@@ -156,7 +156,7 @@ const GiftCheckout = () => {
                                         <div>
                                             <div className="flex justify-between text-base font-medium text-gray-900">
                                                 <h3 className='font-bold text-[15px]'>
-                                                    <a href="#">{product?.item_name}</a>
+                                                    <a href="#">{product?.name}</a>
                                                 </h3>
                                                 <p className="ml-4 text-sm">{product?.loyalty_points_based_price} คะแนน</p>
                                             </div>

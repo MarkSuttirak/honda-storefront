@@ -1,6 +1,6 @@
 import { SfSelect } from '@storefront-ui/react'
 import { useFrappeGetDocList } from 'frappe-react-sdk'
-import React, { useState } from 'react'
+import React from 'react'
 
 const BranchSelect = ({
     name,
@@ -12,7 +12,6 @@ const BranchSelect = ({
     const { data: branchList } = useFrappeGetDocList("Branch", {
         fields: ["*"]
     })
-
     return (
         <>
             <SfSelect size="base" name={name} onChange={onChange} value={value} {...props} className='focus:ring-[#F0592A] hover:ring-[#F0592A] active:ring-[#F0592A]'>
