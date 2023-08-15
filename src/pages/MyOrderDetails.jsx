@@ -143,7 +143,7 @@ const MyOrderDetails = () => {
 
                 {barcode && (
                   <div className="mt-[44px]">
-                    <Barcode value={data.name} />
+                    <Barcode value={data.name}/>
                     <p className="text-[#000000] text-xs text-center mt-2"></p>
                     <p className="text-[#8A8A8A] text-xs mt-4 text-center">กรุณานำ Barcode นี้ให้พนักงานสแกน<br/>ที่หน้าร้านเพื่อรับของรางวัล</p>
                   </div>
