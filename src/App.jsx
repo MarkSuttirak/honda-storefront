@@ -67,14 +67,7 @@ function App() {
         navigate("/");
       }
     } 
-    else{
-      if(Cookies.get('phoneverify') == "true"){
-        navigate("/phonverify");
-      }
-      else{
-        navigate("/");
-      }
-    }
+   
 
     if (!getToken()) {
       navigate("/login");
