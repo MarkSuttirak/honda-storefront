@@ -6,35 +6,37 @@ import recentViews from '../img/clock-rewind.svg'
 import { useState, useEffect, Fragment } from 'react'
 import NavHeader from '../components/NavHeader'
 import { Dialog, Transition } from '@headlessui/react'
-import { 
-    Heart,
-    File06,
-    ClockRewind,
-    MarkerPin01,
-    ChevronRight,
-    CreditCard02,
-    Globe02,
-    Shield01,
-    Lock02,
-    Building02,
-    BookClosed,
-    Gift01,
-    AnnotationQuestion,
-    AnnotationDots,
-    ImageIndentLeft,
-    FileShield02,
-    LogOut02,
-    AlertTriangle
+import Cookies from 'js-cookie';
+import {
+  Heart,
+  File06,
+  ClockRewind,
+  MarkerPin01,
+  ChevronRight,
+  CreditCard02,
+  Globe02,
+  Shield01,
+  Lock02,
+  Building02,
+  BookClosed,
+  Gift01,
+  AnnotationQuestion,
+  AnnotationDots,
+  ImageIndentLeft,
+  FileShield02,
+  LogOut02,
+  AlertTriangle
 } from '@untitled-ui/icons-react'
 import { useFrappeAuth, useFrappeGetDoc } from 'frappe-react-sdk';
 import FooterMenu from '../components/FooterMenu'
+import { useUser } from '../hooks/useUser'
 
 const MyAccount = () => {
   const [bronzeLevel, setBronzeLevel] = useState(false);
   const [silverLevel, setSilverLevel] = useState(true);
 
   const [openLogout, setOpenLogout] = useState(false);
-
+  const { user } = useUser()
   const { currentUser, updateCurrentUser } = useFrappeAuth();
 
   const { data, isLoading, error } = useFrappeGetDoc('User', currentUser, {
@@ -42,10 +44,16 @@ const MyAccount = () => {
   })
 
   useEffect(() => {
-      updateCurrentUser()
+    updateCurrentUser()
   }, [updateCurrentUser])
 
-  const AccountMenu = ({icon, title, link}) => {
+
+  const logoutnowuser = () => {
+    Cookies.remove('token');
+    location.href = "/welcome"
+  }
+
+  const AccountMenu = ({ icon, title, link }) => {
     return (
       <Link to={link} className='flex justify-between items-center px-5 py-[17px] w-full'>
         <div className='flex gap-x-[10px] text-sm text-[#111111] items-center'>
@@ -141,7 +149,7 @@ const MyAccount = () => {
       <header className="p-5 w-full">
         {data && (
           <div className='flex items-center'>
-            <img src={data.user_image} width="64" className='rounded-[99px]'/>
+            <img src={data.user_image} width="64" className='rounded-[99px]' />
             <div className='ml-3 flex flex-col'>
               <span className='font-bold'>{data.full_name}</span>
               <Link className='flex items-center gap-x-1' to='/edit-profile'>
@@ -193,7 +201,7 @@ const MyAccount = () => {
 
             <div className='flex'>
               <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
-                230 <span className='text-[#FFA800]'>coins</span>
+                {user?.loyalty_points} <span className='text-[#FFA800]'>coins</span>
               </div>
               {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 8 <span className='text-[#BC0000]'>codes</span>
@@ -201,7 +209,7 @@ const MyAccount = () => {
             </div>
           </div>
 
-          <hr style={{borderColor:"#F2F2F2"}}/>
+          <hr style={{ borderColor: "#F2F2F2" }} />
 
           <div className='inline-block w-full'>
             <button className='p-4 my-2 w-1/2 border-r border-r-[#F2F2F2]'>การใช้งานคะแนน</button>
@@ -217,8 +225,8 @@ const MyAccount = () => {
         </div>
 
         <h2 className='mt-[30px] mb-[10px]'>ความช่วยเหลือ</h2>
-        <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
-          {helpMenu.map((menu) => 
+        <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{ filter: "drop-shadow(0 4px 20px #6363630D" }}>
+          {helpMenu.map((menu) =>
             <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} />
           )}
         </div>
@@ -231,7 +239,7 @@ const MyAccount = () => {
         </div> */}
 
         <h2 className='mt-[30px] mb-[10px]'>บัญชี</h2>
-        <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
+        <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{ filter: "drop-shadow(0 4px 20px #6363630D" }}>
           <button className='flex justify-between items-center px-5 py-[17px] w-full' onClick={() => setOpenLogout(true)}>
             <div className='flex gap-x-[10px] text-sm text-[#111111] items-center'>
               <LogOut02 />
@@ -273,15 +281,15 @@ const MyAccount = () => {
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all w-full max-w-md">
                   <div>
                     <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#EC5454]">
-                      <AlertTriangle color="white"/>
+                      <AlertTriangle color="white" />
                     </div>
                     <div className="mt-3 text-center sm:mt-5">
                       <Dialog.Title as="h3" className="text-lg font-bold leading-6 text-[#333333]">
-                        คุณต้องการ<br/> 'ออกจากระบบ' ใช่หรือไม่
+                        คุณต้องการ<br /> 'ออกจากระบบ' ใช่หรือไม่
                       </Dialog.Title>
                       <div className="mt-2">
                         <p className="text-xs text-[#8A8A8A]">
-                          กดยืนยันเพื่อทำการออกจากระบบ<br/> โดยคุณสามารถเข้าสู่ระบบอีกครั้ง<br/> ได้ด้วย Line ของคุณ
+                          กดยืนยันเพื่อทำการออกจากระบบ<br /> โดยคุณสามารถเข้าสู่ระบบอีกครั้ง<br /> ได้ด้วย Line ของคุณ
                         </p>
                       </div>
                     </div>
@@ -296,8 +304,8 @@ const MyAccount = () => {
                     </button>
                     <button
                       type="button"
+                      onClick={() => logoutnowuser()}
                       className='w-full bg-[#111111] border border-[#111111] text-white rounded-[9px] p-3 text-center'
-                      onClick={() => location.href = "/welcome"}
                     >
                       ออกจากระบบ
                     </button>

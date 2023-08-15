@@ -35,7 +35,7 @@ const CategoryPage = () => {
   return (
     <>
 
-      <TitleHeader link='/categories' title='รางวัล'/>
+      <TitleHeader link='/' title='รางวัล'/>
       <main className='relative top-[-10px] pb-[94px]'>
         <div className='mt-[22px]'>
           <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
@@ -47,11 +47,11 @@ const CategoryPage = () => {
             {(products ?? []).map((product) => (
               <ProductCard
                 key={product.item_code}
-                title={product.name}
+                title={product.item_name}
                 productId={product.name}
                 itemCode={product.item_code}
                 price={product.formatted_price}
-                thumbnail={product.website_image ? product.website_image : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} />
+                thumbnail={product.website_image} />
             ))}
           </div>
         </div>
@@ -66,11 +66,11 @@ const CategoryPage = () => {
             {(products ?? []).map((product) => (
               <ProductCard
                 key={product.item_code}
-                title={product.name}
+                title={product.item_name}
                 productId={product.name}
                 itemCode={product.item_code}
                 price={product.formatted_price}
-                thumbnail={product.website_image ? product.website_image : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} />
+                thumbnail={product.website_image} />
             ))}
           </div>
         </div>
@@ -85,11 +85,11 @@ const CategoryPage = () => {
             {(products ?? []).map((product) => (
               <ProductCard
                 key={product.item_code}
-                title={product.name}
+                title={product.item_name}
                 productId={product.name}
                 itemCode={product.item_code}
                 price={product.formatted_price}
-                thumbnail={product.website_image ? product.website_image : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} />
+                thumbnail={product.website_image} />
             ))}
           </div>
         </div>
