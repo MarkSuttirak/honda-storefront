@@ -5,7 +5,7 @@ import { useState } from "react"
 const FooterMenu = ({active}) => {
   const Menu = ({icon, title, link, current}) => {
     return (
-      <Link to={link} className={`h-[82px] flex flex-col justify-center w-full text-center items-center ${current === active ? "text-[#1BB040]" : "text-[#BBBBBB]"} text-xs gap-y-[10px]`}>
+      <Link to={link} className={`h-[82px] flex flex-col justify-center w-full text-center items-center ${current === active ? "text-[#F0592A]" : "text-[#BBBBBB]"} text-xs gap-y-[10px]`}>
         {icon}
         {title}
       </Link>
