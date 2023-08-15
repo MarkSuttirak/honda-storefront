@@ -60,16 +60,16 @@ const MyAccount = () => {
   }
 
   const settingsMenu = [
-    {
-      icon: <MarkerPin01 />,
-      title: 'ที่อยู่ในการจัดส่ง',
-      link: '/shipping-address'
-    },
-    {
-      icon: <CreditCard02 />,
-      title: 'การชำระเงิน',
-      link: '#'
-    },
+    // {
+    //   icon: <MarkerPin01 />,
+    //   title: 'ที่อยู่ในการจัดส่ง',
+    //   link: '/shipping-address'
+    // },
+    // {
+    //   icon: <CreditCard02 />,
+    //   title: 'การชำระเงิน',
+    //   link: '#'
+    // },
     {
       icon: <Shield01 />,
       title: 'ข้อกำหนดและเงื่อนไข',
@@ -83,11 +83,11 @@ const MyAccount = () => {
   ]
 
   const helpMenu = [
-    {
-      icon: <Building02 />,
-      title: 'หน้าร้านของเรา',
-      link: '#'
-    },
+    // {
+    //   icon: <Building02 />,
+    //   title: 'หน้าร้านของเรา',
+    //   link: '#'
+    // },
     {
       icon: <BookClosed />,
       title: 'วิธีเก็บคะแนน',
@@ -102,17 +102,17 @@ const MyAccount = () => {
       icon: <CreditCard02 />,
       title: 'เงื่อนไขระดับของสมาชิก',
       link: '#'
-    },
-    {
-      icon: <AnnotationQuestion />,
-      title: 'คำถามที่พบบ่อย',
-      link: '#'
-    },
-    {
-      icon: <AnnotationDots />,
-      title: 'ติดต่อเรา',
-      link: '#'
     }
+    // {
+    //   icon: <AnnotationQuestion />,
+    //   title: 'คำถามที่พบบ่อย',
+    //   link: '#'
+    // },
+    // {
+    //   icon: <AnnotationDots />,
+    //   title: 'ติดต่อเรา',
+    //   link: '#'
+    // }
   ]
 
   const additionMenu = [
@@ -209,7 +209,7 @@ const MyAccount = () => {
           </div>
         </div>
 
-        <h2 className='mt-[30px] mb-[10px]'>การตั้งค่า</h2>
+        <h2 className='mt-[30px] mb-[10px]'>การตั้งค่าและความเป็นส่วนตัว</h2>
         <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
           {settingsMenu.map((menu) => 
             <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} />
@@ -223,12 +223,12 @@ const MyAccount = () => {
           )}
         </div>
 
-        <h2 className='mt-[30px] mb-[10px]'>ข้อมูลเพิ่มเติม</h2>
+        {/* <h2 className='mt-[30px] mb-[10px]'>ข้อมูลเพิ่มเติม</h2>
         <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
           {additionMenu.map((menu) => 
             <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} />
           )}
-        </div>
+        </div> */}
 
         <h2 className='mt-[30px] mb-[10px]'>บัญชี</h2>
         <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
