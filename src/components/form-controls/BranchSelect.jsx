@@ -13,15 +13,9 @@ const BranchSelect = ({
         fields: ["*"]
     })
 
-    const focusStyle = {
-      border:"1px solid #F0592A"
-    }
-
-    const [focusSelect, setFocusSelect] = useState(false);
-
     return (
         <>
-            <SfSelect size="base" name={name} onChange={onChange} value={value} {...props} onFocus={() => setFocusSelect(true)} onBlur={() => setFocusSelect(false)} style={focusStyle}>
+            <SfSelect size="base" name={name} onChange={onChange} value={value} {...props} className='focus:ring-[#F0592A] hover:ring-[#F0592A] active:ring-[#F0592A]'>
                 <option value="">Select Branch</option>
                 {(branchList ?? []).map((branch) => (
                     <option value={branch.name} key={branch.name}>
