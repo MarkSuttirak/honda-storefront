@@ -1,6 +1,7 @@
 import { useRef, useState } from "react"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import logo from '../../img/logo.svg'
+import Cookies from 'js-cookie';
 import { ArrowLeft, MarkerPin01, ArrowCircleRight } from '@untitled-ui/icons-react'
 
 const Signup = () => {
@@ -32,6 +33,93 @@ const Signup = () => {
     setGetOTP(true);
   }
 
+  const [filledInfo, setFilledInfo] = useState(false)
+  const [userphone, Setuserphone] = useState('');
+  const [show, setShow] = useState("false");
+  const [disabled, setDisabled] = useState(false);
+  const [myotp, setmyotp] = useState('');
+  const [errornow, seterrornow] = useState('');
+  const navigate = useNavigate();
+
+
+  const handleChange = event => {
+    const value = event.target.value.replace(/\D/g, "");
+    Setuserphone(value);
+  };
+
+  const handleotpchange = event => {
+    const value = event.target.value.replace(/\D/g, "");
+    setmyotp(value);
+  };
+
+  const clickverify = (value) => {
+    if(userphone.length > 7){
+      phonverifynow(userphone);
+      goNext();
+    } 
+  }
+
+  const verifyotp = () => {
+    verifyotpnow(userphone,myotp,Cookies.get('username'))
+  }
+
+  const phonverifynow = (phone) => {
+    try {
+        return fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.verifyuser.getphone?userphone="+phone, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        }).then((response) => response.json()).then((data) => {
+          var res = data.message;
+
+          if(res.status == 'success'){
+            seterrornow('');
+            seterrornow(res.message);
+          }
+          else{
+              seterrornow(res.message);
+              setShow('false')
+              setDisabled(false)
+          }
+
+        })
+
+    } catch (error) {
+        return error;
+    }
+  }
+  const verifyotpnow = (userphone,myotp,username) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Cookie", "full_name=Guest; sid=Guest; system_user=no; user_id=Guest; user_image=");
+    myHeaders.append("Authorization", "Bearer "+Cookies.get('token'));
+
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders
+    };
+    fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.verifyuser.verifyotp?userphone="+userphone+"&otp="+myotp+"&username="+username, requestOptions)
+    .then((response) => response.json()).then((data) => {
+      var res = data.message;
+
+      if(res.status == 'success'){
+        seterrornow('');
+        seterrornow(res.message);
+        Cookies.set('phoneverify', false); 
+        navigate("/");
+      }
+      else{
+          seterrornow(res.message);
+          setShow('false')
+          setDisabled(false)
+      }
+
+    })
+    .catch(error => console.log('error', error));
+
+  }
+
   return (
     <>
       {phonePage && (
@@ -44,7 +132,7 @@ const Signup = () => {
             <p className='mt-4'>กรอกเบอร์มือถือของคุณและกดรับรหัสยืนยันทาง SMS (OTP) เพื่อยืนยันเบอร์มือถือของคุณ</p>
 
             <div className="flex gap-x-3">
-              <input type="tel" id="phone" autoComplete="off" ref={telRef} className={`relative border ${phoneError ? "border-[#EC5454]" : "border-[#E3E3E3]"} rounded-[8px] outline-none py-2 px-3 mt-[11px] w-full`} onInput={(e) => {
+              <input type="tel" id="phone" autoComplete="off" ref={telRef} onChange={handleChange} className={`relative border ${phoneError ? "border-[#EC5454]" : "border-[#E3E3E3]"} rounded-[8px] outline-none py-2 px-3 mt-[11px] w-full`} onInput={(e) => {
                 if (e.target.value !== ""){
                   setFilledPhone(true)
                 } else {
@@ -56,10 +144,10 @@ const Signup = () => {
             {!phoneError ? "" : (<p className="text-[#EC5454] inter mt-2">This phone number is invalid</p>)}
 
             <button onClick={() => {
-              if (telRef.current.value.length !== 10){
+              if (telRef.current.value.length < 10){
                 setPhoneError(true);
               } else {
-                goNext();
+                clickverify();
               }
             }} className={`mt-[14px] w-1/2 text-white rounded-[9px] p-3 text-center w-full ${!filledPhone ? "bg-[#C5C5C5] border border-[#C5C5C5]" : "bg-[#111111] border border-[#111111]"}`} disabled={!filledPhone}>รับรหัสยืนยัน SMS (OTP)</button>
 
@@ -81,32 +169,17 @@ const Signup = () => {
             <p className='mt-4'>เราได้ส่ง SMS (OTP) ไปที่เบอร์<br/>090-1234-567</p>
 
             <div className="flex gap-x-[9px] mt-9">
-              <input type="text" maxLength="1" id="num1" ref={num1Ref} className={`border ${otperror ? "border-[#EC5454]" : "border-[#D8DADC]"} w-[16.67%] p-3 text-center text-2xl rounded-[15px]`} autoComplete="off" onKeyDown={() => {
+              <input type="text" id="num1" ref={num1Ref} className={`border ${otperror ? "border-[#EC5454]" : "border-[#D8DADC]"} w-full p-3 text-center text-2xl rounded-[15px]`} autoComplete="off" onKeyDown={() => {
                 setOtperror(false);
               }}/>
-              <input type="text" maxLength="1" id="num2" ref={num2Ref} className={`border ${otperror ? "border-[#EC5454]" : "border-[#D8DADC]"} w-[16.67%] p-3 text-center text-2xl rounded-[15px]`} autoComplete="off" onKeyDown={() => {
-                setOtperror(false);
-              }} />
-              <input type="text" maxLength="1" id="num3" ref={num3Ref} className={`border ${otperror ? "border-[#EC5454]" : "border-[#D8DADC]"} w-[16.67%] p-3 text-center text-2xl rounded-[15px]`} autoComplete="off" onKeyDown={() => {
-                setOtperror(false)
-              }} />
-              <input type="text" maxLength="1" id="num4" ref={num4Ref} className={`border ${otperror ? "border-[#EC5454]" : "border-[#D8DADC]"} w-[16.67%] p-3 text-center text-2xl rounded-[15px]`} autoComplete="off" onKeyDown={() => {
-                setOtperror(false)
-              }} />
-              <input type="text" maxLength="1" id="num5" ref={num5Ref} className={`border ${otperror ? "border-[#EC5454]" : "border-[#D8DADC]"} w-[16.67%] p-3 text-center text-2xl rounded-[15px]`} autoComplete="off" onKeyDown={() => {
-                setOtperror(false)
-              }} />
-              <input type="text" maxLength="1" id="num6" ref={num6Ref} className={`border ${otperror ? "border-[#EC5454]" : "border-[#D8DADC]"} w-[16.67%] p-3 text-center text-2xl rounded-[15px]`} autoComplete="off" onKeyDown={() => {
-                setOtperror(false)
-              }} />
             </div>
 
             {!otperror ? (<p className="text-center mt-[43px]">I didn't receive a code <strong>Resend</strong></p>) : (<p className="text-center text-[#EC5454] inter mt-[43px]">Wrong code, please try again <strong>Resend</strong></p>)}
 
             <button onClick={() => {
-              if (num1Ref.current.value != "" && num2Ref.current.value != "" && num3Ref.current.value != "" && num4Ref.current.value != "" && num5Ref.current.value != "" && num6Ref.current.value != ""){
+              if (num1Ref.current.value){
                 setOtperror(false);
-                location.href = "/fill-info"
+                verifyotp();
               } else {
                 setOtperror(true)
               }

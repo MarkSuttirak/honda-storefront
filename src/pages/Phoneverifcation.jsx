@@ -68,6 +68,8 @@ const phonverifynow = (phone) => {
 const verifyotpnow = (userphone,myotp,username) => {
   var myHeaders = new Headers();
   myHeaders.append("Cookie", "full_name=Guest; sid=Guest; system_user=no; user_id=Guest; user_image=");
+  myHeaders.append("Authorization", "Bearer "+Cookies.get('token'));
+
 
   var requestOptions = {
       method: 'POST',

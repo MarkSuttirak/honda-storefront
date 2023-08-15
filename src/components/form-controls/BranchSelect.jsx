@@ -14,7 +14,7 @@ const BranchSelect = ({
     })
     return (
         <>
-            <SfSelect size="base" name={name} onChange={onChange} value={value} {...props}>
+            <SfSelect size="base" name={name} onChange={onChange} value={value} {...props} className='focus:ring-[#F0592A] hover:ring-[#F0592A] active:ring-[#F0592A]'>
                 <option value="">Select Branch</option>
                 {(branchList ?? []).map((branch) => (
                     <option value={branch.name} key={branch.name}>
