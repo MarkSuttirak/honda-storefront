@@ -3,6 +3,8 @@ import { ArrowLeft, CreditCard02, ChevronRight, MarkerPin01, ShoppingBag01, Anno
 import { useFrappeGetDoc, useFrappeGetDocList } from "frappe-react-sdk"
 import testImg from '../img/test-img.png'
 import qrcodeMock from '../img/qrcode-redeem.svg'
+import QRCode from "react-qr-code";
+import Barcode from 'react-barcode';
 import barcodeMock from '../img/barcode-mock.svg'
 import { useState } from 'react'
 import {
@@ -128,7 +130,7 @@ const MyOrderDetails = () => {
 
                 {qrcode && (
                   <div className="mt-[44px]">
-                    <img src={qrcodeMock} className="m-auto" />
+                    <QRCode size={100} value={data.name} style={{border:"4px solid #02CB5129",borderRadius:"10px",padding:"10px",margin:"auto"}}/>
 
                     <p className="text-[#00000061] text-xs text-center mt-6">
                       ใช้ภายใน 
@@ -141,7 +143,7 @@ const MyOrderDetails = () => {
 
                 {barcode && (
                   <div className="mt-[44px]">
-                    <img src={barcodeMock} className="m-auto" />
+                    <Barcode value={data.name} />
                     <p className="text-[#000000] text-xs text-center mt-2"></p>
                     <p className="text-[#8A8A8A] text-xs mt-4 text-center">กรุณานำ Barcode นี้ให้พนักงานสแกน<br/>ที่หน้าร้านเพื่อรับของรางวัล</p>
                   </div>
