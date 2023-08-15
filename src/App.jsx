@@ -44,8 +44,7 @@ import RewardCouponPage from "./pages/RewardCouponPage";
 import RewardHomePage from "./pages/RewardHomePage";
 import RewardHistory from "./pages/RewardHistory";
 import GiftCheckout from "./pages/GiftCheckout";
-import { useFrappeGetCall } from 'frappe-react-sdk';
-
+import {useFrappeAuth, useFrappeGetCall } from 'frappe-react-sdk';
 
 function App() {
   const navigate = useNavigate();
@@ -54,6 +53,8 @@ function App() {
   const phoneverify = new URLSearchParams(search).get("phoneverify");
   const username = new URLSearchParams(search).get("username");
   const [Userverify, SetUserverify] = useState(phoneverify);
+  const [user, setUser] = useState(null);
+  const { currentUser, updateCurrentUser } = useFrappeAuth();
 
   useEffect(() => {
     if (token) {
@@ -61,6 +62,7 @@ function App() {
       if (phoneverify == 'true') {
         Cookies.set('username', username);
         Cookies.set('phoneverify', true);
+        updateCurrentUser();
         navigate("/phonverify");
       }
       else {
