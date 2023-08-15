@@ -46,10 +46,11 @@ import RewardCouponPage from "./pages/RewardCouponPage";
 import RewardHomePage from "./pages/RewardHomePage";
 import RewardHistory from "./pages/RewardHistory";
 import GiftCheckout from "./pages/GiftCheckout";
-import {useFrappeAuth, useFrappeGetCall } from 'frappe-react-sdk';
+import { useFrappeAuth, useFrappeGetCall } from 'frappe-react-sdk';
 import Consent from "./pages/Consent";
 import CollectPoints from "./pages/CollectPoints";
 import HowRedeemReward from "./pages/HowRedeemReward";
+import MemberConditions from "./pages/MemberConditions";
 
 function App() {
   const navigate = useNavigate();
@@ -61,7 +62,7 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    
+
     if (token) {
       if (phoneverify == 'true') {
         Cookies.set('username', username);
@@ -72,16 +73,16 @@ function App() {
         navigate("/login");
       }
 
-      if(Cookies.get('system_user') != 'yes'){
+      if (Cookies.get('system_user') != 'yes') {
         setToken(token)
         navigate(0);
         window.location.reload(true);
       }
 
-      
-    } 
-    else{
-      if(Cookies.get('phoneverify') == true){
+
+    }
+    else {
+      if (Cookies.get('phoneverify') == true) {
         navigate("/phonverify");
       }
     }
@@ -89,7 +90,7 @@ function App() {
     if (!getToken()) {
       navigate("/login");
     }
-    
+
   }, []);
 
   return (
@@ -113,36 +114,37 @@ function App() {
               <Route path="/thankyou" element={<BankInfoPage />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/my-account" element={<MyAccount />}/>
-              <Route path="/my-id" element={<MyID />}/>
-              <Route path="/my-order" element={<MyOrder />}/>
-              <Route path="/my-order-details/:id" element={<MyOrderDetails />}/>
-              <Route path="/my-coupon" element={<MyCoupon />}/>
-              <Route path="/welcome" element={<Welcome />}/>
-              <Route path="/signup" element={<Signup />}/>
-              <Route path="/fill-info" element={<FillInfo />}/>
-              <Route path="/success" element={<Success />}/>
-              <Route path="/shipping-address" element={<ShippingAddress />}/>
-              <Route path="/shipping-address/add" element={<AddShippingAddress />}/>
-              <Route path="/shipping-address/edit" element={<EditShippingAddress />}/>
-              <Route path="/edit-profile" element={<EditProfile />}/>
-              <Route path="/categories" element={<CategoryPage />}/>
-              <Route path="/shop" element={<ShopPage />}/>
-              <Route path="/shop/filter" element={<ShopPageFilter />}/>
-              <Route path="/shop/type" element={<ShopPageType />}/>
-              <Route path="/wishlist" element={<Wishlist />}/>
-              <Route path="/reward" element={<RewardPage />}/>
-              <Route path="/reward-details" element={<RewardDetails />}/>
-              <Route path="/reward-coupon" element={<RewardCouponPage />}/>
-              <Route path="/reward-home" element={<RewardHomePage />}/>
-              <Route path="/gifts" element={<Gifts />}/>
-              <Route path="/terms-and-conditions" element={<TermsAndConditions />}/>
-              <Route path="/consent" element={<Consent />}/>
-              <Route path="/collect-points" element={<CollectPoints />}/>
-              <Route path="/how-to-collect-rewards" element={<HowRedeemReward />}/>
+              <Route path="/my-account" element={<MyAccount />} />
+              <Route path="/my-id" element={<MyID />} />
+              <Route path="/my-order" element={<MyOrder />} />
+              <Route path="/my-order-details/:id" element={<MyOrderDetails />} />
+              <Route path="/my-coupon" element={<MyCoupon />} />
+              <Route path="/welcome" element={<Welcome />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/fill-info" element={<FillInfo />} />
+              <Route path="/success" element={<Success />} />
+              <Route path="/shipping-address" element={<ShippingAddress />} />
+              <Route path="/shipping-address/add" element={<AddShippingAddress />} />
+              <Route path="/shipping-address/edit" element={<EditShippingAddress />} />
+              <Route path="/edit-profile" element={<EditProfile />} />
+              <Route path="/categories" element={<CategoryPage />} />
+              <Route path="/shop" element={<ShopPage />} />
+              <Route path="/shop/filter" element={<ShopPageFilter />} />
+              <Route path="/shop/type" element={<ShopPageType />} />
+              <Route path="/wishlist" element={<Wishlist />} />
+              <Route path="/reward" element={<RewardPage />} />
+              <Route path="/reward-details" element={<RewardDetails />} />
+              <Route path="/reward-coupon" element={<RewardCouponPage />} />
+              <Route path="/reward-home" element={<RewardHomePage />} />
+              <Route path="/gifts" element={<Gifts />} />
+              <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+              <Route path="/consent" element={<Consent />} />
+              <Route path="/collect-points" element={<CollectPoints />} />
+              <Route path="/how-to-collect-rewards" element={<HowRedeemReward />} />
+              <Route path="/member-conditions" element={<MemberConditions />} />
 
-              
-              <Route path="/blog-admin" element={<BlogAdmin />}/>
+
+              <Route path="/blog-admin" element={<BlogAdmin />} />
               <Route path="/my-account" element={<MyAccount />} />
               <Route path="/my-id" element={<MyID />} />
               <Route path="/my-order" element={<MyOrder />} />
