@@ -47,6 +47,9 @@ import RewardHomePage from "./pages/RewardHomePage";
 import RewardHistory from "./pages/RewardHistory";
 import GiftCheckout from "./pages/GiftCheckout";
 import {useFrappeAuth, useFrappeGetCall } from 'frappe-react-sdk';
+import Consent from "./pages/Consent";
+import CollectPoints from "./pages/CollectPoints";
+import HowRedeemReward from "./pages/HowRedeemReward";
 
 function App() {
   const navigate = useNavigate();
@@ -134,6 +137,9 @@ function App() {
               <Route path="/reward-home" element={<RewardHomePage />}/>
               <Route path="/gifts" element={<Gifts />}/>
               <Route path="/terms-and-conditions" element={<TermsAndConditions />}/>
+              <Route path="/consent" element={<Consent />}/>
+              <Route path="/collect-points" element={<CollectPoints />}/>
+              <Route path="/how-to-collect-rewards" element={<HowRedeemReward />}/>
 
               
               <Route path="/blog-admin" element={<BlogAdmin />}/>
