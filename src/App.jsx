@@ -34,6 +34,7 @@ import ShopPageType from "./pages/ShopPage-type";
 import Wishlist from "./pages/Wishlist";
 import RewardPage from "./pages/RewardPage";
 import Gifts from "./pages/Gifts";
+import TermsAndConditions from "./pages/TermsAndConditions";
 
 import BlogAdmin from "./pages/admin/BlogAdmin";
 import BlogCategories from "./pages/admin/BlogCategories";
@@ -93,8 +94,9 @@ function App() {
               <Route path="/reward-coupon" element={<RewardCouponPage />}/>
               <Route path="/reward-home" element={<RewardHomePage />}/>
               <Route path="/gifts" element={<Gifts />}/>
+              <Route path="/terms-and-conditions" element={<TermsAndConditions />}/>
 
-
+              
               <Route path="/blog-admin" element={<BlogAdmin />}/>
               <Route path="/blog-categories" element={<BlogCategories />} />
               <Route path="/blog-add" element={<BlogAdd />} />
