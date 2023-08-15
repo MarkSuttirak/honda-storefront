@@ -46,6 +46,12 @@ const MyAccount = () => {
     updateCurrentUser()
   }, [updateCurrentUser])
 
+
+  const logoutnowuser = () => {
+    Cookies.remove('token');
+    location.href = "/welcome"
+  }
+
   const AccountMenu = ({ icon, title, link }) => {
     return (
       <Link to={link} className='flex justify-between items-center px-5 py-[17px] w-full'>
@@ -297,8 +303,8 @@ const MyAccount = () => {
                     </button>
                     <button
                       type="button"
+                      onClick={() => logoutnowuser()}
                       className='w-full bg-[#111111] border border-[#111111] text-white rounded-[9px] p-3 text-center'
-                      onClick={() => location.href = "/welcome"}
                     >
                       ออกจากระบบ
                     </button>
