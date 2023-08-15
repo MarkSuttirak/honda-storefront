@@ -32,6 +32,7 @@ import bookClosed from "../img/book-closed.svg"
 import giftIcon from "../img/goftIconOrange.svg"
 
 const Home = () => {
+  document.body.style.background = "white"
   const { currentUser, updateCurrentUser } = useFrappeAuth();
   const { user } = useUser()
   const { products } = useProducts()

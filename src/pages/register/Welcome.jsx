@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import logo from '../../img/logo.svg'
+import bgBrand from '../../img/background-login.png'
 
 const Welcome = () => {
   return (
