@@ -69,6 +69,8 @@ function App() {
 
       if(Cookies.get('system_user') != 'yes'){
         setToken(token)
+        navigate(0);
+        window.location.reload(true);
       }
 
       
