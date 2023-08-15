@@ -54,20 +54,25 @@ function App() {
   const username = new URLSearchParams(search).get("username");
   const [Userverify, SetUserverify] = useState(phoneverify);
   const [user, setUser] = useState(null);
-  const { currentUser, updateCurrentUser } = useFrappeAuth();
 
   useEffect(() => {
+    
     if (token) {
-      setToken(token)
       if (phoneverify == 'true') {
         Cookies.set('username', username);
         Cookies.set('phoneverify', true);
-        updateCurrentUser();
-        navigate("/phonverify");
       }
       else {
-        navigate("/");
+        navigate("/login");
       }
+
+      if(Cookies.get('system_user') != 'yes'){
+        setToken(token)
+        navigate(0);
+        window.location.reload(true);
+      }
+
+      
     } 
     else{
       if(Cookies.get('phoneverify') == true){
@@ -78,7 +83,8 @@ function App() {
     if (!getToken()) {
       navigate("/login");
     }
-  }, [navigate]);
+    
+  });
 
   return (
     <FrappeProvider url={"https://dev.zaviago.com"}
