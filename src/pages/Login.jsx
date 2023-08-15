@@ -78,10 +78,10 @@ export default function Login() {
 
 
           <div className="w-full flex gap-4 mt-4 md:mt-0">
-            <SfButton className="w-full" type='submit'>{isLoading ? 'Loading...' : 'login'}</SfButton>
+            <SfButton className="w-full bg-white shadow-none" type='submit' style={{color:"#F0592A",fontWeight:"bold"}}>{isLoading ? 'กำลังโหลด...' : 'เข้าสู่ระบบ'}</SfButton>
           </div>
-          <div className="w-full flex gap-4 mt-4 md:mt-0">
-            <SfButton onClick={handleClick} className="w-full" type='button'>{isLoading ? 'Loading...' : 'Line Login'}</SfButton>
+          <div className="w-full flex gap-4">
+            <SfButton onClick={handleClick} className="w-full bg-white shadow-none" type='button' style={{color:"#F0592A",fontWeight:"bold"}}>{isLoading ? 'กำลังโหลด...' : 'เข้าสู่ระบบด้วย Line'}</SfButton>
           </div>
         </form>
       </>
