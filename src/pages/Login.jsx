@@ -69,11 +69,11 @@ export default function Login() {
           <h2 className="w-full typography-headline-4 md:typography-headline-3 font-bold">Sign in</h2>
           <label className="w-full flex flex-col gap-0.5">
             <span className="typography-text-sm  font-medium">usr/username</span>
-            <SfInput name="usr" type='email' autoComplete="usr" required onChange={formik.handleChange} value={formik.values.usr} />
+            <SfInput name="usr" type='email' autoComplete="usr" required onChange={formik.handleChange} value={formik.values.usr} className='focus:ring-[#F0592A] hover:ring-[#F0592A] focus-within:ring-[#F0592A] active:ring-[#F0592A]'/>
           </label>
           <label className="w-full flex flex-col gap-0.5 flex flex-col gap-0.5">
             <span className="typography-text-sm font-medium">password</span>
-            <SfInput name="pwd" type='password' autoComplete="given-password" required onChange={formik.handleChange} value={formik.values.pwd} />
+            <SfInput name="pwd" type='password' autoComplete="given-password" required onChange={formik.handleChange} value={formik.values.pwd} className='focus:ring-[#F0592A] hover:ring-[#F0592A] focus-within:ring-[#F0592A] active:ring-[#F0592A]'/>
           </label>
 
 
