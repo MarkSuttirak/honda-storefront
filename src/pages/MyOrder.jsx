@@ -8,7 +8,11 @@ const MyOrder = () => {
   const { id } = useParams();
   const { data, isLoading, error } = useFrappeGetDocList('Sales Invoice', {
     fields: ['name', 'posting_date', 'status', 'total'],
-    limit: 1000
+    limit: 1000,
+    orderBy: {
+      field: 'posting_date',
+      order: 'desc'
+    }
   })
 
   console.log(data)
@@ -29,10 +33,10 @@ const MyOrder = () => {
             {data.map((d) => 
             <Link to={`/my-order-details/${d.name}`}>
               <section className="flex gap-x-[14px] mt-[14px] pb-[18px] border-b border-b-[#E3E3E3]">
-                <div>
+                {/* <div>
                   <img src={testImg} />
-                </div>
-                <div className="flex w-3/4 flex-col gap-y-3">
+                </div> */}
+                <div className="flex w-full flex-col gap-y-3">
                   <div className="flex">
                     <h2 className="w-[40%] text-xs">คำสั่งซื้อ</h2>
                     <p className="w-[60%] text-xs text-[#00B14F]">{d.name}</p>

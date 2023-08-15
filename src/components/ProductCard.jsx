@@ -18,9 +18,9 @@ const ProductCard = ({
                 <div className="relative">
                     <SfLink href="#" className="block">
                       <img
-                        src={`https://dev.zaviago.com${thumbnail}`}
-                        alt={title}
-                        className="object-cover h-auto rounded-md aspect-square"
+                        src={thumbnail !== null && `https://dev.zaviago.com${thumbnail}`}
+                        // alt={title}
+                        className={`object-cover h-auto rounded-md aspect-square ${thumbnail == null && 'bg-[#C5C5C5]'}`}
                         width="300"
                         height="300"
                       />

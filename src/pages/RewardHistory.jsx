@@ -50,17 +50,18 @@ function RewardHistory() {
             exits: []
         })
     }, [data])
+
     return (
         <>
             <TitleHeader link='/' title='ประวัติการใช้งานคะแนน' />
 
             <div className='bg-[#FDF0E4] flex justify-between p-[18px] items-center'>
                 <div className=''>
-                    <div className='flex items-end'>
+                    <div className='flex items-center'>
                         <h4 className='font-bold text-[#F0592A] text-[26px] mr-[7px]'>{user?.loyalty_points}</h4>
                         <p className='font-normal font-xs text-[17px] text-[#F0592A] bg-none'>คะแนนที่ใช้ได้</p>
                     </div>
-                    {/* <p className='font-normal text-[#424242] text-xs leading-[17.4px]'>21 คะแนนจะหมดอายุ 31 ม.ค. 2024 </p> */}
+                    <p className='font-normal text-[#424242] text-xs leading-[17.4px]'>21 คะแนนจะหมดอายุ 31 ม.ค. 2024 </p>
                 </div>
                 <div>
                     <Link to='/my-order' className='bg-[#F0592A] text-sm font-bold px-[6px] py-[4px] font-sm rounded-md  text-white leading-[20.3px]'>รางวัลของฉัน</Link>
@@ -103,16 +104,17 @@ function RewardHistory() {
                                     {
                                         entryDistribution?.entries.map((entry) => (
                                             <div className="border-b border-[#E3E3E3]" key={entry.name}>
-                                                <div className="flex justify-between items-end pb-[18px] px-[18px]">
+                                                <div className="flex justify-between items-center pb-[18px] px-[18px]">
                                                     <div className="flex items-center">
                                                         <div><img src={coinHand} className="w-[22px] h-[22px] ml-[27px]" alt="" /></div>
                                                         <div className="ml-[43px]">
-                                                            <p className="mt-[6px] font-bold text-xs text-[#111111] leading-[14px]" style={{ fontFamily: "Eventpop" }}>{entry.invoice}</p>
+                                                            <p className="mt-[6px] font-bold text-xs text-[#000000] leading-[14px]" style={{ fontFamily: "Eventpop" }}>ตรวจสอบเครื่องยนต์</p>
+                                                            <p className="mt-[9px] font-bold text-xs text-[#F0592A] leading-[14px]" style={{ fontFamily: "Eventpop" }}>{entry.invoice}</p>
                                                             <p className="mt-[9px] font-normal text-[10px] text-[#00000061] leading-[14.5px]" style={{ fontFamily: "Eventpop" }}>{entry.posting_date}</p>
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <button className="font-bold text-[#F0592A] text-xs leading-[14px]" style={{ fontFamily: "Eventpop" }}>+{entry.loyalty_points}</button>
+                                                        <button className="font-bold text-[#F0592A] text-xs leading-[14px]" style={{ fontFamily: "Eventpop" }}>+{entry.loyalty_points} คะแนน</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -125,16 +127,18 @@ function RewardHistory() {
                                     {
                                         entryDistribution?.exits.map((exit) => (
                                             <div className="border-b border-[#E3E3E3]" key={exit.name}>
-                                                <div className="flex justify-between items-end pb-[18px] px-[18px]">
+                                                <div className="flex justify-between items-center pb-[18px] px-[18px]">
                                                     <div className="flex items-center">
-                                                        <div><img src={spentCoins} className="w-[22px] h-[22px] ml-[27px] opacity-[50%]" alt="" /></div>
+                                                        <div><img src={spentCoins} className="w-[22px] h-[22px] ml-[27px]" alt="" /></div>
                                                         <div className="ml-[43px]">
-                                                            <p className="mt-[6px] font-bold text-xs text-[#111111] leading-[14px]" style={{ fontFamily: "Eventpop" }}>{exit.invoice}</p>
+                                                            <p className="mt-[6px] font-bold text-xs text-[#111111] leading-[14px]">รับที่สาขา - <span className='font-normal'>สาขา นนทบุรี</span></p>
+                                                            <p className="mt-[9px] font-bold text-xs text-[#111111] leading-[14px]">หมอนรองคอ</p>
+                                                            <p className="mt-[9px] font-bold text-xs text-[#F0592A] leading-[14px]" style={{ fontFamily: "Eventpop" }}>{exit.invoice}</p>
                                                             <p className="mt-[9px] font-normal text-[10px] text-[#00000061] leading-[14.5px]" style={{ fontFamily: "Eventpop" }}>{exit.posting_date}</p>
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <button className="font-bold text-[#8A8A8A] text-xs leading-[14px]" style={{ fontFamily: "Eventpop" }}>{exit.loyalty_points}</button>
+                                                        <button className="font-bold text-[#8A8A8A] text-xs leading-[14px]" style={{ fontFamily: "Eventpop" }}>{exit.loyalty_points} คะแนน</button>
                                                     </div>
                                                 </div>
                                             </div>

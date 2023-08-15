@@ -149,16 +149,11 @@ const Product = () => {
 
   return (
     <>
-      <header className='p-[14px] border-b border-b-[#F2F2F2] flex items-center justify-between gap-x-[7px]'>
-        <div className='flex items-center'>
-          <Link to="/">
-            <ArrowLeft />
-          </Link>
-          สมัครสมาชิก
-        </div>
-        <button className='p-[9px] rounded-[99px] bg-[#FFFFFF94]' style={{ backdropFilter: "blur(6px)" }} onClick={() => setIsOpen(true)}>
-          <ShoppingBag01 />
-        </button>
+      <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold bg-white items-center'>
+        <Link to="/">
+          <ArrowLeft />
+        </Link>
+        {product?.item_name}
       </header>
       {/* <nav className='flex justify-between p-4 absolute top-[40px] z-[999] w-full'>
           <Link to="/" className='p-[9px] rounded-[99px] bg-[#FFFFFF94]' style={{backdropFilter:"blur(6px)"}}>
@@ -179,8 +174,8 @@ const Product = () => {
           >
             <div className="flex justify-center h-full basis-full shrink-0 grow snap-center">
               <img
-                src={`https://dev.zaviago.com${product?.website_image}`}
-                className="object-cover w-full h-full"
+                src={product?.website_image !== null && `https://dev.zaviago.com/${product?.website_image}`}
+                className={`object-cover w-full h-full ${product?.website_image === null && "bg-[#C5C5C5]"}`}
                 aria-label={product?.website_image}
                 alt={product?.website_image}
               />

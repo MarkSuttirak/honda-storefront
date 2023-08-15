@@ -114,7 +114,26 @@ const Home = () => {
                 productId={product.name}
                 itemCode={product.item_code}
                 price={product.formatted_price}
-                thumbnail={product.website_image ? product.website_image : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} />
+                thumbnail={product.website_image} />
+            ))}  {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
+          </div>
+        </div>
+
+        <div className='mt-[22px]'>
+          <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
+            สินค้าลดราคา
+            <SfIconArrowForward className="w-[18px] text-black ml-2" />
+          </h2>
+
+          <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
+            {(products ?? []).map((product) => (
+              <ProductCard
+                key={product.item_code}
+                title={product.item_name}
+                productId={product.name}
+                itemCode={product.item_code}
+                price={product.formatted_price}
+                thumbnail={product.website_image} />
             ))}
           </div>
         </div>
@@ -133,26 +152,7 @@ const Home = () => {
                 productId={product.name}
                 itemCode={product.item_code}
                 price={product.formatted_price}
-                thumbnail={product.website_image ? product.website_image : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} />
-            ))}
-          </div>
-        </div>
-
-        <div className='mt-[22px]'>
-          <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
-            สินค้าลดราคา
-            <SfIconArrowForward className="w-[18px] text-black ml-2" />
-          </h2>
-
-          <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
-            {(products ?? []).map((product) => (
-              <ProductCard
-                key={product.item_code}
-                title={product.item_name}
-                productId={product.name}
-                itemCode={product.item_code}
-                price={product.formatted_price}
-                thumbnail={product.website_image ? product.website_image : "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"} />
+                thumbnail={product.website_image} />
             ))}
           </div>
         </div>
