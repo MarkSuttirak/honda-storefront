@@ -177,18 +177,18 @@ const Home = () => {
           </div>
         </div>
 
-      <div className='w-full bg-[#ADB1BB] pt-[160px] p-5 flex justify-between items-end'>
-        <div>
-          <h2 className='text-[32px] text-white'>Silver</h2>
-          <p className='text-white'>อีก 11 คะแนนเลื่อนเป็น Gold</p>
+        <div className='w-full bg-[#ADB1BB] pt-[160px] p-5 flex justify-between items-end'>
+          <div>
+            <h2 className='text-[32px] text-white'>Silver</h2>
+            <p className='text-white'>อีก 11 คะแนนเลื่อนเป็น Gold</p>
+          </div>
+          <div>
+            <button className='bg-white text-[#F0592A] rounded-full py-1 px-3'>รางวัลของฉัน</button>
+          </div>
         </div>
-        <div>
-          <button className='bg-white text-[#F0592A] rounded-full py-1 px-3'>รางวัลของฉัน</button>
-        </div>
-      </div>
 
-      <button style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)" }} className='p-4 text-white w-full'>วิธีเก็บคะแนน</button>
-
+        <button style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)" }} className='p-4 text-white w-full'>วิธีเก็บคะแนน</button>
+      </main>
       <main className='relative top-[-10px] pb-[94px]'>
 
         <div className='mt-[22px]'>
