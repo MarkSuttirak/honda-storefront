@@ -129,7 +129,7 @@ function RewardHomePage() {
             <div className='flex justify-between items-center my-[32px] w-[354px] h-[54px] rounded-lg mx-auto px-5' style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)" }}>
                 <div className='flex items-center'>
                     <img className='w-[17px] h-[17px]' src={bookClosed} alt="" />
-                    <p className='font-bold font-sm leading-[20px] ml-2 text-white'>วิธีเก็บคะแนน</p>
+                    <p className='font-normal font-sm leading-[20px] ml-2 text-white'>วิธีเก็บคะแนน</p>
                 </div>
                 <div>
                     <img src={iconRightHead} className='w-[6px] h-[10px]' alt="" />
