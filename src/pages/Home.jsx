@@ -129,7 +129,7 @@ const Home = () => {
             {(products ?? []).map((product) => (
               <ProductCard
                 key={product.item_code}
-                title={product.name}
+                title={product.item_name}
                 productId={product.name}
                 itemCode={product.item_code}
                 price={product.formatted_price}
@@ -148,7 +148,7 @@ const Home = () => {
             {(products ?? []).map((product) => (
               <ProductCard
                 key={product.item_code}
-                title={product.name}
+                title={product.item_name}
                 productId={product.name}
                 itemCode={product.item_code}
                 price={product.formatted_price}
@@ -167,7 +167,7 @@ const Home = () => {
             {(products ?? []).map((product) => (
               <ProductCard
                 key={product.item_code}
-                title={product.name}
+                title={product.item_name}
                 productId={product.name}
                 itemCode={product.item_code}
                 price={product.formatted_price}

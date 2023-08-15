@@ -1,6 +1,6 @@
 import { SfSelect } from '@storefront-ui/react'
 import { useFrappeGetDocList } from 'frappe-react-sdk'
-import React from 'react'
+import React, { useState } from 'react'
 
 const BranchSelect = ({
     name,
@@ -12,9 +12,16 @@ const BranchSelect = ({
     const { data: branchList } = useFrappeGetDocList("Branch", {
         fields: ["*"]
     })
+
+    const focusStyle = {
+      border:"1px solid #F0592A"
+    }
+
+    const [focusSelect, setFocusSelect] = useState(false);
+
     return (
         <>
-            <SfSelect size="base" name={name} onChange={onChange} value={value} {...props}>
+            <SfSelect size="base" name={name} onChange={onChange} value={value} {...props} onFocus={() => setFocusSelect(true)} onBlur={() => setFocusSelect(false)} style={focusStyle}>
                 <option value="">Select Branch</option>
                 {(branchList ?? []).map((branch) => (
                     <option value={branch.name} key={branch.name}>
