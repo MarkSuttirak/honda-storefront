@@ -235,7 +235,7 @@ const Product = () => {
               </ul>
             </div>
             <div className="items-start flex fixed bottom-0 w-full pb-3 bg-white">
-              <SfButton disabled={product?.loyalty_points_based_price > user?.loyalty_points} onClick={() => location.href = product?.item_group.includes("Gift") ? `/${product.item_code}/gift-checkout` : '/checkout'} type="button" size="lg" style={{ backgroundColor: "black", width: "calc(100% - 32px)" }}> {/*onClick={() => addToCart(product?.item_code, value)} */}
+              <SfButton disabled={product?.loyalty_points_based_price > user?.loyalty_points} onClick={() => location.href = product?.item_group.includes("Gift") ? `/${product.item_code}/gift-checkout` : '/checkout'} type="button" size="lg" style={{ backgroundColor: product?.loyalty_points_based_price > user?.loyalty_points ? "#C5C5C5" : "black", width: "calc(100% - 32px)", color:"white" }}> {/*onClick={() => addToCart(product?.item_code, value)} */}
                 แลกของรางวัล
               </SfButton>
             </div>
