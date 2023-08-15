@@ -74,21 +74,21 @@ const verifyotpnow = (userphone,myotp,username) => {
       headers: myHeaders
   };
   fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.verifyuser.verifyotp?userphone="+userphone+"&otp="+myotp+"&username="+username, requestOptions)
-  .then(data => {
+  .then((response) => response.json()).then((data) => {
     var res = data.message;
 
     if(res.status == 'success'){
       seterrornow('');
       seterrornow(res.message);
-      Cookies.set('phoneverify', false);
+      Cookies.set('phoneverify', false); 
       navigate("/");
-
     }
     else{
         seterrornow(res.message);
         setShow('false')
         setDisabled(false)
     }
+
   })
   .catch(error => console.log('error', error));
 

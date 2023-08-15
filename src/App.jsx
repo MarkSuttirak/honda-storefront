@@ -65,11 +65,13 @@ function App() {
       else{
         navigate("/");
       }
-      
-    }
+    } 
     else{
-      if(getToken() && Cookies.get('phoneverify')){
+      if(Cookies.get('phoneverify') == "true"){
         navigate("/phonverify");
+      }
+      else{
+        navigate("/");
       }
     }
  
