@@ -51,6 +51,7 @@ import Consent from "./pages/Consent";
 import CollectPoints from "./pages/CollectPoints";
 import HowRedeemReward from "./pages/HowRedeemReward";
 import MemberConditions from "./pages/MemberConditions";
+import SingleBlog from "./pages/SingleBlog";
 
 function App() {
   const navigate = useNavigate();
@@ -142,6 +143,7 @@ function App() {
               <Route path="/collect-points" element={<CollectPoints />} />
               <Route path="/how-to-collect-rewards" element={<HowRedeemReward />} />
               <Route path="/member-conditions" element={<MemberConditions />} />
+              <Route path="/single-blog" element={<SingleBlog />} />
 
 
               <Route path="/blog-admin" element={<BlogAdmin />} />
