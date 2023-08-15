@@ -6,6 +6,7 @@ import recentViews from '../img/clock-rewind.svg'
 import { useState, useEffect, Fragment } from 'react'
 import NavHeader from '../components/NavHeader'
 import { Dialog, Transition } from '@headlessui/react'
+import Cookies from 'js-cookie';
 import {
   Heart,
   File06,
