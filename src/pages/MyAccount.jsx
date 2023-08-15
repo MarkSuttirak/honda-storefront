@@ -168,7 +168,7 @@ const MyAccount = () => {
       </header>
       <main className='px-5 relative pb-[100px]'>
         <div className='bg-white rounded-[6px] items-center' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
-          <div className='flex justify-between p-5'>
+          {/* <div className='flex justify-between p-5'>
             <div className='flex items-center gap-x-[14px]'>
               <img src={silverLevel ? silverCard : ""} />
               <div className='text-[#333333] font-bold'>ระดับ : {silverLevel ? "Silver" : ""}</div>
@@ -179,25 +179,25 @@ const MyAccount = () => {
                 ID ของฉัน
               </Link>
             </div>
-          </div>
+          </div> */}
 
-          <div className='p-5'>
+          <div className='p-5 flex flex-col items-center'>
             <div className='flex'>
               <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 Coins
               </div>
-              <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
+              {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 <Link to="/my-coupon">Coupon</Link>
-              </div>
+              </div> */}
             </div>
 
             <div className='flex'>
               <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 230 <span className='text-[#FFA800]'>coins</span>
               </div>
-              <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
+              {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 8 <span className='text-[#BC0000]'>codes</span>
-              </div>
+              </div> */}
             </div>
           </div>
 
