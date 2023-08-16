@@ -46,7 +46,7 @@ const MyOrder = () => {
                     <p className="w-[60%] text-xs">{d.posting_date}</p>
                   </div>
                   <div className="w-full">
-                    <Link to={`/my-order-details/${d.name}`} className='w-full block border border-[#111111] text-white rounded-[9px] p-3 text-center' style={{background:"linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}}>ดูข้อมูล</Link>
+                    <Link to={`/my-order-details/${d.name}`} className='w-full block text-white rounded-[9px] p-3 text-center' style={{background:"linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}}>ดูข้อมูล</Link>
                   </div>
                 </div>
               </section>
