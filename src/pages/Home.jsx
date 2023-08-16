@@ -44,12 +44,12 @@ const Home = () => {
   const [data, setUserdata] = useState(null);
 
   
-  const updateuserprofile = useFrappeGetCall('headless_e_commerce.api.get_profile', {}, 'user-profile', {
+  useFrappeGetCall('headless_e_commerce.api.get_profile', {}, 'user-profile', {
     isOnline: () => getToken(),
     onSuccess: (data) => {
       setUserdata(data.message)
     }
-  })
+  },true)
 
 
 
