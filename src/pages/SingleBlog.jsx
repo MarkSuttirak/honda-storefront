@@ -18,25 +18,8 @@ function SingleBlog() {
             <div className="w-[354px] relative mx-auto z-10 bg-white p-4 rounded-[10px] -mt-[18px]" style={{ boxShadow: "0px 4px 20px 0px #EBE9EA", }}>
                 <div className='text-center'>
                     <button className='bg-[#FDF0E4] w-[82px] h-[19px] rounded-full px-[10px] py-[4px] text-[#F0592A] font-bold text-[10px] leading-[11.1px]' style={{ fontFamily: "Eventpop" }} >กิจกรรมพิเศษ</button>
-                    {/* {rewardReddem && (
-                        <div className='mt-[5px]'>
-                            <button className='bg-[#F0F0F0] h-[19px] rounded-full px-[10px] py-[4px] text-[#8A8A8A] font-bold text-[10px] leading-[11.1px]' style={{ fontFamily: "Eventpop" }} >แลกของรางวัลแล้ว</button>
-                        </div>
-                    )} */}
                     <p className='font-bold text-sm leading-[17px] text-[#111111] mt-2' style={{ fontFamily: "Eventpop" }}>ของขวัญแสนพิเศษในวันที่แสนพิเศษ<br />รับทันที ส่วนลด 50 % สำหรับเดือนเกิด</p>
                 </div>
-                {/* <div className='w-[224px] flex justify-between mt-[22px] mx-auto'>
-                    <div>
-                        <p className='text-[#00000061] font-normal text-xs leading-[17.4px]' style={{ fontFamily: "Eventpop" }}>คะแนนที่ใช้</p>
-                        <p className='font-bold text-sm text-[#00B14F] leading-[24px]' style={{ fontFamily: "Eventpop" }}>40 คะแนน</p>
-                        <p className='text-[#00000061] font-normal text-[10px] leading-[14.5px]' style={{ fontFamily: "Eventpop" }}>มูลค่า 350 บาท</p>
-                    </div>
-                    <hr className='w-[1px] h-[63px] border-r border-[#0000001A]' />
-                    <div>
-                        <p className='text-[#00000061] font-normal text-xs leading-[17.4px]' style={{ fontFamily: "Eventpop" }}>สามารถใช้ได้ถึง</p>
-                        <p className='font-bold text-sm text-[#00B14F] leading-[24px]' style={{ fontFamily: "Eventpop" }}>22 ม.ค. 2022</p>
-                    </div>
-                </div> */}
                 <p className='mt-5 text-[#8A8A8A] font-normal text-xs leading-[17.4px] text-center'>ระยะเวลา</p>
                 <p className='text-[#F0592A] font-bold text-sm leading-[24px] mt-1 text-center'>22 ม.ค. 2022 - 22 ม.ค. 2023</p>
             </div>
