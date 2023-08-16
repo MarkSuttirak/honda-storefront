@@ -167,7 +167,7 @@ const MyAccount = () => {
       </header>
 
       
-      <header className="p-5 w-full bg-[#F4F4F4] pt-10 mt-3 rounded-t-29px rounded-tr-29px rounded-bl-0 rounded-br-0">
+      <header className="p-5 w-full bg-[#F4F4F4] pt-10 mt-3 myAccountTopBorder">
         {data && (
           <div className='flex items-center'>
             <img src={data.user_image} width="64" className='rounded-[99px]' />
