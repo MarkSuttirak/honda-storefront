@@ -188,7 +188,10 @@ const GiftCheckout = () => {
                                     </div>
                                 </ul>
                                 <div className="py-4 mt-3 md:pb-6 md:mt-0">
-                                    <SfButton disabled={user?.loyalty_points < product?.loyalty_points_based_price} size="lg" className="w-full shadow-none" style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}} onClick={(e) => { e.preventDefault();setShowConfirm(true) }}>
+                                    <SfButton disabled={user?.loyalty_points < product?.loyalty_points_based_price || formik.values.branch == "Select Branch"} size="lg" className="w-full shadow-none" style={{ background: user?.loyalty_points < product?.loyalty_points_based_price || formik.values.branch == "Select Branch" ? "#C5C5C5" : "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}} onClick={(e) => { 
+                                      e.preventDefault();
+                                      setShowConfirm(true)
+                                    }}>
                                         แลกรางวัลโดยใช้ {product?.loyalty_points_based_price} คะแนน
                                     </SfButton>
                                 </div>
