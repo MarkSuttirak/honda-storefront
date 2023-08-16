@@ -39,14 +39,14 @@ const MyOrder = () => {
                 <div className="flex w-full flex-col gap-y-3">
                   <div className="flex">
                     <h2 className="w-[40%] text-xs">คำสั่งซื้อ</h2>
-                    <p className="w-[60%] text-xs text-[#00B14F]">{d.name}</p>
+                    <p className="w-[60%] text-xs text-[#F0592A]">{d.name}</p>
                   </div>
                   <div className="flex">
                     <h2 className="w-[40%] text-xs">วันที่</h2>
                     <p className="w-[60%] text-xs">{d.posting_date}</p>
                   </div>
                   <div className="w-full">
-                    <Link to={`/my-order-details/${d.name}`} className='w-full block bg-[#111111] border border-[#111111] text-white rounded-[9px] p-3 text-center'>ดูข้อมูล</Link>
+                    <Link to={`/my-order-details/${d.name}`} className='w-full block border border-[#111111] text-white rounded-[9px] p-3 text-center' style={{background:"linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}}>ดูข้อมูล</Link>
                   </div>
                 </div>
               </section>

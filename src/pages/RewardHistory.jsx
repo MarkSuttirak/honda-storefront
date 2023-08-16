@@ -163,11 +163,11 @@ function RewardHistory() {
                     </>
                 ) : (
                     <div className='px-5'>
-                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="20px" width="100%" borderRadius="6px"/>
-                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="20px" width="100%" marginTop="20px" borderRadius="6px"/>
-                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="20px" width="100%" marginTop="20px" borderRadius="6px"/>
-                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="20px" width="100%" marginTop="20px" borderRadius="6px"/>
-                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="20px" width="100%" marginTop="20px" borderRadius="6px"/>
+                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="100%" borderRadius="6px"/>
+                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="100%" marginTop="20px" borderRadius="6px"/>
+                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="100%" marginTop="20px" borderRadius="6px"/>
+                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="100%" marginTop="20px" borderRadius="6px"/>
+                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="100%" marginTop="20px" borderRadius="6px"/>
                     </div>
                 )}
             </div>
