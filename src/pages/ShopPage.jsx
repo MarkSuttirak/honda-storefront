@@ -21,7 +21,7 @@ const ShopPage = () => {
 
   return (
     <>
-      <header className={`${clickSearch ? "py-[9px] px-[14px]" : "p-[14px]"} border-b border-b-[#F2F2F2] text-md font-bold bg-white flex justify-between items-center`}>
+      <header className={`${clickSearch ? "py-[9px] px-[14px]" : "p-[14px]"} border-b border-b-[#F2F2F2] text-md font-bold bg-white flex justify-between items-center fixed w-full bg-white top-0 z-[999]`}>
         <div className="flex items-center gap-x-[7px]">
           <Link to='/categories'>
             <ArrowLeft />
@@ -45,7 +45,7 @@ const ShopPage = () => {
           </button>
         </div>
       </header>
-      <header className='bg-black text-white text-center py-[10px]'>
+      <header className='bg-black text-white text-center py-[10px] mt-[53px]'>
         สมาชิกใหม่รับ ของขวัญฟรี กดรับเลย !! 🎁
       </header>
       <main>

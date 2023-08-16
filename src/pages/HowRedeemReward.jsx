@@ -6,7 +6,7 @@ function HowRedeemReward() {
     return (
         <>
             <TitleHeader link={'/my-account'} title={'วิธีแลกของรางวัล'} />
-            <div className="px-[20px] pt-9 mb-[120px]">
+            <div className="px-[20px] mt-[53px] pt-9 mb-[120px]">
                 <h2 className='text-base font-bold' style={{ fontFamily: "Eventpop" }}>ขั้นตอนในการแลกของรางวัลมีดังนี้</h2>
 
                 <h2 className='text-base font-bold mt-8' style={{ fontFamily: "Eventpop" }}>1. เลือกรางวัลที่ต้องการแลก</h2>

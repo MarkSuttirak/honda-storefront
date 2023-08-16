@@ -59,7 +59,7 @@ const MyOrderDetails = () => {
 
   return (
     <>
-      <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold bg-white'>
+      <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold bg-white fixed bg-white top-0 w-full z-[999]'>
         <Link to="/my-order">
           <span className="sr-only">Close panel</span>
           <ArrowLeft />
@@ -67,7 +67,7 @@ const MyOrderDetails = () => {
         คำสั่งซื้อของฉัน
       </header>
         {data && (
-          <main>
+          <main className="mt-[53px]">
             <div className="relative flex w-full max-h-[600px] aspect-[4/3]">
               <SfScrollable
                 className="relative w-full h-full snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"

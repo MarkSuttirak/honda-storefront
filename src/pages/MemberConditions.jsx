@@ -6,7 +6,7 @@ function MemberConditions() {
     return (
         <>
             <TitleHeader link={'/my-account'} title={'เงื่อนไขระดับของสมาชิก'} />
-            <div className="px-[20px] pt-9 mb-[120px]">
+            <div className="px-[20px] mt-[53px] pt-9 mb-[120px]">
                 <h2 className='text-base font-bold' style={{ fontFamily: "Eventpop" }}>เงื่อนไขระดับของสมาชิก </h2>
 
                 <h2 className='text-base font-bold mt-8' style={{ fontFamily: "Eventpop" }}>1. Classic</h2>
