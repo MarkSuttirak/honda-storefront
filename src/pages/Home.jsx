@@ -31,7 +31,7 @@ import iconRightHead from "../img/iconRightHead.svg"
 import bookClosed from "../img/book-closed.svg"
 import giftIcon from "../img/goftIconOrange.svg"
 import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/skeleton';
-
+import Cookies from 'js-cookie';
 const Home = () => {
   document.body.style.background = "white"
   const { currentUser, updateCurrentUser } = useFrappeAuth();
@@ -40,10 +40,21 @@ const Home = () => {
 
   const [loading, setLoading] = useState(true);
 
+
+  const updateuserprofile = async () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer "+Cookies.get('token'));
+    console.log(Cookies.get('user_id'));
+  }
+
   const { data, isLoading, error } = useFrappeGetDoc('User', currentUser, {
     filters: ['name', 'full_name', 'user_image']
   })
+
+
+
   useEffect(() => {
+    updateuserprofile();  
     updateCurrentUser()
     .then(() => {
       if (products){
