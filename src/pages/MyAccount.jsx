@@ -82,12 +82,12 @@ const MyAccount = () => {
     {
       icon: <Shield01 />,
       title: 'ข้อกำหนดและเงื่อนไข',
-      link: '#'
+      link: '/terms-and-conditions'
     },
     {
       icon: <Lock02 />,
       title: 'ความยินยอมในการเปิดเผยข้อมูล',
-      link: '#'
+      link: '/consent'
     }
   ]
 
@@ -100,17 +100,17 @@ const MyAccount = () => {
     {
       icon: <BookClosed />,
       title: 'วิธีเก็บคะแนน',
-      link: '#'
+      link: '/collect-points'
     },
     {
       icon: <Gift01 />,
       title: 'วิธีแลกของรางวัล',
-      link: '#'
+      link: '/how-to-collect-rewards'
     },
     {
       icon: <CreditCard02 />,
       title: 'เงื่อนไขระดับของสมาชิก',
-      link: '#'
+      link: '/member-conditions'
     }
     // {
     //   icon: <AnnotationQuestion />,
