@@ -17,7 +17,7 @@ const MyID = () => {
   return (
     <>
       <TitleHeader title="ID ของฉัน" link="/my-account" />
-      <main className='p-5'>
+      <main className='p-5 mt-[53px]'>
         <div className='inline-block w-full'>
           <button className='p-4 my-2 w-1/2 border-r border-r-[#F2F2F2]'>QR Code</button>
           <button className='p-4 my-2 w-1/2'>Barcode</button>

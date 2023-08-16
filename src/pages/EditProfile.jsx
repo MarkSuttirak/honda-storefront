@@ -65,7 +65,7 @@ const EditProfile = () => {
       {editPro && (
         <>
           <TitleHeader title="แก้ไขโปรไฟล์" link="/my-account" />
-          <main className='p-5'>
+          <main className='p-5 mt-[53px]'>
             <ProfileForm
               initialValues={{
                 first_name: user?.user.first_name,
@@ -81,13 +81,13 @@ const EditProfile = () => {
 
       {changePhone && (
         <>
-          <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold'>
+          <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold fixed w-full top-0 bg-white z-[999]'>
             <button onClick={changeToEditPro}>
               <ArrowLeft />
             </button>
             เปลี่ยนเบอร์โทร
           </header>
-          <main className='px-5 py-[46px]'>
+          <main className='px-5 py-[46px] mt-[53px]'>
             <h1 className='text-[22px] font-bold'>เปลี่ยนเบอร์มือถือของคุณ</h1>
             <p className='mt-4'>กรอกเบอร์มือถือของคุณและกดรับรหัสยืนยันทาง SMS (OTP) เพื่อยืนยันเบอร์มือถือของคุณ</p>
 

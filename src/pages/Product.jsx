@@ -149,7 +149,7 @@ const Product = () => {
 
   return (
     <>
-      <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold bg-white items-center'>
+      <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold bg-white items-center fixed w-full bg-white top-0 z-[999]'>
         <Link to="/">
           <ArrowLeft />
         </Link>
@@ -163,7 +163,7 @@ const Product = () => {
             <ShoppingBag01 />
           </button>
         </nav> */}
-      <main className="mx-auto">
+      <main className="mx-auto mt-[53px]">
         <div className="relative flex w-full max-h-[600px] aspect-[4/3]">
           <SfScrollable
             className="relative w-full h-full snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"

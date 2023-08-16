@@ -58,7 +58,7 @@ const Home = () => {
   return (
     <>
       <NavHeader />
-      <header className="py-6 px-5 w-full">
+      <header className="pt-6 px-5 w-full">
         {data && (
           <div className='flex'>
             <div className='flex items-center w-[85%]'>

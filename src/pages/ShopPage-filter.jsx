@@ -36,7 +36,7 @@ const ShopPageFilter = () => {
   return (
     <>
       <TitleHeader link="/shop" title="ประเภทสินค้า" />
-      <main className="p-5">
+      <main className="p-5 mt-[53px]">
         {filterLists.map((list) => 
           <FilterRadio key={list.key} text={list.text} />
         )}
