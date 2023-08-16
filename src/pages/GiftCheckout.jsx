@@ -473,7 +473,7 @@ const GiftCheckout = () => {
                             className='w-full text-white rounded-[9px] p-3 text-center'
                             style={{background:"linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}}
                             >
-                            ออกจากระบบ
+                            ยืนยันการแลก
                           </button>
                         </div>
                       </Dialog.Panel>
