@@ -87,7 +87,7 @@ const Home = () => {
             </div>
           </div>
         )}
-        {isLoading && loading && (
+        {!data && loading && (
           <div className='flex'>
             <div className='flex items-center w-[85%]'>
               <SkeletonCircle startColor='#EDF2F7' endColor='#A0AEC0' width='64px' height='64px' borderRadius='100%' />
