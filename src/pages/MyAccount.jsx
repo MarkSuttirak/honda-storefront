@@ -146,7 +146,7 @@ const MyAccount = () => {
   ]
   return (
     <div>
-     
+
       <header className="flex justify-center w-full z-[999] mt-2">
         <div className="flex flex-wrap lg:flex-nowrap bg-white items-center flex-row justify-start h-full max-w-[1536px] w-full py-2 px-4 rounded-[9px] justify-center" style={{ backdropFilter: "blur(3px)" }}>
           <a
@@ -166,7 +166,7 @@ const MyAccount = () => {
         </div>
       </header>
 
-      
+
       <header className="p-5 w-full bg-[#F4F4F4] pt-10 mt-3 myAccountTopBorder">
         {data && (
           <div className='flex items-center'>
@@ -196,9 +196,9 @@ const MyAccount = () => {
         )}
       </header>
       <div className='bg-[#F4F4F4] h-full'>
-      <main className='px-5 relative pb-[100px]'>
-        <div className='bg-white rounded-[6px] items-center' style={{ filter: "drop-shadow(0 4px 20px #6363630D" }}>
-          {/* <div className='flex justify-between p-5'>
+        <main className='px-5 relative pb-[100px]'>
+          <div className='bg-white rounded-[6px] items-center' style={{ filter: "drop-shadow(0 4px 20px #6363630D" }}>
+            {/* <div className='flex justify-between p-5'>
             <div className='flex items-center gap-x-[14px]'>
               <img src={silverLevel ? silverCard : ""} />
               <div className='text-[#333333] font-bold'>ระดับ : {silverLevel ? "Silver" : ""}</div>
@@ -211,68 +211,68 @@ const MyAccount = () => {
             </div>
           </div> */}
 
-          <div className='p-5 flex flex-col items-center'>
-            <div className='flex'>
-              <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
-              คะแนน
-              </div>
-              {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
+            <div className='p-5 flex flex-col items-center'>
+              <div className='flex'>
+                <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
+                  คะแนน
+                </div>
+                {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 <Link to="/my-coupon">Coupon</Link>
               </div> */}
-            </div>
-
-            <div className='flex'>
-              <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
-                {user?.loyalty_points} <span className='text-[#FFA800]'>คะแนน</span>
               </div>
-              {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
+
+              <div className='flex'>
+                <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
+                  {user?.loyalty_points} <span className='text-[#FFA800]'>คะแนน</span>
+                </div>
+                {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 8 <span className='text-[#BC0000]'>codes</span>
               </div> */}
+              </div>
+            </div>
+
+            <hr style={{ borderColor: "#F2F2F2" }} />
+
+            <div className='w-full flex items-center'>
+              <Link to='/collect-points' className='p-4 my-2 w-1/2 border-r border-r-[#F2F2F2]'>การใช้งานคะแนน</Link>
+              <Link to='/how-to-collect-rewards' className='p-4 my-2 w-1/2'>ระดับคะแนน</Link>
             </div>
           </div>
 
-          <hr style={{ borderColor: "#F2F2F2" }} />
-
-          <div className='inline-block w-full'>
-            <button className='p-4 my-2 w-1/2 border-r border-r-[#F2F2F2]'>การใช้งานคะแนน</button>
-            <button className='p-4 my-2 w-1/2'>ระดับคะแนน</button>
+          <h2 className='mt-[30px] mb-[10px]'>การตั้งค่าและความเป็นส่วนตัว</h2>
+          <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{ filter: "drop-shadow(0 4px 20px #6363630D" }}>
+            {settingsMenu.map((menu) =>
+              <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} />
+            )}
           </div>
-        </div>
 
-        <h2 className='mt-[30px] mb-[10px]'>การตั้งค่าและความเป็นส่วนตัว</h2>
-        <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{ filter: "drop-shadow(0 4px 20px #6363630D" }}>
-          {settingsMenu.map((menu) =>
-            <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} />
-          )}
-        </div>
+          <h2 className='mt-[30px] mb-[10px]'>ความช่วยเหลือ</h2>
+          <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{ filter: "drop-shadow(0 4px 20px #6363630D" }}>
+            {helpMenu.map((menu) =>
+              <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} />
+            )}
+          </div>
 
-        <h2 className='mt-[30px] mb-[10px]'>ความช่วยเหลือ</h2>
-        <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{ filter: "drop-shadow(0 4px 20px #6363630D" }}>
-          {helpMenu.map((menu) =>
-            <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} />
-          )}
-        </div>
-
-        {/* <h2 className='mt-[30px] mb-[10px]'>ข้อมูลเพิ่มเติม</h2>
+          {/* <h2 className='mt-[30px] mb-[10px]'>ข้อมูลเพิ่มเติม</h2>
         <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
           {additionMenu.map((menu) => 
             <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} />
           )}
         </div> */}
 
-        <h2 className='mt-[30px] mb-[10px]'>บัญชี</h2>
-        <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{ filter: "drop-shadow(0 4px 20px #6363630D" }}>
-          <button className='flex justify-between items-center px-5 py-[17px] w-full' onClick={() => setOpenLogout(true)}>
-            <div className='flex gap-x-[10px] text-sm text-[#111111] items-center'>
-              <LogOut02 />
-              ออกจากระบบ
-            </div>
-            <div>
-              <ChevronRight />
-            </div>
-          </button>
-        </div>
-      </main>
+          <h2 className='mt-[30px] mb-[10px]'>บัญชี</h2>
+          <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{ filter: "drop-shadow(0 4px 20px #6363630D" }}>
+            <button className='flex justify-between items-center px-5 py-[17px] w-full' onClick={() => setOpenLogout(true)}>
+              <div className='flex gap-x-[10px] text-sm text-[#111111] items-center'>
+                <LogOut02 />
+                ออกจากระบบ
+              </div>
+              <div>
+                <ChevronRight />
+              </div>
+            </button>
+          </div>
+        </main>
 
       </div>
       <FooterMenu active={3} />
