@@ -32,7 +32,6 @@ import bookClosed from "../img/book-closed.svg"
 import giftIcon from "../img/goftIconOrange.svg"
 import blogBanner from "../img/blog-img.png"
 import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/skeleton';
-import Cookies from 'js-cookie';
 
 const Home = () => {
   document.body.style.background = "white"
@@ -42,21 +41,10 @@ const Home = () => {
 
   const [loading, setLoading] = useState(true);
 
-
-  const updateuserprofile = async () => {
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer "+Cookies.get('token'));
-    console.log(Cookies.get('user_id'), { domain: 'dev.zaviago.com' });
-  }
-
   const { data, isLoading, error } = useFrappeGetDoc('User', currentUser, {
     filters: ['name', 'full_name', 'user_image']
   })
-
-
-
   useEffect(() => {
-    updateuserprofile();  
     updateCurrentUser()
     .then(() => {
       if (products){
@@ -65,12 +53,12 @@ const Home = () => {
         }, 1000)
       }
     })
-  }, [])
+  },[])
 
   return (
     <>
       <NavHeader />
-      <header className="py-6 px-5 w-full">
+      <header className="pt-6 px-5 w-full">
         {data && (
           <div className='flex'>
             <div className='flex items-center w-[85%]'>

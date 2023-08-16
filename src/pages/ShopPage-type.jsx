@@ -164,7 +164,7 @@ const ShopPageType = ({min, max, onChange}) => {
   return (
     <>
       <TitleHeader link="/shop" title="ประเภทสินค้า" />
-      <main>
+      <main className='mt-[53px]'>
         <Accordion items={itemLists}/>
       </main>
       <footer className='flex p-5 gap-x-3 absolute bottom-0 w-full'>

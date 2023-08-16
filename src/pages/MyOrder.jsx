@@ -20,14 +20,14 @@ const MyOrder = () => {
   const [status, setStatus] = useState()
   return (
     <>
-      <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold bg-white'>
+      <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold bg-white fixed w-full top-0 bg-white z-[999]'>
         <Link to="/reward-history">
           <span className="sr-only">Close panel</span>
           <ArrowLeft />
         </Link>
         รายละเอียดคำสั่งซื้อ
       </header>
-      <main className="p-5 flex flex-col gap-y-[18px]">
+      <main className="p-5 flex flex-col gap-y-[18px] mt-[53px]">
         {data && (
           <>
             {data.map((d) => 

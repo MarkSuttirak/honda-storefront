@@ -45,7 +45,7 @@ const MyCoupon = () => {
   return (
     <>
       <TitleHeader title="คูปองของฉัน" link="/my-account" />
-      <main className='p-5'>
+      <main className='p-5 mt-[53px]'>
         <div className='block w-[90%] m-auto'>
           <button className='my-2 w-1/2' onClick={switchToCanUseCoupon}>
             <span className='p-4 inline-block'>คูปองที่ใช้ได้</span>
