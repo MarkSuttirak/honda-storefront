@@ -6,7 +6,7 @@ import chevron from '../img/chevron-right.svg'
 function TermsAndConditions() {
     return (
         <>
-            <TitleHeader link={''} title={'ข้อกำหนดและเงื่อนไข'} />
+            <TitleHeader link={'/my-account'} title={'ข้อกำหนดและเงื่อนไข'} /> 
             <div className="px-[20px] pt-9 mb-[120px]">
                 <h2 className='text-base font-bold' style={{ fontFamily: "Eventpop" }}>ข้อกำหนดและเงื่อนไขการใช้ Hondanont Loyalty</h2>
                 <p className='text-sm font-medium text-[#585858] mt-4'>บริษัท เอชซีเอ็น ฮอนด้า ออโตโมบิล จำกัด (“บริษัท”) ได้จัดทำ Hondanont Loyalty โดยใช้แพลตฟอร์ม LINE และ hondanont.zaviago.com รวมถึงเว็บไซต์  เว็บไซต์ที่แสดงบนอุปกรณ์มือถือ หรือโมบายแอพพลิเคชั่น (“แพลตฟอร์ม”) เพื่อใช้เป็นช่องทางในการติดต่อและสื่อสาร รวมถึงให้บริการแก่ผู้ใช้บริการที่เป็นสมาชิกของ Hondanont Loyalty  เช่น การสมัครเป็นสมาชิก ตรวจสอบแต้มคงเหลือ ปรับเปลี่ยนข้อมูลส่วนตัวของสมาชิก ตรวจสอบแคมเปญส่งเสริมการขายของบริษัท แลกแต้มสะสมตามรายการที่บริษัทกำหนด รวมถึงวัตถุประสงค์อื่น ๆ ตามที่บริษัทจะกำหนดขึ้นในภายหลัง</p>

@@ -5,7 +5,7 @@ import TitleHeader from '../components/TitleHeader';
 function HowRedeemReward() {
     return (
         <>
-            <TitleHeader link={''} title={'วิธีแลกของรางวัล'} />
+            <TitleHeader link={'/my-account'} title={'วิธีแลกของรางวัล'} />
             <div className="px-[20px] pt-9 mb-[120px]">
                 <h2 className='text-base font-bold' style={{ fontFamily: "Eventpop" }}>ขั้นตอนในการแลกของรางวัลมีดังนี้</h2>
 

@@ -5,7 +5,7 @@ import TitleHeader from '../components/TitleHeader';
 function MemberConditions() {
     return (
         <>
-            <TitleHeader link={''} title={'เงื่อนไขระดับของสมาชิก'} />
+            <TitleHeader link={'/my-account'} title={'เงื่อนไขระดับของสมาชิก'} />
             <div className="px-[20px] pt-9 mb-[120px]">
                 <h2 className='text-base font-bold' style={{ fontFamily: "Eventpop" }}>เงื่อนไขระดับของสมาชิก </h2>
 

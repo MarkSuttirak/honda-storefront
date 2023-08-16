@@ -10,10 +10,6 @@ import { useFrappeGetCall } from 'frappe-react-sdk';
 const BankInfoPage = () => {
   const [searchParams] = useSearchParams();
 
-  const { call, isCompleted, result } = useFrappeGetCall('headless_e_commerce.api.place_order');
-
-  console.log(result)
-
   return (
     <>
       <TitleHeader link='/my-order' title='ข้อมูลการแลกของรางวัล'/>
