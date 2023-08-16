@@ -38,13 +38,22 @@ const Home = () => {
   const { user } = useUser()
   const { products } = useProducts()
 
-  useEffect(() => {
-    updateCurrentUser()
-  }, [updateCurrentUser])
+  const [loading, setLoading] = useState(true);
 
   const { data, isLoading, error } = useFrappeGetDoc('User', currentUser, {
     filters: ['name', 'full_name', 'user_image']
   })
+
+  console.log(products)
+
+  useEffect(() => {
+    updateCurrentUser()
+    .then(() => {
+      if (products){
+        setTimeout(() => setLoading(false), 1000)
+      }
+    })
+  }, [updateCurrentUser])
 
   return (
     <>
@@ -53,12 +62,16 @@ const Home = () => {
         {data && (
           <div className='flex'>
             <div className='flex items-center w-[85%]'>
-              <img src={data.user_image} width="64" className='rounded-[99px]' />
+              {data.user_image ? (
+                <img src={data.user_image} width="64" className='rounded-[99px]' />
+              ) : (
+                <SkeletonCircle startColor='#EDF2F7' endColor='#EDF2F7' width='64px' height='64px' borderRadius='100%'/>
+              )}
               <div className='ml-3 flex flex-col'>
                 <span className='font-bold'>{data.full_name}</span>
               </div>
             </div>
-            <div className='flex flex-col items-end justify-end  w-[15%]'>
+            <div className='flex flex-col items-end justify-center w-[15%]'>
               <div className='inter text-xs text-[#4C4B4F]'>
                 Coins
               </div>
@@ -69,13 +82,11 @@ const Home = () => {
             </div>
           </div>
         )}
-        {isLoading || error && (
+        {isLoading && loading && (
           <div className='flex'>
             <div className='flex items-center w-[85%]'>
-              <img src={data.user_image} width="64" className='rounded-[99px]' />
-              <div className='ml-3 flex flex-col'>
-                <span className='font-bold'>{data.full_name}</span>
-              </div>
+              <SkeletonCircle startColor='#EDF2F7' endColor='#A0AEC0' width='64px' height='64px' borderRadius='100%'/>
+              <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' width='150px' height='20px' marginLeft='12px'/>
             </div>
             <div className='flex flex-col items-end justify-end w-[15%]'>
               <div className='inter text-xs text-[#4C4B4F]'>
@@ -94,7 +105,6 @@ const Home = () => {
       <div className='bg-[#ADB1BB] pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome'>
         <div>
           <h2 className='text-[32px] text-white'>Silver</h2>
-          <p className='text-white text-[14px]'>อีก 11 คะแนนเลื่อนเป็น Gold</p>
         </div>
         <div className=''>
           <button className='bg-white w-[140px] h-[40px] rounded-full flex items-center justify-center' style={{ boxShadow: "0px 3px 15px 0px #7777771A" }}>
@@ -127,15 +137,37 @@ const Home = () => {
           </h2>
 
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
-            {(products ?? []).map((product) => (
-              <ProductCard
-                key={product.item_code}
-                title={product.item_name}
-                productId={product.name}
-                itemCode={product.item_code}
-                price={product.formatted_price}
-                thumbnail={product.website_image} />
-            ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
+            {loading ? (
+              <>
+                <div className='flex flex-col'>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                </div>
+                <div className='flex flex-col'>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                </div>
+                <div className='flex flex-col'>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                </div>
+              </>
+            ) : (
+              <>
+              {(products ?? []).map((product) => (
+                <ProductCard
+                  key={product.item_code}
+                  title={product.item_name}
+                  productId={product.name}
+                  itemCode={product.item_code}
+                  price={product.formatted_price}
+                  thumbnail={product.website_image} />
+              ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
+            </>
+            )}
           </div>
         </div>
 
@@ -146,15 +178,37 @@ const Home = () => {
           </h2>
 
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
-            {(products ?? []).map((product) => (
-              <ProductCard
-                key={product.item_code}
-                title={product.item_name}
-                productId={product.name}
-                itemCode={product.item_code}
-                price={product.formatted_price}
-                thumbnail={product.website_image} />
-            ))}
+            {loading ? (
+              <>
+                <div className='flex flex-col'>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                </div>
+                <div className='flex flex-col'>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                </div>
+                <div className='flex flex-col'>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                </div>
+              </>
+            ) : (
+              <>
+              {(products ?? []).map((product) => (
+                <ProductCard
+                  key={product.item_code}
+                  title={product.item_name}
+                  productId={product.name}
+                  itemCode={product.item_code}
+                  price={product.formatted_price}
+                  thumbnail={product.website_image} />
+              ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
+            </>
+            )}
           </div>
         </div>
 
@@ -165,15 +219,37 @@ const Home = () => {
           </h2>
 
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
-            {(products ?? []).map((product) => (
-              <ProductCard
-                key={product.item_code}
-                title={product.item_name}
-                productId={product.name}
-                itemCode={product.item_code}
-                price={product.formatted_price}
-                thumbnail={product.website_image} />
-            ))}
+            {loading ? (
+              <>
+                <div className='flex flex-col'>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                </div>
+                <div className='flex flex-col'>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                </div>
+                <div className='flex flex-col'>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                </div>
+              </>
+            ) : (
+              <>
+              {(products ?? []).map((product) => (
+                <ProductCard
+                  key={product.item_code}
+                  title={product.item_name}
+                  productId={product.name}
+                  itemCode={product.item_code}
+                  price={product.formatted_price}
+                  thumbnail={product.website_image} />
+              ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
+            </>
+            )}
           </div>
         </div>
       </main>
