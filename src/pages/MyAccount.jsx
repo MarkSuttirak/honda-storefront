@@ -7,6 +7,7 @@ import { useState, useEffect, Fragment } from 'react'
 import NavHeader from '../components/NavHeader'
 import { Dialog, Transition } from '@headlessui/react'
 import Cookies from 'js-cookie';
+import hondaLogo from '../img/hondaLogo.png'
 import {
   Heart,
   File06,
@@ -144,9 +145,29 @@ const MyAccount = () => {
     },
   ]
   return (
-    <div className='bg-[#F4F4F4] h-full'>
-      <NavHeader />
-      <header className="p-5 w-full">
+    <div>
+     
+      <header className="flex justify-center w-full z-[999] mt-2">
+        <div className="flex flex-wrap lg:flex-nowrap bg-white items-center flex-row justify-start h-full max-w-[1536px] w-full py-2 px-4 rounded-[9px] justify-center" style={{ backdropFilter: "blur(3px)" }}>
+          <a
+            href="/"
+            aria-label="SF Homepage"
+            className="flex mr-4 focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0"
+          >
+            <picture>
+              <source srcSet={hondaLogo} media="(min-width: 768px)" />
+              <img
+                src={hondaLogo}
+                alt="Sf Logo"
+                className="w-[100px]"
+              />
+            </picture>
+          </a>
+        </div>
+      </header>
+
+      
+      <header className="p-5 w-full bg-[#F4F4F4] pt-10 mt-3 rounded-t-29px rounded-tr-29px rounded-bl-0 rounded-br-0">
         {data && (
           <div className='flex items-center'>
             <img src={data.user_image} width="64" className='rounded-[99px]' />
@@ -174,8 +195,9 @@ const MyAccount = () => {
           </div>
         )}
       </header>
+      <div className='bg-[#F4F4F4] h-full'>
       <main className='px-5 relative pb-[100px]'>
-        <div className='bg-white rounded-[6px] items-center' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
+        <div className='bg-white rounded-[6px] items-center' style={{ filter: "drop-shadow(0 4px 20px #6363630D" }}>
           {/* <div className='flex justify-between p-5'>
             <div className='flex items-center gap-x-[14px]'>
               <img src={silverLevel ? silverCard : ""} />
@@ -192,7 +214,7 @@ const MyAccount = () => {
           <div className='p-5 flex flex-col items-center'>
             <div className='flex'>
               <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
-                Coins
+              คะแนน
               </div>
               {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 <Link to="/my-coupon">Coupon</Link>
@@ -201,7 +223,7 @@ const MyAccount = () => {
 
             <div className='flex'>
               <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
-                {user?.loyalty_points} <span className='text-[#FFA800]'>coins</span>
+                {user?.loyalty_points} <span className='text-[#FFA800]'>คะแนน</span>
               </div>
               {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 8 <span className='text-[#BC0000]'>codes</span>
@@ -218,8 +240,8 @@ const MyAccount = () => {
         </div>
 
         <h2 className='mt-[30px] mb-[10px]'>การตั้งค่าและความเป็นส่วนตัว</h2>
-        <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
-          {settingsMenu.map((menu) => 
+        <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{ filter: "drop-shadow(0 4px 20px #6363630D" }}>
+          {settingsMenu.map((menu) =>
             <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} />
           )}
         </div>
@@ -251,6 +273,8 @@ const MyAccount = () => {
           </button>
         </div>
       </main>
+
+      </div>
       <FooterMenu active={3} />
 
       <Transition.Root show={openLogout} as={Fragment}>
