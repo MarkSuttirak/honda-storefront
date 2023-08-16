@@ -39,7 +39,7 @@ const CategoryPage = () => {
     if (products){
       setTimeout(() => setLoading(false), 1000)
     }
-  })
+  }, [])
 
   return (
     <>
