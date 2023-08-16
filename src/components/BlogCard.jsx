@@ -14,5 +14,4 @@ const BlogCard = ({title, image, date, link}) => {
     </Link>
   )
 }
-
-  export default BlogCard
+export default BlogCard
