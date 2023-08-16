@@ -82,12 +82,12 @@ const MyAccount = () => {
     {
       icon: <Shield01 />,
       title: 'ข้อกำหนดและเงื่อนไข',
-      link: '#'
+      link: '/terms-and-conditions'
     },
     {
       icon: <Lock02 />,
       title: 'ความยินยอมในการเปิดเผยข้อมูล',
-      link: '#'
+      link: '/consent'
     }
   ]
 
@@ -100,17 +100,17 @@ const MyAccount = () => {
     {
       icon: <BookClosed />,
       title: 'วิธีเก็บคะแนน',
-      link: '#'
+      link: '/collect-points'
     },
     {
       icon: <Gift01 />,
       title: 'วิธีแลกของรางวัล',
-      link: '#'
+      link: '/how-to-collect-rewards'
     },
     {
       icon: <CreditCard02 />,
       title: 'เงื่อนไขระดับของสมาชิก',
-      link: '#'
+      link: '/member-conditions'
     }
     // {
     //   icon: <AnnotationQuestion />,
@@ -167,7 +167,7 @@ const MyAccount = () => {
       </header>
 
       
-      <header className="p-5 w-full bg-[#F4F4F4] pt-10 mt-3 rounded-t-29px rounded-tr-29px rounded-bl-0 rounded-br-0">
+      <header className="p-5 w-full bg-[#F4F4F4] pt-10 mt-3 myAccountTopBorder">
         {data && (
           <div className='flex items-center'>
             <img src={data.user_image} width="64" className='rounded-[99px]' />

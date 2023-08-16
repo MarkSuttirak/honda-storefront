@@ -148,6 +148,10 @@
   height:209px;
 }
 
+.myAccountTopBorder {
+  border-radius: 29px 29px 0px 0px;
+}
+
 @keyframes borderAnim {
   from {
     width:0;
