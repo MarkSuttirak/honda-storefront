@@ -213,8 +213,8 @@ const MyAccount = () => {
 
             <div className='p-5 flex flex-col items-center'>
               <div className='flex'>
-                <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
-                  คะแนน
+                <div className='flex gap-x-1 text-[13px] justify-center'>
+                  คะแนนของฉัน
                 </div>
                 {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 <Link to="/my-coupon">Coupon</Link>
