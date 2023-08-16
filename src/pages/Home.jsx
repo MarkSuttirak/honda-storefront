@@ -30,6 +30,7 @@ import { useUser } from '../hooks/useUser';
 import iconRightHead from "../img/iconRightHead.svg"
 import bookClosed from "../img/book-closed.svg"
 import giftIcon from "../img/goftIconOrange.svg"
+import blogBanner from "../img/blog-img.png"
 
 const Home = () => {
   document.body.style.background = "white"
@@ -183,9 +184,9 @@ const Home = () => {
             <SfIconArrowForward className="w-[18px] text-black ml-2"/>
           </h2>
 
-          <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
-            <BlogCard image={bannerDiscount1} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" />
-            <BlogCard image={bannerDiscount2} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" />
+          <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5 mb-5">
+            <BlogCard image={blogBanner} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" />
+            <BlogCard image={blogBanner} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" />
           </div>
         </div>
       </main>
