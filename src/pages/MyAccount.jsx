@@ -214,7 +214,7 @@ const MyAccount = () => {
           <div className='p-5 flex flex-col items-center'>
             <div className='flex'>
               <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
-                Coins
+              คะแนน
               </div>
               {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 <Link to="/my-coupon">Coupon</Link>
@@ -223,7 +223,7 @@ const MyAccount = () => {
 
             <div className='flex'>
               <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
-                {user?.loyalty_points} <span className='text-[#FFA800]'>coins</span>
+                {user?.loyalty_points} <span className='text-[#FFA800]'>คะแนน</span>
               </div>
               {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 8 <span className='text-[#BC0000]'>codes</span>
