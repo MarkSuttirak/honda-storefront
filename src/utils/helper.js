@@ -6,5 +6,5 @@ ReactSession.setStoreType("sessionstorage");
 const TokenKey = 'token';
 const getToken = () => ReactSession.get(TokenKey);
 const setToken = (token) => ReactSession.set(TokenKey, token);
-const removeToken = () => sessionStorage.removeItem(TokenKey);
+const removeToken = () => sessionStorage.clear();
 export { getToken, removeToken, setToken };
