@@ -160,3 +160,12 @@
     width:100%
   }
 }
+
+@keyframes imgAnim {
+  from {
+    opacity:0
+  }
+  to {
+    opacity:1
+  }
+}

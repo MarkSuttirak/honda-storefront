@@ -16,6 +16,7 @@ import BranchSelect from '../components/form-controls/BranchSelect';
 import { useUser } from '../hooks/useUser';
 import { giftCardSchema } from '../components/forms/giftCardSchema';
 import { Dialog, Transition } from '@headlessui/react'
+import { Skeleton } from '@chakra-ui/skeleton';
 
 const GiftCheckout = () => {
     const { cart, cartCount, getTotal, resetCart } = useCart();
@@ -121,6 +122,10 @@ const GiftCheckout = () => {
     }, [product])
 
     console.log(formik.errors);
+
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 1000)
+    }, [])
     return (
         <>
             {checkoutPage && (
@@ -132,7 +137,7 @@ const GiftCheckout = () => {
                         </button>
                         การแลกรางวัล
                     </header>
-                    <header className='bg-black text-white text-center py-[10px]'>
+                    <header className='text-white text-center py-[10px]' style={{background:"linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}}>
                         กดรับของขวัญฟรี 🎁
                     </header>
                     <div className='flex flex-col md:flex-row justify-center'>
@@ -160,12 +165,19 @@ const GiftCheckout = () => {
 
                                     <div className="flex flex-1 flex-col pb-[18px]">
                                         <div>
-                                            <div className="flex justify-between text-base font-medium text-gray-900">
-                                                <h3 className='font-bold text-[15px]'>
+                                            {!loading ? (
+                                              <div className="flex justify-between text-base font-medium text-gray-900 items-center">
+                                                  <h3 className='font-bold text-[15px]'>
                                                     <a href="#">{product?.item_name}</a>
-                                                </h3>
-                                                <p className="ml-4 text-sm">{product?.loyalty_points_based_price} คะแนน</p>
-                                            </div>
+                                                  </h3>
+                                                <p className="ml-4 text-sm text-[#F0592A] font-bold">{product?.loyalty_points_based_price} คะแนน</p>
+                                              </div>
+                                            ) : (
+                                              <div className="flex justify-between text-base font-medium text-gray-900 items-center">
+                                                <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="60%" borderRadius="6px"/>
+                                                <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="15%" borderRadius="6px"/>
+                                              </div>
+                                            )}
                                         </div>
                                     </div>
                                 </ul>
@@ -178,12 +190,19 @@ const GiftCheckout = () => {
                                     <div className="flex flex-1 flex-col pt-[18px]">
                                         <h2 className='mb-[18px] font-bold text-[15px]'>รายละเอียดการแลกรางวัล</h2>
                                         <div>
-                                            <div className="flex justify-between text-base font-medium text-gray-900">
+                                            {!loading ? (
+                                              <div className="flex justify-between text-base font-medium text-gray-900">
                                                 <h3 className='text-sm text-[#010101]'>
                                                   ยอดรวม
                                                 </h3>
-                                                <p className="ml-4 text-sm">{product?.loyalty_points_based_price} คะแนน</p>
-                                            </div>
+                                                <p className="ml-4 text-sm text-[#F0592A] font-bold">{product?.loyalty_points_based_price} คะแนน</p>
+                                              </div>
+                                            ) : (
+                                              <div className="flex justify-between text-base font-medium text-gray-900">
+                                                <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="60%" borderRadius="6px"/>
+                                                <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="15%" borderRadius="6px"/>
+                                              </div>
+                                            )}
                                         </div>
                                     </div>
                                 </ul>

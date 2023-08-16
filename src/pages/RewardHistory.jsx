@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import TitleHeader from '../components/TitleHeader'
 import coinHand from '../img/coins-hand.svg'
 import spentCoins from '../img/spentCoins.png'
@@ -6,11 +6,13 @@ import { Link } from 'react-router-dom';
 import { useUser } from '../hooks/useUser';
 import { useFrappeGetCall, useFrappeGetDoc } from 'frappe-react-sdk';
 import FooterMenu from '../components/FooterMenu';
+import { Skeleton } from '@chakra-ui/skeleton';
 
 function RewardHistory() {
     const [currentTab, setCurrentTab] = useState('คะแนนที่ได้รับ');
     const { user } = useUser()
     const { data } = useFrappeGetCall('headless_e_commerce.api.get_loyalty_points_details');
+    const [loading, setLoading] = useState(true)
 
     const tabData = [
         {
@@ -52,6 +54,10 @@ function RewardHistory() {
             exits: []
         })
     }, [data])
+
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 1000)
+    }, [])
 
     return (
         <>
@@ -100,8 +106,10 @@ function RewardHistory() {
                 </div>
             </div>
 
-            <div className='mt-[214px]'>
-                {tabs.map((tab) => (
+            <div className='mt-[214px] pb-[18px]'>
+                {!loading ? (
+                    <>
+                    {tabs.map((tab) => (
                     <div key={tab.name} className={currentTab === tab.name ? 'space-y-[18px]' : 'hidden'}>
                         {tab.name == 'คะแนนที่ได้รับ' ?
                             <>
@@ -152,6 +160,16 @@ function RewardHistory() {
                         }
                     </div>
                 ))}
+                    </>
+                ) : (
+                    <div className='px-5'>
+                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="100%" borderRadius="6px"/>
+                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="100%" marginTop="20px" borderRadius="6px"/>
+                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="100%" marginTop="20px" borderRadius="6px"/>
+                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="100%" marginTop="20px" borderRadius="6px"/>
+                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="100%" marginTop="20px" borderRadius="6px"/>
+                    </div>
+                )}
             </div>
             <FooterMenu active={2} />
         </>

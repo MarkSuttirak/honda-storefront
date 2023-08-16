@@ -31,6 +31,11 @@ function RegisterPopup() {
                 <h5 className='font-bold text-sm text-[#21201E] mt-8'>4. สิทธิ์ทรัพย์สินทางปัญญา</h5>
                 <p className='font-normal text-sm text-[#585858] mt-3'>บริษัทจะดำเนินการรักษาความมั่นคงปลอดภัยของข้อมูลส่วน
                     บุคคลของท่าน</p>
+
+                <div className='mt-10'>
+                    <input type="checkbox" />
+                    <p className='text-[#2C2C2E] font-normal text-base leading-[25.39px] ml-2'>ข้าพเจ้าได้อ่าน และ ยินยอมให้ข้อมูลส่วนบุคคล</p>
+                </div>
             </div>
             {/* <div className='h-[926px] w-full flex justify-center items-center flex-col px-6' style={{background: "linear-gradient(90deg, #F79B20 34.61%, #F2743A 119.87%)"}}>
             <img src={hondaLogo} className='w-[200px] h-[86.96px]' alt="" />
