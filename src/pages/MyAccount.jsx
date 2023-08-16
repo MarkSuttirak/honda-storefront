@@ -233,7 +233,7 @@ const MyAccount = () => {
 
             <hr style={{ borderColor: "#F2F2F2" }} />
 
-            <div className='w-full flex items-center'>
+            <div className='w-full flex text-center'>
               <Link to='/collect-points' className='p-4 my-2 w-1/2 border-r border-r-[#F2F2F2]'>การใช้งานคะแนน</Link>
               <Link to='/how-to-collect-rewards' className='p-4 my-2 w-1/2'>ระดับคะแนน</Link>
             </div>
