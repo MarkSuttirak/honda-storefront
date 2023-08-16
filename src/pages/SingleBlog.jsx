@@ -13,7 +13,7 @@ function SingleBlog() {
 
     return (
         <>
-            <TitleHeader link={''} title={'รายละเอียด'} />
+            <TitleHeader link={'/'} title={'รายละเอียด'} />
             <img className={` ${rewardReddem == true ? 'opacity-[50%]' : 'opacity-[100%]'} `} src={bannerImgBlog} alt="" />
             <div className="w-[354px] relative mx-auto z-10 bg-white p-4 rounded-[10px] -mt-[18px]" style={{ boxShadow: "0px 4px 20px 0px #EBE9EA", }}>
                 <div className='text-center'>
