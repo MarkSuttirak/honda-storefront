@@ -21,7 +21,7 @@ const MyOrder = () => {
   return (
     <>
       <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold bg-white'>
-        <Link to="/my-account">
+        <Link to="/reward-history">
           <span className="sr-only">Close panel</span>
           <ArrowLeft />
         </Link>
