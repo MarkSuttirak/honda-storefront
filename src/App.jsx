@@ -65,8 +65,8 @@ function App() {
   useEffect(() => {
 
     if (token) {
+      Cookies.set('username', username);
       if (phoneverify == 'true') {
-        Cookies.set('username', username);
         Cookies.set('phoneverify', true);
         navigate("/phonverify");
       }

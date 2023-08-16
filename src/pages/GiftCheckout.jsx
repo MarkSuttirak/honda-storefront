@@ -42,6 +42,8 @@ const GiftCheckout = () => {
 
     const [redeeming, setRedeeming] = useState(false);
 
+    const [loading, setLoading] = useState(true);
+
     const total = getTotal() + delivery - discount
 
     const formik = useFormik({
@@ -118,7 +120,6 @@ const GiftCheckout = () => {
         }])
     }, [product])
 
-
     console.log(formik.errors);
     return (
         <>
@@ -161,11 +162,10 @@ const GiftCheckout = () => {
                                         <div>
                                             <div className="flex justify-between text-base font-medium text-gray-900">
                                                 <h3 className='font-bold text-[15px]'>
-                                                    <a href="#">{product?.name}</a>
+                                                    <a href="#">{product?.item_name}</a>
                                                 </h3>
                                                 <p className="ml-4 text-sm">{product?.loyalty_points_based_price} คะแนน</p>
                                             </div>
-                                            <p className="mt-1 text-sm text-gray-500">Salmon</p>
                                         </div>
                                     </div>
                                 </ul>
@@ -188,7 +188,7 @@ const GiftCheckout = () => {
                                     </div>
                                 </ul>
                                 <div className="py-4 mt-3 md:pb-6 md:mt-0">
-                                    <SfButton disabled={user?.loyalty_points < product?.loyalty_points_based_price} size="lg" className="w-full shadow-none" style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}} onClick={(e) => { e.preventDefault();setShowConfirm(true) }}>
+                                    <SfButton disabled={user?.loyalty_points < product?.loyalty_points_based_price} size="lg" className="w-full shadow-none" style={{ background: user?.loyalty_points < product?.loyalty_points_based_price ? "#C5C5C5" : "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}} onClick={(e) => { e.preventDefault();setShowConfirm(true) }}>
                                         แลกรางวัลโดยใช้ {product?.loyalty_points_based_price} คะแนน
                                     </SfButton>
                                 </div>
@@ -474,14 +474,16 @@ const GiftCheckout = () => {
                             </div>
                           )}
                         </div>
-                        <div className="mt-6 grid grid-flow-row-dense grid-cols-2 gap-3">
-                          <button
-                            type="button"
-                            className='w-full bg-white border border-[#D7D7D7] text-[#111111] rounded-[9px] p-3 text-center'
-                            onClick={() => setShowConfirm(false)}
+                        <div className={`mt-6 grid grid-flow-row-dense ${redeeming ? "" : "grid-cols-2"} gap-3`}>
+                          {!redeeming && (
+                            <button
+                              type="button"
+                              className='w-full bg-white border border-[#D7D7D7] text-[#111111] rounded-[9px] p-3 text-center'
+                              onClick={() => setShowConfirm(false)}
                             >
-                            ยกเลิก
-                          </button>
+                              ยกเลิก
+                            </button>
+                          )}
                           <button
                             type="button"
                             onClick={() => {
@@ -490,6 +492,7 @@ const GiftCheckout = () => {
                             }}
                             className='w-full text-white rounded-[9px] p-3 text-center'
                             style={{background:!redeeming ? "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)" : "#C5C5C5"}}
+                            disabled={redeeming ? true : false}
                             >
                             {!redeeming ? "ยืนยันการแลก" : "กำลังแลกของรางวัล..."}
                           </button>

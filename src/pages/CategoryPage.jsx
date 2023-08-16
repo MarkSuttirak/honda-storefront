@@ -45,7 +45,7 @@ const CategoryPage = () => {
     <>
 
       <TitleHeader link='/' title='รางวัล'/>
-      <main className='relative top-[-10px] pb-[94px]'>
+      <main className='relative pt-[10px] pb-[94px] mt-[53px]'>
         <div className='mt-[22px]'>
           <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
             สินค้าลดราคา

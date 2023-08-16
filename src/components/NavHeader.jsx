@@ -39,8 +39,8 @@ const NavHeader = () => {
     ];
 
     return (
-        <header className="flex justify-center w-full z-[999]">
-            <div className="flex flex-wrap lg:flex-nowrap items-center flex-row justify-start h-full max-w-[1536px] w-full py-2 px-4 mx-5 my-3 rounded-[9px] justify-center" style={{backdropFilter:"blur(3px)"}}>
+        <header className="flex justify-center w-full z-[999] border-b border-b-[#EBEBEB]">
+            <div className="flex flex-wrap lg:flex-nowrap items-center flex-row justify-start h-full max-w-[1536px] w-full m-4 rounded-[9px] justify-center" style={{backdropFilter:"blur(3px)"}}>
                 <a
                   href="/"
                   aria-label="SF Homepage"
@@ -51,7 +51,7 @@ const NavHeader = () => {
                     <img
                       src={hondaLogo}
                       alt="Sf Logo"
-                      className="w-[100px]"
+                      className="w-[60px]"
                     />
                   </picture>
                 </a>

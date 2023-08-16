@@ -39,7 +39,7 @@ const Wishlist = () => {
 
   return (
     <>
-      <header className="border-b p-[14px] border-b-[#F2F2F2] text-md font-bold bg-white flex justify-between items-center">
+      <header className="border-b p-[14px] border-b-[#F2F2F2] text-md font-bold bg-white flex justify-between items-center fixed w-full bg-white top-0 z-[999]">
         <div className="flex items-center gap-x-[7px]">
           <Link to='/my-account'>
             <ArrowLeft />
@@ -53,7 +53,7 @@ const Wishlist = () => {
           </button>
         </div>
       </header>
-      <main>
+      <main className='mt-[53px]'>
         <nav className="border-b border-b-[#F2F2F2]">
           <ul className="flex">
             <li className="h-[50px] basis-1/3 flex items-center justify-center gap-x-1 relative" onClick={switchToActiveOne}>
