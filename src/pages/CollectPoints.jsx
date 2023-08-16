@@ -5,7 +5,7 @@ import TitleHeader from '../components/TitleHeader';
 function CollectPoints() {
   return (
     <>
-    <TitleHeader link={''} title={'วิธีเก็บคะแนน'} />
+    <TitleHeader link={'/my-account'} title={'วิธีเก็บคะแนน'} />
     <div className="px-[20px] pt-9 mb-[120px]">
         <h2 className='text-base font-bold' style={{ fontFamily: "Eventpop" }}>เงื่อนไขในการให้คะแนน </h2>
         <ul className='mt-2 ml-5'>
