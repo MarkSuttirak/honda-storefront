@@ -44,7 +44,7 @@ const Home = () => {
   const updateuserprofile = async () => {
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer "+Cookies.get('token'));
-    console.log(Cookies.get('user_id'));
+    console.log(Cookies.get('user_id'), { domain: 'dev.zaviago.com' });
   }
 
   const { data, isLoading, error } = useFrappeGetDoc('User', currentUser, {
