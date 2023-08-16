@@ -4,7 +4,7 @@ import { SfIconSearch, SfIconArrowForward, SfIconCalendarToday } from '@storefro
 const BlogCard = ({title, image, date, link}) => {
   return (
     <Link to='/single-blog' className="min-w-[300px] max-w-[300px]">
-      <img src={image} />
+      <img src={image} className="rounded-md" />
       <h2 className='mt-4 whitespace-normal text-[#1C1C1C] text-sm font-bold pr-7'>{title}</h2>
 
       <p className='text-[#8A8A8A] mt-[5px] text-xs flex items-center'>
