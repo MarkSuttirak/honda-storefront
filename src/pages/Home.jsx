@@ -251,6 +251,18 @@ const Home = () => {
             </>
             )}
           </div>
+
+          <div className="mt-[30px]">
+            <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
+              สินค้าลดราคา
+              <SfIconArrowForward className="w-[18px] text-black ml-2"/>
+            </h2>
+
+            <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
+              <BlogCard image={bannerDiscount1} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" />
+              <BlogCard image={bannerDiscount2} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" />
+            </div>
+          </div>
         </div>
       </main>
 
