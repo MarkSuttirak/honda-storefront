@@ -447,7 +447,7 @@ const GiftCheckout = () => {
                         leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                     >
                       <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all w-full max-w-md">
-                        <div className='my-10'>
+                        <div className='mt-10 mb-[60px]'>
                           <div className="mt-3 text-center sm:mt-5">
                             <Dialog.Title as="h3" className="text-lg font-bold leading-6 text-[#333333]">
                                 ยืนยันการแลกของรางวัล

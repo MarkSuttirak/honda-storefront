@@ -6,12 +6,15 @@ import kasikorn from '../img/kasikorn.svg'
 import qrcode2 from '../img/qrcode2.svg'
 import mascot from '../img/mascot.svg'
 import { Edit05, Copy01, Maximize01, ArrowUpRight } from '@untitled-ui/icons-react';
+import { useFrappePostCall } from 'frappe-react-sdk';
 const BankInfoPage = () => {
   const [searchParams] = useSearchParams();
 
+  const { call, isCompleted, result } = useFrappePostCall('headless_e_commerce.api.place_order');
+
   return (
     <>
-      <TitleHeader link='/reward-home' title='ข้อมูลการแลกของรางวัล'/>
+      <TitleHeader link='/my-order' title='ข้อมูลการแลกของรางวัล'/>
       <main className='p-5'>
         <section className='text-center mt-5'>
           <img src={mascot} className='m-auto'/>
