@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard'
 import PromotionCard from '../components/PromotionCard';
 import { useProducts } from '../hooks/useProducts'
-import { useFrappeAuth, useFrappeGetDoc } from 'frappe-react-sdk';
+import { useFrappeAuth, useFrappeGetDoc,useFrappeGetCall } from 'frappe-react-sdk';
 import banner from '../img/banner.png'
 import coin from '../img/coin.svg'
 import coupon from '../img/coupon.svg'
@@ -32,25 +32,28 @@ import bookClosed from "../img/book-closed.svg"
 import giftIcon from "../img/goftIconOrange.svg"
 import blogBanner from "../img/blog-img.png"
 import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/skeleton';
+import { getToken } from "../utils/helper";
+
 
 const Home = () => {
   document.body.style.background = "white"
   const { currentUser, updateCurrentUser } = useFrappeAuth();
   const { user } = useUser()
   const { products } = useProducts()
-
   const [loading, setLoading] = useState(true);
+  const [data, setUserdata] = useState(null);
 
-  const updateuserprofile = async () => {
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer " + Cookies.get('token'));
-    console.log(Cookies.get('user_id'), { domain: 'dev.zaviago.com' });
-  }
-  const { data, isLoading, error } = useFrappeGetDoc('User', currentUser, {
-    filters: ['name', 'full_name', 'user_image']
+  
+  const updateuserprofile = useFrappeGetCall('headless_e_commerce.api.get_profile', {}, 'user-profile', {
+    isOnline: () => getToken(),
+    onSuccess: (data) => {
+      setUserdata(data.message)
+    }
   })
+
+
+
   useEffect(() => {
-    updateuserprofile();
     updateCurrentUser().then(() => {
       if (products) {
         setTimeout(() => {
@@ -67,13 +70,13 @@ const Home = () => {
         {data && (
           <div className='flex'>
             <div className='flex items-center w-[85%]'>
-              {data.user_image ? (
-                <img src={data.user_image} width="64" className='rounded-[99px]' />
+              {data.user.user_image ? (
+                <img src={data.user.user_image} width="64" className='rounded-[99px]' />
               ) : (
                 <SkeletonCircle startColor='#EDF2F7' endColor='#EDF2F7' width='64px' height='64px' borderRadius='100%' />
               )}
               <div className='ml-3 flex flex-col'>
-                <span className='font-bold'>{data.full_name}</span>
+                <span className='font-bold'>{data.user.full_name}</span>
               </div>
             </div>
             <div className='flex flex-col items-end justify-center w-[15%]'>
