@@ -13,10 +13,10 @@ const BankInfoPage = () => {
   return (
     <>
       <TitleHeader link='/my-order' title='ข้อมูลการแลกของรางวัล'/>
-      <main className='p-5'>
+      <main className='p-5 mt-[53px]'>
         <section className='text-center mt-5'>
           <img src={mascot} className='m-auto'/>
-          <p className='mt-8 text-[#424242] text-sm'>คุณได้ทำการ แลกของรางวัล เรียบร้อยแล้ว กรุณารับของรางวัล<br/> ตามสาขาที่คุณกำหนด</p>
+          <p className='mt-8 text-[#424242] text-sm'>คุณได้ทำการ แลกของรางวัล <br/>เรียบร้อยแล้ว กรุณารับของรางวัล<br/> ตามสาขาที่คุณกำหนด</p>
 
           <p className='mt-8 text-xs text-[#474747]'>คุณสามารถไปที่ <Link to='/reward-history' className='text-[#F0592A]'>ประวัติการใช้คะแนน</Link><br/>ของคุณเพื่อตรวจสอบประวัติและการใช้งานคะแนน</p>
         </section>
