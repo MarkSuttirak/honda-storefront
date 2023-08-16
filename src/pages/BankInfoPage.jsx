@@ -11,24 +11,13 @@ import { useFrappeGetCall } from 'frappe-react-sdk';
 const BankInfoPage = () => {
   const [searchParams] = useSearchParams();
 
-  const [thankyouImg, setThankyouImg] = useState(redeemedMark);
-
-  const animateMascot = () => {
-    setTimeout(() => {
-      setThankyouImg(mascot);
-    }, 2000);
-  }
-
-  useEffect(() => {
-    animateMascot()
-  }, [])
-
   return (
     <>
       <TitleHeader link='/my-order' title='ข้อมูลการแลกของรางวัล'/>
       <main className='p-5 mt-[53px]'>
         <section className='text-center mt-5'>
-          <img src={thankyouImg} className='m-auto flex' style={{animation:"imgAnim 2s"}}/>
+          <img src={redeemedMark} className='m-auto flex' style={{animation:"imgAnim 1s"}}/>
+          <img src={mascot} className='m-auto flex mt-[-100px] opacity-0' style={{animation:"imgAnim 1s forwards",animationDelay:"1s"}}/>
           <p className='mt-8 text-[#424242] text-sm'>คุณได้ทำการ แลกของรางวัล <br/>เรียบร้อยแล้ว กรุณารับของรางวัล<br/> ตามสาขาที่คุณกำหนด</p>
 
           <p className='mt-8 text-xs text-[#474747]'>คุณสามารถไปที่ <Link to='/reward-history' className='text-[#F0592A]'>ประวัติการใช้คะแนน</Link><br/>ของคุณเพื่อตรวจสอบประวัติและการใช้งานคะแนน</p>
