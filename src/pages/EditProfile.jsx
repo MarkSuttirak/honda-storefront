@@ -68,8 +68,8 @@ const EditProfile = () => {
           <main className='p-5'>
             <ProfileForm
               initialValues={{
-                first_name: user?.customer_name.split(" ")[0],
-                last_name: user?.customer_name.split(" ").slice(1).join(" "),
+                first_name: user?.user.first_name,
+                last_name: user?.user.last_name,
                 email: user?.email_id,
                 phone: user?.phone
               }}
