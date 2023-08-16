@@ -194,7 +194,7 @@ const Product = () => {
 
             <div className="w-full relative mx-auto z-10 bg-white p-4 rounded-[10px] -mt-[18px]" style={{ boxShadow: "0px 4px 20px 0px #EBE9EA", }}>
               <div className='text-center'>
-                <button className='bg-[#E9F6ED] w-[66px] h-[19px] rounded-full px-[10px] py-[4px] text-[#00B14F] font-bold text-[10px] leading-[11.1px]' style={{ fontFamily: "Eventpop" }} >ใช้หน้าร้าน</button>
+                <button className='bg-[#FDF0E4] w-[66px] h-[19px] rounded-full px-[10px] py-[4px] text-[#F0592A] font-bold text-[10px] leading-[11.1px]' style={{ fontFamily: "Eventpop" }} >ใช้หน้าร้าน</button>
                 {rewardReddem && (
                   <div className='mt-[5px]'>
                     <button className='bg-[#F0F0F0] h-[19px] rounded-full px-[10px] py-[4px] text-[#8A8A8A] font-bold text-[10px] leading-[11.1px]' style={{ fontFamily: "Eventpop" }} >แลกของรางวัลแล้ว</button>
@@ -205,13 +205,13 @@ const Product = () => {
               <div className='w-[224px] flex justify-between mt-[22px] mx-auto'>
                 <div>
                   <p className='text-[#00000061] font-normal text-xs leading-[17.4px]' style={{ fontFamily: "Eventpop" }}>คะแนนที่ใช้</p>
-                  <p className='font-bold text-sm text-[#00B14F] leading-[24px]' style={{ fontFamily: "Eventpop" }}>{product?.loyalty_points_based_price} คะแนน</p>
+                  <p className='font-bold text-sm text-[#F0592A] leading-[24px]' style={{ fontFamily: "Eventpop" }}>{product?.loyalty_points_based_price} คะแนน</p>
                   <p className='text-[#00000061] font-normal text-[10px] leading-[14.5px]' style={{ fontFamily: "Eventpop" }}>มูลค่า 350 บาท</p>
                 </div>
                 <hr className='w-[1px] h-[63px] border-r border-[#0000001A]' />
                 <div>
                   <p className='text-[#00000061] font-normal text-xs leading-[17.4px]' style={{ fontFamily: "Eventpop" }}>สามารถใช้ได้ถึง</p>
-                  <p className='font-bold text-sm text-[#00B14F] leading-[24px]' style={{ fontFamily: "Eventpop" }}>22 ม.ค. 2022</p>
+                  <p className='font-bold text-sm text-[#F0592A] leading-[24px]' style={{ fontFamily: "Eventpop" }}>22 ม.ค. 2022</p>
                 </div>
               </div>
             </div>
