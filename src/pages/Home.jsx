@@ -41,19 +41,24 @@ const Home = () => {
 
   const [loading, setLoading] = useState(true);
 
+  const updateuserprofile = async () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + Cookies.get('token'));
+    console.log(Cookies.get('user_id'), { domain: 'dev.zaviago.com' });
+  }
   const { data, isLoading, error } = useFrappeGetDoc('User', currentUser, {
     filters: ['name', 'full_name', 'user_image']
   })
   useEffect(() => {
-    updateCurrentUser()
-    .then(() => {
-      if (products){
+    updateuserprofile();
+    updateCurrentUser().then(() => {
+      if (products) {
         setTimeout(() => {
-          setLoading(false)
-        }, 1000)
+          setLoading(false);
+        }, 1000);
       }
-    })
-  },[])
+    });
+  }, []);
 
   return (
     <>
@@ -65,7 +70,7 @@ const Home = () => {
               {data.user_image ? (
                 <img src={data.user_image} width="64" className='rounded-[99px]' />
               ) : (
-                <SkeletonCircle startColor='#EDF2F7' endColor='#EDF2F7' width='64px' height='64px' borderRadius='100%'/>
+                <SkeletonCircle startColor='#EDF2F7' endColor='#EDF2F7' width='64px' height='64px' borderRadius='100%' />
               )}
               <div className='ml-3 flex flex-col'>
                 <span className='font-bold'>{data.full_name}</span>
@@ -85,8 +90,8 @@ const Home = () => {
         {isLoading && loading && (
           <div className='flex'>
             <div className='flex items-center w-[85%]'>
-              <SkeletonCircle startColor='#EDF2F7' endColor='#A0AEC0' width='64px' height='64px' borderRadius='100%'/>
-              <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' width='150px' height='20px' marginLeft='12px'/>
+              <SkeletonCircle startColor='#EDF2F7' endColor='#A0AEC0' width='64px' height='64px' borderRadius='100%' />
+              <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' width='150px' height='20px' marginLeft='12px' />
             </div>
             <div className='flex flex-col items-end justify-end w-[15%]'>
               <div className='inter text-xs text-[#4C4B4F]'>
@@ -119,7 +124,7 @@ const Home = () => {
               <button style={{background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}} className='p-4 text-white w-[100%] rounded-lg'>วิธีเก็บคะแนน</button>
             </div> */}
 
-      <div className='flex justify-between items-center my-[32px] mx-5 p-5 h-[54px] rounded-lg' style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)",width:"calc(100% - 40px)"}}>
+      <div className='flex justify-between items-center my-[32px] mx-5 p-5 h-[54px] rounded-lg' style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)", width: "calc(100% - 40px)" }}>
         <div className='flex items-center'>
           <img className='w-[17px] h-[17px]' src={bookClosed} alt="" />
           <p className='font-normal font-sm leading-[20px] ml-2 text-white'>วิธีเก็บคะแนน</p>
@@ -132,7 +137,7 @@ const Home = () => {
       <main className='relative top-[-10px] pb-[94px]'>
         <div className='mt-[22px]'>
           <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
-            สินค้าลดราคา
+            ของรางวัลทั้งหมด
             <SfIconArrowForward className="w-[18px] text-black ml-2" />
           </h2>
 
@@ -140,40 +145,40 @@ const Home = () => {
             {loading ? (
               <>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
                 </div>
               </>
             ) : (
               <>
-              {(products ?? []).map((product) => (
-                <ProductCard
-                  key={product.item_code}
-                  title={product.item_name}
-                  productId={product.name}
-                  itemCode={product.item_code}
-                  price={product.formatted_price}
-                  thumbnail={product.website_image} />
-              ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
-            </>
+                {(products ?? []).map((product) => (
+                  <ProductCard
+                    key={product.item_code}
+                    title={product.item_name}
+                    productId={product.name}
+                    itemCode={product.item_code}
+                    price={product.formatted_price}
+                    thumbnail={product.website_image} />
+                ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
+              </>
             )}
           </div>
         </div>
 
         <div className='mt-[22px]'>
           <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
-            สินค้าลดราคา
+            ของรางวัล
             <SfIconArrowForward className="w-[18px] text-black ml-2" />
           </h2>
 
@@ -181,40 +186,40 @@ const Home = () => {
             {loading ? (
               <>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
                 </div>
               </>
             ) : (
               <>
-              {(products ?? []).map((product) => (
-                <ProductCard
-                  key={product.item_code}
-                  title={product.item_name}
-                  productId={product.name}
-                  itemCode={product.item_code}
-                  price={product.formatted_price}
-                  thumbnail={product.website_image} />
-              ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
-            </>
+                {(products ?? []).map((product) => (
+                  <ProductCard
+                    key={product.item_code}
+                    title={product.item_name}
+                    productId={product.name}
+                    itemCode={product.item_code}
+                    price={product.formatted_price}
+                    thumbnail={product.website_image} />
+                ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
+              </>
             )}
           </div>
         </div>
 
         <div className='mt-[22px]'>
           <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
-            สินค้าลดราคา
+            คูปองแทนเงินสด
             <SfIconArrowForward className="w-[18px] text-black ml-2" />
           </h2>
 
@@ -222,33 +227,33 @@ const Home = () => {
             {loading ? (
               <>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
+                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
+                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
                 </div>
               </>
             ) : (
               <>
-              {(products ?? []).map((product) => (
-                <ProductCard
-                  key={product.item_code}
-                  title={product.item_name}
-                  productId={product.name}
-                  itemCode={product.item_code}
-                  price={product.formatted_price}
-                  thumbnail={product.website_image} />
-              ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
-            </>
+                {(products ?? []).map((product) => (
+                  <ProductCard
+                    key={product.item_code}
+                    title={product.item_name}
+                    productId={product.name}
+                    itemCode={product.item_code}
+                    price={product.formatted_price}
+                    thumbnail={product.website_image} />
+                ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
+              </>
             )}
           </div>
 
@@ -268,7 +273,7 @@ const Home = () => {
         <div className="mt-[30px]">
           <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
             สินค้าลดราคา
-            <SfIconArrowForward className="w-[18px] text-black ml-2"/>
+            <SfIconArrowForward className="w-[18px] text-black ml-2" />
           </h2>
 
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5 mb-5">
