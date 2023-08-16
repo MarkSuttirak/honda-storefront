@@ -73,7 +73,7 @@ const Home = () => {
             </div>
             <div className='flex flex-col items-end justify-center w-[15%]'>
               <div className='inter text-xs text-[#4C4B4F]'>
-                Coins
+                Points
               </div>
               <div className='flex gap-x-1 text-[13px]'>
                 <img src={coin} />
