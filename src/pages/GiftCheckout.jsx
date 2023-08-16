@@ -42,6 +42,8 @@ const GiftCheckout = () => {
 
     const [redeeming, setRedeeming] = useState(false);
 
+    const [loading, setLoading] = useState(true);
+
     const total = getTotal() + delivery - discount
 
     const formik = useFormik({
@@ -118,7 +120,6 @@ const GiftCheckout = () => {
         }])
     }, [product])
 
-
     console.log(formik.errors);
     return (
         <>
@@ -161,11 +162,10 @@ const GiftCheckout = () => {
                                         <div>
                                             <div className="flex justify-between text-base font-medium text-gray-900">
                                                 <h3 className='font-bold text-[15px]'>
-                                                    <a href="#">{product?.name}</a>
+                                                    <a href="#">{product?.item_name}</a>
                                                 </h3>
                                                 <p className="ml-4 text-sm">{product?.loyalty_points_based_price} คะแนน</p>
                                             </div>
-                                            <p className="mt-1 text-sm text-gray-500">Salmon</p>
                                         </div>
                                     </div>
                                 </ul>
