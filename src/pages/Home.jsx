@@ -43,9 +43,6 @@ const Home = () => {
   const { data, isLoading, error } = useFrappeGetDoc('User', currentUser, {
     filters: ['name', 'full_name', 'user_image']
   })
-
-  console.log(products)
-
   useEffect(() => {
     updateCurrentUser()
     .then(() => {
@@ -55,7 +52,7 @@ const Home = () => {
         }, 1000)
       }
     })
-  }, [updateCurrentUser])
+  })
 
   return (
     <>
