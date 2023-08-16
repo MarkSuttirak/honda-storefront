@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom';
 import TitleHeader from '../components/TitleHeader';
 import success from '../img/success.svg'
@@ -6,12 +6,13 @@ import kasikorn from '../img/kasikorn.svg'
 import qrcode2 from '../img/qrcode2.svg'
 import mascot from '../img/mascot.svg'
 import { Edit05, Copy01, Maximize01, ArrowUpRight } from '@untitled-ui/icons-react';
+import { useFrappeGetCall } from 'frappe-react-sdk';
 const BankInfoPage = () => {
   const [searchParams] = useSearchParams();
 
   return (
     <>
-      <TitleHeader link='/' title='ข้อมูลการแลกของรางวัล'/>
+      <TitleHeader link='/my-order' title='ข้อมูลการแลกของรางวัล'/>
       <main className='p-5'>
         <section className='text-center mt-5'>
           <img src={mascot} className='m-auto'/>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { SfButton, SfIconCheckCircle, SfIconClose } from '@storefront-ui/react';
 import { useCart } from '../hooks/useCart';
 import PaymentMethods from '../components/PaymentMethods';
@@ -9,12 +9,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, MarkerPin01, ChevronRight, HelpCircle } from '@untitled-ui/icons-react';
 import chevronDropdown from '../img/chevron-right.svg'
 import { useProducts } from '../hooks/useProducts'
-import { ShoppingBag01 } from '@untitled-ui/icons-react';
+import { ShoppingBag01, AlertTriangle } from '@untitled-ui/icons-react';
 import banks from '../img/banks.svg'
 import visaIcon from '../img/visa-icon.svg'
 import BranchSelect from '../components/form-controls/BranchSelect';
 import { useUser } from '../hooks/useUser';
 import { giftCardSchema } from '../components/forms/giftCardSchema';
+import { Dialog, Transition } from '@headlessui/react'
 
 const GiftCheckout = () => {
     const { cart, cartCount, getTotal, resetCart } = useCart();
@@ -27,6 +28,8 @@ const GiftCheckout = () => {
 
     const [modified, setModified] = useState(false)
 
+    const [showConfirm, setShowConfirm] = useState(false);
+
     const { call, isCompleted, result } = useFrappePostCall('headless_e_commerce.api.place_order');
 
     const [checkoutPage, setCheckoutPage] = useState(true)
@@ -36,6 +39,8 @@ const GiftCheckout = () => {
 
     const [delivery, setDelivery] = useState(59)
     const [discount, setDiscount] = useState(99)
+
+    const [redeeming, setRedeeming] = useState(false);
 
     const total = getTotal() + delivery - discount
 
@@ -183,7 +188,7 @@ const GiftCheckout = () => {
                                     </div>
                                 </ul>
                                 <div className="py-4 mt-3 md:pb-6 md:mt-0">
-                                    <SfButton disabled={user?.loyalty_points < product?.loyalty_points_based_price} size="lg" className="w-full shadow-none" style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}} onClick={(e) => { e.preventDefault(); formik.handleSubmit() }}>
+                                    <SfButton disabled={user?.loyalty_points < product?.loyalty_points_based_price} size="lg" className="w-full shadow-none" style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}} onClick={(e) => { e.preventDefault();setShowConfirm(true) }}>
                                         แลกรางวัลโดยใช้ {product?.loyalty_points_based_price} คะแนน
                                     </SfButton>
                                 </div>
@@ -417,6 +422,84 @@ const GiftCheckout = () => {
                     </>
                 )
             }
+
+            <Transition.Root show={showConfirm} as={Fragment}>
+                <Dialog as="div" className="relative z-10" onClose={() => {if (redeeming === false){setShowConfirm(false)}}}>
+                <Transition.Child
+                    as={Fragment}
+                    enter="ease-out duration-300"
+                    enterFrom="opacity-0"
+                    enterTo="opacity-100"
+                    leave="ease-in duration-200"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                >
+                    <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+                </Transition.Child>
+
+                <div className="fixed inset-0 z-10 overflow-y-auto">
+                    <div className="flex min-h-full items-center justify-center p-4 text-center">
+                    <Transition.Child
+                        as={Fragment}
+                        enter="ease-out duration-300"
+                        enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                        enterTo="opacity-100 translate-y-0 sm:scale-100"
+                        leave="ease-in duration-200"
+                        leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                        leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                    >
+                      <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all w-full max-w-md">
+                        <div className='mt-10 mb-[60px]'>
+                          {!redeeming ? (
+                            <div className="mt-3 text-center sm:mt-5">
+                            <Dialog.Title as="h3" className="text-lg font-bold leading-6 text-[#333333]">
+                                ยืนยันการแลกของรางวัล
+                            </Dialog.Title>
+                            <div className="mt-2">
+                              <p className="text-xs text-[#8A8A8A]">
+                              หลังจากกด “ยืนยันการแลก” <br/>คุณสามารถเก็บไว้ใช้ภายหลังได้
+                              </p>
+                            </div>
+                          </div>
+                          ) : (
+                            <div className="mt-3 text-center sm:mt-5">
+                              <Dialog.Title as="h3" className="text-lg font-bold leading-6 text-[#333333]">
+                                ระบบกำลังทำการแลกของรางวัล
+                              </Dialog.Title>
+                              <div className="mt-2">
+                                <p className="text-xs text-[#8A8A8A]">
+                                  กรุณารอสักครู่
+                                </p>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                        <div className="mt-6 grid grid-flow-row-dense grid-cols-2 gap-3">
+                          <button
+                            type="button"
+                            className='w-full bg-white border border-[#D7D7D7] text-[#111111] rounded-[9px] p-3 text-center'
+                            onClick={() => setShowConfirm(false)}
+                            >
+                            ยกเลิก
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setRedeeming(true);
+                              formik.handleSubmit();
+                            }}
+                            className='w-full text-white rounded-[9px] p-3 text-center'
+                            style={{background:!redeeming ? "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)" : "#C5C5C5"}}
+                            >
+                            {!redeeming ? "ยืนยันการแลก" : "กำลังแลกของรางวัล..."}
+                          </button>
+                        </div>
+                      </Dialog.Panel>
+                    </Transition.Child>
+                    </div>
+                </div>
+                </Dialog>
+            </Transition.Root>
         </>
     );
 
