@@ -50,7 +50,9 @@ const Home = () => {
     updateCurrentUser()
     .then(() => {
       if (products){
-        setTimeout(() => setLoading(false), 1000)
+        setTimeout(() => {
+          setLoading(false)
+        }, 1000)
       }
     })
   }, [updateCurrentUser])

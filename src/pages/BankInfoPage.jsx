@@ -11,7 +11,7 @@ const BankInfoPage = () => {
 
   return (
     <>
-      <TitleHeader link='/' title='ข้อมูลการแลกของรางวัล'/>
+      <TitleHeader link='/reward-home' title='ข้อมูลการแลกของรางวัล'/>
       <main className='p-5'>
         <section className='text-center mt-5'>
           <img src={mascot} className='m-auto'/>
