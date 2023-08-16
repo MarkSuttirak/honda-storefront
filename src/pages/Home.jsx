@@ -112,10 +112,10 @@ const Home = () => {
           <h2 className='text-[32px] text-white'>Silver</h2>
         </div>
         <div className=''>
-          <button className='bg-white w-[140px] h-[40px] rounded-full flex items-center justify-center' style={{ boxShadow: "0px 3px 15px 0px #7777771A" }}>
+          <Link to='/my-order' className='bg-white w-[140px] h-[40px] rounded-full flex items-center justify-center' style={{ boxShadow: "0px 3px 15px 0px #7777771A" }}>
             <img src={giftIcon} alt="" />
             <p className='font-normal text-sm leading-[21px] text-[#F0592A] ml-1'>รางวัลของฉัน</p>
-          </button>
+          </Link>
         </div>
       </div>
 
