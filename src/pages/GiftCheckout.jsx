@@ -40,6 +40,8 @@ const GiftCheckout = () => {
     const [delivery, setDelivery] = useState(59)
     const [discount, setDiscount] = useState(99)
 
+    const [redeeming, setRedeeming] = useState(false);
+
     const total = getTotal() + delivery - discount
 
     const formik = useFormik({
@@ -422,7 +424,7 @@ const GiftCheckout = () => {
             }
 
             <Transition.Root show={showConfirm} as={Fragment}>
-                <Dialog as="div" className="relative z-10" onClose={() => setShowConfirm(false)}>
+                <Dialog as="div" className="relative z-10" onClose={() => {if (redeeming === false){setShowConfirm(false)}}}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"
@@ -448,7 +450,8 @@ const GiftCheckout = () => {
                     >
                       <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all w-full max-w-md">
                         <div className='mt-10 mb-[60px]'>
-                          <div className="mt-3 text-center sm:mt-5">
+                          {!redeeming ? (
+                            <div className="mt-3 text-center sm:mt-5">
                             <Dialog.Title as="h3" className="text-lg font-bold leading-6 text-[#333333]">
                                 ยืนยันการแลกของรางวัล
                             </Dialog.Title>
@@ -458,22 +461,40 @@ const GiftCheckout = () => {
                               </p>
                             </div>
                           </div>
+                          ) : (
+                            <div className="mt-3 text-center sm:mt-5">
+                              <Dialog.Title as="h3" className="text-lg font-bold leading-6 text-[#333333]">
+                                ระบบกำลังทำการแลกของรางวัล
+                              </Dialog.Title>
+                              <div className="mt-2">
+                                <p className="text-xs text-[#8A8A8A]">
+                                  กรุณารอสักครู่
+                                </p>
+                              </div>
+                            </div>
+                          )}
                         </div>
-                        <div className="mt-6 grid grid-flow-row-dense grid-cols-2 gap-3">
-                          <button
-                            type="button"
-                            className='w-full bg-white border border-[#D7D7D7] text-[#111111] rounded-[9px] p-3 text-center'
-                            onClick={() => setShowConfirm(false)}
+                        <div className={`mt-6 grid grid-flow-row-dense ${redeeming ? "" : "grid-cols-2"} gap-3`}>
+                          {!redeeming && (
+                            <button
+                              type="button"
+                              className='w-full bg-white border border-[#D7D7D7] text-[#111111] rounded-[9px] p-3 text-center'
+                              onClick={() => setShowConfirm(false)}
                             >
-                            ยกเลิก
-                          </button>
+                              ยกเลิก
+                            </button>
+                          )}
                           <button
                             type="button"
-                            onClick={() => formik.handleSubmit()}
+                            onClick={() => {
+                              setRedeeming(true);
+                              formik.handleSubmit();
+                            }}
                             className='w-full text-white rounded-[9px] p-3 text-center'
-                            style={{background:"linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}}
+                            style={{background:!redeeming ? "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)" : "#C5C5C5"}}
+                            disabled={redeeming ? true : false}
                             >
-                            ยืนยันการแลก
+                            {!redeeming ? "ยืนยันการแลก" : "กำลังแลกของรางวัล..."}
                           </button>
                         </div>
                       </Dialog.Panel>
