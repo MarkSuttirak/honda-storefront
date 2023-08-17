@@ -33,7 +33,7 @@ import giftIcon from "../img/goftIconOrange.svg"
 import blogBanner from "../img/blog-img.png"
 // import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/skeleton';
 import Skeleton from '../components/Skeleton';
-
+import { getToken } from "../utils/helper";
 
 const Home = () => {
   document.body.style.background = "white"
