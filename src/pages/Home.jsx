@@ -43,15 +43,14 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [data, setUserdata] = useState(null);
 
-  
+  useFrappeGetCall('headless_e_commerce.api.get_profile', {}, 'user-profile', {
+    isOnline: () => getToken(),
+    onSuccess: (data) => {
+      setUserdata(data.message)
+    }
+  })
+
   useEffect(() => {
-    useFrappeGetCall('headless_e_commerce.api.get_profile', {}, 'user-profile', {
-      isOnline: () => getToken(),
-      onSuccess: (data) => {
-        setUserdata(data.message)
-      }
-    })
-    
     updateCurrentUser().then(() => {
       if (products) {
         setTimeout(() => {
