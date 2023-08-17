@@ -58,12 +58,12 @@ const MyOrder = () => {
                   </div>
                    <div className="flex">
                     <h2 className="w-[40%] text-xs">Status</h2>
-                    <p className="w-[60%] text-xs">
-                      {d.delivery_notes[0]?.status === 'Draft' ? 'Active' : d.delivery_notes[0]?.status === 'Submitted' ? 'Coupon is used' : ''}
+                    <p className={`w-[60%] text-xs`}>
+                      {d.delivery_notes[0]?.status === 'Draft' ? 'สามารถใช้คูปองได้' : d.delivery_notes[0]?.status === 'Submitted' ? 'คูปองถูกใช้แล้ว' : ''}
                     </p>
                   </div>
                   <div className="w-full">
-                    <Link to={`/my-order-details/${d.name}`} className='w-full block text-white rounded-[9px] p-3 text-center' style={{background:"linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}}>ดูข้อมูล</Link>
+                    <Link to={d.delivery_notes[0]?.status === 'Draft' && `/my-order-details/${d.name}`} className='w-full block text-white rounded-[9px] p-3 text-center' style={{background:d.delivery_notes[0]?.status === 'Draft' ? "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)" : "#C5C5C5"}}>ดูข้อมูล</Link>
                   </div>
                 </div>
               </section>

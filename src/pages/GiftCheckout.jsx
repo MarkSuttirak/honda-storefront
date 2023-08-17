@@ -519,8 +519,8 @@ const GiftCheckout = () => {
                           </button>
                         </div>
                         ) : (
-                          <div class="loading-icon">
-                            <div class="inner-icon"></div>
+                          <div className="loading-icon">
+                            <div className="inner-icon"></div>
                           </div>
                         )}
                       </Dialog.Panel>
