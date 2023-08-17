@@ -4,7 +4,6 @@ import TitleHeader from '../components/TitleHeader';
 import { useLocation } from 'react-router-dom';
 
 function CollectPoints() {
-  const [backUrl, setBackUrl] = useState('');
   const location = useLocation();
   const url = location.state.url;
   // setBackUrl(url);
