@@ -215,7 +215,7 @@ const MyAccount = () => {
                 {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 <Link to="/my-coupon">Coupon</Link>
               </div> */}
-              </div>
+              </div>  
 
               <div className='flex mt-1'>
                 <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center items-end'>

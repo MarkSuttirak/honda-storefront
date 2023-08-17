@@ -53,6 +53,7 @@ import HowRedeemReward from "./pages/HowRedeemReward";
 import MemberConditions from "./pages/MemberConditions";
 import SingleBlog from "./pages/SingleBlog";
 
+
 function App() {
   const navigate = useNavigate();
   const search = useLocation().search;
