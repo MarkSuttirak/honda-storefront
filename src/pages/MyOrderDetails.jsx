@@ -33,6 +33,8 @@ const MyOrderDetails = () => {
   const [discounted, setDiscounted] = useState(false);
   const [rewardReddem, setRewardRedeem] = useState(false);
 
+  const [expand, setExpand] = useState(false)
+
   const { data, isLoading, error } = useFrappeGetDoc('Sales Invoice', id, {
     fields: ['name', 'address', 'status', 'due_date', 'customer_address', 'items']
   })
@@ -88,8 +90,17 @@ const MyOrderDetails = () => {
                 </div>
               </SfScrollable>
             </div>
-            <div className="px-5 mb-4">
+            <div className={`px-5 mb-4 duration-300 ${expand ? 'translate-y-[-50%]' : ''}`}>
               <div className="w-full relative mx-auto z-10 bg-white py-[30px] rounded-[10px] -mt-[18px]" style={{ boxShadow: "0px 4px 20px 0px #EBE9EA", }}>
+              <div className='w-full translate-y-[-16px] pb-4' onClick={() => {
+                if (!expand){
+                  setExpand(true)
+                } else {
+                  setExpand(false)
+                }
+              }}>
+                <div className="w-[60px] h-[4px] bg-[#D9D9D9] rounded-[11px] m-auto"/>
+              </div>
                 <div className='text-center'>
                     <button className='bg-[#FDF0E4] w-[66px] h-[19px] rounded-full px-[10px] py-[4px] text-[#F0592A] font-bold text-[10px] leading-[11.1px]' style={{ fontFamily: "Eventpop" }} >ใช้หน้าร้าน</button>
                     {rewardReddem && (
@@ -130,7 +141,7 @@ const MyOrderDetails = () => {
 
                 {qrcode && (
                   <div className="mt-[44px]">
-                    <QRCode size={150} value={data.name} style={{border:"4px solid #FDF0E4",borderRadius:"10px",padding:"10px",margin:"auto"}}/>
+                    <QRCode value={data.name} style={{border:"4px solid #FDF0E4",borderRadius:"10px",padding:"10px",margin:"auto",width:expand ? "200px" : "150px",height:expand ? "200px" : "150px",transition:"width 300ms, height 300ms"}}/>
 
                     <p className="text-[#8A8A8A] text-xs mt-10 text-center">กรุณานำ QR Code นี้ให้พนักงานสแกน<br/>ที่หน้าร้านเพื่อรับของรางวัล</p>
                   </div>
