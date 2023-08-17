@@ -106,7 +106,7 @@ const verifyotpnow = (userphone,myotp,username) => {
       seterrornow('');
       seterrornow(res.message);
       Cookies.set('phoneverify', false); 
-      navigate("/");
+      navigate("/signup");
     }
     else{
         seterrornow(res.message);

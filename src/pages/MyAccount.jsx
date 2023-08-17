@@ -51,7 +51,7 @@ const MyAccount = () => {
 
   const logoutnowuser = () => {
     Cookies.remove('token');
-    location.href = "/welcome"
+    location.href = "/login"
   }
 
   const AccountMenu = ({ icon, title, link, state }) => {
