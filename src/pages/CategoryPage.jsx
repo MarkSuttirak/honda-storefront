@@ -44,11 +44,11 @@ const CategoryPage = () => {
   return (
     <>
 
-      <TitleHeader link='/' title='รางวัล'/>
+      <TitleHeader link='/' title='แลกของรางวัล'/>
       <main className='relative pt-[10px] pb-[94px] mt-[53px]'>
         <div className='mt-[22px]'>
           <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
-            สินค้าลดราคา
+          ของรางวัลทั้งหมด
             <SfIconArrowForward className="w-[18px] text-black ml-2"/>
           </h2>
 
@@ -87,9 +87,9 @@ const CategoryPage = () => {
           </div>
         </div>
 
-        <div className='mt-[22px]'>
+        <div className='mt-[40px]'>
           <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
-            สินค้าลดราคา
+          ของรางวัล
             <SfIconArrowForward className="w-[18px] text-black ml-2"/>
           </h2>
 
@@ -128,9 +128,9 @@ const CategoryPage = () => {
           </div>
         </div>
 
-        <div className='mt-[22px]'>
+        <div className='mt-[40px]'>
           <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
-            สินค้าลดราคา
+          คูปองแทนส่วนลด
             <SfIconArrowForward className="w-[18px] text-black ml-2"/>
           </h2>
 
