@@ -19,9 +19,10 @@ const MyOrder = () => {
 
 
   const getprofiledata = async () => {
+    var token = btoa(getToken());
     var myHeaders = new Headers();
     myHeaders.append("Cookie", "full_name=Guest; sid=Guest; system_user=no; user_id=Guest; user_image=");
-    myHeaders.append("Authorization", "Bearer "+getToken());
+    myHeaders.append("Authorization", "Bearer "+token);
     var requestOptions = {
       method: 'GET',
       headers: myHeaders
