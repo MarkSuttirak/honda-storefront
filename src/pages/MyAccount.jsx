@@ -201,9 +201,9 @@ const MyAccount = () => {
                 </div> */}
                 </div>
   
-                <div className='flex'>
-                  <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
-                    {user?.loyalty_points} <span className='text-[#FFA800]'>คะแนน</span>
+                <div className='flex mt-1'>
+                  <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center items-end'>
+                    <span className='text-[20px] leading-[30px]'>{user?.loyalty_points}</span> <span className='text-[#FFA800] text-xs'>คะแนน</span>
                   </div>
                   {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                   8 <span className='text-[#BC0000]'>codes</span>
@@ -225,8 +225,8 @@ const MyAccount = () => {
             <hr style={{ borderColor: "#F2F2F2" }} />
 
             <div className='w-full flex text-center'>
-              <Link to='/collect-points' state={{url:"/my-account"}} className='p-4 my-2 w-1/2 border-r border-r-[#F2F2F2]'>การใช้งานคะแนน</Link>
-              <Link to='/how-to-collect-rewards' className='p-4 my-2 w-1/2'>ระดับคะแนน</Link>
+              <Link to='/collect-points' state={{url:"/my-account"}} className='p-4 my-2 w-1/2 border-r border-r-[#F2F2F2]'>ประวัติการใช้คะแนน</Link>
+              <Link to='/how-to-collect-rewards' className='p-4 my-2 w-1/2'>ระดับสมาชิก</Link>
             </div>
           </div>
 
