@@ -142,7 +142,6 @@ const MyAccount = () => {
   ]
   return (
     <div>
-
       <header className="flex justify-center w-full z-[999] mt-2">
         <div className="flex flex-wrap lg:flex-nowrap bg-white items-center flex-row justify-start h-full max-w-[1536px] w-full py-2 px-4 rounded-[9px] justify-center" style={{ backdropFilter: "blur(3px)" }}>
           <a
@@ -161,8 +160,6 @@ const MyAccount = () => {
           </a>
         </div>
       </header>
-
-
       <header className="p-5 w-full bg-[#F4F4F4] pt-10 mt-3 myAccountTopBorder">
         {data && (
           <div className='flex items-center'>
@@ -207,7 +204,6 @@ const MyAccount = () => {
             </div>
           </div> */}
 
-
             <div className='p-5 flex flex-col items-center'>
               <div className='flex'>
                 <div className='flex gap-x-1 text-sm justify-center'>
@@ -220,26 +216,13 @@ const MyAccount = () => {
   
                 <div className='flex mt-1'>
                   <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center items-end'>
-                    <span className='text-[20px] leading-[30px]'>{user?.loyalty_points}</span> <span className='text-[#FFA800] text-xs'>คะแนน</span>
+                    <span className='text-[20px] leading-[20px]'>{user?.loyalty_points}</span> <span className='text-[#FFA800] text-xs'>คะแนน</span>
                   </div>
                   {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                   8 <span className='text-[#BC0000]'>codes</span>
                 </div> */}
                 </div>
-                {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
-                <Link to="/my-coupon">Coupon</Link>
-              </div> */}
               </div>
-
-              <div className='flex mt-1'>
-                <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center items-end'>
-                  <span className='text-[20px] leading-[20px]'>{user?.loyalty_points}</span> <span className='text-[#FFA800] text-xs'>คะแนน</span>
-              </div>
-                {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
-                8 <span className='text-[#BC0000]'>codes</span>
-              </div> */}
-              </div>
-            </div>
 
             <hr style={{ borderColor: "#F2F2F2" }} />
 
