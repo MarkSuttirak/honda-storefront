@@ -36,7 +36,7 @@ const MyOrder = () => {
           <span className="sr-only">Close panel</span>
           <ArrowLeft />
         </Link>
-        รายละเอียดคำสั่งซื้อ
+        รายละเอียดการแลกของรางวัล
       </header>
       <main className="p-5 flex flex-col gap-y-[18px] mt-[53px]">
         {myorderlist && (

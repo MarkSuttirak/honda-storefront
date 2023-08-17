@@ -141,7 +141,6 @@
 }
 
 .theMainBannerReardHome{
-  background-image: url('./img/mainBannerRewardHome.png');
   background-size: cover;
   width:calc(100% - 40px);
   margin:20px;

@@ -220,9 +220,14 @@ export const ProfileForm = ({
 
         <button className="absolute translate-y-[38px] right-[4px] bg-black text-white px-3 py-[6px] rounded-[6px]">แก้ไข</button>
       </div>
+
+      <div className='flex flex-col'>
+        <label htmlFor='birthdate'>วัน/เดือน/ปีเกิด</label>
+        <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' name='birthdate' type='date' onChange={formik.handleChange} />
+      </div>
       <footer className="w-full">
-        <button type="submit" className={`block mt-5 w-1/2 text-white rounded-[9px] p-3 w-full flex items-center justify-center gap-x-4 inter`} style={{background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}}>
-          Save
+        <button type="submit" className={`block mt-5 w-1/2 text-white rounded-[9px] p-3 w-full flex items-center justify-center gap-x-4 inter`} style={{background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)",fontFamily:"Eventpop"}}>
+          บันทึก
         </button>
       </footer>
     </form>
