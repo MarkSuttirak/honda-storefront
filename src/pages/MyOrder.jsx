@@ -1,13 +1,13 @@
-import React, { useState, useRef,useEffect } from "react"
+import React, { useState, useRef } from "react"
 import { ArrowLeft } from "@untitled-ui/icons-react"
-import { useFrappeGetDocList } from "frappe-react-sdk"
+import { useFrappeGetDocList, useFrappeGetCall } from "frappe-react-sdk"
 import testImg from '../img/test-img.png'
 import { Link, useParams } from "react-router-dom"
-import { getToken } from "../utils/helper";
-
 
 const MyOrder = () => {
   const { id } = useParams();
+ 
+ 
   const { data, isLoading, error } = useFrappeGetDocList('Sales Invoice', {
     fields: ['name', 'posting_date', 'status', 'total'],
     limit: 1000,
@@ -18,28 +18,9 @@ const MyOrder = () => {
   })
 
 
-  const getprofiledata = async () => {
-    var token = btoa(getToken());
-    var myHeaders = new Headers();
-    myHeaders.append("Cookie", "full_name=Guest; sid=Guest; system_user=no; user_id=Guest; user_image=");
-    myHeaders.append("Authorization", "Bearer "+token);
-    var requestOptions = {
-      method: 'GET',
-      headers: myHeaders
-    };
-    fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.getuser.getorders", requestOptions)
-    .then((response) => response.json()).then((data) => {
-      console.log(data);
-    })
-    .catch(error => console.log('error', error));
+  const { datazz } = useFrappeGetCall('honda_api.api_calls.getuser.getorders', null, `addresses-0`)
 
-
-  }
-
-  useEffect(() => {
-    getprofiledata();
-  },[]);
-
+  console.log(datazz)
 
   const [status, setStatus] = useState()
   return (
