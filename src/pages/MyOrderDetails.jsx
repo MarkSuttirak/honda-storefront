@@ -81,7 +81,7 @@ const MyOrderDetails = () => {
                 <div className="flex justify-center h-full basis-full shrink-0 grow snap-center">
                   <img
                     src={data.items[0].image !== "" && `https://dev.zaviago.com/${data.items[0].image}`}
-                    className={`object-cover w-full h-full ${data.items[0].image === null || data.items[0].image === undefined || data.items[0].image === "" && 'bg-[#C5C5C5]'}`}
+                    className={`object-cover w-full h-full ${data.items[0].image === "" && 'bg-[#C5C5C5]'}`}
                     // aria-label={product?.website_image}
                     // alt={product?.website_image}
                   />

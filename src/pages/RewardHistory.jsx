@@ -106,7 +106,7 @@ function RewardHistory() {
                 </div>
             </div>
 
-            <div className='mt-[214px] pb-[18px]'>
+            <div className={`mt-[214px] ${currentTab === 'คะแนนที่ได้รับ' ? "mb-[18px]" : ""}`}>
                 {!loading ? (
                     <>
                     {tabs.map((tab) => (
