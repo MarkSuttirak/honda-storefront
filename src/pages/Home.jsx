@@ -90,6 +90,7 @@ const Home = () => {
               )}
 
               <div className='ml-3 flex flex-col'>
+                <span className='text-[#333333] text-sm'>สวัสดี</span>
                 <span className='font-bold'>{data.full_name}</span>
               </div>
             </div>
