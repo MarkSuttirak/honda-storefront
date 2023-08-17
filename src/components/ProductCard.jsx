@@ -36,7 +36,7 @@ const ProductCard = ({
                         <SfIconFavorite size="sm" />
                     </SfButton> */}
                 </div>
-                <div className="py-4">
+                <div className="py-4 pb-0">
                     <SfLink href="#" variant="secondary" className="no-underline text-[#111111] text-xs">
                       {title}
                     </SfLink>

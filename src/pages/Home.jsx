@@ -143,15 +143,15 @@ const Home = () => {
       <div className='flex justify-between items-center my-[32px] mx-5 p-5 h-[54px] rounded-lg' style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)", width: "calc(100% - 40px)" }}>
         <div className='flex items-center'>
           <img className='w-[17px] h-[17px]' src={bookClosed} alt="" />
-          <p className='font-normal font-sm leading-[20px] ml-2 text-white'>วิธีเก็บคะแนน</p>
+          <Link to='/collect-points' className='font-normal font-sm leading-[20px] ml-2 text-white'>วิธีเก็บคะแนน</Link>
         </div>
         <div>
-          <img src={iconRightHead} className='w-[6px] h-[10px]' alt="" />
+        <Link to='/collect-points'><img src={iconRightHead} className='w-[6px] h-[10px]' alt="" /></Link>
         </div>
       </div>
 
       <main className='relative top-[-10px] pb-[94px]'>
-        <div className='mt-[22px]'>
+        <div className='mt-[27px]'>
           <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
             ของรางวัลทั้งหมด
             <SfIconArrowForward className="w-[18px] text-black ml-2" />
@@ -192,7 +192,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className='mt-[22px]'>
+        <div className='mt-[40px]'>
           <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
             ของรางวัล
             <SfIconArrowForward className="w-[18px] text-black ml-2" />
@@ -233,7 +233,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className='mt-[22px]'>
+        <div className='mt-[40px]'>
           <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
             คูปองแทนเงินสด
             <SfIconArrowForward className="w-[18px] text-black ml-2" />
@@ -286,10 +286,10 @@ const Home = () => {
           </div> */}
         </div>
 
-        <div className="mt-[30px]">
-          <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
-            สินค้าลดราคา
-            <SfIconArrowForward className="w-[18px] text-black ml-2" />
+        <div className="mt-[40px]">
+          <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[10px] leading-6'>
+          สิทธิประโยชน์สุดพิเศษ
+          
           </h2>
 
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5 mb-5">
