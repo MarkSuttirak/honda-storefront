@@ -219,7 +219,7 @@ const MyAccount = () => {
 
               <div className='flex mt-1'>
                 <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center items-end'>
-                  <span className='text-[20px] leading-[30px]'>{user?.loyalty_points}</span> <span className='text-[#FFA800] text-xs'>คะแนน</span>
+                  <span className='text-[20px] leading-[23px]'>{user?.loyalty_points}</span> <span className='text-[#FFA800] text-xs'>คะแนน</span>
               </div>
                 {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
                 8 <span className='text-[#BC0000]'>codes</span>
