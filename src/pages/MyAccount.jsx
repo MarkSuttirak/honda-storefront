@@ -50,9 +50,10 @@ const MyAccount = () => {
 
 
   const logoutnowuser = () => {
-    Cookies.remove('token');
     sessionStorage.clear();
     location.href = "/login"
+
+    Cookies.remove('token');
   }
 
   const AccountMenu = ({ icon, title, link, state }) => {
@@ -305,7 +306,7 @@ const MyAccount = () => {
                     </button>
                     <button
                       type="button"
-                      onClick={() => logoutnowuser()}
+                      onClick={logoutnowuser}
                       className='w-full bg-[#111111] border border-[#111111] text-white rounded-[9px] p-3 text-center'
                     >
                       ออกจากระบบ
