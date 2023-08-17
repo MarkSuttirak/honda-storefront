@@ -66,7 +66,7 @@
   margin-left:280px;
 }
 
-.payment-check,.shop-filter-check,.product-type-input,.size-input,.product-colour-input {
+.payment-check,.shop-filter-check,.product-type-input,.size-input,.product-colour-input,#accept {
   position:absolute;
   opacity:0;
 }
@@ -170,6 +170,22 @@
   height:60px;
   background:#FFFFFF;
   transform:translate(0,10px)
+}
+
+.accept-checkbox {
+  width:20px;
+  height:20px;
+  display:inline-block;
+  border:1px solid #E3E3E3;
+  border-radius:4px;
+}
+
+#accept:checked ~ .accept-checkbox {
+  border:1px solid #F0592A;
+  background-image:url('img/checked-box.svg');
+  background-position:center;
+  background-repeat:no-repeat;
+  background-color:#F0592A;
 }
 
 @keyframes loadingAnim{
