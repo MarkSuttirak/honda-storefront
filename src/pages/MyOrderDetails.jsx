@@ -6,7 +6,7 @@ import qrcodeMock from '../img/qrcode-redeem.svg'
 import barcodeMock from '../img/barcode-mock.svg'
 import QRCode from "react-qr-code";
 import Barcode from 'react-barcode';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   SfButton,
   SfLink,
@@ -61,6 +61,12 @@ const MyOrderDetails = () => {
     setBarcode(true);
   }
 
+  window.addEventListener("scroll", () => {
+    if (window.screenY > 1 || window.pageYOffset > 1) {
+      setExpand(true)
+    }
+  })
+
   return (
     <>
       <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold bg-white fixed bg-white top-0 w-full z-[999]'>
@@ -72,7 +78,7 @@ const MyOrderDetails = () => {
       </header>
         {data && (
           <main className="mt-[53px]">
-            <div className="relative flex w-full max-h-[600px] aspect-[4/3]">
+            <div className="flex w-full max-h-[600px] aspect-[4/3] fixed">
               <SfScrollable
                 className="relative w-full h-full snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                 direction="vertical"
@@ -90,7 +96,7 @@ const MyOrderDetails = () => {
                 </div>
               </SfScrollable>
             </div>
-            <div className={`px-5 mb-4 duration-300 ${expand ? 'translate-y-[-50%]' : ''}`}>
+            <div className={`px-5 mb-4 duration-300 ${expand ? 'pt-[80px]' : 'pt-[280px]'}`}>
               <div className="w-full relative mx-auto z-10 bg-white py-[30px] rounded-[10px] -mt-[18px]" style={{ boxShadow: "0px 4px 20px 0px #EBE9EA", }}>
               <div className='w-full translate-y-[-16px] pb-4' onClick={() => {
                 if (!expand){
