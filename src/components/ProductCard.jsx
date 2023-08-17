@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 import { SfButton, SfRating, SfCounter, SfLink, SfIconShoppingCart, SfIconFavorite } from '@storefront-ui/react';
 import { useCart } from '../hooks/useCart';
+import StarIcon from "../img/orangeStar.svg"
 
 const ProductCard = ({
     title,
@@ -50,9 +51,10 @@ const ProductCard = ({
                     {/* <p className="block py-2 font-normal typography-text-sm text-neutral-700">
                         Lightweight • Non slip • Flexible outsole • Easy to wear on and off
                     </p> */}
-                    <div className='flex items-center gap-x-[2px]'>
-                      <span className="block pb-2 font-medium text-sm text-black">{price}</span>
-                      <span className="block pb-2 font-medium ml-1 text-xs text-[#F0592A] line-through">฿ 30</span>
+                    <div className='flex items-center'>
+                    <img src={StarIcon} />
+                      <span className="block font-medium pl-[3px] text-sm text-black">{price}</span>
+                      <span className="block pt-[3px] font-bold pl-[3px] text-xs text-[#F0592A]">฿ 30</span>
                     </div>
                     {/* <SfButton type="button" size="sm" slotPrefix={<SfIconShoppingCart size="sm" />} onClick={(e) => {
                         e.preventDefault();

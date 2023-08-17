@@ -54,9 +54,9 @@ const MyAccount = () => {
     location.href = "/welcome"
   }
 
-  const AccountMenu = ({ icon, title, link }) => {
+  const AccountMenu = ({ icon, title, link, state }) => {
     return (
-      <Link to={link} className='flex justify-between items-center px-5 py-[17px] w-full'>
+      <Link to={link} className='flex justify-between items-center px-5 py-[17px] w-full' state={state ? state : undefined}>
         <div className='flex gap-x-[10px] text-sm text-[#111111] items-center'>
           {icon}
           {title}
@@ -92,15 +92,11 @@ const MyAccount = () => {
   ]
 
   const helpMenu = [
-    // {
-    //   icon: <Building02 />,
-    //   title: 'หน้าร้านของเรา',
-    //   link: '#'
-    // },
     {
       icon: <BookClosed />,
       title: 'วิธีเก็บคะแนน',
-      link: '/collect-points'
+      link: '/collect-points',
+      url: '/collect-points',
     },
     {
       icon: <Gift01 />,
@@ -214,7 +210,7 @@ const MyAccount = () => {
             <hr style={{ borderColor: "#F2F2F2" }} />
 
             <div className='w-full flex text-center'>
-              <Link to='/collect-points' className='p-4 my-2 w-1/2 border-r border-r-[#F2F2F2]'>การใช้งานคะแนน</Link>
+              <Link to='/collect-points' state={{url:"/my-account"}} className='p-4 my-2 w-1/2 border-r border-r-[#F2F2F2]'>การใช้งานคะแนน</Link>
               <Link to='/how-to-collect-rewards' className='p-4 my-2 w-1/2'>ระดับคะแนน</Link>
             </div>
           </div>
@@ -229,7 +225,7 @@ const MyAccount = () => {
           <h2 className='mt-[30px] mb-[10px]'>ความช่วยเหลือ</h2>
           <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{ filter: "drop-shadow(0 4px 20px #6363630D" }}>
             {helpMenu.map((menu) =>
-              <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} />
+              <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} state={menu.url ? { url: '/my-account' } : undefined}  />
             )}
           </div>
 

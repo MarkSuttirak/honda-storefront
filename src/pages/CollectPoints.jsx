@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import FooterMenu from "../components/FooterMenu"
 import TitleHeader from '../components/TitleHeader';
+import { useLocation } from 'react-router-dom';
 
 function CollectPoints() {
+  const location = useLocation();
+  const url = location.state.url;
+
   return (
     <>
-    <TitleHeader link={'/my-account'} title={'วิธีเก็บคะแนน'} />
+    <TitleHeader link={url} title={'วิธีเก็บคะแนน'} />
     <div className="px-[20px] pt-9 mt-10">
         <h2 className='text-base font-bold' style={{ fontFamily: "Eventpop" }}>เงื่อนไขในการให้คะแนน </h2>
         <ul className='mt-2 ml-5'>

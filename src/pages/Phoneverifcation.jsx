@@ -126,14 +126,21 @@ const verifyotpnow = (userphone,myotp,username) => {
             {phonePage && (
               <>
                 <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px]'>
+                  <Link to='/login'>
+                    <ArrowLeft />
+                  </Link>
                   <img src={logo} width='60' className=" mx-auto"/>
+                  <Link className="invisible">
+                    <ArrowLeft />
+                  </Link>
                 </header>
-                <main className='px-5 py-[46px]'>
-                  <h1 className='text-[22px] font-bold'>กรอกเบอร์มือถือของคุณ</h1>
-                  <p className='mt-4'>กรอกเบอร์มือถือของคุณและกดรับรหัสยืนยันทาง SMS (OTP) เพื่อยืนยันเบอร์มือถือของคุณ</p>
+                <main className='px-5 pt-[26px] pb-8'>
+                  <h1 className='text-[20px] font-bold'>กรอกหมายเลขโทรศัพท์</h1>
+                  <p className='text-[#00000061] text-sm'>กรุณากรอกหมายเลขโทรศัพท์ของคุณเพื่อรับรหัส OTP</p>
 
+                  <p className='text-[#00000061] text-sm mt-4'>กรอกหมายเลขโทรศัพท์</p>
                   <div className="flex gap-x-3">
-                    <input type="tel" id="phone" autoComplete="off" ref={telRef} onChange={handleChange} className={`relative border ${phoneError ? "border-[#EC5454]" : "border-[#E3E3E3]"} rounded-[8px] outline-none py-2 px-3 mt-[11px] w-full`} onInput={(e) => {
+                    <input type="tel" id="phone" autoComplete="off" ref={telRef} onChange={handleChange} className={`relative border ${phoneError ? "border-[#EC5454]" : "border-[#E3E3E3]"} rounded-[8px] outline-none py-2 px-3 mt-2 w-full`} onInput={(e) => {
                       if (e.target.value !== ""){
                         setFilledPhone(true)
                       } else {
@@ -144,52 +151,38 @@ const verifyotpnow = (userphone,myotp,username) => {
 
                   {!phoneError ? "" : (<p className="text-[#EC5454] inter mt-2">This phone number is invalid</p>)}
 
-                  <button onClick={() => {
-                    if (telRef.current.value.length < 10){
-                      setPhoneError(true);
-                    } else {
-                      clickverify();
-                    }
-                  }} className={`mt-[14px] w-1/2 text-white rounded-[9px] p-3 text-center w-full ${!filledPhone ? "bg-[#C5C5C5] border border-[#C5C5C5]" : "bg-[#111111] border border-[#111111]"}`} disabled={!filledPhone}>รับรหัสยืนยัน SMS (OTP)</button>
+                  {show && (
+                    <button onClick={() => {
+                      if (telRef.current.value.length < 10){
+                        setPhoneError(true);
+                      } else {
+                        clickverify();
+                      }
+                    }} className={`mt-[14px] w-1/2 text-white rounded-[9px] p-3 text-center w-full`} style={{background:!filledPhone ? "#C5C5C5" : "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}} disabled={!filledPhone}>รับรหัสยืนยัน SMS (OTP)</button>
+                  )}
 
-                  <p className="text-[#9E9E9E] mt-[14px] text-[13px]">หน้าเพจนี้อันรวมไปถึงเอกสารหรือข้อความต่างๆที่มีความเกี่ยวข้องกับหน้าเพจนี้ถูกเขียนขึ้นมาเพื่อแจ้งท่านให้ทราบถึง ข้อกำหนด</p>
+                  <p className="text-[#00000061] mt-[14px] text-sm text-center">คุณจะได้รับรหัสยืนยันตัวตนจำนวน 6 หลัก</p>
+
                 </main>
-              </>
-            )}
 
-            {getOTP && (
-              <>
-                <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px]'>
-                  <button onClick={goBack}>
-                    <ArrowLeft />
-                  </button>
-                  ยืนยันรหัส
-                </header>
-                <main className='px-5 py-[46px]'>
-                  <h1 className='text-[22px] font-bold'>ยืนยันรหัส OTP</h1>
-                  <p className='mt-4'>เราได้ส่ง SMS (OTP) ไปที่เบอร์<br/>090-1234-567</p>
+                <main className={`${show ? "invisible" : "visible"} px-5 pb-[46px]`}>
+                  <h1 className='text-[22px] font-bold'>กรอกรหัสผ่าน OTP</h1>
+                  <p className='mt-1 text-[#00000061] text-sm'>รหัส OTP จะส่งไปยังหมายเลขโทรศัพท์ของคุณ</p>
 
-                  <div className="flex gap-x-[9px] mt-9">
-                    <input type="text" id="num1" ref={num1Ref} className={`border ${otperror ? "border-[#EC5454]" : "border-[#D8DADC]"} w-full p-3 text-center text-2xl rounded-[15px]`} autoComplete="off" onKeyDown={() => {
-                      setOtperror(false);
-                    }}/>
-                  </div>
+                  <p className='mt-4 text-[#00000061] text-sm'>กรอกรหัส OTP</p>
+                  <input onChange={handleotpchange} value={myotp} className={`${otperror ? "border border-[#F0592A]" : "border border-[#F8F8F8]"} bg-[#F8F8F8] w-full rounded-[8px] outline-none py-2 px-3 mt-[11px] text-center text-[20px] font-bold`} id='otp' name='otp' type='tel'/>
+                  {otperror && (<p className="text-[#F0592A] inter mt-2 text-sm" style={{fontFamily:"Eventpop"}}>รหัส OTP ไม่ถูกต้อง</p>)}
 
-                  {!otperror ? (<p className="text-center mt-[43px]">I didn't receive a code <strong>Resend</strong></p>) : (<p className="text-center text-[#EC5454] inter mt-[43px]">Wrong code, please try again <strong>Resend</strong></p>)}
+                  <p className='mt-[52px] text-[#00000061] text-sm text-center'>หากคุณต้องการขอรหัสผ่าน OTP อีกครั้ง <br/>กด <span className="text-black">“ขอรหัส OTP อีกครั้ง”</span> ได้ที่ด้านล่าง</p>
+                  <p className="mt-8 mb-[48px] text-sm text-center">ขอรหัส OTP ใหม่อีกครั้งใน 00:59 วินาที</p>
 
-                  <button onClick={() => {
-                    if (num1Ref.current.value){
-                      setOtperror(false);
-                      verifyotp();
-                    } else {
-                      setOtperror(true)
-                    }
-                  }} className={`block mt-10 w-1/2 text-white rounded-[9px] p-3 text-center w-full ${!filledOTP ? "bg-[#C5C5C5] border border-[#C5C5C5]" : "bg-[#111111] border border-[#111111]"}`} disabled={!filledOTP}>ยืนยันรหัส OTP</button>
+                  <button onClick={verifyotp} className={`text-white rounded-[9px] p-3 w-full bg-black flex items-center justify-center mt-[14px]`} style={{background:!filledOTP ? "#C5C5C5" : "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}} >ยืนยันรหัส OTP</button>
+                  <p className="text-center mt-4 text-[#F0592A] text-sm underline">ขอรหัส OTP อีกครั้ง</p>
                 </main>
               </>
             )}
    
-      <main className='px-5 py-[46px]'>
+      {/* <main className='px-5 py-[46px]'>
           <div className='flex flex-col relative'>
               <div className="showerror">{errornow}</div>
               <label htmlFor='phone'>เบอร์โทร</label>
@@ -198,11 +191,9 @@ const verifyotpnow = (userphone,myotp,username) => {
               
               
               <input  onChange={handleotpchange} value={myotp} className={`${show ? "invisible" : "visible"} border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]`} placeholder="OTP"  id='otp' name='otp' type='tel'/>
-              <button onClick={verifyotp} className={`${show ? "invisible" : "visible"} text-white rounded-[9px] p-3 w-full bg-[#00A950] font-bold flex items-center justify-center mt-8`}>แจ้งโอนเงิน</button>
+              <button onClick={verifyotp} className={`${show ? "invisible" : "visible"} text-white rounded-[9px] p-3 w-full bg-black flex items-center justify-center mt-8`}>ยืนยันรหัส OTP</button>
           </div>
-      </main>
-      <footer className='flex px-5 pb-5 gap-x-3'>
-      </footer>
+      </main> */}
     </>
   )
 }
