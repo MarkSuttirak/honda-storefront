@@ -496,8 +496,8 @@ const GiftCheckout = () => {
                             </div>
                           )}
                         </div>
-                        <div className={`mt-6 grid grid-flow-row-dense ${redeeming ? "" : "grid-cols-2"} gap-3`}>
-                          {!redeeming && (
+                        {!redeeming ? (
+                        <div className={`mt-6 grid grid-flow-row-dense grid-cols-2 gap-3`}>
                             <button
                               type="button"
                               className='w-full bg-white border border-[#D7D7D7] text-[#111111] rounded-[9px] p-3 text-center'
@@ -505,7 +505,7 @@ const GiftCheckout = () => {
                             >
                               ยกเลิก
                             </button>
-                          )}
+                          
                           <button
                             type="button"
                             onClick={() => {
@@ -514,11 +514,15 @@ const GiftCheckout = () => {
                             }}
                             className='w-full text-white rounded-[9px] p-3 text-center'
                             style={{background:!redeeming ? "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)" : "#C5C5C5"}}
-                            disabled={redeeming ? true : false}
                             >
-                            {!redeeming ? "ยืนยันการแลก" : "กำลังแลกของรางวัล..."}
+                            ยืนยันการแลก
                           </button>
                         </div>
+                        ) : (
+                          <div class="loading-icon">
+                            <div class="inner-icon"></div>
+                          </div>
+                        )}
                       </Dialog.Panel>
                     </Transition.Child>
                     </div>

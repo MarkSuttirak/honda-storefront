@@ -152,6 +152,31 @@
   border-radius: 29px 29px 0px 0px;
 }
 
+.loading-icon{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  background:linear-gradient(0deg, #F0592A, #FFFFFF);
+  animation:loadingAnim 1s linear infinite;
+  margin:auto;
+  margin-bottom:40px
+}
+
+.inner-icon{
+  border-radius:50%;
+  margin:auto;
+  display:block;
+  width:60px;
+  height:60px;
+  background:#FFFFFF;
+  transform:translate(0,10px)
+}
+
+@keyframes loadingAnim{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+
 @keyframes borderAnim {
   from {
     width:0;

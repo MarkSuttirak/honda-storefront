@@ -146,28 +146,8 @@ const MyAccount = () => {
   ]
   return (
     <div>
-
-      <header className="flex justify-center w-full z-[999] mt-2">
-        <div className="flex flex-wrap lg:flex-nowrap bg-white items-center flex-row justify-start h-full max-w-[1536px] w-full py-2 px-4 rounded-[9px] justify-center" style={{ backdropFilter: "blur(3px)" }}>
-          <a
-            href="/"
-            aria-label="SF Homepage"
-            className="flex mr-4 focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0"
-          >
-            <picture>
-              <source srcSet={hondaLogo} media="(min-width: 768px)" />
-              <img
-                src={hondaLogo}
-                alt="Sf Logo"
-                className="w-[100px]"
-              />
-            </picture>
-          </a>
-        </div>
-      </header>
-
-
-      <header className="p-5 w-full bg-[#F4F4F4] pt-10 mt-3 myAccountTopBorder">
+      <NavHeader />
+      <header className="p-5 w-full bg-[#F4F4F4] pt-10">
         {data && (
           <div className='flex items-center'>
             <img src={data.user_image} width="64" className='rounded-[99px]' />
