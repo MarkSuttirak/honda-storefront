@@ -97,7 +97,7 @@ const MyOrderDetails = () => {
               </SfScrollable>
             </div>
             <div className={`px-5 mb-4 duration-300 ${expand ? 'pt-[80px]' : 'pt-[280px]'}`}>
-              <div className="w-full relative mx-auto z-10 bg-white py-[30px] rounded-[10px] -mt-[18px]" style={{ boxShadow: "0px 4px 20px 0px #EBE9EA", }}>
+              <div className="w-full relative mx-auto z-10 bg-white py-[30px] rounded-[10px] -mt-[18px]" style={{ boxShadow: "0px 4px 20px 0px #2323231A", }}>
               <div className='w-full translate-y-[-16px] pb-4' onClick={() => {
                 if (!expand){
                   setExpand(true)
