@@ -31,8 +31,8 @@ import iconRightHead from "../img/iconRightHead.svg"
 import bookClosed from "../img/book-closed.svg"
 import giftIcon from "../img/goftIconOrange.svg"
 import blogBanner from "../img/blog-img.png"
-import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/skeleton';
-import { getToken } from "../utils/helper";
+// import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/skeleton';
+import Skeleton from '../components/Skeleton';
 
 
 const Home = () => {
@@ -85,7 +85,7 @@ const Home = () => {
               {data.user_image ? (
                 <img src={data.user_image} width="64" className='rounded-[99px]' />
               ) : (
-                <SkeletonCircle startColor='#EDF2F7' endColor='#EDF2F7' width='64px' height='64px' borderRadius='100%' />
+                <Skeleton width='64px' height='64px' borderRadius='50%' />
               )}
 
               <div className='ml-3 flex flex-col'>
@@ -106,8 +106,8 @@ const Home = () => {
         {!data && loading && (
           <div className='flex'>
             <div className='flex items-center w-[85%]'>
-              <SkeletonCircle startColor='#EDF2F7' endColor='#A0AEC0' width='64px' height='64px' borderRadius='100%' />
-              <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' width='150px' height='20px' marginLeft='12px' />
+              <Skeleton width='64px' height='64px' borderRadius='50%' />
+              <Skeleton width='150px' height='20px' />
             </div>
             <div className='flex flex-col items-end justify-end w-[15%]'>
               <div className='inter text-xs text-[#4C4B4F]'>
@@ -161,19 +161,19 @@ const Home = () => {
             {loading ? (
               <>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
               </>
             ) : (
@@ -202,19 +202,19 @@ const Home = () => {
             {loading ? (
               <>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
               </>
             ) : (
@@ -243,19 +243,19 @@ const Home = () => {
             {loading ? (
               <>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px' />
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px' />
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px' />
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
               </>
             ) : (
