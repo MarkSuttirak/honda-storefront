@@ -51,10 +51,9 @@ const ProductCard = ({
                     {/* <p className="block py-2 font-normal typography-text-sm text-neutral-700">
                         Lightweight • Non slip • Flexible outsole • Easy to wear on and off
                     </p> */}
-                    <div className='flex items-center'>
-                    <img src={StarIcon} />
-                      <span className="block font-medium pl-[3px] text-sm text-black">{price}</span>
-                      <span className="block pt-[3px] font-bold pl-[3px] text-xs text-[#F0592A]">฿ 30</span>
+                    <div className='flex items-center mt-1'>
+                      <img src={StarIcon} />
+                      <span className="block font-bold pl-[3px] text-sm text-[#F0592A]">{price} คะแนน</span>
                     </div>
                     {/* <SfButton type="button" size="sm" slotPrefix={<SfIconShoppingCart size="sm" />} onClick={(e) => {
                         e.preventDefault();

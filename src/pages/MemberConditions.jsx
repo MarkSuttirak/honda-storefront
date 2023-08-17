@@ -29,7 +29,7 @@ function MemberConditions() {
                     <li className='text-sm font-medium text-[#585858] list-disc leading-[20px]'>ค่าใช้จ่าย: 60,000 บาท ขึ้นไป</li>
                 </ul>
             </div>
-            <FooterMenu active={2} />
+            <FooterMenu active={3} />
         </>
     )
 }

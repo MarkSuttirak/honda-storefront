@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useUser } from '../hooks/useUser';
 import { useFrappeGetCall, useFrappeGetDoc } from 'frappe-react-sdk';
 import FooterMenu from '../components/FooterMenu';
-import { Skeleton } from '@chakra-ui/skeleton';
+import Skeleton from '../components/Skeleton';
 
 function RewardHistory() {
     const [currentTab, setCurrentTab] = useState('คะแนนที่ได้รับ');
@@ -162,12 +162,19 @@ function RewardHistory() {
                 ))}
                     </>
                 ) : (
-                    <div className='px-5'>
-                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="100%" borderRadius="6px"/>
-                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="100%" marginTop="20px" borderRadius="6px"/>
-                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="100%" marginTop="20px" borderRadius="6px"/>
-                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="100%" marginTop="20px" borderRadius="6px"/>
-                        <Skeleton startColor='#EDF2F7' endColor='#A0AEC0' height="10px" width="100%" marginTop="20px" borderRadius="6px"/>
+                    <div>
+                      <div className='pb-[18px] px-5 pt-[37px] border-b border-b-[#E3E3E3]'>
+                        <Skeleton width='100%' height='21px' borderRadius='4px'/>
+                      </div>
+                      <div className='pb-[18px] px-5 pt-[37px] border-b border-b-[#E3E3E3]'>
+                        <Skeleton width='100%' height='21px' borderRadius='4px'/>
+                      </div>
+                      <div className='pb-[18px] px-5 pt-[37px] border-b border-b-[#E3E3E3]'>
+                        <Skeleton width='100%' height='21px' borderRadius='4px'/>
+                      </div>
+                      <div className='pb-[18px] px-5 pt-[37px] border-b border-b-[#E3E3E3]'>
+                        <Skeleton width='100%' height='21px' borderRadius='4px'/>
+                      </div>
                     </div>
                 )}
             </div>

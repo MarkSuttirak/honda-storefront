@@ -146,7 +146,7 @@ const Home = () => {
           <Link to='/collect-points' state={{url:"/"}} className='font-normal font-sm leading-[20px] ml-2 text-white'>วิธีเก็บคะแนน</Link>
         </div>
         <div>
-        <Link to='/collect-points'><img src={iconRightHead} className='w-[6px] h-[10px]' alt="" /></Link>
+        <Link to='/collect-points' state={{url:"/"}}><img src={iconRightHead} className='w-[6px] h-[10px]' alt="" /></Link>
         </div>
       </div>
 
@@ -184,7 +184,7 @@ const Home = () => {
                     title={product.item_name}
                     productId={product.name}
                     itemCode={product.item_code}
-                    price={product.formatted_price}
+                    price={product.loyalty_points_based_price}
                     thumbnail={product.website_image} />
                 ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
               </>
@@ -225,7 +225,7 @@ const Home = () => {
                     title={product.item_name}
                     productId={product.name}
                     itemCode={product.item_code}
-                    price={product.formatted_price}
+                    price={product.loyalty_points_based_price}
                     thumbnail={product.website_image} />
                 ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
               </>
@@ -266,7 +266,7 @@ const Home = () => {
                     title={product.item_name}
                     productId={product.name}
                     itemCode={product.item_code}
-                    price={product.formatted_price}
+                    price={product.loyalty_points_based_price}
                     thumbnail={product.website_image} />
                 ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
               </>

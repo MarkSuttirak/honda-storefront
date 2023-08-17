@@ -56,7 +56,7 @@ function TermsAndConditions() {
                 <p className='text-sm font-medium text-[#585858] mt-4'>4.2 สมาชิกรับรองว่า หากมีการเปลี่ยนแปลงข้อมูลส่วนตัวของสมาชิก สมาชิกจะปรับปรุงข้อมูลส่วนตัวของสมาชิกให้ทันสมัยอยู่ตลอดเวลา</p>
             
             </div>
-            <FooterMenu active={2} />
+            <FooterMenu active={3} />
         </>
     )
 }
