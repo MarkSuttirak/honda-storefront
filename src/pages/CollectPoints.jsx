@@ -6,7 +6,6 @@ import { useLocation } from 'react-router-dom';
 function CollectPoints() {
   const location = useLocation();
   const url = location.state.url;
-  // setBackUrl(url);
 
   return (
     <>
