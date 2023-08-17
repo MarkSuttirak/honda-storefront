@@ -51,6 +51,7 @@ const MyAccount = () => {
 
   const logoutnowuser = () => {
     Cookies.remove('token');
+    sessionStorage.clear();
     location.href = "/login"
   }
 
