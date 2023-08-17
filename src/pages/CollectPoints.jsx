@@ -17,7 +17,7 @@ function CollectPoints() {
             <li className='text-sm font-medium text-[#585858] list-disc leading-[20px]'>ค่าบริการซ่อมสีและตัวถัง (ฺB/P) กรณีประกันจ่าย 1,000 บาท มีค่าเท่ากับ 1 คะแนน </li>
         </ul>
     </div>
-    <FooterMenu active={2} />
+    <FooterMenu active={3} />
 </>
   )
 }
