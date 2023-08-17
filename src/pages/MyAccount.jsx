@@ -101,14 +101,12 @@ const MyAccount = () => {
     {
       icon: <Gift01 />,
       title: 'วิธีแลกของรางวัล',
-      link: '/how-to-collect-rewards',
-      ur: ''
+      link: '/how-to-collect-rewards'
     },
     {
       icon: <CreditCard02 />,
       title: 'เงื่อนไขระดับของสมาชิก',
-      link: '/member-conditions',
-      url: ''
+      link: '/member-conditions'
     }
     // {
     //   icon: <AnnotationQuestion />,
