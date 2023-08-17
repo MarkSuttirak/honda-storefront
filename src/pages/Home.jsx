@@ -50,6 +50,7 @@ const Home = () => {
     }
   })
 
+
   useEffect(() => {
     updateCurrentUser().then(() => {
       if (products) {
@@ -58,7 +59,7 @@ const Home = () => {
         }, 1000);
       }
     });
-  });
+  },[]);
 
   return (
     <>
