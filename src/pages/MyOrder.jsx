@@ -1,13 +1,13 @@
-import React, { useState, useRef,useEffect } from "react"
+import React, { useState, useRef } from "react"
 import { ArrowLeft } from "@untitled-ui/icons-react"
-import { useFrappeGetDocList } from "frappe-react-sdk"
+import { useFrappeGetDocList, useFrappeGetCall } from "frappe-react-sdk"
 import testImg from '../img/test-img.png'
 import { Link, useParams } from "react-router-dom"
-import { getToken } from "../utils/helper";
-
 
 const MyOrder = () => {
   const { id } = useParams();
+  const [myorderlist, setmyorderlist] = useState()
+ 
   const { data, isLoading, error } = useFrappeGetDocList('Sales Invoice', {
     fields: ['name', 'posting_date', 'status', 'total'],
     limit: 1000,
@@ -18,27 +18,14 @@ const MyOrder = () => {
   })
 
 
-  const getprofiledata = async () => {
-    var token = btoa(getToken());
-    var myHeaders = new Headers();
-    myHeaders.append("Cookie", "full_name=Guest; sid=Guest; system_user=no; user_id=Guest; user_image=");
-    myHeaders.append("Authorization", "Bearer "+token);
-    var requestOptions = {
-      method: 'GET',
-      headers: myHeaders
-    };
-    fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.getuser.getorders", requestOptions)
-    .then((response) => response.json()).then((data) => {
-      console.log(data);
-    })
-    .catch(error => console.log('error', error));
 
+  const { myorders } = useFrappeGetCall('honda_api.api_calls.getuser.getorders', {}, 'user-profile', {
+      isOnline: () => getToken(),
+      onSuccess: (data) => {
+        setmyorderlist(data.message)
+      }
+  })
 
-  }
-
-  useEffect(() => {
-    getprofiledata();
-  },[]);
 
 
   const [status, setStatus] = useState()
@@ -52,9 +39,9 @@ const MyOrder = () => {
         รายละเอียดการแลกของรางวัล
       </header>
       <main className="p-5 flex flex-col gap-y-[18px] mt-[53px]">
-        {data && (
+        {myorderlist && (
           <>
-            {data.map((d) => 
+            {myorderlist.map((d) => 
             <Link to={`/my-order-details/${d.name}`}>
               <section className="flex gap-x-[14px] mt-[14px] pb-[18px] border-b border-b-[#E3E3E3]">
                 {/* <div>
@@ -68,6 +55,12 @@ const MyOrder = () => {
                   <div className="flex">
                     <h2 className="w-[40%] text-xs">วันที่</h2>
                     <p className="w-[60%] text-xs">{d.posting_date}</p>
+                  </div>
+                   <div className="flex">
+                    <h2 className="w-[40%] text-xs">Status</h2>
+                    <p className="w-[60%] text-xs">
+                      {d.delivery_notes[0]?.status === 'Draft' ? 'Active' : d.delivery_notes[0]?.status === 'Submitted' ? 'Coupon is used' : ''}
+                    </p>
                   </div>
                   <div className="w-full">
                     <Link to={`/my-order-details/${d.name}`} className='w-full block text-white rounded-[9px] p-3 text-center' style={{background:"linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}}>ดูข้อมูล</Link>
