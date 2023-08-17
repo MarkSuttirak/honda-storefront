@@ -43,15 +43,29 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [data, setUserdata] = useState(null);
 
-  useFrappeGetCall('headless_e_commerce.api.get_profile', {}, 'user-profile', {
-    isOnline: () => getToken(),
-    onSuccess: (data) => {
-      setUserdata(data.message)
-    }
+  const getprofiledata = async (currentUserz) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Cookie", "full_name=Guest; sid=Guest; system_user=no; user_id=Guest; user_image=");
+    myHeaders.append("Authorization", "Bearer "+getToken());
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders
+  };
+  fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.getuser.get_profile?customer="+currentUserz, requestOptions)
+  .then((response) => response.json()).then((data) => {
+    setUserdata(data.message);
   })
+  .catch(error => console.log('error', error));
+
+
+  }
 
 
   useEffect(() => {
+    if(currentUser){
+      getprofiledata(currentUser);
+    }
+    
     updateCurrentUser().then(() => {
       if (products) {
         setTimeout(() => {
@@ -59,7 +73,7 @@ const Home = () => {
         }, 1000);
       }
     });
-  },[]);
+  },[currentUser]);
 
   return (
     <>
@@ -68,13 +82,14 @@ const Home = () => {
         {data && (
           <div className='flex'>
             <div className='flex items-center w-[85%]'>
-              {data.user.user_image ? (
-                <img src={data.user.user_image} width="64" className='rounded-[99px]' />
+              {data.user_image ? (
+                <img src={data.user_image} width="64" className='rounded-[99px]' />
               ) : (
                 <SkeletonCircle startColor='#EDF2F7' endColor='#EDF2F7' width='64px' height='64px' borderRadius='100%' />
               )}
+
               <div className='ml-3 flex flex-col'>
-                <span className='font-bold'>{data.user.full_name}</span>
+                <span className='font-bold'>{data.full_name}</span>
               </div>
             </div>
             <div className='flex flex-col items-end justify-center w-[15%]'>
