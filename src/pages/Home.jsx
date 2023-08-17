@@ -127,7 +127,7 @@ const Home = () => {
       <div className='flex justify-between items-center my-[32px] mx-5 p-5 h-[54px] rounded-lg' style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)", width: "calc(100% - 40px)" }}>
         <div className='flex items-center'>
           <img className='w-[17px] h-[17px]' src={bookClosed} alt="" />
-          <Link to='/collect-points' className='font-normal font-sm leading-[20px] ml-2 text-white'>วิธีเก็บคะแนน</Link>
+          <Link to='/collect-points' state={{url:"/"}} className='font-normal font-sm leading-[20px] ml-2 text-white'>วิธีเก็บคะแนน</Link>
         </div>
         <div>
         <Link to='/collect-points'><img src={iconRightHead} className='w-[6px] h-[10px]' alt="" /></Link>
