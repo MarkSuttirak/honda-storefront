@@ -40,7 +40,7 @@ function Consent() {
                 <p className='text-sm font-medium text-[#585858] mt-4'>บริษัทจะดำเนินการรักษาความมั่นคงปลอดภัยของข้อมูลส่วน
                     บุคคลของท่าน</p>
             </div>
-            <FooterMenu active={2} />
+            <FooterMenu active={3} />
         </>
     )
 }
