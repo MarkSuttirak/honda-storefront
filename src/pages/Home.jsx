@@ -34,6 +34,7 @@ import blogBanner from "../img/blog-img.png"
 // import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/skeleton';
 import Skeleton from '../components/Skeleton';
 import { getToken } from "../utils/helper";
+import silverCard from '../img/mainBannerRewardHome.png'
 
 const Home = () => {
   document.body.style.background = "white"
@@ -107,7 +108,7 @@ const Home = () => {
           <div className='flex'>
             <div className='flex items-center w-[85%]'>
               <Skeleton width='64px' height='64px' borderRadius='50%' />
-              <Skeleton width='150px' height='20px' />
+              <Skeleton width='150px' height='20px' marginLeft='12px' />
             </div>
             <div className='flex flex-col items-end justify-end w-[15%]'>
               <div className='inter text-xs text-[#4C4B4F]'>
@@ -123,17 +124,28 @@ const Home = () => {
       </header>
       {/* <img src={banner} className='w-full left-0 max-h-[240px] object-cover'/> */}
 
-      <div className='bg-[#ADB1BB] pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome'>
-        <div>
-          <h2 className='text-[32px] text-white'>Silver</h2>
+      {!loading ? (
+        <div className='bg-[#ADB1BB] pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome' style={{backgroundImage:`url(${silverCard})`}}>
+          <div>
+            <h2 className='text-[32px] text-white'>Silver</h2>
+          </div>
+          <div className=''>
+            <Link to='/my-order' className='bg-white w-[140px] h-[40px] rounded-full flex items-center justify-center' style={{ boxShadow: "0px 3px 15px 0px #7777771A" }}>
+              <img src={giftIcon} alt="" />
+              <p className='font-normal text-sm leading-[21px] text-[#F0592A] ml-1'>รางวัลของฉัน</p>
+            </Link>
+          </div>
         </div>
-        <div className=''>
-          <Link to='/my-order' className='bg-white w-[140px] h-[40px] rounded-full flex items-center justify-center' style={{ boxShadow: "0px 3px 15px 0px #7777771A" }}>
-            <img src={giftIcon} alt="" />
-            <p className='font-normal text-sm leading-[21px] text-[#F0592A] ml-1'>รางวัลของฉัน</p>
-          </Link>
+      ) : (
+        <div className='bg-white pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome' style={{boxShadow:"4px -3px 30px 0px #23232326"}}>
+          <div>
+            <Skeleton width='89px' height='29px'/>
+          </div>
+          <div className=''>
+            <Skeleton width='140px' height='39px'/>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* <div className="w-[354px] mx-[auto] mt-[32px]">
 
