@@ -221,7 +221,7 @@ export const ProfileForm = ({
         <button className="absolute translate-y-[38px] right-[4px] bg-black text-white px-3 py-[6px] rounded-[6px]">แก้ไข</button>
       </div>
       <footer className="w-full">
-        <button type="submit" className={`block mt-5 w-1/2 text-white rounded-[9px] p-3 w-full bg-[#1877F2] flex items-center justify-center gap-x-4 inter`}>
+        <button type="submit" className={`block mt-5 w-1/2 text-white rounded-[9px] p-3 w-full flex items-center justify-center gap-x-4 inter`} style={{background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}}>
           Save
         </button>
       </footer>
