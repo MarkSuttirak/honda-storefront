@@ -31,10 +31,13 @@ import {
 import { useFrappeAuth, useFrappeGetDoc } from 'frappe-react-sdk';
 import FooterMenu from '../components/FooterMenu'
 import { useUser } from '../hooks/useUser'
+import Skeleton from '../components/Skeleton'
 
 const MyAccount = () => {
   const [bronzeLevel, setBronzeLevel] = useState(false);
   const [silverLevel, setSilverLevel] = useState(true);
+
+  const [loading, setLoading] = useState(false);
 
   const [openLogout, setOpenLogout] = useState(false);
   const { user } = useUser()
@@ -50,7 +53,7 @@ const MyAccount = () => {
 
 
   const logoutnowuser = () => {
-    Cookies.remove('token');
+    sessionStorage.clear();
     location.href = "/welcome"
   }
 
@@ -142,28 +145,8 @@ const MyAccount = () => {
   ]
   return (
     <div>
-
-      <header className="flex justify-center w-full z-[999] mt-2">
-        <div className="flex flex-wrap lg:flex-nowrap bg-white items-center flex-row justify-start h-full max-w-[1536px] w-full py-2 px-4 rounded-[9px] justify-center" style={{ backdropFilter: "blur(3px)" }}>
-          <a
-            href="/"
-            aria-label="SF Homepage"
-            className="flex mr-4 focus-visible:outline focus-visible:outline-offset focus-visible:rounded-sm shrink-0"
-          >
-            <picture>
-              <source srcSet={hondaLogo} media="(min-width: 768px)" />
-              <img
-                src={hondaLogo}
-                alt="Sf Logo"
-                className="w-[100px]"
-              />
-            </picture>
-          </a>
-        </div>
-      </header>
-
-
-      <header className="p-5 w-full bg-[#F4F4F4] pt-10 mt-3 myAccountTopBorder">
+      <NavHeader />
+      <header className="p-5 w-full bg-[#F4F4F4] pt-10">
         {data && (
           <div className='flex items-center'>
             <img src={data.user_image} width="64" className='rounded-[99px]' />
@@ -207,25 +190,37 @@ const MyAccount = () => {
             </div>
           </div> */}
 
-            <div className='p-5 flex flex-col items-center'>
-              <div className='flex'>
-                <div className='flex gap-x-1 text-sm justify-center'>
-                  คะแนนของฉัน
+            {!loading ? (
+              <div className='p-5 flex flex-col items-center'>
+                <div className='flex'>
+                  <div className='flex gap-x-1 text-[13px] justify-center'>
+                    คะแนนของฉัน
+                  </div>
+                  {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
+                  <Link to="/my-coupon">Coupon</Link>
+                </div> */}
                 </div>
-                {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
-                <Link to="/my-coupon">Coupon</Link>
-              </div> */}
+  
+                <div className='flex mt-1'>
+                  <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center items-end'>
+                    <span className='text-[20px] leading-[30px]'>{user?.loyalty_points}</span> <span className='text-[#FFA800] text-xs'>คะแนน</span>
+                  </div>
+                  {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
+                  8 <span className='text-[#BC0000]'>codes</span>
+                </div> */}
+                </div>
               </div>
+            ) : (
+              <div className='p-5 flex flex-col items-center'>
+                <div className='flex'>
+                  <Skeleton width='81px' height='13px' borderRadius='4px'/>
+                </div>
 
-              <div className='flex mt-1'>
-                <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center items-end'>
-                  <span className='text-[20px] leading-[30px]'>{user?.loyalty_points}</span> <span className='text-[#FFA800] text-xs'>คะแนน</span>
+                <div className='flex mt-[10px]'>
+                  <Skeleton width='81px' height='18px' borderRadius='4px'/>
+                </div>
               </div>
-                {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
-                8 <span className='text-[#BC0000]'>codes</span>
-              </div> */}
-              </div>
-            </div>
+            )}
 
             <hr style={{ borderColor: "#F2F2F2" }} />
 

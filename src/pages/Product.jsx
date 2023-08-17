@@ -16,7 +16,7 @@ import {
   SfIconArrowForward,
   SfScrollable
 } from '@storefront-ui/react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useProducts } from '../hooks/useProducts';
 import { useCart } from '../hooks/useCart';
 import { ArrowLeft, ShoppingBag01, Heart, CoinsStacked01, Truck01, AnnotationDots, Share04, SwitchHorizontal01 } from '@untitled-ui/icons-react';
@@ -38,6 +38,8 @@ const Product = () => {
   const [colour, setColour] = useState("ส้ม")
 
   const [liked, setLiked] = useState(false)
+
+  const navigate = useNavigate()
 
   const items = [
     {
@@ -143,14 +145,10 @@ const Product = () => {
     }
   ]
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
   return (
     <>
       <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold bg-white items-center fixed w-full bg-white top-0 z-[999]'>
-        <Link to="/">
+        <Link onClick={() => navigate(-1)}>
           <ArrowLeft />
         </Link>
         {product?.item_name}
@@ -192,7 +190,7 @@ const Product = () => {
                         )
                     } */}
 
-            <div className="w-full relative mx-auto z-10 bg-white p-4 rounded-[10px] -mt-[18px]" style={{ boxShadow: "0px 4px 20px 0px #EBE9EA", }}>
+            <div className="w-full relative mx-auto z-10 bg-white px-4 py-[30px] rounded-[10px] -mt-[18px]" style={{ boxShadow: "0px 4px 20px 0px #EBE9EA", }}>
               <div className='text-center'>
                 <button className='bg-[#FDF0E4] w-[66px] h-[19px] rounded-full px-[10px] py-[4px] text-[#F0592A] font-bold text-[10px] leading-[11.1px]' style={{ fontFamily: "Eventpop" }} >ใช้หน้าร้าน</button>
                 {rewardReddem && (

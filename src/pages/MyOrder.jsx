@@ -1,8 +1,10 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef,useEffect } from "react"
 import { ArrowLeft } from "@untitled-ui/icons-react"
 import { useFrappeGetDocList } from "frappe-react-sdk"
 import testImg from '../img/test-img.png'
 import { Link, useParams } from "react-router-dom"
+import { getToken } from "../utils/helper";
+
 
 const MyOrder = () => {
   const { id } = useParams();
@@ -15,7 +17,29 @@ const MyOrder = () => {
     }
   })
 
-  console.log(data)
+
+  const getprofiledata = async () => {
+    var token = btoa(getToken());
+    var myHeaders = new Headers();
+    myHeaders.append("Cookie", "full_name=Guest; sid=Guest; system_user=no; user_id=Guest; user_image=");
+    myHeaders.append("Authorization", "Bearer "+token);
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders
+    };
+    fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.getuser.getorders", requestOptions)
+    .then((response) => response.json()).then((data) => {
+      console.log(data);
+    })
+    .catch(error => console.log('error', error));
+
+
+  }
+
+  useEffect(() => {
+    getprofiledata();
+  },[]);
+
 
   const [status, setStatus] = useState()
   return (
@@ -39,14 +63,14 @@ const MyOrder = () => {
                 <div className="flex w-full flex-col gap-y-3">
                   <div className="flex">
                     <h2 className="w-[40%] text-xs">คำสั่งซื้อ</h2>
-                    <p className="w-[60%] text-xs text-[#00B14F]">{d.name}</p>
+                    <p className="w-[60%] text-xs text-[#F0592A]">{d.name}</p>
                   </div>
                   <div className="flex">
                     <h2 className="w-[40%] text-xs">วันที่</h2>
                     <p className="w-[60%] text-xs">{d.posting_date}</p>
                   </div>
                   <div className="w-full">
-                    <Link to={`/my-order-details/${d.name}`} className='w-full block bg-[#111111] border border-[#111111] text-white rounded-[9px] p-3 text-center'>ดูข้อมูล</Link>
+                    <Link to={`/my-order-details/${d.name}`} className='w-full block text-white rounded-[9px] p-3 text-center' style={{background:"linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}}>ดูข้อมูล</Link>
                   </div>
                 </div>
               </section>

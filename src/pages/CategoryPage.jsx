@@ -22,7 +22,7 @@ import {
 } from '@storefront-ui/react';
 import ProductCard from '../components/ProductCard';
 import TitleHeader from "../components/TitleHeader";
-import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/skeleton';
+import Skeleton from "../components/Skeleton";
 
 const CategoryPage = () => {
   const { cartCount, setIsOpen } = useCart()
@@ -56,19 +56,19 @@ const CategoryPage = () => {
             {loading ? (
               <>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
               </>
             ) : (
@@ -97,19 +97,19 @@ const CategoryPage = () => {
             {loading ? (
               <>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
               </>
             ) : (
@@ -138,19 +138,19 @@ const CategoryPage = () => {
             {loading ? (
               <>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
                 <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' borderRadius='6px'/>
-                  <Skeleton height='10px' width='150px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='16px'/>
-                  <Skeleton height='10px' width='50px' startColor='#EDF2F7' endColor='#A0AEC0' marginTop='6px'/>
+                  <Skeleton height='150px' width='150px' borderRadius='6px' />
+                  <Skeleton height='17px' width='98px' marginTop='6px' />
+                  <Skeleton height='17px' width='82px' marginTop='9px' />
                 </div>
               </>
             ) : (
