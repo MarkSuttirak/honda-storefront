@@ -4,6 +4,7 @@ import { useFrappeGetDocList } from "frappe-react-sdk"
 import testImg from '../img/test-img.png'
 import { Link, useParams } from "react-router-dom"
 import Percent from "../components/icons/Percent"
+import { ShoppingBag02 } from "@untitled-ui/icons-react"
 
 const MyOrder = () => {
   const [currentTab, setCurrentTab] = useState('คะแนนที่ได้รับ');
@@ -46,17 +47,20 @@ const MyOrder = () => {
     {
       title: 'ส่วนลด 5 % สินค้าที่ร่วมรายการ',
       date: '30-08-2023',
-      type: (<Percent />)
+      types: ['คูปองออนไลน์'],
+      icon: <Percent />
     },
     {
       title: 'ส่วนลด 5 % สินค้าที่ร่วมรายการ',
       date: '30-08-2023',
-      type: (<Percent />)
+      types: ['ใช้หน้าร้าน'],
+      icon: <ShoppingBag02 color="#F0592A"/>
     },
     {
       title: 'ส่วนลด 5 % สินค้าที่ร่วมรายการ',
       date: '30-08-2023',
-      type: (<Percent />)
+      types: ['คูปองออนไลน์', 'Test'],
+      icon: <Percent />
     }
   ]
 
@@ -64,18 +68,20 @@ const MyOrder = () => {
     {
       title: 'ส่วนลด 5 % สินค้าที่ร่วมรายการ',
       date: '30-08-2023',
-      type: 'คูปองออนไลน์',
-      icon: (<Percent color="#8A8A8A"/>)
+      types: ['คูปองออนไลน์'],
+      icon: <Percent color="#8A8A8A"/>
     },
     {
       title: 'ส่วนลด 5 % สินค้าที่ร่วมรายการ',
       date: '30-08-2023',
-      type: (<Percent color="#8A8A8A"/>)
+      types: ['ใช้หน้าร้าน'],
+      icon: <ShoppingBag02 color="#8A8A8A"/>
     },
     {
       title: 'ส่วนลด 5 % สินค้าที่ร่วมรายการ',
       date: '30-08-2023',
-      type: (<Percent color="#8A8A8A"/>)
+      types: ['คูปองออนไลน์', 'Test'],
+      icon: <Percent color="#8A8A8A"/>
     }
   ]
 
@@ -153,6 +159,11 @@ const MyOrder = () => {
                         <div className="flex items-center">
                             <div>{reward.icon}</div>
                             <div className="ml-[43px]">
+                              <div className="flex gap-x-2">
+                                {reward.types.map((type) => 
+                                  <p className='bg-[#FDF0E4] inline-block h-[19px] rounded-full px-[10px] py-[4px] text-[#F0592A] font-bold text-[10px] leading-[11.1px]'>{type}</p>
+                                )}
+                              </div>
                               <p className="mt-[6px] font-bold text-xs text-[#000000] leading-[14px]" style={{ fontFamily: "Eventpop" }}>{reward.title}</p>
                               <p className="mt-[6px] font-bold text-xs text-[#00000061] leading-[14px]" style={{ fontFamily: "Eventpop" }}>ใช้ได้จนถึง {reward.date}</p>
                             </div>
@@ -172,6 +183,11 @@ const MyOrder = () => {
                         <div className="flex items-center">
                             <div>{reward.icon}</div>
                             <div className="ml-[43px]">
+                              <div className="flex gap-x-2">
+                                {reward.types.map((type) => 
+                                  <p className='bg-[#F0F0F0] inline-block h-[19px] rounded-full px-[10px] py-[4px] text-[#8A8A8A] font-bold text-[10px] leading-[11.1px]'>{type}</p>
+                                )}
+                              </div>
                               <p className="mt-[6px] font-bold text-xs text-[#000000] leading-[14px]" style={{ fontFamily: "Eventpop" }}>{reward.title}</p>
                               <p className="mt-[6px] font-bold text-xs text-[#00000061] leading-[14px]" style={{ fontFamily: "Eventpop" }}>ใช้ได้จนถึง {reward.date}</p>
                             </div>
