@@ -190,7 +190,6 @@ const MyAccount = () => {
             </div>
           </div> */}
 
-            {!loading ? (
               <div className='p-5 flex flex-col items-center'>
                 <div className='flex'>
                   <div className='flex gap-x-1 text-[13px] justify-center'>
@@ -210,17 +209,6 @@ const MyAccount = () => {
                 </div> */}
                 </div>
               </div>
-            ) : (
-              <div className='p-5 flex flex-col items-center'>
-                <div className='flex'>
-                  <Skeleton width='81px' height='13px' borderRadius='4px'/>
-                </div>
-
-                <div className='flex mt-[10px]'>
-                  <Skeleton width='81px' height='18px' borderRadius='4px'/>
-                </div>
-              </div>
-            )}
 
             <hr style={{ borderColor: "#F2F2F2" }} />
 
