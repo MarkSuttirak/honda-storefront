@@ -17,7 +17,7 @@ const MyOrder = () => {
     }
   })
 
-  
+
   const getprofiledata = async () => {
     var myHeaders = new Headers();
     myHeaders.append("Cookie", "full_name=Guest; sid=Guest; system_user=no; user_id=Guest; user_image=");
@@ -28,7 +28,7 @@ const MyOrder = () => {
     };
     fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.getuser.get_profile?customer=", requestOptions)
     .then((response) => response.json()).then((data) => {
-      setUserdata(data.message);
+      console.log(data.message);
     })
     .catch(error => console.log('error', error));
 
