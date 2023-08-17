@@ -26,9 +26,9 @@ const MyOrder = () => {
       method: 'GET',
       headers: myHeaders
     };
-    fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.getuser.get_profile?customer=", requestOptions)
+    fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.getuser.getorders", requestOptions)
     .then((response) => response.json()).then((data) => {
-      console.log(data.message);
+      console.log(data);
     })
     .catch(error => console.log('error', error));
 
