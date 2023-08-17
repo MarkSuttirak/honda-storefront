@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom"
 
 const MyOrder = () => {
   const { id } = useParams();
- 
+  const [myorderlist, setmyorderlist] = useState()
  
   const { data, isLoading, error } = useFrappeGetDocList('Sales Invoice', {
     fields: ['name', 'posting_date', 'status', 'total'],
@@ -18,9 +18,15 @@ const MyOrder = () => {
   })
 
 
-  const { datazz } = useFrappeGetCall('honda_api.api_calls.getuser.getorders', null, `addresses-0`)
 
-  console.log(datazz)
+  const { myorders } = useFrappeGetCall('honda_api.api_calls.getuser.getorders', {}, 'user-profile', {
+      isOnline: () => getToken(),
+      onSuccess: (data) => {
+        setmyorderlist(data.message)
+      }
+  })
+
+
 
   const [status, setStatus] = useState()
   return (
@@ -33,9 +39,9 @@ const MyOrder = () => {
         รายละเอียดคำสั่งซื้อ
       </header>
       <main className="p-5 flex flex-col gap-y-[18px] mt-[53px]">
-        {data && (
+        {myorderlist && (
           <>
-            {data.map((d) => 
+            {myorderlist.map((d) => 
             <Link to={`/my-order-details/${d.name}`}>
               <section className="flex gap-x-[14px] mt-[14px] pb-[18px] border-b border-b-[#E3E3E3]">
                 {/* <div>
@@ -49,6 +55,12 @@ const MyOrder = () => {
                   <div className="flex">
                     <h2 className="w-[40%] text-xs">วันที่</h2>
                     <p className="w-[60%] text-xs">{d.posting_date}</p>
+                  </div>
+                   <div className="flex">
+                    <h2 className="w-[40%] text-xs">Status</h2>
+                    <p className="w-[60%] text-xs">
+                      {d.delivery_notes[0]?.status === 'Draft' ? 'Active' : d.delivery_notes[0]?.status === 'Submitted' ? 'Coupon is used' : ''}
+                    </p>
                   </div>
                   <div className="w-full">
                     <Link to={`/my-order-details/${d.name}`} className='w-full block text-white rounded-[9px] p-3 text-center' style={{background:"linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}}>ดูข้อมูล</Link>
