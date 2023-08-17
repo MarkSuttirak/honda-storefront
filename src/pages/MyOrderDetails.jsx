@@ -132,12 +132,7 @@ const MyOrderDetails = () => {
                   <div className="mt-[44px]">
                     <QRCode size={150} value={data.name} style={{border:"4px solid #FDF0E4",borderRadius:"10px",padding:"10px",margin:"auto"}}/>
 
-                    <p className="text-[#00000061] text-xs text-center mt-6">
-                      ใช้ภายใน 
-                      <strong className="text-[#F0592A] ml-1">15:00</strong>
-                    </p>
-
-                    <p className="text-[#8A8A8A] text-xs mt-4 text-center">กรุณานำ QR Code นี้ให้พนักงานสแกน<br/>ที่หน้าร้านเพื่อรับของรางวัล</p>
+                    <p className="text-[#8A8A8A] text-xs mt-10 text-center">กรุณานำ QR Code นี้ให้พนักงานสแกน<br/>ที่หน้าร้านเพื่อรับของรางวัล</p>
                   </div>
                 )}
 
