@@ -184,7 +184,7 @@ const Home = () => {
                     title={product.item_name}
                     productId={product.name}
                     itemCode={product.item_code}
-                    price={product.formatted_price}
+                    price={product.loyalty_points_based_price}
                     thumbnail={product.website_image} />
                 ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
               </>
@@ -225,7 +225,7 @@ const Home = () => {
                     title={product.item_name}
                     productId={product.name}
                     itemCode={product.item_code}
-                    price={product.formatted_price}
+                    price={product.loyalty_points_based_price}
                     thumbnail={product.website_image} />
                 ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
               </>
@@ -266,7 +266,7 @@ const Home = () => {
                     title={product.item_name}
                     productId={product.name}
                     itemCode={product.item_code}
-                    price={product.formatted_price}
+                    price={product.loyalty_points_based_price}
                     thumbnail={product.website_image} />
                 ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
               </>
