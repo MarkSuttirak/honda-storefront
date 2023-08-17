@@ -1,8 +1,10 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef,useEffect } from "react"
 import { ArrowLeft } from "@untitled-ui/icons-react"
 import { useFrappeGetDocList } from "frappe-react-sdk"
 import testImg from '../img/test-img.png'
 import { Link, useParams } from "react-router-dom"
+import { getToken } from "../utils/helper";
+
 
 const MyOrder = () => {
   const { id } = useParams();
@@ -15,7 +17,28 @@ const MyOrder = () => {
     }
   })
 
-  console.log(data)
+  
+  const getprofiledata = async () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Cookie", "full_name=Guest; sid=Guest; system_user=no; user_id=Guest; user_image=");
+    myHeaders.append("Authorization", "Bearer "+getToken());
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders
+    };
+    fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.getuser.get_profile?customer=", requestOptions)
+    .then((response) => response.json()).then((data) => {
+      setUserdata(data.message);
+    })
+    .catch(error => console.log('error', error));
+
+
+  }
+
+  useEffect(() => {
+    getprofiledata();
+  },[]);
+
 
   const [status, setStatus] = useState()
   return (
