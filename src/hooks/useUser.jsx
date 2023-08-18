@@ -52,7 +52,8 @@ export const UserProvider = ({ children }) => {
     return <userContext.Provider value={{
         user,
         login,
-        logout
+        logout,
+        refetch: mutate
     }}>
         {children}
     </userContext.Provider>

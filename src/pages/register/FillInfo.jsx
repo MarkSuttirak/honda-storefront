@@ -7,12 +7,12 @@ import { userInfoSchema } from '../../components/forms/userInfoSchema'
 
 const FillInfo = () => {
   const navigate = useNavigate()
-  const { user } = useUser()
+  const { user, refetch } = useUser()
   const { call, isCompleted } = useFrappePostCall("honda_api.api.update_profile")
 
   useEffect(() => {
     if (isCompleted) {
-      navigate("/")
+      refetch().then(() => navigate("/"))
     }
   }, [isCompleted])
 

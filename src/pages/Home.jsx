@@ -88,6 +88,7 @@ const Home = () => {
         id_card_number: user.user.id_card_number,
         birth_date: user.user.birth_date,
       }).catch((err) => {
+        console.log("Redrecting back");
         navigate("/fill-info")
       })
     }
