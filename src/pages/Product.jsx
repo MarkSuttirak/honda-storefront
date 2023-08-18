@@ -145,6 +145,10 @@ const Product = () => {
     }
   ]
 
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, [])
+
   return (
     <>
       <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold bg-white items-center fixed w-full bg-white top-0 z-[999]'>
