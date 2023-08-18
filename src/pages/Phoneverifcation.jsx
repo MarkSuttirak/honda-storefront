@@ -24,6 +24,7 @@ const Phonverify = () => {
   const [filledOTP, setFilledOTP] = useState(true);
   const [filledAllOtp, setFilledAllOtp] = useState('')
   const navigate = useNavigate();
+  
 
   const telRef = useRef(null)
 
@@ -143,6 +144,8 @@ const verifyotpnow = (userphone,myotp,username) => {
 
                   <p className='text-[#00000061] text-sm mt-4'>กรอกหมายเลขโทรศัพท์</p>
                   <div className="flex gap-x-3">
+                  <div className="text-style" style={{ fontSize: '24px', lineHeight: '50px' }}>+66</div>
+
                     <input type="tel" id="phone" autoComplete="off" ref={telRef} onChange={handleChange} className={`relative border ${phoneError ? "border-[#EC5454]" : "border-[#E3E3E3]"} rounded-[8px] outline-none py-2 px-3 mt-2 w-full`} onInput={(e) => {
                       if (e.target.value !== ""){
                         setFilledPhone(true)
