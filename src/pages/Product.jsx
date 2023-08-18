@@ -221,7 +221,7 @@ const Product = () => {
                         <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>ขอสงวนสิทธิ์งดรับการแก้ไขเปลี่ยนแปลงใด หลังจากที่สมาชิกหลักแจ้งความประสงค์ขอแลก คะแนนสะสมไปยังบริษัทฯแล้ว</li>
                         <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>บริษัทฯขอแจ้งเปลี่ยนแปลงเงื่อนไขการแลกของรางวัล โดยมิได้แจ้งให้ทราบก่อนล่วงหน้า</li>
                       </ul> */}
-              <div dangerouslySetInnerHTML={{ __html: product?.web_long_description }} className='text-[#424242] font-normal text-xs list-disc leading-[18px]' />
+              <div dangerouslySetInnerHTML={{ __html: product?.web_long_description }} className='text-[#424242] font-normal text-xs leading-[18px] break-all' />
             </div>
 
             <div className='px-[18px] pt-[30px]'>
