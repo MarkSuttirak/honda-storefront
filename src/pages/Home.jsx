@@ -85,7 +85,7 @@ const Home = () => {
         last_name: user.user.full_name.split(" ").slice(1).join(" "),
         email: user.user.email,
         phone: user.phone,
-        id_card_number: user.user.id_card_number,
+        id_card_number: "1412412",
         birth_date: user.user.birth_date,
       }).catch((err) => {
         console.log("Redrecting back");
