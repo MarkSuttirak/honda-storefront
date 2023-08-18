@@ -8,7 +8,7 @@ import { userInfoSchema } from '../../components/forms/userInfoSchema'
 const FillInfo = () => {
   const navigate = useNavigate()
   const { user, refetch } = useUser()
-  const { call, isCompleted, loading } = useFrappePostCall("honda_api.api.update_profile")
+  const { call, isCompleted, loading } = useFrappePostCall("honda_api.api_calls.getuser.update_profile")
 
   useEffect(() => {
     if (isCompleted) {
