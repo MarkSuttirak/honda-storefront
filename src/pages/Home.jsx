@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard'
 import PromotionCard from '../components/PromotionCard';
 import { useProducts } from '../hooks/useProducts'
-import { useFrappeAuth, useFrappeGetDoc,useFrappeGetCall } from 'frappe-react-sdk';
+import { useFrappeAuth, useFrappeGetDoc, useFrappeGetCall } from 'frappe-react-sdk';
 import banner from '../img/banner.png'
 import coin from '../img/coin.svg'
 import coupon from '../img/coupon.svg'
 import { SfIconSearch, SfIconArrowForward, SfIconCalendarToday } from '@storefront-ui/react'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import activity1 from '../img/activity1.svg'
 import activity2 from '../img/activity2.svg'
 import activity3 from '../img/activity3.svg'
@@ -35,38 +35,39 @@ import blogBanner from "../img/blog-img.png"
 import Skeleton from '../components/Skeleton';
 import { getToken } from "../utils/helper";
 import silverCard from '../img/mainBannerRewardHome.png'
+import { userInfoSchema } from '../components/forms/userInfoSchema';
 
 const Home = () => {
   document.body.style.background = "white"
-  const { currentUser, updateCurrentUser } = useFrappeAuth();
-  const { user } = useUser()
-  const { products } = useProducts()
   const [loading, setLoading] = useState(true);
   const [data, setUserdata] = useState(null);
+  const { currentUser, updateCurrentUser } = useFrappeAuth();
+  const { user } = useUser();
+  const { products } = useProducts();
+  const navigate = useNavigate();
 
   const getprofiledata = async (currentUserz) => {
     var myHeaders = new Headers();
     myHeaders.append("Cookie", "full_name=Guest; sid=Guest; system_user=no; user_id=Guest; user_image=");
-    myHeaders.append("Authorization", "Bearer "+getToken());
+    myHeaders.append("Authorization", "Bearer " + getToken());
     var requestOptions = {
       method: 'GET',
       headers: myHeaders
-  };
-  fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.getuser.get_profile?customer="+currentUserz, requestOptions)
-  .then((response) => response.json()).then((data) => {
-    setUserdata(data.message);
-  })
-  .catch(error => console.log('error', error));
+    };
+    fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.getuser.get_profile?customer=" + currentUserz, requestOptions)
+      .then((response) => response.json()).then((data) => {
+        setUserdata(data.message);
+      })
+      .catch(error => console.log('error', error));
 
 
   }
 
 
   useEffect(() => {
-    if(currentUser){
+    if (currentUser) {
       getprofiledata(currentUser);
     }
-    
     updateCurrentUser().then(() => {
       if (products) {
         setTimeout(() => {
@@ -74,7 +75,23 @@ const Home = () => {
         }, 1000);
       }
     });
-  },[currentUser]);
+
+  }, [currentUser]);
+
+  useEffect(() => {
+    if (user) {
+      userInfoSchema.validate({
+        first_name: user.user.full_name.split(" ")[0],
+        last_name: user.user.full_name.split(" ").slice(1).join(" "),
+        email: user.user.email,
+        phone: user.phone,
+        id_card_number: user.user.id_card_number,
+        birth_date: user.user.birth_date,
+      }).catch((err) => {
+        navigate("/fill-info")
+      })
+    }
+  }, [user])
 
   return (
     <>
@@ -125,7 +142,7 @@ const Home = () => {
       </header>
       {/* <img src={banner} className='w-full left-0 max-h-[240px] object-cover'/> */}
 
-      <div className='bg-[#ADB1BB] pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome' style={{backgroundImage:`url(${silverCard})`}}>
+      <div className='bg-[#ADB1BB] pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome' style={{ backgroundImage: `url(${silverCard})` }}>
         <div>
           <h2 className='text-[32px] text-white'>Silver</h2>
         </div>
@@ -145,10 +162,10 @@ const Home = () => {
       <div className='flex justify-between items-center my-[32px] mx-5 p-5 h-[54px] rounded-lg' style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)", width: "calc(100% - 40px)" }}>
         <div className='flex items-center'>
           <img className='w-[17px] h-[17px]' src={bookClosed} alt="" />
-          <Link to='/collect-points' state={{url:"/"}} className='font-normal font-sm leading-[20px] ml-2 text-white'>วิธีเก็บคะแนน</Link>
+          <Link to='/collect-points' state={{ url: "/" }} className='font-normal font-sm leading-[20px] ml-2 text-white'>วิธีเก็บคะแนน</Link>
         </div>
         <div>
-        <Link to='/collect-points' state={{url:"/"}}><img src={iconRightHead} className='w-[6px] h-[10px]' alt="" /></Link>
+          <Link to='/collect-points' state={{ url: "/" }}><img src={iconRightHead} className='w-[6px] h-[10px]' alt="" /></Link>
         </div>
       </div>
 
@@ -290,8 +307,8 @@ const Home = () => {
 
         <div className="mt-[40px]">
           <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[10px] leading-6'>
-          สิทธิประโยชน์สุดพิเศษ
-          
+            สิทธิประโยชน์สุดพิเศษ
+
           </h2>
 
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5 mb-5">

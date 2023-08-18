@@ -155,7 +155,6 @@ function App() {
               <Route path="/my-coupon" element={<MyCoupon />} />
               <Route path="/welcome" element={<Welcome />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/fill-info" element={<FillInfo />} />
               <Route path="/success" element={<Success />} />
               <Route path="/shipping-address" element={<ShippingAddress />} />
               <Route path="/shipping-address/add" element={<AddShippingAddress />} />

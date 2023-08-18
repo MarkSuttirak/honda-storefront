@@ -1,63 +1,153 @@
-import { useRef, useState } from "react"
-import { Link } from 'react-router-dom'
-import logo from '../../img/logo.svg'
-import thaiflag from '../../img/thai-flag.svg'
-import germanflag from '../../img/german-flag.svg'
-import { ArrowLeft, MarkerPin01 } from '@untitled-ui/icons-react'
+import { useNavigate } from 'react-router-dom'
+import { useFormik } from "formik"
+import { useFrappePostCall } from "frappe-react-sdk"
+import { useEffect } from 'react'
+import { useUser } from '../../hooks/useUser'
+import { userInfoSchema } from '../../components/forms/userInfoSchema'
 
 const FillInfo = () => {
-  const [filledInfo, setFilledInfo] = useState(true)
+  const navigate = useNavigate()
+  const { user } = useUser()
+  const { call, isCompleted } = useFrappePostCall("honda_api.api.update_profile")
+
+  useEffect(() => {
+    if (isCompleted) {
+      navigate("/")
+    }
+  }, [isCompleted])
+
   return (
-    <>
-      <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px]'>
-        <Link to="/signup">
-          <ArrowLeft />
-        </Link>
-        สมัครสมาชิก
-      </header>
-      <main className='px-5 py-[46px]'>
-        <h1 className='text-[22px] font-bold'>ข้อมูลส่วนตัว</h1>
-        <p className='mt-4'>กรอกข้อมูลเพิ่มเติมโดยข้อมูลเหล่านี้<br/> จะแสดงอยู่ในหน้าบัญชีของคุณ</p>
-
-        <form action="#" className="flex flex-col gap-y-5">
-          <div className='flex flex-col'>
-            <label htmlFor='name'>ชื่อ</label>
-            <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' id='name' name='name' type='text' />
-          </div>
-
-          <div className='flex flex-col'>
-            <label htmlFor='surname'>นามสกุล</label>
-            <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' id='surname' name='surname' type='text'/>
-          </div>
-
-          <div className='flex flex-col'>
-            <label htmlFor='email'>อีเมลของคุณ</label>
-            <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' id='email' name='email' type='email'/>
-          </div>
-
-          <div className='flex flex-col'>
-            <label htmlFor='id-card-number'>เลขบัตรประจำตัวประชาชน</label>
-            <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' id='id-card-number' name='id-card-number' type='text'/>
-          </div>
-
-          <div className='flex flex-col'>
-            <label htmlFor='birthdate'>วัน/เดือน/ปีเกิด</label>
-            <input type="date" className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' id='birthdate' name='birthdate'/>
-          </div>
-
-          <div className='flex flex-col relative'>
-            <label htmlFor='phone'>เบอร์โทร</label>
-            <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' id='phone' name='phone' type='tel'/>
-
-            <button className="absolute translate-y-[38px] right-[4px] bg-black text-white px-3 py-[6px] rounded-[6px]">แก้ไข</button>
-          </div>
-        </form>
-      </main>
-      <footer className='flex px-5 pb-5 gap-x-3'>
-        <Link to="/success" className={`w-full text-white rounded-[9px] p-3 text-center ${!filledInfo ? "bg-[#C5C5C5] border border-[#C5C5C5]" : "bg-[#111111] border border-[#111111]"}`} disabled={!filledInfo}>ดำเนินการต่อ</Link>
-      </footer>
-    </>
+    <main className='px-5 py-[46px]'>
+      <h1 className='text-[22px] font-bold'>ข้อมูลส่วนตัว</h1>
+      <p className='mt-4'>กรอกข้อมูลเพิ่มเติมโดยข้อมูลเหล่านี้<br /> จะแสดงอยู่ในหน้าบัญชีของคุณ</p>
+      {
+        user && (
+          <UserInfoForm
+            validationSchema={userInfoSchema}
+            initialValues={{
+              first_name: user?.user.full_name.split(" ")[0],
+              last_name: user?.user.full_name.split(" ").slice(1).join(" "),
+              email: '',
+              phone: user?.phone,
+              id_card_number: '',
+              birth_date: '',
+            }}
+            onSubmit={call}
+          />
+        )
+      }
+    </main>
   )
 }
 
 export default FillInfo
+
+export const UserInfoForm = ({
+  initialValues,
+  validationSchema,
+  onSubmit,
+}) => {
+  const formik = useFormik({
+    initialValues: initialValues,
+    validationSchema: validationSchema,
+    onSubmit: onSubmit
+  })
+  return (
+    <form className="flex flex-col gap-y-5" onSubmit={formik.handleSubmit}>
+      <div className='flex flex-col'>
+        <label htmlFor='first_name'>ชื่อ</label>
+        <input
+          className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]'
+          name='first_name'
+          value={formik.values.first_name}
+          onChange={formik.handleChange}
+        />
+        {
+          formik.errors.first_name && (
+            <strong className="typography-error-sm text-negative-700 font-medium">{formik.errors.first_name}</strong>
+          )
+        }
+      </div>
+
+      <div className='flex flex-col'>
+        <label htmlFor='last_name'>นามสกุล</label>
+        <input
+          className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]'
+          name='last_name'
+          value={formik.values.last_name}
+          onChange={formik.handleChange}
+        />
+        {
+          formik.errors.last_name && (
+            <strong className="typography-error-sm text-negative-700 font-medium">{formik.errors.last_name}</strong>
+          )
+        }
+      </div>
+
+      <div className='flex flex-col'>
+        <label htmlFor='email'>อีเมลของคุณ</label>
+        <input
+          className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]'
+          type='email'
+          name='email'
+          value={formik.values.email}
+          onChange={formik.handleChange}
+        />
+        {
+          formik.errors.email && (
+            <strong className="typography-error-sm text-negative-700 font-medium">{formik.errors.email}</strong>
+          )
+        }
+      </div>
+
+      <div className='flex flex-col'>
+        <label htmlFor='id_card_number'>เลขบัตรประจำตัวประชาชน</label>
+        <input
+          className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]'
+          name='id_card_number'
+          value={formik.values.id_card_number}
+          onChange={formik.handleChange}
+        />
+        {
+          formik.errors.id_card_number && (
+            <strong className="typography-error-sm text-negative-700 font-medium">{formik.errors.id_card_number}</strong>
+          )
+        }
+      </div>
+
+      <div className='flex flex-col'>
+        <label htmlFor='birth_date'>วัน/เดือน/ปีเกิด</label>
+        <input
+          className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]'
+          type="date"
+          name='birth_date'
+          value={formik.values.birth_date}
+          onChange={formik.handleChange}
+        />
+        {
+          formik.errors.birth_date && (
+            <strong className="typography-error-sm text-negative-700 font-medium">{formik.errors.birth_date}</strong>
+          )
+        }
+      </div>
+
+      <div className='flex flex-col relative'>
+        <label htmlFor='phone'>เบอร์โทร</label>
+        <input
+          disabled
+          className='disabled  border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]'
+          type='tel'
+          name='phone'
+          value={formik.values.phone}
+        />
+      </div>
+      <footer className='flex px-5 pb-5 gap-x-3'>
+        <button
+          className={`w-full text-white rounded-[9px] p-3 text-center ${!formik.isValid ? "bg-[#C5C5C5] border border-[#C5C5C5]" : "bg-[#111111] border border-[#111111]"}`}
+          disabled={!formik.isValid}
+          type='submit'
+        >ดำเนินการต่อ</button>
+      </footer>
+    </form>
+  )
+}

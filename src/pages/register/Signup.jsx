@@ -53,70 +53,70 @@ const Signup = () => {
   };
 
   const clickverify = (value) => {
-    if(userphone.length > 7){
+    if (userphone.length > 7) {
       phonverifynow(userphone);
       goNext();
-    } 
+    }
   }
 
   const verifyotp = () => {
-    verifyotpnow(userphone,myotp,Cookies.get('username'))
+    verifyotpnow(userphone, myotp, Cookies.get('username'))
   }
 
   const phonverifynow = (phone) => {
     try {
-        return fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.verifyuser.getphone?userphone="+phone, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            }
-        }).then((response) => response.json()).then((data) => {
-          var res = data.message;
+      return fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.verifyuser.getphone?userphone=" + phone, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      }).then((response) => response.json()).then((data) => {
+        var res = data.message;
 
-          if(res.status == 'success'){
-            seterrornow('');
-            seterrornow(res.message);
-          }
-          else{
-              seterrornow(res.message);
-              setShow('false')
-              setDisabled(false)
-          }
-
-        })
-
-    } catch (error) {
-        return error;
-    }
-  }
-  const verifyotpnow = (userphone,myotp,username) => {
-    var myHeaders = new Headers();
-    myHeaders.append("Cookie", "full_name=Guest; sid=Guest; system_user=no; user_id=Guest; user_image=");
-    myHeaders.append("Authorization", "Bearer "+Cookies.get('token'));
-
-
-    var requestOptions = {
-        method: 'POST',
-        headers: myHeaders
-    };
-    fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.verifyuser.verifyotp?userphone="+userphone+"&otp="+myotp+"&username="+username, requestOptions)
-    .then((response) => response.json()).then((data) => {
-      var res = data.message;
-
-      if(res.status == 'success'){
-        seterrornow('');
-        seterrornow(res.message);
-        Cookies.set('phoneverify', false); 
-        navigate("/");
-      }
-      else{
+        if (res.status == 'success') {
+          seterrornow('');
+          seterrornow(res.message);
+        }
+        else {
           seterrornow(res.message);
           setShow('false')
           setDisabled(false)
-      }
+        }
 
-    })
-    .catch(error => console.log('error', error));
+      })
+
+    } catch (error) {
+      return error;
+    }
+  }
+  const verifyotpnow = (userphone, myotp, username) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Cookie", "full_name=Guest; sid=Guest; system_user=no; user_id=Guest; user_image=");
+    myHeaders.append("Authorization", "Bearer " + Cookies.get('token'));
+
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders
+    };
+    fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.verifyuser.verifyotp?userphone=" + userphone + "&otp=" + myotp + "&username=" + username, requestOptions)
+      .then((response) => response.json()).then((data) => {
+        var res = data.message;
+
+        if (res.status == 'success') {
+          seterrornow('');
+          seterrornow(res.message);
+          Cookies.set('phoneverify', false);
+          navigate("/fill-info");
+        }
+        else {
+          seterrornow(res.message);
+          setShow('false')
+          setDisabled(false)
+        }
+
+      })
+      .catch(error => console.log('error', error));
 
   }
 
@@ -133,18 +133,18 @@ const Signup = () => {
 
             <div className="flex gap-x-3">
               <input type="tel" id="phone" autoComplete="off" ref={telRef} onChange={handleChange} className={`relative border ${phoneError ? "border-[#EC5454]" : "border-[#E3E3E3]"} rounded-[8px] outline-none py-2 px-3 mt-[11px] w-full`} onInput={(e) => {
-                if (e.target.value !== ""){
+                if (e.target.value !== "") {
                   setFilledPhone(true)
                 } else {
                   setFilledPhone(false)
                 }
-              }} onKeyDown={() => setPhoneError(false)}/>
+              }} onKeyDown={() => setPhoneError(false)} />
             </div>
 
             {!phoneError ? "" : (<p className="text-[#EC5454] inter mt-2">This phone number is invalid</p>)}
 
             <button onClick={() => {
-              if (telRef.current.value.length < 10){
+              if (telRef.current.value.length < 10) {
                 setPhoneError(true);
               } else {
                 clickverify();
@@ -166,18 +166,18 @@ const Signup = () => {
           </header>
           <main className='px-5 py-[46px]'>
             <h1 className='text-[22px] font-bold'>ยืนยันรหัส OTP</h1>
-            <p className='mt-4'>เราได้ส่ง SMS (OTP) ไปที่เบอร์<br/>090-1234-567</p>
+            <p className='mt-4'>เราได้ส่ง SMS (OTP) ไปที่เบอร์<br />090-1234-567</p>
 
             <div className="flex gap-x-[9px] mt-9">
               <input type="text" id="num1" ref={num1Ref} className={`border ${otperror ? "border-[#EC5454]" : "border-[#D8DADC]"} w-full p-3 text-center text-2xl rounded-[15px]`} autoComplete="off" onKeyDown={() => {
                 setOtperror(false);
-              }}/>
+              }} />
             </div>
 
             {!otperror ? (<p className="text-center mt-[43px]">I didn't receive a code <strong>Resend</strong></p>) : (<p className="text-center text-[#EC5454] inter mt-[43px]">Wrong code, please try again <strong>Resend</strong></p>)}
 
             <button onClick={() => {
-              if (num1Ref.current.value){
+              if (num1Ref.current.value) {
                 setOtperror(false);
                 verifyotp();
               } else {

@@ -9,7 +9,7 @@ import { useFormik } from "formik"
 
 const EditProfile = () => {
   const { user } = useUser()
-  const { call } = useFrappePostCall("headless_e_commerce.api.update_profile")
+  const { call } = useFrappePostCall("honda_api.api.update_profile")
 
   const [editPro, setEditPro] = useState(true)
   const [changePhone, setChangePhone] = useState(false)
@@ -59,7 +59,6 @@ const EditProfile = () => {
     return <div>Loading...</div>
   }
 
-
   return (
     <>
       {editPro && (
@@ -71,7 +70,8 @@ const EditProfile = () => {
                 first_name: user?.user.first_name,
                 last_name: user?.user.last_name,
                 email: user?.email_id,
-                phone: user?.phone
+                phone: user?.phone,
+                birth_date: user?.customer_details.split(" ")[1]
               }}
               onSubmit={call}
             />
@@ -222,11 +222,17 @@ export const ProfileForm = ({
       </div>
 
       <div className='flex flex-col'>
-        <label htmlFor='birthdate'>วัน/เดือน/ปีเกิด</label>
-        <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' name='birthdate' type='date' onChange={formik.handleChange} />
+        <label htmlFor='birth_date'>วัน/เดือน/ปีเกิด</label>
+        <input
+          className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]'
+          type='date'
+          name='birth_date'
+          value={formik.values.birth_date}
+          onChange={formik.handleChange}
+        />
       </div>
       <footer className="w-full">
-        <button type="submit" className={`block mt-5 w-1/2 text-white rounded-[9px] p-3 w-full flex items-center justify-center gap-x-4 inter`} style={{background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)",fontFamily:"Eventpop"}}>
+        <button type="submit" className={`block mt-5 w-1/2 text-white rounded-[9px] p-3 w-full flex items-center justify-center gap-x-4 inter`} style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)", fontFamily: "Eventpop" }}>
           บันทึก
         </button>
       </footer>
