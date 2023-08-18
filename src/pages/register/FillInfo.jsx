@@ -27,8 +27,8 @@ const FillInfo = () => {
             initialValues={{
               first_name: user?.user.full_name.split(" ")[0],
               last_name: user?.user.full_name.split(" ").slice(1).join(" "),
-              email: user?.email_id,
-              phone: user?.phone,
+              email: user?.user.email,
+              phone: user?.user.phone,
               id_card_number: '',
               birth_date: '',
             }}

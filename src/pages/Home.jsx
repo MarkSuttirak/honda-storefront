@@ -84,7 +84,7 @@ const Home = () => {
         first_name: user.user.full_name.split(" ")[0],
         last_name: user.user.full_name.split(" ").slice(1).join(" "),
         email: user.user.email,
-        phone: user.phone,
+        phone: user.user.phone,
         id_card_number: "1412412",
         birth_date: user.user.birth_date,
       }).catch((err) => {

@@ -71,7 +71,7 @@ const EditProfile = () => {
                 last_name: user?.user.last_name,
                 email: user?.email_id,
                 phone: user?.phone,
-                birth_date: user?.customer_details.split(" ")[1]
+                birth_date: user?.customer_details?.split(" ")[1]
               }}
               onSubmit={call}
             />
