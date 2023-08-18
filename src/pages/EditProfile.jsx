@@ -209,10 +209,10 @@ export const ProfileForm = ({
         <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' name='last_name' value={formik.values.last_name} onChange={formik.handleChange} />
       </div>
 
-      <div className='flex flex-col'>
+      {/* <div className='flex flex-col'>
         <label htmlFor='email'>อีเมล</label>
         <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' name='email' type='email' value={formik.values.email} onChange={formik.handleChange} />
-      </div>
+      </div> */}
 
       <div className='flex flex-col relative'>
         <label htmlFor='phone'>เบอร์โทร</label>
