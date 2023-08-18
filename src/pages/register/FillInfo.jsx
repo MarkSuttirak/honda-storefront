@@ -8,7 +8,7 @@ import { userInfoSchema } from '../../components/forms/userInfoSchema'
 const FillInfo = () => {
   const navigate = useNavigate()
   const { user, refetch } = useUser()
-  const { call, isCompleted } = useFrappePostCall("honda_api.api.update_profile")
+  const { call, isCompleted, loading } = useFrappePostCall("honda_api.api.update_profile")
 
   useEffect(() => {
     if (isCompleted) {
@@ -33,6 +33,7 @@ const FillInfo = () => {
               birth_date: '',
             }}
             onSubmit={call}
+            isLoading={loading}
           />
         )
       }
@@ -46,6 +47,7 @@ export const UserInfoForm = ({
   initialValues,
   validationSchema,
   onSubmit,
+  isLoading
 }) => {
   const formik = useFormik({
     initialValues: initialValues,
@@ -143,10 +145,12 @@ export const UserInfoForm = ({
       </div>
       <footer className='flex px-5 pb-5 gap-x-3'>
         <button
-          className={`w-full text-white rounded-[9px] p-3 text-center ${!formik.isValid ? "bg-[#C5C5C5] border border-[#C5C5C5]" : "bg-[#111111] border border-[#111111]"}`}
-          disabled={!formik.isValid}
+          className={`w-full text-white rounded-[9px] p-3 text-center ${(!formik.isValid || isLoading) ? "bg-[#C5C5C5] border border-[#C5C5C5]" : "bg-[#111111] border border-[#111111]"}`}
+          disabled={!formik.isValid || isLoading}
           type='submit'
-        >ดำเนินการต่อ</button>
+        >{
+            isLoading ? "กำลังโหลด..." : "ดำเนินการต่อ"
+          }</button>
       </footer>
     </form>
   )
