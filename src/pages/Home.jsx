@@ -39,7 +39,7 @@ import { userInfoSchema } from '../components/forms/userInfoSchema';
 
 const Home = () => {
   document.body.style.background = "white"
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [data, setUserdata] = useState(null);
   const { currentUser, updateCurrentUser } = useFrappeAuth();
   const { user } = useUser();
@@ -69,6 +69,9 @@ const Home = () => {
       getprofiledata(currentUser);
     }
     updateCurrentUser();
+    if(products){
+      setLoading(false)
+    }
 
   }, [products]);
 
