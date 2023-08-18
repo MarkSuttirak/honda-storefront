@@ -13,7 +13,7 @@ export const ProductsProvider = ({ children }) => {
     }, `products-${newP}`, {
         isOnline: () => products.length === 0,
         onSuccess: (data) => setProducts(data.message.items)
-    })
+    },true)
 
     const get = (name) => {
         // if product is already in the list, return it & refetch it in the background
