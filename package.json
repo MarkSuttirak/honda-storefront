@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.11.0",
     "@headlessui/react": "^1.7.16",
     "@untitled-ui/icons-react": "^0.1.1",
+    "axios": "^1.4.0",
     "formik": "^2.4.2",
     "framer-motion": "^10.15.1",
     "frappe-react-sdk": "^1.2.8",
