@@ -69,9 +69,7 @@ const Home = () => {
       getprofiledata(currentUser);
     }
     updateCurrentUser();
-    if (products) {
-      setLoading(false)
-    }
+    setTimeout(() => setLoading(false), 1000)
 
   }, [products]);
 
