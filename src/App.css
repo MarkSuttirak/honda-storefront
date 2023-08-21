@@ -33,6 +33,10 @@
   padding: revert !important;
 }
 
+.info-desc ol li[data-list='bullet'] {
+  list-style-type: disc !important;
+}
+
 .inter {
   font-family:'Inter', sans-serif
 }
