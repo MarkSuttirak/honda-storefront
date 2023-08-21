@@ -27,6 +27,12 @@
   font-family:Eventpop, Inter
 }
 
+.info-desc ol,.info-desc ul,.info-desc menu {
+  list-style: revert !important;
+  margin: revert !important;
+  padding: revert !important;
+}
+
 .inter {
   font-family:'Inter', sans-serif
 }
