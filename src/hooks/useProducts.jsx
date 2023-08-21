@@ -1,7 +1,5 @@
 import React, { createContext, useContext, useState } from 'react'
-import { useFrappeGetCall, useFrappePostCall,useFrappeAuth } from 'frappe-react-sdk';
-import { getToken } from "../utils/helper";
-
+import { useFrappeGetCall, useFrappePostCall } from 'frappe-react-sdk';
 
 const ProductsContext = createContext([])
 
@@ -10,8 +8,6 @@ export const ProductsProvider = ({ children }) => {
     const [gifts, setGifts] = useState([]);
     const [giftCards, setGiftCards] = useState([]);
     const [newP, setNewP] = useState(null)
-    const [userdata, setUserdata] = useState(null);
-    const { currentUser, updateCurrentUser } = useFrappeAuth();
 
     useFrappeGetCall('erpnext.e_commerce.api.get_product_filter_data', {
         name: newP,
@@ -33,18 +29,6 @@ export const ProductsProvider = ({ children }) => {
         onSuccess: (data) => setGifts(data.message.items)
     })
 
-    var myHeaders = new Headers();
-      myHeaders.append("Authorization", "Bearer " + getToken());
-      var requestOptions = {
-        method: 'GET',
-        headers: myHeaders
-      };
-      fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.getuser.get_profile?customer=" + currentUser, requestOptions)
-      .then((response) => response.json()).then((data) => {
-        setUserdata(data.message);
-      })
-      .catch(error => console.log('error', error));
-
     const get = (name) => {
         // if product is already in the list, return it & refetch it in the background
         const p = products.find((product) => product.name === name)
@@ -63,7 +47,7 @@ export const ProductsProvider = ({ children }) => {
 
 
     return (
-        <ProductsContext.Provider value={{ products, setProducts, get, getByItemCode, gifts, giftCards,userdata }}>
+        <ProductsContext.Provider value={{ products, setProducts, get, getByItemCode, gifts, giftCards }}>
             {children}
         </ProductsContext.Provider>
     )
