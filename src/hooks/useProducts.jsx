@@ -8,6 +8,7 @@ export const ProductsProvider = ({ children }) => {
     const [gifts, setGifts] = useState([]);
     const [giftCards, setGiftCards] = useState([]);
     const [newP, setNewP] = useState(null)
+    const [userdata, setUserdata] = useState(null);
 
     useFrappeGetCall('erpnext.e_commerce.api.get_product_filter_data', {
         name: newP,
@@ -29,6 +30,18 @@ export const ProductsProvider = ({ children }) => {
         onSuccess: (data) => setGifts(data.message.items)
     })
 
+    var myHeaders = new Headers();
+      myHeaders.append("Authorization", "Bearer " + getToken());
+      var requestOptions = {
+        method: 'GET',
+        headers: myHeaders
+      };
+      fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.getuser.get_profile?customer=" + currentUserz, requestOptions)
+      .then((response) => response.json()).then((data) => {
+        setUserdata(data.message);
+      })
+      .catch(error => console.log('error', error));
+
     const get = (name) => {
         // if product is already in the list, return it & refetch it in the background
         const p = products.find((product) => product.name === name)
@@ -47,7 +60,7 @@ export const ProductsProvider = ({ children }) => {
 
 
     return (
-        <ProductsContext.Provider value={{ products, setProducts, get, getByItemCode, gifts, giftCards }}>
+        <ProductsContext.Provider value={{ products, setProducts, get, getByItemCode, gifts, giftCards,userdata }}>
             {children}
         </ProductsContext.Provider>
     )
