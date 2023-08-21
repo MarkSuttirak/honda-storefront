@@ -39,11 +39,11 @@ const FooterMenu = ({active}) => {
     }
   ]
   return (
-    <div className="h-[82px] fixed bottom-0 w-full flex bg-white border-t border-t-[#F1F1F1]">
+    <footer className="h-[82px] fixed bottom-0 w-full flex bg-white border-t border-t-[#F1F1F1]">
       {menuLists.map((menu, index) => 
         <Menu icon={menu.icon} title={menu.title} link={menu.link} current={index}/>
       )}
-    </div>
+    </footer>
   )
 }
 
