@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState } from 'react'
-import { useFrappeGetCall, useFrappePostCall } from 'frappe-react-sdk';
+import { useFrappeGetCall, useFrappePostCall,useFrappeAuth } from 'frappe-react-sdk';
+import { getToken } from "../utils/helper";
+
 
 const ProductsContext = createContext([])
 
@@ -9,6 +11,7 @@ export const ProductsProvider = ({ children }) => {
     const [giftCards, setGiftCards] = useState([]);
     const [newP, setNewP] = useState(null)
     const [userdata, setUserdata] = useState(null);
+    const { currentUser, updateCurrentUser } = useFrappeAuth();
 
     useFrappeGetCall('erpnext.e_commerce.api.get_product_filter_data', {
         name: newP,
@@ -36,7 +39,7 @@ export const ProductsProvider = ({ children }) => {
         method: 'GET',
         headers: myHeaders
       };
-      fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.getuser.get_profile?customer=" + currentUserz, requestOptions)
+      fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.getuser.get_profile?customer=" + currentUser, requestOptions)
       .then((response) => response.json()).then((data) => {
         setUserdata(data.message);
       })

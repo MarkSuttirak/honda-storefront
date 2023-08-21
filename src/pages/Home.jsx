@@ -47,28 +47,14 @@ const Home = () => {
   const { products, gifts, giftCards,userdata } = useProducts();
   const navigate = useNavigate();
 
-  const getprofiledata = async (currentUserz) => {
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", "Bearer " + getToken());
-      var requestOptions = {
-        method: 'GET',
-        headers: myHeaders
-      };
-      fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.getuser.get_profile?customer=" + currentUserz, requestOptions)
-      .then((response) => response.json()).then((data) => {
-        setUserdata(data.message);
-      })
-      .catch(error => console.log('error', error));
-
-
-  }
+  
 
   useEffect(() => {
-    if (currentUser) {
-      getprofiledata(currentUser);
-    }
+   
     updateCurrentUser();
-    setTimeout(() => setLoading(false), 1000)
+    if(products){
+      setLoading(false)
+    }
 
   }, [products]);
 
@@ -95,7 +81,7 @@ const Home = () => {
         {userdata && (
           <div className='flex'>
             <div className='flex items-center w-[85%]'>
-              {data.user_image ? (
+              {userdata.user_image ? (
                 <img src={userdata.user_image} width="64" className='rounded-[99px]' />
               ) : (
                 <Skeleton width='64px' height='64px' borderRadius='50%' />
