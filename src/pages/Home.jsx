@@ -36,11 +36,14 @@ import Skeleton from '../components/Skeleton';
 import { getToken } from "../utils/helper";
 import silverCard from '../img/mainBannerRewardHome.png'
 import { userInfoSchema } from '../components/forms/userInfoSchema';
+import { getProducts } from '../client/api';
 
 const Home = () => {
   document.body.style.background = "white"
   const [loading, setLoading] = useState(true);
   const [data, setUserdata] = useState(null);
+  const [gifts, setGifts] = useState([]);
+  const [giftCards, setGiftCards] = useState([]);
   const { currentUser, updateCurrentUser } = useFrappeAuth();
   const { user } = useUser();
   const { products } = useProducts();
@@ -63,13 +66,28 @@ const Home = () => {
 
   }
 
+  useEffect(() => {
+    getProducts({
+      "query_args": {
+        "item_group": "Gift",
+      }
+    }).then((data) => setGifts(data.items))
+    getProducts({
+      "query_args": {
+        "field_filters": {
+          "item_group": "Gift Card"
+        }
+      }
+    }).then((data) => setGiftCards(data.items))
+  }, [])
+
 
   useEffect(() => {
     if (currentUser) {
       getprofiledata(currentUser);
     }
     updateCurrentUser();
-    if(products){
+    if (products) {
       setLoading(false)
     }
 
@@ -236,7 +254,7 @@ const Home = () => {
               </>
             ) : (
               <>
-                {(products ?? []).map((product) => (
+                {(gifts ?? []).map((product) => (
                   <ProductCard
                     key={product.item_code}
                     title={product.item_name}
@@ -277,7 +295,7 @@ const Home = () => {
               </>
             ) : (
               <>
-                {(products ?? []).map((product) => (
+                {(giftCards ?? []).map((product) => (
                   <ProductCard
                     key={product.item_code}
                     title={product.item_name}
