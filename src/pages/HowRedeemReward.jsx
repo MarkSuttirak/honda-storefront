@@ -7,7 +7,7 @@ function HowRedeemReward() {
     const { currentUser } = useFrappeAuth()
 
     const { data } = useFrappeGetDoc('How To Redeem Rewards', {
-      fields: ['title', 'description']
+      fields: ['description']
     })
 
     return (

@@ -8,7 +8,7 @@ function CollectPoints() {
   const { currentUser } = useFrappeAuth()
 
   const { data } = useFrappeGetDoc('How To Collect Points', {
-    fields: ['title', 'description']
+    fields: ['description']
   })
 
   return (

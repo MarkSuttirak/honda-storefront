@@ -6,8 +6,8 @@ import { useFrappeGetCall, useFrappeGetDoc, useFrappeGetDocList, useFrappeAuth }
 function MemberConditions() {
     const { currentUser } = useFrappeAuth()
 
-    const { data } = useFrappeGetDoc('How To Redeem Rewards', {
-      fields: ['title', 'description']
+    const { data } = useFrappeGetDoc('Member Conditions', {
+      fields: ['description']
     })
 
     return (
@@ -31,7 +31,7 @@ function MemberConditions() {
                     <li className='text-sm font-medium text-[#585858] list-disc leading-[20px]'>ค่าใช้จ่าย: 30,000 - 59,999 บาท</li>
                 </ul>
 
-                <h2 className='text-base font-bold mt-8' style={{ fontFamily: "Eventpop" }}>3. Platinum</h2>
+                <h2 className='text-base font-bold mt-8' style={{ fontFamily: "Eventpop" }}>4. Platinum</h2>
                 <ul className='mt-2 ml-5'>
                     <li className='text-sm font-medium text-[#585858] list-disc leading-[20px]'>ค่าใช้จ่าย: 60,000 บาท ขึ้นไป</li>
                 </ul>
