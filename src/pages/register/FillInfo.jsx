@@ -86,7 +86,7 @@ export const UserInfoForm = ({
         }
       </div>
 
-      {/* <div className='flex flex-col'>
+      <div className='flex flex-col'>
         <label htmlFor='email'>อีเมลของคุณ</label>
         <input
           className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]'
@@ -100,7 +100,7 @@ export const UserInfoForm = ({
             <strong className="typography-error-sm text-negative-700 font-medium">{formik.errors.email}</strong>
           )
         }
-      </div> */}
+      </div>
 
       <div className='flex flex-col'>
         <label htmlFor='id_card_number'>เลขบัตรประจำตัวประชาชน</label>

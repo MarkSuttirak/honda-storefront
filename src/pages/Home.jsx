@@ -36,17 +36,15 @@ import Skeleton from '../components/Skeleton';
 import { getToken } from "../utils/helper";
 import silverCard from '../img/mainBannerRewardHome.png'
 import { userInfoSchema } from '../components/forms/userInfoSchema';
-import { getProducts } from '../client/api';
 
 const Home = () => {
   document.body.style.background = "white"
   const [loading, setLoading] = useState(true);
   const [data, setUserdata] = useState(null);
-  const [gifts, setGifts] = useState([]);
-  const [giftCards, setGiftCards] = useState([]);
+
   const { currentUser, updateCurrentUser } = useFrappeAuth();
   const { user } = useUser();
-  const { products } = useProducts();
+  const { products, gifts, giftCards } = useProducts();
   const navigate = useNavigate();
 
   const getprofiledata = async (currentUserz) => {
@@ -67,22 +65,6 @@ const Home = () => {
   }
 
   useEffect(() => {
-    getProducts({
-      "query_args": {
-        "item_group": "Gift",
-      }
-    }).then((data) => setGifts(data.items))
-    getProducts({
-      "query_args": {
-        "field_filters": {
-          "item_group": "Gift Card"
-        }
-      }
-    }).then((data) => setGiftCards(data.items))
-  }, [])
-
-
-  useEffect(() => {
     if (currentUser) {
       getprofiledata(currentUser);
     }
@@ -100,7 +82,7 @@ const Home = () => {
         last_name: user.user.full_name.split(" ").slice(1).join(" "),
         email: user.user.email,
         phone: user.user.phone,
-        id_card_number: "1412412",
+        id_card_number: "00000000",
         birth_date: user.user.birth_date,
       }).catch((err) => {
         console.log("Redrecting back");

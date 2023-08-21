@@ -5,6 +5,8 @@ const ProductsContext = createContext([])
 
 export const ProductsProvider = ({ children }) => {
     const [products, setProducts] = useState([])
+    const [gifts, setGifts] = useState([]);
+    const [giftCards, setGiftCards] = useState([]);
     const [newP, setNewP] = useState(null)
 
     useFrappeGetCall('erpnext.e_commerce.api.get_product_filter_data', {
@@ -13,7 +15,19 @@ export const ProductsProvider = ({ children }) => {
     }, `products-${newP}`, {
         isOnline: () => products.length === 0,
         onSuccess: (data) => setProducts(data.message.items)
-    },true)
+    }, true)
+
+    useFrappeGetCall('erpnext.e_commerce.api.get_product_filter_data', {
+        query_args: { "field_filters": {}, "attribute_filters": {}, "item_group": "Gift Card", "start": null, "from_filters": false }
+    }, `products-gift-cards`, {
+        onSuccess: (data) => setGiftCards(data.message.items)
+    })
+
+    useFrappeGetCall('erpnext.e_commerce.api.get_product_filter_data', {
+        query_args: { "field_filters": {}, "attribute_filters": {}, "item_group": "Gift", "start": null, "from_filters": false }
+    }, `products-gifts`, {
+        onSuccess: (data) => setGifts(data.message.items)
+    })
 
     const get = (name) => {
         // if product is already in the list, return it & refetch it in the background
@@ -33,7 +47,7 @@ export const ProductsProvider = ({ children }) => {
 
 
     return (
-        <ProductsContext.Provider value={{ products, setProducts, get, getByItemCode }}>
+        <ProductsContext.Provider value={{ products, setProducts, get, getByItemCode, gifts, giftCards }}>
             {children}
         </ProductsContext.Provider>
     )
