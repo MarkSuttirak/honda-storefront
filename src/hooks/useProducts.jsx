@@ -1,13 +1,19 @@
-import React, { createContext, useContext, useState } from 'react'
-import { useFrappeGetCall, useFrappePostCall } from 'frappe-react-sdk';
+import React, { createContext, useContext, useState, useEffect } from 'react'
+import { useFrappeAuth, useFrappeGetCall, useFrappePostCall, useFrappeGetDoc  } from 'frappe-react-sdk';
 
 const ProductsContext = createContext([])
 
 export const ProductsProvider = ({ children }) => {
+    const [ userdata, setUserdata ] = useState([]);
     const [products, setProducts] = useState([])
     const [gifts, setGifts] = useState([]);
     const [giftCards, setGiftCards] = useState([]);
     const [newP, setNewP] = useState(null)
+    const { currentUser, updateCurrentUser } = useFrappeAuth();
+    
+    useEffect(() => {
+        updateCurrentUser();
+      }, [currentUser]);
 
     useFrappeGetCall('erpnext.e_commerce.api.get_product_filter_data', {
         name: newP,
@@ -29,6 +35,12 @@ export const ProductsProvider = ({ children }) => {
         onSuccess: (data) => setGifts(data.message.items)
     })
 
+    useFrappeGetCall('headless_e_commerce.api.get_profile', {}, 'user-profilez', {
+        onSuccess: (data) => setUserdata(data.message)
+    })
+
+
+
     const get = (name) => {
         // if product is already in the list, return it & refetch it in the background
         const p = products.find((product) => product.name === name)
@@ -44,10 +56,11 @@ export const ProductsProvider = ({ children }) => {
         const p = products.find((product) => product.item_code === itemCode)
         return p
     }
+    
 
 
     return (
-        <ProductsContext.Provider value={{ products, setProducts, get, getByItemCode, gifts, giftCards }}>
+        <ProductsContext.Provider value={{ products, setProducts, get, getByItemCode, gifts, giftCards,userdata }}>
             {children}
         </ProductsContext.Provider>
     )

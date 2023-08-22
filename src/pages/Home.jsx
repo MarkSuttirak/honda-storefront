@@ -44,36 +44,22 @@ const Home = () => {
 
   const { currentUser, updateCurrentUser } = useFrappeAuth();
   const { user } = useUser();
-  const { products, gifts, giftCards } = useProducts();
+  const { products, gifts, giftCards,userdata } = useProducts();
   const navigate = useNavigate();
+  const [profileloading, setProfileloading] = useState(true);
 
-  const getprofiledata = async (currentUserz) => {
-    var myHeaders = new Headers();
-    myHeaders.append("Cookie", "full_name=Guest; sid=Guest; system_user=no; user_id=Guest; user_image=");
-    myHeaders.append("Authorization", "Bearer " + getToken());
-    var requestOptions = {
-      method: 'GET',
-      headers: myHeaders
-    };
-    fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.getuser.get_profile?customer=" + currentUserz, requestOptions)
-      .then((response) => response.json()).then((data) => {
-        setUserdata(data.message);
-      })
-      .catch(error => console.log('error', error));
-
-
-  }
 
   useEffect(() => {
-    if (currentUser) {
-      getprofiledata(currentUser);
+    if (userdata) {
+      setUserdata(userdata.user);
+      setProfileloading(false);
     }
     updateCurrentUser();
     if (products) {
       setLoading(false)
     }
 
-  }, [products]);
+  }, [userdata]);
 
   useEffect(() => {
     if (user) {
@@ -120,7 +106,7 @@ const Home = () => {
             </div>
           </div>
         )}
-        {!data && loading && (
+        {profileloading && (
           <div className='flex'>
             <div className='flex items-center w-[85%]'>
               <Skeleton width='64px' height='64px' borderRadius='50%' />
