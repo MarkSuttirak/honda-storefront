@@ -96,7 +96,7 @@ function App() {
   }, []);
 
   return (
-    <FrappeProvider url={"https://dev.zaviago.com"}
+    <FrappeProvider url={"https://dev.honda.zaviago.com"}
       enableSocket={false}
       tokenParams={{
         type: "token",

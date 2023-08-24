@@ -1,5 +1,5 @@
 
-const verifyotpnow = (userphone,myotp,username) => {
+const verifyotpnow = (userphone, myotp, username) => {
     var myHeaders = new Headers();
     myHeaders.append("Cookie", "full_name=Guest; sid=Guest; system_user=no; user_id=Guest; user_image=");
 
@@ -8,12 +8,12 @@ const verifyotpnow = (userphone,myotp,username) => {
         headers: myHeaders
     };
 
-    fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.verifyuser.verifyotp?userphone="+userphone+"&otp="+myotp+"&username="+username, requestOptions)
-    .then(response => response.text())
-    .then(result => {
-        console.log('fffff');
-    })
-    .catch(error => console.log('error', error));
+    fetch("https://dev.honda.zaviago.com/api/method/honda_api.api_calls.verifyuser.verifyotp?userphone=" + userphone + "&otp=" + myotp + "&username=" + username, requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            console.log('fffff');
+        })
+        .catch(error => console.log('error', error));
 
 }
 export { verifyotpnow };
@@ -23,7 +23,7 @@ export { verifyotpnow };
 
 const phonverifynow = (phone) => {
     try {
-        return fetch("https://dev.zaviago.com/api/method/honda_api.api_calls.verifyuser.getphone?userphone="+phone, {
+        return fetch("https://dev.honda.zaviago.com/api/method/honda_api.api_calls.verifyuser.getphone?userphone=" + phone, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

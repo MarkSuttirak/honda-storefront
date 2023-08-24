@@ -18,13 +18,13 @@ const ProductCard = ({
             <div className="rounded-md hover:shadow-lg min-w-[150px] max-w-[150px]">
                 <div className="relative">
                     <SfLink href="#" className="block">
-                      <img
-                        src={thumbnail !== null && `https://dev.zaviago.com${thumbnail}`}
-                        // alt={title}
-                        className={`object-cover h-auto rounded-md aspect-square ${thumbnail == null && 'bg-[#C5C5C5]'}`}
-                        width="300"
-                        height="300"
-                      />
+                        <img
+                            src={thumbnail !== null && `https://dev.honda.zaviago.com${thumbnail}`}
+                            // alt={title}
+                            className={`object-cover h-auto rounded-md aspect-square ${thumbnail == null && 'bg-[#C5C5C5]'}`}
+                            width="300"
+                            height="300"
+                        />
                     </SfLink>
                     {/* <SfButton
                         type="button"
@@ -39,7 +39,7 @@ const ProductCard = ({
                 </div>
                 <div className="py-4 pb-0">
                     <SfLink href="#" variant="secondary" className="no-underline text-[#111111] text-xs">
-                      {title}
+                        {title}
                     </SfLink>
                     {/* <div className="flex items-center pt-1">
                         <SfRating size="xs" value={5} max={5} />
@@ -52,8 +52,8 @@ const ProductCard = ({
                         Lightweight • Non slip • Flexible outsole • Easy to wear on and off
                     </p> */}
                     <div className='flex items-center mt-1'>
-                      <img src={StarIcon} />
-                      <span className="block font-bold pl-[3px] text-sm text-[#F0592A]">{price} คะแนน</span>
+                        <img src={StarIcon} />
+                        <span className="block font-bold pl-[3px] text-sm text-[#F0592A]">{price} คะแนน</span>
                     </div>
                     {/* <SfButton type="button" size="sm" slotPrefix={<SfIconShoppingCart size="sm" />} onClick={(e) => {
                         e.preventDefault();
