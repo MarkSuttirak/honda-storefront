@@ -15,7 +15,7 @@ function CollectPoints() {
     <>
       <TitleHeader link="/my-account" title={'วิธีเก็บคะแนน'} />
       {data && (
-        <div className="px-[20px] mt-[53px] pt-9">
+        <div className="px-[20px] pt-9 mb-[120px] mt-[53px]">
           {/* <h2 className='text-base font-bold' style={{ fontFamily: "Eventpop" }}>{data.title}</h2> */}
           <div className='mt-2 info-desc' dangerouslySetInnerHTML={{__html:data.description}}/>
         </div>

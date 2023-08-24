@@ -1,12 +1,16 @@
 import React from 'react'
 import FooterMenu from "../components/FooterMenu"
 import TitleHeader from '../components/TitleHeader';
+import { useFrappeGetDoc } from 'frappe-react-sdk';
 
 function Consent() {
+    const { data } = useFrappeGetDoc('Data Disclosure Consent', {
+        fields: ['description']
+    })
     return (
         <>
             <TitleHeader link={'/my-account'} title={'ความยินยอมในการเปิดเผยข้อมูล'} />
-            <div className="px-[20px] mt-[53px] pt-9 mb-[120px]">
+            {/* <div className="px-[20px] mt-[53px] pt-9 mb-[120px]">
                 <h2 className='text-base font-bold' style={{ fontFamily: "Eventpop" }}>นโยบายความเป็นส่วนตัว</h2>
                 <p className='text-sm font-medium text-[#585858] mt-4'>มีความมุ่งมั่นในการปกป้องความเป็นส่วนตัวและข้อมูลส่วนบุคคลของลูกค้าและผู้ใช้บริการของเรานโยบายความเป็นส่วนตัวนี้อธิบายถึง
                     ประเภทของข้อมูลส่วนบุคคลที่เราเก็บรวบรวมวิธีการเก็บรวบรวมและใช้ข้อมูลนั้น และสิทธิของคุณเกี่ยวกับข้อมูลส่วนบุคคลของคุณโดยการ
@@ -39,7 +43,13 @@ function Consent() {
                 <h2 className='text-sm font-bold mt-8' style={{ fontFamily: "Eventpop" }}>4. สิทธิ์ทรัพย์สินทางปัญญา</h2>
                 <p className='text-sm font-medium text-[#585858] mt-4'>บริษัทจะดำเนินการรักษาความมั่นคงปลอดภัยของข้อมูลส่วน
                     บุคคลของท่าน</p>
-            </div>
+            </div> */}
+            {data && (
+                <div className="px-[20px] pt-9 mb-[120px] mt-[53px]">
+                    {/* <h2 className='text-base font-bold' style={{ fontFamily: "Eventpop" }}>{data.title}</h2> */}
+                    <div className='mt-2 info-desc' dangerouslySetInnerHTML={{__html:data.description}}/>
+                </div>
+            )}
             <FooterMenu active={3} />
         </>
     )
