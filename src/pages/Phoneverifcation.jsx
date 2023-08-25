@@ -64,7 +64,6 @@ const Phonverify = () => {
     verifyotpnow(userphone, myotp, Cookies.get('username'))
   }
 
-
   const phonverifynow = (phone) => {
     try {
       return fetch("https://dev.honda.zaviago.com/api/method/honda_api.api_calls.verifyuser.getphone?userphone=" + phone, {
