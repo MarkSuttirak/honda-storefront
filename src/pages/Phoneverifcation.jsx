@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import { useNavigate } from "react-router-dom";
 import logo from '../img/hondaLogo.png'
 import { Dialog, Transition } from '@headlessui/react'
+import { useCountdown } from "../hooks/useCountDown";
 
 const Phonverify = () => {
   const [filledInfo, setFilledInfo] = useState(false)
@@ -23,6 +24,7 @@ const Phonverify = () => {
   const [filledPhone, setFilledPhone] = useState(false);
   const [filledOTP, setFilledOTP] = useState(true);
   const [filledAllOtp, setFilledAllOtp] = useState('')
+  const [days, hours, minutes, seconds] = useCountdown(new Date().getTime() + 60000);
   const navigate = useNavigate();
 
 
@@ -61,7 +63,7 @@ const Phonverify = () => {
 
   const verifyotp = () => {
     setShowConfirm(true);
-    verifyotpnow(userphone, myotp, Cookies.get('username'))
+    verifyotpnow(userphone, myotp, "suttirak.ch@zaviago.com")
   }
 
 
@@ -129,15 +131,6 @@ const Phonverify = () => {
     <>
       {phonePage && (
         <>
-          <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px]'>
-            <Link to='/login'>
-              <ArrowLeft />
-            </Link>
-            <img src={logo} width='60' className=" mx-auto" />
-            <Link className="invisible">
-              <ArrowLeft />
-            </Link>
-          </header>
           <main className='px-5 pt-[26px] pb-8'>
             <h1 className='text-[20px] font-bold'>กรอกหมายเลขโทรศัพท์</h1>
             <p className='text-[#00000061] text-sm'>กรุณากรอกหมายเลขโทรศัพท์ของคุณเพื่อรับรหัส OTP</p>
@@ -180,10 +173,10 @@ const Phonverify = () => {
             {otperror && (<p className="text-[#F0592A] inter mt-2 text-sm" style={{ fontFamily: "Eventpop" }}>รหัส OTP ไม่ถูกต้อง</p>)}
 
             <p className='mt-[52px] text-[#00000061] text-sm text-center'>หากคุณต้องการขอรหัสผ่าน OTP อีกครั้ง <br />กด <span className="text-black">“ขอรหัส OTP อีกครั้ง”</span> ได้ที่ด้านล่าง</p>
-            <p className="mt-8 mb-[48px] text-sm text-center">ขอรหัส OTP ใหม่อีกครั้งใน 00:59 วินาที</p>
+            {/* <p className="mt-8 mb-[48px] text-sm text-center">ขอรหัส OTP ใหม่อีกครั้งใน 00:{seconds} วินาที</p> */}
 
             <button onClick={verifyotp} className={`text-white rounded-[9px] p-3 w-full bg-black flex items-center justify-center mt-[14px]`} style={{ background: !filledOTP ? "#C5C5C5" : "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)" }} >ยืนยันรหัส OTP</button>
-            <p className="text-center mt-4 text-[#F0592A] text-sm underline">ขอรหัส OTP อีกครั้ง</p>
+            <p onClick={verifyotp} className="text-center mt-4 text-[#F0592A] text-sm underline">ขอรหัส OTP อีกครั้ง</p>
           </main>
         </>
       )}
