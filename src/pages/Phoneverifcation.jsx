@@ -63,9 +63,8 @@ const Phonverify = () => {
 
   const verifyotp = () => {
     setShowConfirm(true);
-    verifyotpnow(userphone, myotp, "suttirak.ch@zaviago.com")
+    verifyotpnow(userphone, myotp, Cookies.get('username'))
   }
-
 
   const phonverifynow = (phone) => {
     try {
