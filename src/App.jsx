@@ -93,7 +93,11 @@ function App() {
       navigate("/login");
     }
 
-  }, []);
+    if (!Cookies.get('phoneverify') == true) {
+      navigate("/phonverify");
+    }
+
+  });
 
   return (
     <FrappeProvider url={"https://dev.honda.zaviago.com"}
