@@ -66,6 +66,10 @@ function App() {
 
   useEffect(() => {
 
+    if (isPhoneVerified) {
+      navigate("/phonverify");
+    }
+
     if (token) {
       Cookies.set('username', username);
       if (phoneverify == 'true') {
@@ -84,17 +88,13 @@ function App() {
 
 
     }
-    
+
 
     if (!getToken()) {
       navigate("/login");
     }
 
-    if (isPhoneVerified) {
-      navigate("/phonverify");
-    }
 
-   
   },[isPhoneVerified]);
 
   return (
