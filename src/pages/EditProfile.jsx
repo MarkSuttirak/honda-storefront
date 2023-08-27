@@ -9,8 +9,7 @@ import { useFormik } from "formik"
 
 const EditProfile = () => {
   const { user } = useUser()
-  const { call } = useFrappePostCall("honda_api.api.update_profile")
-
+  const { call } = useFrappePostCall("honda_api.api_calls.getuser.update_profile")
   const [editPro, setEditPro] = useState(true)
   const [changePhone, setChangePhone] = useState(false)
   const [changedSuccessfully, setChangedSuccessfully] = useState(false);
