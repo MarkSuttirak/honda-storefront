@@ -62,6 +62,7 @@ function App() {
   const username = new URLSearchParams(search).get("username");
   const [Userverify, SetUserverify] = useState(phoneverify);
   const [user, setUser] = useState(null);
+  const isPhoneVerified = Cookies.get('phoneverify') === 'true';
 
   useEffect(() => {
 
@@ -83,18 +84,18 @@ function App() {
 
 
     }
-    else {
-      if (Cookies.get('phoneverify') == true) {
-        navigate("/phonverify");
-      }
-    }
+    
 
     if (!getToken()) {
       navigate("/login");
     }
 
+    if (isPhoneVerified) {
+      navigate("/phonverify");
+    }
+
    
-  },[]);
+  },[isPhoneVerified]);
 
   return (
     <FrappeProvider url={"https://dev.honda.zaviago.com"}
