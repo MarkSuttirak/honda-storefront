@@ -39,9 +39,13 @@ export const ProductsProvider = ({ children }) => {
     })
 
     useEffect(() => {
-        updateCurrentUser();
-        mutate();
-    }, [currentUser]);
+        if (location.pathname === "/" && currentUser) {
+            mutate();
+        }
+        else {
+            updateCurrentUser();
+        }
+    }, [currentUser, location.pathname]);
 
 
     const get = (name) => {
