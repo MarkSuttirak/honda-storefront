@@ -93,6 +93,15 @@ const Phonverify = () => {
     }
   }
   const verifyotpnow = (userphone, myotp, username) => {
+
+
+    if(!myotp){
+      seterrornow('Please Enter OTP');
+      setShowConfirm(false);
+      return;
+    }
+
+
     var myHeaders = new Headers();
     myHeaders.append("Cookie", "full_name=Guest; sid=Guest; system_user=no; user_id=Guest; user_image=");
     myHeaders.append("Authorization", "Bearer " + Cookies.get('token'));
@@ -173,6 +182,10 @@ const Phonverify = () => {
 
             <p className='mt-[52px] text-[#00000061] text-sm text-center'>หากคุณต้องการขอรหัสผ่าน OTP อีกครั้ง <br />กด <span className="text-black">“ขอรหัส OTP อีกครั้ง”</span> ได้ที่ด้านล่าง</p>
             {/* <p className="mt-8 mb-[48px] text-sm text-center">ขอรหัส OTP ใหม่อีกครั้งใน 00:{seconds} วินาที</p> */}
+              
+
+              
+              <p className="mt-8 mb-[48px] text-sm text-center">{errornow}</p>
 
             <button onClick={verifyotp} className={`text-white rounded-[9px] p-3 w-full bg-black flex items-center justify-center mt-[14px]`} style={{ background: !filledOTP ? "#C5C5C5" : "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)" }} >ยืนยันรหัส OTP</button>
             <p onClick={verifyotp} className="text-center mt-4 text-[#F0592A] text-sm underline">ขอรหัส OTP อีกครั้ง</p>
