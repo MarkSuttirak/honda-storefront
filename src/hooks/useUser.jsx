@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { getToken, removeToken, setToken } from '../utils/helper';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useFrappeGetCall } from 'frappe-react-sdk';
 
 const userContext = createContext(null);
@@ -8,6 +8,7 @@ const userContext = createContext(null);
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const { mutate } = useFrappeGetCall('headless_e_commerce.api.get_profile', {}, 'user-profile', {
         isOnline: () => getToken(),
@@ -15,6 +16,10 @@ export const UserProvider = ({ children }) => {
             setUser(data.message)
         }
     })
+
+    useEffect(() => {
+        mutate();
+    }, [mutate, location]);
 
 
     const login = async (usr, pwd) => {
@@ -30,9 +35,7 @@ export const UserProvider = ({ children }) => {
                 }),
             }).then((response) => response.json()).then((data) => {
                 if (data.message.token) {
-                    // handle jwt
                     setToken(data.message.token);
-                    // get user
                     mutate()
                 }
                 return data;
