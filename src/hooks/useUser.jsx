@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import { getToken, removeToken, setToken } from '../utils/helper';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useFrappeGetCall } from 'frappe-react-sdk';
+import { getTier } from '../client/api';
 
 const userContext = createContext(null);
 
@@ -13,7 +14,9 @@ export const UserProvider = ({ children }) => {
     const { mutate } = useFrappeGetCall('headless_e_commerce.api.get_profile', {}, 'user-profile', {
         isOnline: () => getToken(),
         onSuccess: (data) => {
-            setUser(data.message)
+            setUser(prevUser => ({ ...prevUser, ...data.message }))
+            getTier({ customer: data.message.name })
+                .then((res) => setUser(prevUser => ({ ...prevUser, tier: res })))
         }
     })
 
