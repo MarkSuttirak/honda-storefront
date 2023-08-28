@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import logo from '../img/hondaLogo.png'
 import { Dialog, Transition } from '@headlessui/react'
 import { useCountdown } from "../hooks/useCountDown";
+import { useUser } from '../hooks/useUser'
 
 const Phonverify = () => {
   const [filledInfo, setFilledInfo] = useState(false)
@@ -20,7 +21,7 @@ const Phonverify = () => {
   const [otperror, setOtperror] = useState(false)
 
   const [showConfirm, setShowConfirm] = useState(false);
-
+  const { refetch } = useUser()
   const [filledPhone, setFilledPhone] = useState(false);
   const [filledOTP, setFilledOTP] = useState(true);
   const [filledAllOtp, setFilledAllOtp] = useState('')
@@ -119,7 +120,7 @@ const Phonverify = () => {
           seterrornow('');
           seterrornow(res.message);
           Cookies.set('phoneverify', false);
-          navigate("/fill-info");
+          refetch().then(() => navigate("/"))
         }
         else {
           setShowConfirm(false);
