@@ -4,19 +4,27 @@ import { useFrappeGetDocList, useFrappeGetCall } from "frappe-react-sdk"
 import testImg from '../img/test-img.png'
 import { Link, useParams } from "react-router-dom"
 import Skeleton from '../components/Skeleton';
+import { useLocation } from 'react-router-dom';
 
 const MyOrder = () => {
   const { id } = useParams();
   const [myorders, setMyorders] = useState([])
+  const location = useLocation();
  
-  const { myorderz } = useFrappeGetCall('honda_api.api_calls.getuser.getorders', {}, 'user-profile', {
+
+
+  const { mutate } = useFrappeGetCall('honda_api.api_calls.getuser.getorders', {}, 'userorders', {
+    isOnline: () => getToken(),
     onSuccess: (data) => {
-      setMyorders(data.message);
+      setMyorders(data.message)
     }
   })
 
-  
+  useEffect(() => {
+    mutate();
+  }, [myorders, location]);
 
+  
 
 
   const [status, setStatus] = useState()
