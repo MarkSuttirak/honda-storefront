@@ -16,7 +16,6 @@ import giftIcon from "../img/goftIconOrange.svg"
 import blogBanner from "../img/blog-img.png"
 // import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/skeleton';
 import Skeleton from '../components/Skeleton';
-import silverCard from '../img/mainBannerRewardHome.png'
 import { userInfoSchema } from '../components/forms/userInfoSchema';
 
 const Home = () => {
@@ -109,7 +108,7 @@ const Home = () => {
 
       <div className='bg-[#ADB1BB] pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome' style={{ backgroundImage: `url(https://dev.honda.zaviago.com${user?.tier?.tier_thumbnail})` }}>
         <div>
-          <h2 className='text-[32px] text-white'>Silver</h2>
+          <h2 className='text-[32px] text-white'>{user?.tier?.tier_name}</h2>
         </div>
         <div className=''>
           <Link to='/my-order' className='bg-white w-[140px] h-[40px] rounded-full flex items-center justify-center' style={{ boxShadow: "0px 3px 15px 0px #7777771A" }}>
