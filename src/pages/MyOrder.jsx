@@ -14,7 +14,6 @@ const MyOrder = () => {
 
 
   const { mutate } = useFrappeGetCall('honda_api.api_calls.getuser.getorders', {}, 'userorders', {
-    isOnline: () => getToken(),
     onSuccess: (data) => {
       setMyorders(data.message)
     }
