@@ -15,6 +15,9 @@ const FillInfo = () => {
       refetch().then(() => navigate("/"))
     }
   }, [isCompleted])
+  useEffect(() => {
+      refetch();
+  }, [])
 
   return (
     <main className='px-5 py-[46px]'>

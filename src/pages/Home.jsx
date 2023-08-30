@@ -1,27 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard'
-import PromotionCard from '../components/PromotionCard';
 import { useProducts } from '../hooks/useProducts'
 import { useFrappeAuth, useFrappeGetDoc, useFrappeGetCall } from 'frappe-react-sdk';
-import banner from '../img/banner.png'
 import coin from '../img/coin.svg'
-import coupon from '../img/coupon.svg'
-import { SfIconSearch, SfIconArrowForward, SfIconCalendarToday } from '@storefront-ui/react'
+import { SfIconArrowForward, SfIconCalendarToday } from '@storefront-ui/react'
 import { Link, useNavigate } from "react-router-dom"
-import activity1 from '../img/activity1.svg'
-import activity2 from '../img/activity2.svg'
-import activity3 from '../img/activity3.svg'
-import activity4 from '../img/activity4.svg'
-import activity5 from '../img/activity5.svg'
-import activity6 from '../img/activity6.svg'
-import activity7 from '../img/activity7.svg'
-import activity8 from '../img/activity8.svg'
-import hondaLogo from '../img/hondaLogo.png'
-import discountfive from '../img/discountfive.png'
-import promotion1 from '../img/promotion1.png'
-import promotion2 from '../img/promotion2.png'
-import bannerDiscount1 from '../img/banner-discount1.png'
-import bannerDiscount2 from '../img/banner-discount2.png'
 import BlogCard from '../components/BlogCard';
 import NavHeader from '../components/NavHeader'
 import FooterMenu from '../components/FooterMenu';
@@ -33,8 +16,6 @@ import giftIcon from "../img/goftIconOrange.svg"
 import blogBanner from "../img/blog-img.png"
 // import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/skeleton';
 import Skeleton from '../components/Skeleton';
-import { getToken } from "../utils/helper";
-import silverCard from '../img/mainBannerRewardHome.png'
 import { userInfoSchema } from '../components/forms/userInfoSchema';
 
 const Home = () => {
@@ -44,10 +25,9 @@ const Home = () => {
 
   const { currentUser, updateCurrentUser } = useFrappeAuth();
   const { user } = useUser();
-  const { products, gifts, giftCards,userdata } = useProducts();
+  const { products, gifts, giftCards, userdata } = useProducts();
   const navigate = useNavigate();
   const [profileloading, setProfileloading] = useState(true);
-
 
   useEffect(() => {
     if (userdata) {
@@ -126,9 +106,9 @@ const Home = () => {
       </header>
       {/* <img src={banner} className='w-full left-0 max-h-[240px] object-cover'/> */}
 
-      <div className='bg-[#ADB1BB] pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome' style={{ backgroundImage: `url(${silverCard})` }}>
+      <div className='bg-[#ADB1BB] pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome' style={{ backgroundImage: `url(https://dev.honda.zaviago.com${user?.tier?.tier_thumbnail})` }}>
         <div>
-          <h2 className='text-[32px] text-white'>Silver</h2>
+          <h2 className='text-[32px] text-white'>{user?.tier?.tier_name}</h2>
         </div>
         <div className=''>
           <Link to='/my-order' className='bg-white w-[140px] h-[40px] rounded-full flex items-center justify-center' style={{ boxShadow: "0px 3px 15px 0px #7777771A" }}>

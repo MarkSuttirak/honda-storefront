@@ -1,31 +1,29 @@
-import React, { useState, useRef } from "react"
+import React, { useEffect,useState, useRef } from "react"
 import { ArrowLeft } from "@untitled-ui/icons-react"
 import { useFrappeGetDocList, useFrappeGetCall } from "frappe-react-sdk"
 import testImg from '../img/test-img.png'
 import { Link, useParams } from "react-router-dom"
+import Skeleton from '../components/Skeleton';
+import { useLocation } from 'react-router-dom';
 
 const MyOrder = () => {
   const { id } = useParams();
-  const [myorderlist, setmyorderlist] = useState()
+  const [myorders, setMyorders] = useState([])
+  const location = useLocation();
  
-  const { data, isLoading, error } = useFrappeGetDocList('Sales Invoice', {
-    fields: ['name', 'posting_date', 'status', 'total'],
-    limit: 1000,
-    orderBy: {
-      field: 'posting_date',
-      order: 'desc'
+
+
+  const { mutate } = useFrappeGetCall('honda_api.api_calls.getuser.getorders', {}, 'userorders', {
+    onSuccess: (data) => {
+      setMyorders(data.message)
     }
   })
 
+  useEffect(() => {
+    mutate();
+  }, [myorders, location]);
 
-
-  const { myorders } = useFrappeGetCall('honda_api.api_calls.getuser.getorders', {}, 'user-profile', {
-      isOnline: () => getToken(),
-      onSuccess: (data) => {
-        setmyorderlist(data.message)
-      }
-  })
-
+  
 
 
   const [status, setStatus] = useState()
@@ -39,9 +37,9 @@ const MyOrder = () => {
         รายละเอียดการแลกของรางวัล
       </header>
       <main className="p-5 flex flex-col gap-y-[18px] mt-[53px]">
-        {myorderlist && (
+        {myorders && (
           <>
-            {myorderlist.map((d) => 
+            {myorders.map((d) => 
             <Link to={`/my-order-details/${d.name}`}>
               <section className="flex gap-x-[14px] mt-[14px] pb-[18px] border-b border-b-[#E3E3E3]">
                 {/* <div>
@@ -71,6 +69,7 @@ const MyOrder = () => {
             )}
           </>
         )}
+
       </main>
     </>
   )
