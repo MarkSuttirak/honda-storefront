@@ -137,15 +137,12 @@ const GiftCheckout = () => {
                         </button>
                         การแลกรางวัล
                     </header>
-                    <header className='text-white text-center py-[10px]' style={{background:"linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}}>
-                        กดรับของขวัญฟรี 🎁
-                    </header>
                     <div className='flex flex-col md:flex-row justify-center'>
                         <form className='p-5'>
                             <label className='text-[#333333] text-sm font-bold mt-[14px]'>
                               <div className='flex gap-x-[10px] mb-[18px]'>
                                 <MarkerPin01 />
-                                ที่อยู่ในการจัดส่ง
+                                สาขาที่รับของรางวัล
                               </div>
                               <BranchSelect name="branch" value={formik.values.branch} onChange={formik.handleChange} error={formik.errors.branch} />
                             </label>
@@ -154,7 +151,7 @@ const GiftCheckout = () => {
                             <div className="flex justify-between items-end py-4">
                                 <p className="typography-headline-4 font-bold md:typography-headline-3 gap-x-2 flex">
                                     <ShoppingBag01 />
-                                    Order Summary
+                                    สรุปรายการของรางวัล
                                 </p>
                             </div>
                             <div className="md:shadow-lg md:rounded-md md:border md:border-neutral-100">
@@ -207,7 +204,7 @@ const GiftCheckout = () => {
                                     </div>
                                 </ul>
                                 <div className="py-4 mt-3 md:pb-6 md:mt-0">
-                                    <SfButton disabled={user?.loyalty_points < product?.loyalty_points_based_price || formik.values.branch == "Select Branch"} size="lg" className="w-full shadow-none" style={{ background: user?.loyalty_points < product?.loyalty_points_based_price || formik.values.branch == "Select Branch" ? "#C5C5C5" : "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}} onClick={(e) => { 
+                                    <SfButton disabled={user?.loyalty_points < product?.loyalty_points_based_price || formik.values.branch == "เลือกสาขา"} size="lg" className="w-full shadow-none" style={{ background: user?.loyalty_points < product?.loyalty_points_based_price || formik.values.branch == "เลือกสาขา" ? "#C5C5C5" : "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}} onClick={(e) => { 
                                       e.preventDefault();
                                       setShowConfirm(true)
                                     }}>

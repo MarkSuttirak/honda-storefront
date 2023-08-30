@@ -16,7 +16,7 @@ const BranchSelect = ({
     return (
         <>
             <SfSelect size="base" name={name} onChange={onChange} value={value}>
-                <option value="">Select Branch</option>
+                <option value="">เลือกสาขา</option>
                 {(branchList ?? []).map((branch) => (
                     <option value={branch.name} key={branch.name}>
                         {branch.name}
@@ -24,7 +24,7 @@ const BranchSelect = ({
                 ))}
             </SfSelect>
             {
-                error && <p className="text-negative-600">Please select a branch</p>
+                error && <p className="text-negative-600">กรุณาเลือกสาขา</p>
             }
         </>
     )
