@@ -212,8 +212,8 @@ const MyAccount = () => {
             <hr style={{ borderColor: "#F2F2F2" }} />
 
             <div className='w-full flex text-center'>
-              <Link to='/collect-points' state={{url:"/my-account"}} className='text-sm p-4 my-2 w-1/2 border-r border-r-[#F2F2F2]'>ประวัติการใช้คะแนน</Link>
-              <Link to='/how-to-collect-rewards' className='text-sm p-4 my-2 w-1/2'>ระดับสมาชิก</Link>
+              <Link to='/reward-history' state={{url:"/my-account"}} className='text-sm p-4 my-2 w-1/2 border-r border-r-[#F2F2F2]'>ประวัติการใช้คะแนน</Link>
+              <Link to='/member-conditions' className='text-sm p-4 my-2 w-1/2'>ระดับสมาชิก</Link>
             </div>
           </div>
 
