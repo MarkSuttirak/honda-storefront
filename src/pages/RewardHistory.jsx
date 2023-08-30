@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react'
 import TitleHeader from '../components/TitleHeader'
 import coinHand from '../img/coins-hand.svg'
-import spentCoins from '../img/spentCoins.png'
+import spentCoins from '../img/spentCoins.svg'
 import { Link } from 'react-router-dom';
 import { useUser } from '../hooks/useUser';
 import { useFrappeGetCall, useFrappeGetDoc } from 'frappe-react-sdk';
@@ -70,7 +70,7 @@ function RewardHistory() {
                             <h4 className='font-bold text-[#F0592A] text-[26px] mr-[7px]'>{user?.loyalty_points}</h4>
                             <p className='font-normal font-xs text-[17px] text-[#F0592A] bg-none'>คะแนนที่ใช้ได้</p>
                         </div>
-                        <p className='font-normal text-[#424242] text-xs leading-[17.4px]'>21 คะแนนจะหมดอายุ 31 ม.ค. 2024 </p>
+                        <p className='font-normal text-[#424242] text-xs leading-[17.4px]'>คะแนนของคุณจะหมดอายุภายใน 31 ม.ค. 2024 </p>
                     </div>
                     <div>
                         <Link to='/my-order' className='bg-[#F0592A] text-sm font-bold px-[6px] py-[4px] font-sm rounded-md  text-white leading-[20.3px]'>รางวัลของฉัน</Link>
