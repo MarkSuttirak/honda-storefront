@@ -23,6 +23,7 @@ import { ArrowLeft, ShoppingBag01, Heart, CoinsStacked01, Truck01, AnnotationDot
 import Accordion from '../components/Accordion';
 import ProductCard from '../components/ProductCard';
 import { useUser } from '../hooks/useUser';
+import { useFrappeGetDoc } from 'frappe-react-sdk';
 
 const Product = () => {
   const [rewardReddem, setRewardRedeem] = useState(false);
@@ -36,6 +37,10 @@ const Product = () => {
   const max = 999;
   const [value, { inc, dec, set }] = useCounter(min);
   const [colour, setColour] = useState("ส้ม")
+
+  const { data } = useFrappeGetDoc('Condition of redeem items', {
+    fields: ['name', 'description']
+  })
 
   const [liked, setLiked] = useState(false)
 
@@ -208,7 +213,6 @@ const Product = () => {
                 <div>
                   <p className='text-[#00000061] font-normal text-xs leading-[17.4px]' style={{ fontFamily: "Eventpop" }}>คะแนนที่ใช้</p>
                   <p className='font-bold text-sm text-[#F0592A] leading-[24px]' style={{ fontFamily: "Eventpop" }}>{product?.loyalty_points_based_price} คะแนน</p>
-                  <p className='text-[#00000061] font-normal text-[10px] leading-[14.5px]' style={{ fontFamily: "Eventpop" }}>มูลค่า 350 บาท</p>
                 </div>
                 <hr className='w-[1px] h-[63px] border-r border-[#0000001A]' />
                 <div>
@@ -230,11 +234,13 @@ const Product = () => {
 
             <div className='px-[18px] pt-[30px]'>
               <h4 className='font-bold text-[#424242] text-sm leading-[23.2px]' style={{ fontFamily: "Eventpop" }}>รายละเอียด</h4>
-              <ul className='mt-[9px] pr-[18px] pl-[22px] w-[294px]'>
-                <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>สมาชิกหลักเท่านั้นที่มีสิทธิใช้คะแนนเพื่อแลกรับ ของรางวัล</li>
-                <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>ขอสงวนสิทธิ์งดรับการแก้ไขเปลี่ยนแปลงใด หลังจากที่สมาชิกหลักแจ้งความประสงค์ขอแลก คะแนนสะสมไปยังบริษัทฯแล้ว</li>
-                <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>บริษัทฯขอแจ้งเปลี่ยนแปลงเงื่อนไขการแลกของรางวัล โดยมิได้แจ้งให้ทราบก่อนล่วงหน้า</li>
-              </ul>
+              {data && (
+                <div className="pt-2">
+                  {/* <h2 className='text-base font-bold' style={{ fontFamily: "Eventpop" }}>{data.title}</h2> */}
+                  <div className='mt-2 info-desc' dangerouslySetInnerHTML={{__html:data.description}}/>
+                </div>
+              )}
+
             </div>
             <div className="items-start flex fixed bottom-0 w-full pb-3 bg-white">
               <SfButton disabled={product?.loyalty_points_based_price > user?.loyalty_points} onClick={() => location.href = product?.item_group.includes("Gift") ? `/${product.item_code}/gift-checkout` : '/checkout'} type="button" size="lg" style={{ background: product?.loyalty_points_based_price > user?.loyalty_points ? "#C5C5C5" : "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)", width: "calc(100% - 32px)", color: "white" }}> {/*onClick={() => addToCart(product?.item_code, value)} */}
