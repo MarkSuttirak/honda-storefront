@@ -11,8 +11,21 @@ const ProductCard = ({
     price,
     productId,
     itemCode,
+    tags,
+    dispalytags,
 }) => {
     const { addToCart } = useCart()
+
+    if(tags != undefined){
+        const shouldRender = tags.includes(dispalytags);
+        if (!shouldRender) {
+            return null;
+        }
+    }
+
+    
+
+
     return (
         <Link to={`/products/${productId}`}>
             <div className="rounded-md hover:shadow-lg min-w-[150px] max-w-[150px]">
