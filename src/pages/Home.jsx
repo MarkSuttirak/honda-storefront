@@ -168,6 +168,8 @@ const Home = () => {
                     productId={product.name}
                     itemCode={product.item_code}
                     price={product.loyalty_points_based_price}
+                    tags={product.tags}
+                    dispalytags='All'
                     thumbnail={product.website_image} />
                 ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
               </>
@@ -209,6 +211,8 @@ const Home = () => {
                     productId={product.name}
                     itemCode={product.item_code}
                     price={product.loyalty_points_based_price}
+                    tags={product.tags}
+                    dispalytags='Gift'
                     thumbnail={product.website_image} />
                 ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
               </>
@@ -250,6 +254,8 @@ const Home = () => {
                     productId={product.name}
                     itemCode={product.item_code}
                     price={product.loyalty_points_based_price}
+                    tags={product.tags}
+                    dispalytags='Gift Card'
                     thumbnail={product.website_image} />
                 ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
               </>
