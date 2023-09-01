@@ -25,7 +25,7 @@ const Home = () => {
 
   const { currentUser, updateCurrentUser } = useFrappeAuth();
   const { user } = useUser();
-  const { products, gifts, giftCards, userdata } = useProducts();
+  const { products, userdata } = useProducts();
   const navigate = useNavigate();
   const [profileloading, setProfileloading] = useState(true);
 
@@ -204,7 +204,7 @@ const Home = () => {
               </>
             ) : (
               <>
-                {(gifts ?? []).map((product) => (
+                {(products ?? []).map((product) => (
                   <ProductCard
                     key={product.item_code}
                     title={product.item_name}
@@ -247,7 +247,7 @@ const Home = () => {
               </>
             ) : (
               <>
-                {(giftCards ?? []).map((product) => (
+                {(products ?? []).map((product) => (
                   <ProductCard
                     key={product.item_code}
                     title={product.item_name}
