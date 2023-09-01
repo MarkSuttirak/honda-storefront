@@ -217,7 +217,7 @@ const Product = () => {
                 <hr className='w-[1px] h-[63px] border-r border-[#0000001A]' />
                 <div>
                   <p className='text-[#00000061] font-normal text-xs leading-[17.4px]' style={{ fontFamily: "Eventpop" }}>สามารถใช้ได้ถึง</p>
-                  <p className='font-bold text-sm text-[#F0592A] leading-[24px]' style={{ fontFamily: "Eventpop" }}>22 ม.ค. 2022</p>
+                  <p className='font-bold text-sm text-[#F0592A] leading-[24px]' style={{ fontFamily: "Eventpop" }}>{product?.item_schedule_end}</p>
                 </div>
               </div>
             </div>
