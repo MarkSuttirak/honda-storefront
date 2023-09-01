@@ -82,6 +82,8 @@ const CategoryPage = () => {
                   itemCode={product.item_code}
                   price={product.loyalty_points_based_price}
                   tags={product.tags}
+                  item_schedule_start={product.item_schedule_start}
+                  item_schedule_end={product.item_schedule_end}
                   dispalytags='All'
                   thumbnail={product.website_image} />
               ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}

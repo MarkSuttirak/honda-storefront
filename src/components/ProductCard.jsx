@@ -13,6 +13,8 @@ const ProductCard = ({
     itemCode,
     tags,
     dispalytags,
+    item_schedule_start,
+    item_schedule_end,
 }) => {
     const { addToCart } = useCart()
 
@@ -21,6 +23,23 @@ const ProductCard = ({
         if (!shouldRender) {
             return null;
         }
+    }
+
+    if(item_schedule_start != undefined && item_schedule_end != undefined){
+
+
+        const today = new Date();
+        const startDate = new Date(item_schedule_start);
+        const endDate = new Date(item_schedule_end);
+
+        if (today >= startDate && today <= endDate) {
+            // your code here
+        } else {
+            return null;
+        }
+
+
+
     }
 
     
