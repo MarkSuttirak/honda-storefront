@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import giftIcon from "../img/giftIcon.svg"
 import TitleHeader from '../components/TitleHeader'
 import bannerImgBlog from '../img/banner-blog-single.png'
+import { useFrappeGetDoc } from 'frappe-react-sdk';
 
 function SingleBlog() {
 
@@ -10,6 +11,10 @@ function SingleBlog() {
     const hanndleCouponClick = () => {
         setRewardRedeem(true)
     }
+
+    const { data } = useFrappeGetDoc('Detail of Blog', {
+        fields: ['name', 'description']
+    })
 
     return (
         <>
@@ -26,11 +31,12 @@ function SingleBlog() {
 
             <div className='px-[18px] pt-[30px]'>
                 <h4 className='font-bold text-[#424242] text-sm leading-[23.2px]' style={{ fontFamily: "Eventpop" }}>รายละเอียด</h4>
-                <ul className='mt-[9px] pr-[18px] pl-[22px] w-[294px]'>
-                    <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>สมาชิกหลักเท่านั้นที่มีสิทธิใช้คะแนนเพื่อแลกรับ ของรางวัล</li>
-                    <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>ขอสงวนสิทธิ์งดรับการแก้ไขเปลี่ยนแปลงใด หลังจากที่สมาชิกหลักแจ้งความประสงค์ขอแลก คะแนนสะสมไปยังบริษัทฯแล้ว</li>
-                    <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>บริษัทฯขอแจ้งเปลี่ยนแปลงเงื่อนไขการแลกของรางวัล โดยมิได้แจ้งให้ทราบก่อนล่วงหน้า</li>
-                </ul>
+                {data && (
+                <div className="pt-2">
+                  {/* <h2 className='text-base font-bold' style={{ fontFamily: "Eventpop" }}>{data.title}</h2> */}
+                  <div className='mt-2 info-desc' dangerouslySetInnerHTML={{__html:data.description}}/>
+                </div>
+              )}
             </div>
 
         </>
