@@ -46,6 +46,23 @@ const Product = () => {
 
   const navigate = useNavigate()
 
+  const formatDate = (date) => {
+    if(!date){
+      return;
+    }
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [day,month,year].join('-');
+  }
+
   const items = [
     {
       title: "ตารางขนาด",
@@ -217,7 +234,7 @@ const Product = () => {
                 <hr className='w-[1px] h-[63px] border-r border-[#0000001A]' />
                 <div>
                   <p className='text-[#00000061] font-normal text-xs leading-[17.4px]' style={{ fontFamily: "Eventpop" }}>สามารถใช้ได้ถึง</p>
-                  <p className='font-bold text-sm text-[#F0592A] leading-[24px]' style={{ fontFamily: "Eventpop" }}>{product?.item_schedule_end}</p>
+                  <p className='font-bold text-sm text-[#F0592A] leading-[24px]' style={{ fontFamily: "Eventpop" }}>{formatDate(product?.item_schedule_end)}</p>
                 </div>
               </div>
             </div>
