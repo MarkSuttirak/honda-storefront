@@ -57,29 +57,11 @@ const Home = () => {
     }
   }, [user])
 
-  const { data:dataBlog } = useFrappeGetDocList('Blog Post', {
+  const { data: dataBlog } = useFrappeGetDocList('Blog Post', {
     fields: ['name','meta_title','meta_description','published_on','meta_image'],
   })
 
-  const BlogCard = ({title, image, date, link}) => {
-    return (
-      <>
-      <Link to={`/single-blog/${link}`} className="min-w-[300px] max-w-[300px]">
-      <h2 className='text-[#3D3D3D] font-bold flex items-center mb-[5px] leading-6'>
-        เข้าร่วมเลย
-        <SfIconArrowForward className="w-[18px] text-black ml-2" />
-      </h2>
-        <img src={image} className="rounded-[6px]"/>
-        <h2 className='mt-4 whitespace-normal text-[#1C1C1C] text-sm font-bold pr-7'>{title}</h2>
-  
-        <p className='text-[#8A8A8A] mt-[5px] text-xs flex items-center'>
-          <SfIconCalendarToday className="w-[11px] mr-[6px]"/>
-          {date}
-        </p>
-      </Link>
-      </>
-    )
-  }
+  console.log(dataBlog)
 
   return (
     <>
@@ -306,9 +288,21 @@ const Home = () => {
           </h2>
 
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5 mb-5">
-            {dataBlog && (
-              <BlogCard image={dataBlog.meta_image} title={dataBlog.meta_title} date={dataBlog.published_on} link={dataBlog.id}/>
-            )}
+            {dataBlog.map((d) => {
+              <Link to={`/single-blog/${d.name}`} className="min-w-[300px] max-w-[300px]">
+                <h2 className='text-[#3D3D3D] font-bold flex items-center mb-[5px] leading-6'>
+                  เข้าร่วมเลย
+                  <SfIconArrowForward className="w-[18px] text-black ml-2" />
+                </h2>
+                  <img src={d.meta_image} className="rounded-[6px]"/>
+                  <h2 className='mt-4 whitespace-normal text-[#1C1C1C] text-sm font-bold pr-7'>{d.meta_title}</h2>
+            
+                  <p className='text-[#8A8A8A] mt-[5px] text-xs flex items-center'>
+                    <SfIconCalendarToday className="w-[11px] mr-[6px]"/>
+                    {d.published_on}
+                  </p>
+              </Link>
+            })}
             {/* <BlogCard image={blogBanner} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" />
             <BlogCard image={blogBanner} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" /> */}
           </div>
