@@ -5,7 +5,6 @@ import { useFrappeAuth, useFrappeGetDoc, useFrappeGetCall, useFrappeGetDocList }
 import coin from '../img/coin.svg'
 import { SfIconArrowForward, SfIconCalendarToday } from '@storefront-ui/react'
 import { Link, useNavigate, useParams } from "react-router-dom"
-import BlogCard from '../components/BlogCard';
 import NavHeader from '../components/NavHeader'
 import FooterMenu from '../components/FooterMenu';
 import { ChevronRight } from '@untitled-ui/icons-react';
@@ -58,9 +57,29 @@ const Home = () => {
     }
   }, [user])
 
-  const { data:dataBlog } = useFrappeGetDocList('Detail of Blogs and Campaigns', {
-    fields: ['name','title','description','attach_cover_image','campaign_date_start','campaign_date_end'],
+  const { data:dataBlog } = useFrappeGetDocList('Blog Post', {
+    fields: ['name','meta_title','meta_description','published_on'],
   })
+
+  const BlogCard = ({title, image, date, link}) => {
+    return (
+      <>
+      <Link to={`/single-blog/${link}`} className="min-w-[300px] max-w-[300px]">
+      <h2 className='text-[#3D3D3D] font-bold flex items-center mb-[5px] leading-6'>
+        เข้าร่วมเลย
+        <SfIconArrowForward className="w-[18px] text-black ml-2" />
+      </h2>
+        <img src={image} className="rounded-[6px]"/>
+        <h2 className='mt-4 whitespace-normal text-[#1C1C1C] text-sm font-bold pr-7'>{title}</h2>
+  
+        <p className='text-[#8A8A8A] mt-[5px] text-xs flex items-center'>
+          <SfIconCalendarToday className="w-[11px] mr-[6px]"/>
+          หมดเขต {date}
+        </p>
+      </Link>
+      </>
+    )
+  }
 
   return (
     <>
@@ -288,7 +307,7 @@ const Home = () => {
 
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5 mb-5">
             {dataBlog && (
-              <BlogCard image={dataBlog.attach_cover_image} title={dataBlog.title} date={dataBlog.campaign_date_end} />
+              <BlogCard image={dataBlog.attach_cover_image} title={dataBlog.meta_title} date={dataBlog.published_on} link={dataBlog.id}/>
             )}
             {/* <BlogCard image={blogBanner} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" />
             <BlogCard image={blogBanner} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" /> */}
