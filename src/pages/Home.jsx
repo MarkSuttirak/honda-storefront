@@ -58,7 +58,7 @@ const Home = () => {
   }, [user])
 
   const { data:dataBlog } = useFrappeGetDocList('Blog Post', {
-    fields: ['name','meta_title','meta_description','published_on'],
+    fields: ['name','meta_title','meta_description','published_on','meta_image'],
   })
 
   const BlogCard = ({title, image, date, link}) => {
@@ -307,7 +307,7 @@ const Home = () => {
 
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5 mb-5">
             {dataBlog && (
-              <BlogCard image={dataBlog.attach_cover_image} title={dataBlog.meta_title} date={dataBlog.published_on} link={dataBlog.id}/>
+              <BlogCard image={dataBlog.meta_image} title={dataBlog.meta_title} date={dataBlog.published_on} link={dataBlog.id}/>
             )}
             {/* <BlogCard image={blogBanner} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" />
             <BlogCard image={blogBanner} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" /> */}
