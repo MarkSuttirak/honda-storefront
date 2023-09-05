@@ -74,7 +74,7 @@ const Home = () => {
   
         <p className='text-[#8A8A8A] mt-[5px] text-xs flex items-center'>
           <SfIconCalendarToday className="w-[11px] mr-[6px]"/>
-          หมดเขต {date}
+          {date}
         </p>
       </Link>
       </>
