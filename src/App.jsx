@@ -146,7 +146,7 @@ function App() {
               <Route path="/collect-points" element={<CollectPoints />} />
               <Route path="/how-to-collect-rewards" element={<HowRedeemReward />} />
               <Route path="/member-conditions" element={<MemberConditions />} />
-              <Route path="/single-blog" element={<SingleBlog />} />
+              <Route path="/single-blog/:id" element={<SingleBlog />} />
 
 
               <Route path="/blog-admin" element={<BlogAdmin />} />

@@ -69,8 +69,8 @@ export default function Login() {
         </article>
       </header>
       <form className="p-4 flex gap-4 flex-wrap text-neutral-900 text-start" onSubmit={formik.handleSubmit}>
-        {/* <h2 className="w-full typography-headline-4 md:typography-headline-3 font-bold">Sign in</h2>
-          <label className="w-full flex flex-col gap-0.5">
+        <h2 className="w-full typography-headline-4 md:typography-headline-3 font-bold">Sign in</h2>
+          {/* <label className="w-full flex flex-col gap-0.5">
             <span className="typography-text-sm  font-medium">usr/username</span>
             <SfInput name="usr" type='email' autoComplete="usr" required onChange={formik.handleChange} value={formik.values.usr} className='focus:ring-[#F0592A] hover:ring-[#F0592A] focus-within:ring-[#F0592A] active:ring-[#F0592A]'/>
           </label>

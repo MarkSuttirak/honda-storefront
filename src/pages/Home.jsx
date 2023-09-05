@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard'
 import { useProducts } from '../hooks/useProducts'
-import { useFrappeAuth, useFrappeGetDoc, useFrappeGetCall } from 'frappe-react-sdk';
+import { useFrappeAuth, useFrappeGetDoc, useFrappeGetCall, useFrappeGetDocList } from 'frappe-react-sdk';
 import coin from '../img/coin.svg'
 import { SfIconArrowForward, SfIconCalendarToday } from '@storefront-ui/react'
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import BlogCard from '../components/BlogCard';
 import NavHeader from '../components/NavHeader'
 import FooterMenu from '../components/FooterMenu';
@@ -19,6 +19,7 @@ import Skeleton from '../components/Skeleton';
 import { userInfoSchema } from '../components/forms/userInfoSchema';
 
 const Home = () => {
+  const { id } = useParams()
   document.body.style.background = "white"
   const [loading, setLoading] = useState(true);
   const [data, setUserdata] = useState(null);
@@ -56,6 +57,10 @@ const Home = () => {
       })
     }
   }, [user])
+
+  const { data:dataBlog } = useFrappeGetDocList('Detail of Blogs and Campaigns', {
+    fields: ['name','title','description','attach_cover_image','campaign_date_start','campaign_date_end'],
+  })
 
   return (
     <>
@@ -282,8 +287,11 @@ const Home = () => {
           </h2>
 
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5 mb-5">
-            <BlogCard image={blogBanner} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" />
-            <BlogCard image={blogBanner} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" />
+            {dataBlog && (
+              <BlogCard image={dataBlog.attach_cover_image} title={dataBlog.title} date={dataBlog.campaign_date_end} />
+            )}
+            {/* <BlogCard image={blogBanner} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" />
+            <BlogCard image={blogBanner} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" /> */}
           </div>
         </div>
       </main>
