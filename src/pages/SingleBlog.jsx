@@ -14,8 +14,8 @@ function SingleBlog() {
         setRewardRedeem(true)
     }
 
-    const { data, isLoading, error } = useFrappeGetDoc('Detail of Blogs and Campaigns', id, {
-        fields: ['name','title','description','attach_cover_image','campaign_date_start','campaign_date_end']
+    const { data, isLoading, error } = useFrappeGetDoc('Blog Post', id, {
+        fields: ['name','title','content','meta_image','published_on','blog_category']
     })
 
     return (
@@ -23,14 +23,14 @@ function SingleBlog() {
             {data && (
                 <>
                 <TitleHeader link={'/'} title={'รายละเอียด'} />
-                <img className={`mt-[53px] ${rewardReddem == true ? 'opacity-[50%]' : 'opacity-[100%]'} `} src={data.attach_cover_image} alt="" />
+                <img className={`mt-[53px] ${rewardReddem == true ? 'opacity-[50%]' : 'opacity-[100%]'} `} src={data.meta_image} alt="" />
                 <div className="w-[354px] relative mx-auto z-10 bg-white p-4 rounded-[10px] -mt-[18px]" style={{ boxShadow: "0px 4px 20px 0px #2323231A", }}>
                     <div className='text-center'>
-                        <button className='bg-[#FDF0E4] w-[82px] h-[19px] rounded-full px-[10px] py-[4px] text-[#F0592A] font-bold text-[10px] leading-[11.1px]' style={{ fontFamily: "Eventpop" }} >บทความ</button>
+                        <button className='bg-[#FDF0E4] w-[82px] h-[19px] rounded-full px-[10px] py-[4px] text-[#F0592A] font-bold text-[10px] leading-[11.1px]' style={{ fontFamily: "Eventpop" }} >{data.blog_category}</button>
                         <p className='font-bold text-sm leading-[17px] text-[#111111] mt-2' style={{ fontFamily: "Eventpop" }}>{data.title}</p>
                     </div>
                     <p className='mt-5 text-[#8A8A8A] font-normal text-xs leading-[17.4px] text-center'>ระยะเวลา</p>
-                    <p className='text-[#F0592A] font-bold text-sm leading-[24px] mt-1 text-center'>{data.campaign_date_start} - {data.campaign_date_end}</p>
+                    <p className='text-[#F0592A] font-bold text-sm leading-[24px] mt-1 text-center'>{data.published_on}</p>
                 </div>
     
                 <div className='px-[18px] pt-[30px]'>
@@ -38,7 +38,7 @@ function SingleBlog() {
                     {data && (
                     <div className="pt-2">
                       {/* <h2 className='text-base font-bold' style={{ fontFamily: "Eventpop" }}>{data.title}</h2> */}
-                      <div className='mt-2 info-desc' dangerouslySetInnerHTML={{__html:data.description}}/>
+                      <div className='mt-2 info-desc' dangerouslySetInnerHTML={{__html:data.content}}/>
                     </div>
                   )}
                 </div>
