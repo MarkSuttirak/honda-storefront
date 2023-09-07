@@ -293,7 +293,7 @@ const Home = () => {
                   เข้าร่วมเลย
                   <SfIconArrowForward className="w-[18px] text-black ml-2" />
                 </h2>
-                <img src={d.meta_image} className="rounded-[6px]" />
+                <img src={`https://dev.honda.zaviago.com/${d.meta_image}`} className="rounded-[6px]" />
                 <h2 className='mt-4 whitespace-normal text-[#1C1C1C] text-sm font-bold pr-7'>{d.meta_title}</h2>
 
                 <p className='text-[#8A8A8A] mt-[5px] text-xs flex items-center'>
