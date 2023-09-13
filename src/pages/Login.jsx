@@ -1,12 +1,11 @@
 import { useState, Fragment } from "react";
 import { SfInput, SfButton } from '@storefront-ui/react';
 import { useFormik } from 'formik';
-import { useFrappeAuth } from 'frappe-react-sdk';
+import { useFrappeAuth, useFrappeGetCall, useFrappeGetDoc } from 'frappe-react-sdk';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../hooks/useUser';
 import { getToken } from '../utils/helper';
-import { useFrappeGetCall } from 'frappe-react-sdk';
 import bgBrand from '../img/background-login.png'
 import hondaHomeLogo from '../img/honda-home-logo.svg'
 import { Dialog, Transition } from '@headlessui/react'
@@ -30,6 +29,10 @@ export default function Login() {
     }
   }
 
+  const { data:dataConsent, isLoading:loadConsent, error:errorConsent } = useFrappeGetDoc('Terms and Conditions Document', {
+    fields: ['description']
+  })
+
   const {
     isLoading,
   } = useFrappeAuth();
@@ -51,12 +54,10 @@ export default function Login() {
     onSubmit: values => login(values.usr, values.pwd).then(() => navigate("/"))
   });
 
-
   function handleClick(e) {
     const url = window.location.href = lineurl
     navigate(url)
   }
-
 
   return (
     <>
@@ -119,6 +120,7 @@ export default function Login() {
                       <Dialog.Title as="h3" className="text-[24px] font-bold leading-6 text-[#333333] mb-8">
                         นโยบายข้อมูลส่วนบุคคล
                       </Dialog.Title>
+
                       <div className="mt-2 text-left">
                         <article>
                           <h2 className="font-bold mb-3">นโยบายความเป็นส่วนตัว</h2>
