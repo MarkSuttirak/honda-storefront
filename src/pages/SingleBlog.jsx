@@ -29,7 +29,9 @@ function SingleBlog() {
                         <button className='bg-[#FDF0E4] w-[82px] h-[19px] rounded-full px-[10px] py-[4px] text-[#F0592A] font-bold text-[10px] leading-[11.1px]' style={{ fontFamily: "Eventpop" }} >{data.blog_category}</button>
                         <p className='font-bold text-sm leading-[17px] text-[#111111] mt-2' style={{ fontFamily: "Eventpop" }}>{data.title}</p>
                     </div>
-                    <p className='mt-5 text-[#8A8A8A] font-normal text-xs leading-[17.4px] text-center'>ระยะเวลา</p>
+                    {data?.published_on !== ' ' ? (
+                        <p className='mt-5 text-[#8A8A8A] font-normal text-xs leading-[17.4px] text-center'>ระยะเวลา</p>
+                    ) : null}
                     <p className='text-[#F0592A] font-bold text-sm leading-[24px] mt-1 text-center'>{data.published_on}</p>
                 </div>
     
