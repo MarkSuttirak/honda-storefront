@@ -226,16 +226,20 @@ const Product = () => {
                 )}
                 <p className='font-bold text-sm leading-[17px] text-[#111111] mt-2' style={{ fontFamily: "Eventpop" }}>{product?.item_name}</p>
               </div>
-              <div className='w-[224px] flex justify-between mt-[22px] mx-auto'>
+              <div className={`w-[224px] flex ${product?.item_schedule_end ? 'justify-between' : 'justify-center'} mt-[22px] mx-auto`}>
                 <div>
                   <p className='text-[#00000061] font-normal text-xs leading-[17.4px]' style={{ fontFamily: "Eventpop" }}>คะแนนที่ใช้</p>
                   <p className='font-bold text-sm text-[#F0592A] leading-[24px]' style={{ fontFamily: "Eventpop" }}>{product?.loyalty_points_based_price} คะแนน</p>
                 </div>
-                <hr className='w-[1px] h-[63px] border-r border-[#0000001A]' />
-                <div>
-                  <p className='text-[#00000061] font-normal text-xs leading-[17.4px]' style={{ fontFamily: "Eventpop" }}>สามารถใช้ได้ถึง</p>
-                  <p className='font-bold text-sm text-[#F0592A] leading-[24px]' style={{ fontFamily: "Eventpop" }}>{formatDate(product?.item_schedule_end)}</p>
-                </div>
+                {product?.item_schedule_end && (
+                  <>
+                    <hr className='w-[1px] h-[63px] border-r border-[#0000001A]' />
+                    <div>
+                      <p className='text-[#00000061] font-normal text-xs leading-[17.4px]' style={{ fontFamily: "Eventpop" }}>สามารถใช้ได้ถึง</p>
+                      <p className='font-bold text-sm text-[#F0592A] leading-[24px]' style={{ fontFamily: "Eventpop" }}>{formatDate(product?.item_schedule_end)}</p>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
 
