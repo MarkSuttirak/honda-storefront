@@ -38,10 +38,6 @@ const Product = () => {
   const [value, { inc, dec, set }] = useCounter(min);
   const [colour, setColour] = useState("ส้ม")
 
-  const { data } = useFrappeGetDoc('Condition of redeem items', {
-    fields: ['name', 'description']
-  })
-
   const [liked, setLiked] = useState(false)
 
   const navigate = useNavigate()
@@ -255,12 +251,10 @@ const Product = () => {
 
             <div className='px-[18px] pt-[30px]'>
               <h4 className='font-bold text-[#424242] text-sm leading-[23.2px]' style={{ fontFamily: "Eventpop" }}>รายละเอียด</h4>
-              {data && (
-                <div className="pt-2">
-                  {/* <h2 className='text-base font-bold' style={{ fontFamily: "Eventpop" }}>{data.title}</h2> */}
-                  <div className='mt-2 info-desc' dangerouslySetInnerHTML={{__html:data.description}}/>
-                </div>
-              )}
+              <div className="pt-2">
+                {/* <h2 className='text-base font-bold' style={{ fontFamily: "Eventpop" }}>{data.title}</h2> */}
+                <div className='mt-2 info-desc' dangerouslySetInnerHTML={{__html:product?.web_long_description}}/>
+              </div>
 
             </div>
             <div className="items-start flex fixed bottom-0 w-full pb-3 bg-white">
