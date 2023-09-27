@@ -58,7 +58,8 @@ const Home = () => {
   }, [user])
 
   const { data: dataBlog } = useFrappeGetDocList('Blog Post', {
-    fields: ['name', 'meta_title', 'meta_description', 'published_on', 'meta_image','title'],
+    fields: ['name', 'meta_title', 'meta_description', 'published_on', 'meta_image','title', 'published'],
+    filters: [['published', '=', 1]]
   })
 
   return (
