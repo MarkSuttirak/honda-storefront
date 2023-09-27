@@ -281,14 +281,10 @@ const Home = () => {
         </div>
 
         <div className="mt-[40px]">
-          {dataBlog ? (
-            <>
-              {dataBlog.length > 0 && (
-                <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[10px] leading-6'>
-                  สิทธิประโยชน์สุดพิเศษ
-                </h2>
-              )}
-            </>
+          {dataBlog && dataBlog.length > 0? (
+            <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[10px] leading-6'>
+              สิทธิประโยชน์สุดพิเศษ
+            </h2>
           ) : null}
 
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5 mb-5">
