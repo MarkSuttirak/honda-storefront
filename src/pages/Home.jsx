@@ -281,10 +281,11 @@ const Home = () => {
         </div>
 
         <div className="mt-[40px]">
-          <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[10px] leading-6'>
-            สิทธิประโยชน์สุดพิเศษ
-
-          </h2>
+          {dataBlog ?? (
+            <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[10px] leading-6'>
+              สิทธิประโยชน์สุดพิเศษ
+            </h2>
+          )}
 
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5 mb-5">
             <>
