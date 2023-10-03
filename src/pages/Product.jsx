@@ -220,10 +220,10 @@ const Product = () => {
                     <button className='bg-[#F0F0F0] h-[19px] rounded-full px-[10px] py-[4px] text-[#8A8A8A] font-bold text-[10px] leading-[11.1px]' style={{ fontFamily: "Eventpop" }} >แลกของรางวัลแล้ว</button>
                   </div>
                 )}
-                <p className='font-bold text-sm leading-[17px] text-[#111111] mt-2' style={{ fontFamily: "Eventpop" }}>{product?.item_name}</p>
+                <p className='font-bold text-[15px] leading-[17px] text-[#111111] mt-2' style={{ fontFamily: "Eventpop" }}>{product?.item_name}</p>
               </div>
               <div className={`w-[224px] flex ${product?.item_schedule_end ? 'justify-between' : 'justify-center'} mt-[22px] mx-auto`}>
-                <div>
+                <div className='text-center'>
                   <p className='text-[#00000061] font-normal text-xs leading-[17.4px]' style={{ fontFamily: "Eventpop" }}>คะแนนที่ใช้</p>
                   <p className='font-bold text-sm text-[#F0592A] leading-[24px]' style={{ fontFamily: "Eventpop" }}>{product?.loyalty_points_based_price} คะแนน</p>
                 </div>
@@ -246,7 +246,7 @@ const Product = () => {
                         <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>ขอสงวนสิทธิ์งดรับการแก้ไขเปลี่ยนแปลงใด หลังจากที่สมาชิกหลักแจ้งความประสงค์ขอแลก คะแนนสะสมไปยังบริษัทฯแล้ว</li>
                         <li className='text-[#424242] font-normal text-xs list-disc leading-[18px]' style={{ fontFamily: "Eventpop" }}>บริษัทฯขอแจ้งเปลี่ยนแปลงเงื่อนไขการแลกของรางวัล โดยมิได้แจ้งให้ทราบก่อนล่วงหน้า</li>
                       </ul> */}
-              <div dangerouslySetInnerHTML={{ __html: product?.desc }} className='text-[#424242] font-normal text-xs leading-[18px] break-all' />
+              <div dangerouslySetInnerHTML={{ __html: product?.desc }} className='text-[#424242] font-normal text-[13px] leading-[18px] break-all' />
             </div>
 
             <div className='px-[18px] pt-[30px]'>
