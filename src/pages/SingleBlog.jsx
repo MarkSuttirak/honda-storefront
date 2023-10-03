@@ -23,7 +23,7 @@ function SingleBlog() {
             {data && (
                 <>
                 <TitleHeader link={'/'} title={'รายละเอียด'} />
-                <img className={`mt-[53px] ${rewardReddem == true ? 'opacity-[50%]' : 'opacity-[100%]'} `} src={`https://dev.honda.zaviago.com/${data.meta_image}`} alt="" />
+                <img className={`mt-[53px] ${rewardReddem == true ? 'opacity-[50%]' : 'opacity-[100%]'} `} src={`https://hondanont.zaviago.com/${data.meta_image}`} alt="" />
                 <div className="w-[354px] relative mx-auto z-10 bg-white p-4 rounded-[10px] -mt-[18px]" style={{ boxShadow: "0px 4px 20px 0px #2323231A", }}>
                     <div className='text-center'>
                         <button className='bg-[#FDF0E4] w-[82px] h-[19px] rounded-full px-[10px] py-[4px] text-[#F0592A] font-bold text-[10px] leading-[11.1px]' style={{ fontFamily: "Eventpop" }} >{data.blog_category}</button>

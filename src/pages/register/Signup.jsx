@@ -65,7 +65,7 @@ const Signup = () => {
 
   const phonverifynow = (phone) => {
     try {
-      return fetch("https://dev.honda.zaviago.com/api/method/honda_api.api_calls.verifyuser.getphone?userphone=" + phone, {
+      return fetch("https://hondanont.zaviago.com/api/method/honda_api.api_calls.verifyuser.getphone?userphone=" + phone, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -99,7 +99,7 @@ const Signup = () => {
       method: 'POST',
       headers: myHeaders
     };
-    fetch("https://dev.honda.zaviago.com/api/method/honda_api.api_calls.verifyuser.verifyotp?userphone=" + userphone + "&otp=" + myotp + "&username=" + username, requestOptions)
+    fetch("https://hondanont.zaviago.com/api/method/honda_api.api_calls.verifyuser.verifyotp?userphone=" + userphone + "&otp=" + myotp + "&username=" + username, requestOptions)
       .then((response) => response.json()).then((data) => {
         var res = data.message;
 

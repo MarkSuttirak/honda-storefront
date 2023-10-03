@@ -19,7 +19,7 @@ export const UserProvider = ({ children }) => {
 
     const login = async (usr, pwd) => {
         try {
-            return fetch("https://dev.honda.zaviago.com/api/method/frappeauth_app.authentication.login", {
+            return fetch("https://hondanont.zaviago.com/api/method/frappeauth_app.authentication.login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

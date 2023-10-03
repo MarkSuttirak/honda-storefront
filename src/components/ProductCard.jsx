@@ -51,7 +51,7 @@ const ProductCard = ({
                 <div className="relative">
                     <SfLink href="#" className="block">
                         <img
-                            src={thumbnail !== null && `https://dev.honda.zaviago.com${thumbnail}`}
+                            src={thumbnail !== null && `https://hondanont.zaviago.com${thumbnail}`}
                             // alt={title}
                             className={`object-cover h-auto rounded-md aspect-square ${thumbnail == null && 'bg-[#C5C5C5]'}`}
                             width="300"

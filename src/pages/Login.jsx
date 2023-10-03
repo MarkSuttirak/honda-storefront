@@ -19,7 +19,7 @@ export default function Login() {
 
   const line = async (usr, pwd) => {
     try {
-      return fetch("https://dev.honda.zaviago.com/api/method/honda_api.api_calls.linetoken.get_oauth2_authorize_url?" + Date.now(), { method: "GET", headers: { "Content-Type": "application/json" } }).then((response) => response.json()).then((data) => {
+      return fetch("https://hondanont.zaviago.com/api/method/honda_api.api_calls.linetoken.get_oauth2_authorize_url?" + Date.now(), { method: "GET", headers: { "Content-Type": "application/json" } }).then((response) => response.json()).then((data) => {
         setlineurl(data.message);
       })
     } catch (error) {

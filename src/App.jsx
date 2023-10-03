@@ -98,7 +98,7 @@ function App() {
   },[isPhoneVerified]);
 
   return (
-    <FrappeProvider url={"https://dev.honda.zaviago.com"}
+    <FrappeProvider url={"https://hondanont.zaviago.com"}
       enableSocket={false}
       tokenParams={{
         type: "token",

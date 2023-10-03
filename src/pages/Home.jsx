@@ -111,7 +111,7 @@ const Home = () => {
       </header>
       {/* <img src={banner} className='w-full left-0 max-h-[240px] object-cover'/> */}
 
-      <div className='bg-[#ADB1BB] pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome' style={{ backgroundImage: `url(https://dev.honda.zaviago.com${user?.tier?.tier_thumbnail})` }}>
+      <div className='bg-[#ADB1BB] pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome' style={{ backgroundImage: `url(https://hondanont.zaviago.com${user?.tier?.tier_thumbnail})` }}>
         <div>
           <h2 className='text-[32px] text-white'>{user?.tier?.tier_name}</h2>
         </div>
@@ -295,7 +295,7 @@ const Home = () => {
                   เข้าร่วมเลย
                   <SfIconArrowForward className="w-[18px] text-black ml-2" />
                 </h2>
-                <img src={`https://dev.honda.zaviago.com/${d.meta_image}`} className="rounded-[6px]" />
+                <img src={`https://hondanont.zaviago.com/${d.meta_image}`} className="rounded-[6px]" />
                 <h2 className='mt-4 whitespace-normal text-[#1C1C1C] text-sm font-bold pr-7'>{d.title}</h2>
 
                 {d.published_on !== " " && (
