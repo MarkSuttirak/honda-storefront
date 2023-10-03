@@ -250,12 +250,7 @@ const Product = () => {
             </div>
 
             <div className='px-[18px] pt-[30px]'>
-              <h4 className='font-bold text-[#424242] text-sm leading-[23.2px]' style={{ fontFamily: "Eventpop" }}>รายละเอียด</h4>
-              <div className="pt-2">
-                {/* <h2 className='text-base font-bold' style={{ fontFamily: "Eventpop" }}>{data.title}</h2> */}
-                <div className='mt-2 info-desc' dangerouslySetInnerHTML={{__html:product?.web_long_description}}/>
-              </div>
-
+              <div className='mt-2 info-desc' dangerouslySetInnerHTML={{__html:product?.web_long_description}}/>
             </div>
             <div className="items-start flex fixed bottom-0 w-full pb-3 bg-white">
               <SfButton disabled={product?.loyalty_points_based_price > user?.loyalty_points} onClick={() => location.href = product?.item_group.includes("Gift") ? `/${product.item_code}/gift-checkout` : '/checkout'} type="button" size="lg" style={{ background: product?.loyalty_points_based_price > user?.loyalty_points ? "#C5C5C5" : "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)", width: "calc(100% - 32px)", color: "white" }}> {/*onClick={() => addToCart(product?.item_code, value)} */}
