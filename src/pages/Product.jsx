@@ -24,6 +24,7 @@ import Accordion from '../components/Accordion';
 import ProductCard from '../components/ProductCard';
 import { useUser } from '../hooks/useUser';
 import { useFrappeGetDoc } from 'frappe-react-sdk';
+import Skeleton from '../components/Skeleton';
 
 const Product = () => {
   const [rewardReddem, setRewardRedeem] = useState(false);
@@ -37,10 +38,14 @@ const Product = () => {
   const max = 999;
   const [value, { inc, dec, set }] = useCounter(min);
   const [colour, setColour] = useState("ส้ม")
-
+  const [imageLoaded, setImageLoaded] = useState(false);
   const [liked, setLiked] = useState(false)
 
   const navigate = useNavigate()
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
 
   const formatDate = (date) => {
     if(!date){
@@ -167,6 +172,7 @@ const Product = () => {
     window.scrollTo(0, 0)
   }, [])
 
+
   return (
     <>
       <header className='p-[14px] border-b border-b-[#F2F2F2] flex gap-x-[7px] text-md font-bold bg-white items-center fixed w-full bg-white top-0 z-[999]'>
@@ -193,11 +199,13 @@ const Product = () => {
             drag={{ containerWidth: true }}
           >
             <div className="flex justify-center h-full basis-full shrink-0 grow snap-center">
+              {!imageLoaded && <Skeleton width='100%' height='100%' />}
               <img
                 src={product?.website_image !== null && `https://hondanont.zaviago.com/${product?.website_image}`}
-                className={`object-cover w-full h-full ${product?.website_image === null && "bg-[#C5C5C5]"}`}
+                className={`object-cover w-full h-full ${!imageLoaded && 'hidden'} ${product?.website_image === null && "bg-[#C5C5C5]"}`}
                 aria-label={product?.website_image}
                 alt={product?.website_image}
+                onLoad={handleImageLoad}
               />
             </div>
           </SfScrollable>
