@@ -44,9 +44,12 @@ const Home = () => {
 
   useEffect(() => {
     if(shuffledProducts.length == 0){
-      const dddd = [...products];
-      var dd = shuffleArray(dddd);
-      setShuffledProducts(dd);
+		if(products){
+			const dddd = [...products];
+		    var dd = shuffleArray(dddd);
+		    setShuffledProducts(dd);
+		}
+      
     }
   }, [products]);
 
