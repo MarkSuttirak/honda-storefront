@@ -70,6 +70,7 @@ const EditProfile = () => {
                 last_name: user?.user.last_name,
                 email: user?.user.email,
                 phone: user?.phone,
+                id_number: user?.id_number,
                 birth_date: user?.customer_details?.split(" ")[1]
               }}
               onSubmit={call}
@@ -211,6 +212,11 @@ export const ProfileForm = ({
       <div className='flex flex-col'>
         <label htmlFor='email'>อีเมล</label>
         <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' name='email' type='email' value={formik.values.email} onChange={formik.handleChange} />
+      </div>
+
+      <div className='flex flex-col'>
+        <label htmlFor='id_number'>เลขประจำตัวบัตรประชาชน</label>
+        <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' name='id_number' type='id_number' value={formik.values.id_number} onChange={formik.handleChange} />
       </div>
 
       <div className='flex flex-col relative'>
