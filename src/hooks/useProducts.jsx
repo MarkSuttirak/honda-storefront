@@ -16,7 +16,7 @@ export const ProductsProvider = ({ children }) => {
         name: newP,
         query_args: { "field_filters": {}, "attribute_filters": {}, "item_group": null, "start": null, "from_filters": false }
     }, `products-${newP}`, {
-        isOnline: () => products.length === 0 && getToken(),
+        isOnline: () => getToken(),
         onSuccess: (data) => setProducts(data.message.items)
     }, true)
 
