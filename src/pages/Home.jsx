@@ -28,7 +28,6 @@ const Home = () => {
   const { products, userdata } = useProducts();
   const navigate = useNavigate();
   const [profileloading, setProfileloading] = useState(true);
-  const [shuffledProducts, setShuffledProducts] = useState([]);
 
   useEffect(() => {
     if (userdata) {
@@ -42,24 +41,9 @@ const Home = () => {
 
   }, [userdata]);
 
-  useEffect(() => {
-    if(shuffledProducts.length == 0){
-		if(products){
-			const dddd = [...products];
-		    var dd = shuffleArray(dddd);
-		    setShuffledProducts(dd);
-		}
-      
-    }
-  }, [products]);
 
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
+
+  
 
 
   useEffect(() => {
@@ -187,7 +171,7 @@ const Home = () => {
               </>
             ) : (
               <>
-                {(shuffledProducts ?? []).map((product) => (
+                {(products ?? []).map((product) => (
                   <ProductCard
                     key={product.item_code}
                     title={product.item_name}
