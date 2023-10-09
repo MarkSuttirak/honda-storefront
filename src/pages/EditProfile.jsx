@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef,useEffect } from "react"
 import TitleHeader from "../components/TitleHeader"
 import { ArrowLeft } from '@untitled-ui/icons-react'
 import successIcon from '../img/success.svg'
@@ -6,10 +6,17 @@ import { Link } from "react-router-dom"
 import { useUser } from '../hooks/useUser';
 import { useFrappePostCall } from "frappe-react-sdk"
 import { useFormik } from "formik"
+import { useNavigate } from "react-router-dom";
+
 
 const EditProfile = () => {
   const { user } = useUser()
-  const { call } = useFrappePostCall("honda_api.api_calls.getuser.update_profile")
+
+
+  const { call, isCompleted } = useFrappePostCall("honda_api.api_calls.getuser.update_profile")
+
+
+  const navigate = useNavigate();
   const [editPro, setEditPro] = useState(true)
   const [changePhone, setChangePhone] = useState(false)
   const [changedSuccessfully, setChangedSuccessfully] = useState(false);
@@ -31,6 +38,13 @@ const EditProfile = () => {
   const num5Ref = useRef(null)
   const num6Ref = useRef(null)
 
+  useEffect(() => {
+    if (isCompleted) {
+      navigate("/my-account")
+    }
+  }, [isCompleted])
+
+  
 
   const changeToEditPro = () => {
     setChangePhone(false);
