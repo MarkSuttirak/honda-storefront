@@ -236,7 +236,7 @@ export const ProfileForm = ({
 
       <div className='flex flex-col relative'>
         <label htmlFor='phone'>เบอร์โทร</label>
-        <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' name='phone' type='tel' value={formik.values.phone} onChange={formik.handleChange} />
+        <input disabled="true" className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' name='phone' type='tel' value={formik.values.phone} onChange={formik.handleChange} />
 
         <button className="absolute translate-y-[38px] right-[4px] bg-black text-white px-3 py-[6px] rounded-[6px]">แก้ไข</button>
       </div>
