@@ -38,6 +38,9 @@ import Gifts from "./pages/Gifts";
 import TermsAndConditions from "./pages/TermsAndConditions";
 
 import Phonverify from "./pages/Phoneverifcation";
+import UpdatePhone from "./pages/UpdatePhone";
+
+
 import BlogAdmin from "./pages/admin/BlogAdmin";
 import BlogCategories from "./pages/admin/BlogCategories";
 import BlogAdd from "./pages/admin/BlogAdd";
@@ -174,6 +177,7 @@ function App() {
               <Route path="/gifts" element={<Gifts />} />
               <Route path="/reward-history" element={<RewardHistory />} />
               <Route path="/phonverify" element={<Phonverify />} />
+              <Route path="/update-phone" element={<UpdatePhone />} />
               <Route path="/blog-admin" element={<BlogAdmin />} />
               <Route path="/blog-categories" element={<BlogCategories />} />
               <Route path="/blog-add" element={<BlogAdd />} />
