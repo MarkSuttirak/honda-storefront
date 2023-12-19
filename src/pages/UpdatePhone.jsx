@@ -122,7 +122,7 @@ const UpdatePhone = () => {
           seterrornow('');
           seterrornow(res.message);
           Cookies.set('phoneverify', false);
-          refetch().then(() => navigate("/"))
+          refetch().then(() => navigate("/edit-profile"))
         }
         else {
           setShowConfirm(false);
