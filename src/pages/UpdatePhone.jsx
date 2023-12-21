@@ -1,5 +1,5 @@
 import { useRef, useState, Fragment } from "react"
-import { ArrowLeft, MarkerPin01 } from '@untitled-ui/icons-react'
+import { ArrowLeft, Check, MarkerPin01 } from '@untitled-ui/icons-react'
 import { Link } from 'react-router-dom'
 import Cookies from 'js-cookie';
 import { useNavigate } from "react-router-dom";
@@ -122,7 +122,9 @@ const UpdatePhone = () => {
           seterrornow('');
           seterrornow(res.message);
           Cookies.set('phoneverify', false);
-          refetch().then(() => navigate("/edit-profile"))
+          setShowConfirm(false);
+          setPhonePage(false);
+          // refetch().then(() => navigate("/edit-profile"))
         }
         else {
           setShowConfirm(false);
@@ -130,17 +132,13 @@ const UpdatePhone = () => {
           setShow('false')
           setDisabled(false)
         }
-
       })
       .catch(error => console.log('error', error));
-
   }
-
-
 
   return (
     <>
-      {phonePage && (
+      {phonePage ? (
         <>
           <main className='px-5 pt-[26px] pb-8'>
             <h1 className='text-[20px] font-bold'>กรอกหมายเลขโทรศัพท์</h1>
@@ -172,7 +170,6 @@ const UpdatePhone = () => {
             )}
 
             <p className="text-[#00000061] mt-[14px] text-sm text-center">คุณจะได้รับรหัสยืนยันตัวตนจำนวน 6 หลัก</p>
-
           </main>
 
           <main className={`${show ? "invisible" : "visible"} px-5 pb-[46px]`}>
@@ -185,13 +182,22 @@ const UpdatePhone = () => {
 
             <p className='mt-[52px] text-[#00000061] text-sm text-center'>หากคุณต้องการขอรหัสผ่าน OTP อีกครั้ง <br />กด <span className="text-black">“ขอรหัส OTP อีกครั้ง”</span> ได้ที่ด้านล่าง</p>
             {/* <p className="mt-8 mb-[48px] text-sm text-center">ขอรหัส OTP ใหม่อีกครั้งใน 00:{seconds} วินาที</p> */}
-              
 
-              
-              <p className="mt-8 mb-[48px] text-sm text-center">{errornow}</p>
+            <p className="mt-8 mb-[48px] text-sm text-center">{errornow}</p>
 
             <button onClick={verifyotp} className={`text-white rounded-[9px] p-3 w-full bg-black flex items-center justify-center mt-[14px]`} style={{ background: !filledOTP ? "#C5C5C5" : "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)" }} >ยืนยันรหัส OTP</button>
             <p onClick={verifyotp} className="text-center mt-4 text-[#F0592A] text-sm underline">ขอรหัส OTP อีกครั้ง</p>
+          </main>
+        </>
+      ) : (
+        <>
+          <main className='px-5 pt-[26px] pb-8 text-center'>
+            <div className="w-[45px] h-[45px] bg-[#00B14F] rounded-full flex items-center justify-center m-auto">
+              <Check color='white' viewBox="0 0 25 23" width='32' height='32'/>
+            </div>
+            <h1 className="text-3xl font-bold leading-[39px] mt-[10px]">ระบบเปลี่ยนเบอร์<br/>ใหม่สำเร็จ 👋</h1>
+            <p className="text-sm leading-[22px] text-[#424242] mt-[18px]">ระบบได้เปลี่ยนเบอร์ใหม่เรียบร้อยแล้ว<br/>คุณสามารถย้อนกลับไปหน้าอื่น ๆ ได้</p>
+            <button className={`text-white rounded-[9px] p-3 w-full bg-black flex items-center justify-center mt-[30px]`} onClick={() => navigate('/edit-profile')}>กลับไปหน้าเดิม</button>
           </main>
         </>
       )}
@@ -202,8 +208,7 @@ const UpdatePhone = () => {
               <label htmlFor='phone'>เบอร์โทร</label>
               <input className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]' onChange={handleChange} value={userphone} id='phone' name='phone' type='tel' disabled={disabled}/>
               <button onClick={clickverify} className="absolute translate-y-[38px] right-[4px] bg-black text-white px-3 py-[6px] rounded-[6px]">Send</button>
-              
-              
+
               <input  onChange={handleotpchange} value={myotp} className={`${show ? "invisible" : "visible"} border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]`} placeholder="OTP"  id='otp' name='otp' type='tel'/>
               <button onClick={verifyotp} className={`${show ? "invisible" : "visible"} text-white rounded-[9px] p-3 w-full bg-black flex items-center justify-center mt-8`}>ยืนยันรหัส OTP</button>
           </div>
@@ -256,9 +261,6 @@ const UpdatePhone = () => {
           </div>
         </Dialog>
       </Transition.Root>
-
-
-
     </>
   )
 }
