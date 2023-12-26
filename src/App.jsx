@@ -56,7 +56,6 @@ import HowRedeemReward from "./pages/HowRedeemReward";
 import MemberConditions from "./pages/MemberConditions";
 import SingleBlog from "./pages/SingleBlog";
 
-
 function App() {
   const navigate = useNavigate();
   const search = useLocation().search;
@@ -68,11 +67,9 @@ function App() {
   const isPhoneVerified = Cookies.get('phoneverify') === 'true';
 
   useEffect(() => {
-
     if (isPhoneVerified) {
       navigate("/phonverify");
     }
-
     if (token) {
       Cookies.set('username', username);
       if (phoneverify == 'true') {
@@ -88,16 +85,10 @@ function App() {
         navigate(0);
         window.location.reload(true);
       }
-
-
     }
-
-
     if (!getToken()) {
       navigate("/login");
     }
-
-
   },[isPhoneVerified]);
 
   return (

@@ -18,6 +18,7 @@ const UpdatePhone = () => {
   const [phonePage, setPhonePage] = useState(true);
   const [getOTP, setGetOTP] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
+  const [phoneExist, setPhoneExist] = useState(false);
   const [otperror, setOtperror] = useState(false);
   const [pdpa, setPdpa] = useState(true);
   const [acceptPdpa, setAcceptPdpa] = useState(false);
@@ -29,7 +30,6 @@ const UpdatePhone = () => {
   const [filledAllOtp, setFilledAllOtp] = useState('')
   const [days, hours, minutes, seconds] = useCountdown(new Date().getTime() + 60000);
   const navigate = useNavigate();
-
 
   const telRef = useRef(null)
 
@@ -51,17 +51,6 @@ const UpdatePhone = () => {
       setShow()
       setDisabled(true)
     }
-  }
-
-  const goBack = () => {
-    setGetOTP(false);
-    setPhonePage(true);
-    setFilledPhone(false);
-  }
-
-  const goNext = () => {
-    setPhonePage(false)
-    setGetOTP(true);
   }
 
   const verifyotp = () => {
@@ -157,7 +146,8 @@ const UpdatePhone = () => {
               }} onKeyDown={() => setPhoneError(false)} />
             </div>
 
-            {!phoneError ? "" : (<p className="text-[#EC5454] inter mt-2">This phone number is invalid</p>)}
+            {!phoneError ? "" : (<p className="text-[#EC5454] mt-2">This phone number is invalid</p>)}
+            {!phoneExist ? "" : (<p className="text-[#EC5454] mt-2">This phone number already exists. <a href='https://lin.ee/gv2ZwpY' className="underline">Contact us</a></p>)}
 
             {show && (
               <button onClick={() => {
