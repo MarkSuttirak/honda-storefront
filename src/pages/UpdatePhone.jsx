@@ -18,7 +18,7 @@ const UpdatePhone = () => {
   const [phonePage, setPhonePage] = useState(true);
   const [getOTP, setGetOTP] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
-  const [phoneExist, setPhoneExist] = useState(true);
+  const [phoneExist, setPhoneExist] = useState(false);
   const [otperror, setOtperror] = useState(false);
   const [pdpa, setPdpa] = useState(true);
   const [acceptPdpa, setAcceptPdpa] = useState(false);
@@ -48,8 +48,6 @@ const UpdatePhone = () => {
   const clickverify = (value) => {
     if (userphone.length > 7) {
       phonverifynow(userphone);
-      setShow()
-      setDisabled(true)
     }
   }
 
@@ -71,8 +69,11 @@ const UpdatePhone = () => {
         if (res.status == 'success') {
           seterrornow('');
           seterrornow(res.message);
+          setShow()
+          setDisabled(true)
         }
         else {
+          setPhoneExist(true);
           seterrornow(res.message);
           setShow('false')
           setDisabled(false)
