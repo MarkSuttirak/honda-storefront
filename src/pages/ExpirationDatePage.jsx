@@ -56,7 +56,7 @@ export default function ExpirationDatePage() {
 
     useEffect(() => {
         setTimeout(() => setLoading(false), 1000)
-        console.log('Entry:' + entryDistribution)
+        console.log('Entry:' + entryDistribution?.entries)
 
         console.log('Data: ' + data)
 
@@ -81,29 +81,25 @@ export default function ExpirationDatePage() {
                 </div>
             </div>
 
-            <div className={`mt-[114px]`}>
+            <div className={`mt-[125px]`}>
                 {!loading ? (
-                    <>
-                    {tabs.map((tab) => (
-                    <div key={tab.name} className='space-y-[18px]'>
-                        {entryDistribution?.entries.map((entry) => (
-                          <div className="border-b border-[#E3E3E3]" key={entry.name}>
-                            <div className="flex justify-between items-center pb-[18px] px-[18px]">
-                              <div className="flex items-center">
-                                <div><img src={coinHand} className="w-[22px] h-[22px] ml-[27px]" alt="" /></div>
-                                <div className="ml-[43px]">
-                                  <p className="mt-[6px] font-bold text-xs text-[#000000] leading-[14px]" style={{ fontFamily: "Eventpop" }}>คุณได้รับคะแนน</p>
-                                </div>
-                              </div>
-                              <div>
-                                <button className="font-bold text-[#F0592A] text-xs leading-[14px]" style={{ fontFamily: "Eventpop" }}>+{entry.loyalty_points} คะแนน</button>
+                    <div className='space-y-[18px]'>
+                      {entryDistribution?.entries.map((entry) => (
+                        <div className="border-b border-[#E3E3E3]" key={entry.name}>
+                          <div className="flex justify-between items-center pb-[18px] px-[18px]">
+                            <div className="flex items-center">
+                              <div><img src={coinHand} className="w-[22px] h-[22px] ml-[27px]" alt="" /></div>
+                              <div className="ml-[43px]">
+                                <p className="mt-[6px] font-bold text-xs text-[#000000] leading-[14px]" style={{ fontFamily: "Eventpop" }}>คุณได้รับคะแนน</p>
                               </div>
                             </div>
+                            <div>
+                              <button className="font-bold text-[#F0592A] text-xs leading-[14px]" style={{ fontFamily: "Eventpop" }}>+{entry.loyalty_points} คะแนน</button>
+                            </div>
                           </div>
-                        ))}
-                    </div>
-                ))}
-                    </>
+                        </div>
+                      ))}
+                  </div>
                 ) : (
                     <div>
                       <div className='pb-[18px] px-5 pt-[37px] border-b border-b-[#E3E3E3]'>
