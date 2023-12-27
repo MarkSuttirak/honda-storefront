@@ -56,11 +56,11 @@ export default function ExpirationDatePage() {
 
     useEffect(() => {
         setTimeout(() => setLoading(false), 1000)
-        console.log('Entry:' + entryDistribution?.entries)
+        console.log(entryDistribution)
 
-        console.log('Data: ' + data)
+        console.log(data)
 
-        console.log('User: ' + user)
+        console.log(user)
     }, [entryDistribution, data, user])
 
     return (
@@ -81,7 +81,7 @@ export default function ExpirationDatePage() {
                 </div>
             </div>
 
-            <div className={`mt-[125px]`}>
+            <div className={`mt-[146px]`}>
                 {!loading ? (
                     <div className='space-y-[18px]'>
                       {entryDistribution?.entries.map((entry) => (
