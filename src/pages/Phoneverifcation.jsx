@@ -141,7 +141,7 @@ const Phonverify = () => {
             </div>
 
             {!phoneError ? "" : (<p className="text-[#EC5454] mt-2">This phone number is invalid</p>)}
-            {!phoneExist ? "" : (<p className="text-[#EC5454] mt-2">This phone number already exists. <a href='https://lin.ee/gv2ZwpY' className="underline">Contact us</a></p>)}
+            {!phoneExist ? "" : (<p className="text-[#EC5454] mt-2">This phone number already exists. Please <a href='https://lin.ee/gv2ZwpY' className="underline">contact us</a></p>)}
 
             {show && (
               <button onClick={() => {
@@ -152,9 +152,7 @@ const Phonverify = () => {
                 }
               }} className={`mt-[14px] w-1/2 text-white rounded-[9px] p-3 text-center w-full`} style={{ background: !filledPhone ? "#C5C5C5" : "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)" }} disabled={!filledPhone}>รับรหัสยืนยัน SMS (OTP)</button>
             )}
-
             <p className="text-[#00000061] mt-[14px] text-sm text-center">คุณจะได้รับรหัสยืนยันตัวตนจำนวน 6 หลัก</p>
-
           </main>
 
           <main className={`${show ? "invisible" : "visible"} px-5 pb-[46px]`}>
