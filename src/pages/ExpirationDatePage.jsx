@@ -91,7 +91,7 @@ export default function ExpirationDatePage() {
                               <div><img src={coinHand} className="w-[22px] h-[22px] ml-[27px]" alt="" /></div>
                               <div className="ml-[43px]">
                                 <p className="mt-[6px] font-bold text-xs text-[#000000] leading-[14px]" style={{ fontFamily: "Eventpop" }}>{entry.loyalty_points} คะแนน</p>
-                                <p>หมดอายุ {entry.expiry_date}</p>
+                                <p className='text-[10px] text-[#00000061] mt-[9px]'>หมดอายุ {entry.expiry_date}</p>
                               </div>
                             </div>
                           </div>
