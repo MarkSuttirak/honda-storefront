@@ -7,17 +7,15 @@ import { SfIconArrowForward, SfIconCalendarToday } from '@storefront-ui/react'
 import { Link, useNavigate, useParams } from "react-router-dom"
 import NavHeader from '../components/NavHeader'
 import FooterMenu from '../components/FooterMenu';
-import { ChevronRight } from '@untitled-ui/icons-react';
 import { useUser } from '../hooks/useUser';
 import iconRightHead from "../img/iconRightHead.svg"
 import bookClosed from "../img/book-closed.svg"
 import giftIcon from "../img/goftIconOrange.svg"
-import blogBanner from "../img/blog-img.png"
 // import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/skeleton';
 import Skeleton from '../components/Skeleton';
 import { userInfoSchema } from '../components/forms/userInfoSchema';
 
-const Home = () => {
+export default function Home(){
   const { id } = useParams()
   document.body.style.background = "white"
   const [loading, setLoading] = useState(true);
@@ -40,11 +38,6 @@ const Home = () => {
     }
 
   }, [userdata]);
-
-
-
-  
-
 
   useEffect(() => {
     if (user) {
@@ -129,9 +122,8 @@ const Home = () => {
       </div>
 
       {/* <div className="w-[354px] mx-[auto] mt-[32px]">
-
-              <button style={{background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}} className='p-4 text-white w-[100%] rounded-lg'>วิธีเก็บคะแนน</button>
-            </div> */}
+        <button style={{background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}} className='p-4 text-white w-[100%] rounded-lg'>วิธีเก็บคะแนน</button>
+      </div> */}
 
       <Link to='/collect-points' state={{ url: "/" }} className='flex justify-between items-center my-[32px] mx-5 p-5 h-[54px] rounded-lg' style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)", width: "calc(100% - 40px)" }}>
         <div className='flex items-center'>
@@ -224,7 +216,7 @@ const Home = () => {
                     tags={product.tags}
                     dispalytags='Gift'
                     thumbnail={product.website_image} />
-                ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
+                ))}
               </>
             )}
           </div>
@@ -267,22 +259,10 @@ const Home = () => {
                     tags={product.tags}
                     dispalytags='Gift Card'
                     thumbnail={product.website_image} />
-                ))} {/* Original thumbnail "https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png" */}
+                ))}
               </>
             )}
           </div>
-
-          {/* <div className="mt-[30px]">
-            <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
-              สินค้าลดราคา
-              <SfIconArrowForward className="w-[18px] text-black ml-2"/>
-            </h2>
-
-            <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
-              <BlogCard image={bannerDiscount1} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" />
-              <BlogCard image={bannerDiscount2} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" />
-            </div>
-          </div> */}
         </div>
 
         <div className="mt-[40px]">
@@ -312,15 +292,10 @@ const Home = () => {
               </Link>)
               )}
             </>
-            {/* <BlogCard image={blogBanner} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" />
-            <BlogCard image={blogBanner} title="รวมคูปองและโค้ดส่วนลดประจำเดือนสิงหาคม 2023" date="12 ธ.ค. 2023" /> */}
           </div>
         </div>
       </main>
-
       <FooterMenu active={0} />
     </>
   )
 }
-
-export default Home

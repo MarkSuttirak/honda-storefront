@@ -40,7 +40,6 @@ import TermsAndConditions from "./pages/TermsAndConditions";
 import Phonverify from "./pages/Phoneverifcation";
 import UpdatePhone from "./pages/UpdatePhone";
 
-
 import BlogAdmin from "./pages/admin/BlogAdmin";
 import BlogCategories from "./pages/admin/BlogCategories";
 import BlogAdd from "./pages/admin/BlogAdd";
@@ -55,8 +54,9 @@ import CollectPoints from "./pages/CollectPoints";
 import HowRedeemReward from "./pages/HowRedeemReward";
 import MemberConditions from "./pages/MemberConditions";
 import SingleBlog from "./pages/SingleBlog";
+import ExpirationDatePage from "./pages/ExpirationDatePage";
 
-function App() {
+export default function App() {
   const navigate = useNavigate();
   const search = useLocation().search;
   const token = new URLSearchParams(search).get("token");
@@ -86,9 +86,9 @@ function App() {
         window.location.reload(true);
       }
     }
-    if (!getToken()) {
-      navigate("/login");
-    }
+    // if (!getToken()) {
+    //   navigate("/login");
+    // }
   },[isPhoneVerified]);
 
   return (
@@ -141,7 +141,7 @@ function App() {
               <Route path="/how-to-collect-rewards" element={<HowRedeemReward />} />
               <Route path="/member-conditions" element={<MemberConditions />} />
               <Route path="/single-blog/:id" element={<SingleBlog />} />
-
+              <Route path="/points-to-be-expired" element={<ExpirationDatePage />} />
 
               <Route path="/blog-admin" element={<BlogAdmin />} />
               <Route path="/my-account" element={<MyAccount />} />
@@ -180,5 +180,3 @@ function App() {
     </FrappeProvider>
   )
 }
-
-export default App

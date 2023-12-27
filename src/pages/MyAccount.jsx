@@ -1,30 +1,15 @@
 import { Link } from 'react-router-dom'
-import avatarImg from '../img/avatar.svg'
-import silverCard from '../img/silvercard.svg'
-import qrcode from '../img/qrcode.svg'
-import recentViews from '../img/clock-rewind.svg'
 import { useState, useEffect, Fragment } from 'react'
 import NavHeader from '../components/NavHeader'
 import { Dialog, Transition } from '@headlessui/react'
 import Cookies from 'js-cookie';
-import hondaLogo from '../img/hondaLogo.png'
 import {
-  Heart,
-  File06,
-  ClockRewind,
-  MarkerPin01,
   ChevronRight,
   CreditCard02,
-  Globe02,
   Shield01,
   Lock02,
-  Building02,
   BookClosed,
   Gift01,
-  AnnotationQuestion,
-  AnnotationDots,
-  ImageIndentLeft,
-  FileShield02,
   LogOut02,
   AlertTriangle
 } from '@untitled-ui/icons-react'
@@ -32,10 +17,7 @@ import { useFrappeAuth, useFrappeGetDoc } from 'frappe-react-sdk';
 import FooterMenu from '../components/FooterMenu'
 import { useUser } from '../hooks/useUser'
 
-const MyAccount = () => {
-  const [bronzeLevel, setBronzeLevel] = useState(false);
-  const [silverLevel, setSilverLevel] = useState(true);
-
+export default function MyAccount(){
   const [openLogout, setOpenLogout] = useState(false);
   const { user } = useUser()
   const { currentUser, updateCurrentUser } = useFrappeAuth();
@@ -47,7 +29,6 @@ const MyAccount = () => {
   useEffect(() => {
     updateCurrentUser()
   }, [updateCurrentUser])
-
 
   const logoutnowuser = () => {
     sessionStorage.clear();
@@ -71,16 +52,6 @@ const MyAccount = () => {
   }
 
   const settingsMenu = [
-    // {
-    //   icon: <MarkerPin01 />,
-    //   title: 'ที่อยู่ในการจัดส่ง',
-    //   link: '/shipping-address'
-    // },
-    // {
-    //   icon: <CreditCard02 />,
-    //   title: 'การชำระเงิน',
-    //   link: '#'
-    // },
     {
       icon: <Shield01 />,
       title: 'ข้อกำหนดและเงื่อนไข',
@@ -110,37 +81,6 @@ const MyAccount = () => {
       title: 'เงื่อนไขระดับของสมาชิก',
       link: '/member-conditions'
     }
-    // {
-    //   icon: <AnnotationQuestion />,
-    //   title: 'คำถามที่พบบ่อย',
-    //   link: '#'
-    // },
-    // {
-    //   icon: <AnnotationDots />,
-    //   title: 'ติดต่อเรา',
-    //   link: '#'
-    // }
-  ]
-
-  const additionMenu = [
-    {
-      icon: <ImageIndentLeft />,
-      title: 'เกี่ยวกับแอปฟิเคชั่น',
-      link: '#'
-    },
-    {
-      icon: <FileShield02 />,
-      title: 'นโยบายความเป็นส่วนตัว',
-      link: '#'
-    }
-  ]
-
-  const accountMenu = [
-    {
-      icon: <LogOut02 />,
-      title: 'ออกจากระบบ',
-      link: '/welcome'
-    },
   ]
   return (
     <div>
@@ -176,36 +116,18 @@ const MyAccount = () => {
       <div className='bg-[#F4F4F4] h-full'>
         <main className='px-5 relative pb-[100px]'>
           <div className='bg-white rounded-[6px] items-center' style={{ filter: "drop-shadow(0 4px 20px #6363630D" }}>
-            {/* <div className='flex justify-between p-5'>
-            <div className='flex items-center gap-x-[14px]'>
-              <img src={silverLevel ? silverCard : ""} />
-              <div className='text-[#333333] font-bold'>ระดับ : {silverLevel ? "Silver" : ""}</div>
-            </div>
-            <div>
-              <Link to="/my-id" className='bg-[#F0592A] flex gap-x-2 text-white items-center text-sm p-1 rounded-[4px]'>
-                <img src={qrcode} />
-                ID ของฉัน
-              </Link>
-            </div>
-          </div> */}
 
             <div className='p-5 flex flex-col items-center'>
               <div className='flex'>
                 <div className='flex gap-x-1 text-sm justify-center'>
                   คะแนนของฉัน
                   </div>
-                  {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
-                  <Link to="/my-coupon">Coupon</Link>
-                </div> */}
                 </div>
   
                 <div className='flex mt-1'>
                   <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center items-end'>
                     <span className='text-[20px] leading-[20px]'>{user?.loyalty_points}</span> <span className='text-[#FFA800] text-xs'>คะแนน</span>
                   </div>
-                  {/* <div className='basis-1/2 flex gap-x-1 text-[13px] justify-center'>
-                  8 <span className='text-[#BC0000]'>codes</span>
-                </div> */}
                 </div>
               </div>
 
@@ -213,7 +135,7 @@ const MyAccount = () => {
 
             <div className='w-full flex text-center'>
               <Link to='/reward-history' state={{url:"/my-account"}} className='text-sm p-4 my-2 w-1/2 border-r border-r-[#F2F2F2]'>ประวัติการใช้คะแนน</Link>
-              <Link to='/member-conditions' className='text-sm p-4 my-2 w-1/2'>ระดับสมาชิก</Link>
+              <Link to='/points-to-be-expired' className='text-sm p-4 my-2 w-1/2'>คะแนนใกล้หมดอายุ</Link>
             </div>
           </div>
 
@@ -230,13 +152,6 @@ const MyAccount = () => {
               <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} state={menu.url ? { url: '/my-account' } : undefined}  />
             )}
           </div>
-
-          {/* <h2 className='mt-[30px] mb-[10px]'>ข้อมูลเพิ่มเติม</h2>
-        <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{filter:"drop-shadow(0 4px 20px #6363630D"}}>
-          {additionMenu.map((menu) => 
-            <AccountMenu icon={menu.icon} title={menu.title} link={menu.link} />
-          )}
-        </div> */}
 
           <h2 className='mt-[30px] mb-[10px]'>บัญชี</h2>
           <div className='flex flex-col bg-white rounded-[6px] items-center gap-y-[10px]' style={{ filter: "drop-shadow(0 4px 20px #6363630D" }}>
@@ -321,5 +236,3 @@ const MyAccount = () => {
     </div>
   )
 }
-
-export default MyAccount
