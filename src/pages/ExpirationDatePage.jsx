@@ -13,27 +13,6 @@ export default function ExpirationDatePage() {
     const { data } = useFrappeGetCall('headless_e_commerce.api.get_loyalty_points_details');
     const [loading, setLoading] = useState(true)
 
-    const tabData = [
-        {
-            title: 'ส่วนลด 5 % สินค้าที่ร่วมรายการ',
-            description: '26 ก.พ. 2022',
-            coins: "+10",
-            image: coinHand,
-        }
-    ]
-    const tabDataRedeemed = [
-        {
-            title: 'ส่วนลด 5 % สินค้าที่ร่วมรายการ',
-            description: '26 ก.พ. 2022',
-            coins: "-10",
-            image: coinHand,
-        }
-    ]
-    const tabs = [
-        { name: 'คะแนนที่ได้รับ', content: tabData },
-        { name: 'คะแนนที่ใช้ไป', content: tabDataRedeemed },
-    ];
-
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ');
     }
@@ -55,13 +34,8 @@ export default function ExpirationDatePage() {
     }, [data])
 
     useEffect(() => {
-        setTimeout(() => setLoading(false), 1000)
-        console.log(entryDistribution)
-
-        console.log(data)
-
-        console.log(user)
-    }, [entryDistribution, data, user])
+      setTimeout(() => setLoading(false), 1000)
+    }, [])
 
     return (
         <>
@@ -115,7 +89,7 @@ export default function ExpirationDatePage() {
                     </div>
                 )}
             </div>
-            <FooterMenu active={2} />
+            <FooterMenu active={3} />
         </>
     )
 }
