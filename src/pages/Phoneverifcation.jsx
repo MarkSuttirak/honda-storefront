@@ -48,8 +48,6 @@ const Phonverify = () => {
   const clickverify = (value) => {
     if (userphone.length > 7) {
       phonverifynow(userphone);
-      setShow()
-      setDisabled(true)
     }
   }
 
@@ -71,8 +69,11 @@ const Phonverify = () => {
         if (res.status == 'success') {
           seterrornow('');
           seterrornow(res.message);
+          setShow()
+          setDisabled(true)
         }
         else {
+          setPhoneExist(true);
           seterrornow(res.message);
           setShow('false')
           setDisabled(false)
