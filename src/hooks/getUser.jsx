@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import { getToken, removeToken, setToken } from '../utils/helper';
+import { getToken, removeToken, setToken,setSessionTime } from '../utils/helper';
 import { useNavigate } from 'react-router-dom';
 import { useFrappeGetCall } from 'frappe-react-sdk';
 
@@ -16,7 +16,6 @@ export const UserProvider = ({ children }) => {
         }
     })
 
-
     const login = async (usr, pwd) => {
         try {
             return fetch("https://hondanont.zaviago.com/api/method/frappeauth_app.authentication.login", {
@@ -30,9 +29,8 @@ export const UserProvider = ({ children }) => {
                 }),
             }).then((response) => response.json()).then((data) => {
                 if (data.message.token) {
-                    // handle jwt
                     setToken(data.message.token);
-                    // get user
+                    setSessionTime(Date.now());
                     mutate()
                 }
                 return data;

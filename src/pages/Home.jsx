@@ -14,6 +14,8 @@ import giftIcon from "../img/goftIconOrange.svg"
 // import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/skeleton';
 import Skeleton from '../components/Skeleton';
 import { userInfoSchema } from '../components/forms/userInfoSchema';
+import { getToken, setToken ,setSessionTime,getSessionTime,removeToken} from "../utils/helper";
+
 
 export default function Home(){
   const { id } = useParams()
@@ -27,6 +29,18 @@ export default function Home(){
   const navigate = useNavigate();
   const [profileloading, setProfileloading] = useState(true);
 
+
+  const isTokenExpired = () => {
+    const sessionTime = getSessionTime();
+    console.log(sessionTime);
+    if (!sessionTime) {
+      return true;
+    }
+    const currentTime = Date.now();
+    const expirationTime = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
+    return sessionTime && currentTime - sessionTime > expirationTime;
+  };
+
   useEffect(() => {
     if (userdata) {
       setUserdata(userdata.user);
@@ -38,6 +52,20 @@ export default function Home(){
     }
 
   }, [userdata]);
+
+  useEffect(() => {
+    console.log(getToken());
+    if(getToken()){
+      if (isTokenExpired()) {
+        removeToken();
+        window.location.reload(true);
+        navigate("/login");
+      }
+    }
+    else{
+      navigate("/login");
+    }
+  },[getToken()]);
 
   useEffect(() => {
     if (user) {

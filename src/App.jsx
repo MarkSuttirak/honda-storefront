@@ -12,7 +12,7 @@ import Cart from "./components/Cart";
 import Checkout from "./pages/Checkout";
 import Profile from "./pages/Profile";
 import { UserProvider } from "./hooks/useUser";
-import { getToken, setToken } from "./utils/helper";
+import { getToken, setToken ,setSessionTime,getSessionTime,removeToken} from "./utils/helper";
 import BankInfoPage from "./pages/BankInfoPage";
 import MyAccount from "./pages/MyAccount";
 import ShippingAddress from "./pages/address/ShippingAddress";
@@ -66,11 +66,14 @@ export default function App() {
   const [user, setUser] = useState(null);
   const isPhoneVerified = Cookies.get('phoneverify') === 'true';
 
+  
+
   useEffect(() => {
     if (isPhoneVerified) {
       navigate("/phonverify");
     }
     if (token) {
+      
       Cookies.set('username', username);
       if (phoneverify == 'true') {
         Cookies.set('phoneverify', true);
@@ -79,17 +82,16 @@ export default function App() {
       else {
         navigate("/login");
       }
-
       if (Cookies.get('system_user') != 'yes') {
-        setToken(token)
+        setSessionTime(Date.now());
+        setToken(token);
         navigate(0);
         window.location.reload(true);
       }
     }
-    // if (!getToken()) {
-    //   navigate("/login");
-    // }
   },[isPhoneVerified]);
+
+
 
   return (
     <FrappeProvider url={"https://hondanont.zaviago.com"}

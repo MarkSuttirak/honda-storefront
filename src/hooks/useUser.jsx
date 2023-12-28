@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import { getToken, removeToken, setToken } from '../utils/helper';
+import { getToken, removeToken, setToken ,setSessionTime} from '../utils/helper';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useFrappeGetCall } from 'frappe-react-sdk';
 import { getTier } from '../client/api';
@@ -39,6 +39,7 @@ export const UserProvider = ({ children }) => {
             }).then((response) => response.json()).then((data) => {
                 if (data.message.token) {
                     setToken(data.message.token);
+                    setSessionTime(Date.now());
                     mutate()
                 }
                 return data;
