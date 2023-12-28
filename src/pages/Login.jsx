@@ -53,8 +53,9 @@ export default function Login() {
   });
 
   function handleClick(e) {
-    const url = window.location.href = lineurl
-    navigate(url)
+    //const url = window.location.href = lineurl
+    window.location.replace(lineurl);
+    //navigate(url)
   }
 
   return (

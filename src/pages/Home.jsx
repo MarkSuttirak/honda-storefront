@@ -59,11 +59,11 @@ export default function Home(){
       if (isTokenExpired()) {
         removeToken();
         window.location.reload(true);
-        navigate("/login");
+        navigate("/login/");
       }
     }
     else{
-      navigate("/login");
+      navigate("/login/");
     }
   },[getToken()]);
 
