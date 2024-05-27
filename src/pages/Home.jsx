@@ -48,7 +48,7 @@ export default function Home(){
       setProfileloading(false);
     }
     updateCurrentUser();
-    if (products.length > 0) {
+    if (products) {
       setLoading(false)
     }
 
