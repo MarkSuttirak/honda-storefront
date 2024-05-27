@@ -16,7 +16,7 @@ const Phonverify = () => {
   const [disabled, setDisabled] = useState(false);
   const [myotp, setmyotp] = useState('');
   const [errornow, seterrornow] = useState('');
-  const [phonePage, setPhonePage] = useState(false);
+  const [phonePage, setPhonePage] = useState(true);
   const [getOTP, setGetOTP] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
   const [phoneExist, setPhoneExist] = useState(false)
@@ -145,7 +145,7 @@ const Phonverify = () => {
   return (
     <>
       <header className='p-[14px] flex gap-x-[7px] relative text-md font-bold fixed w-full bg-white top-0 z-[9]'>
-        <Link to="/login" className="absolute left-[14px]">
+        <Link to={phonePage ? "/login" : ""} className="absolute left-[14px]" onClick={() => {!phonePage && setPhonePage(true)}}>
           <ArrowLeft />
         </Link>
         <picture className="mx-auto">
@@ -206,7 +206,7 @@ const Phonverify = () => {
               <input 
                 key={index}
                 ref={inputRef} 
-                className={`border ${otperror ? "border-[#F0592A]" : inputRef.current.value !== "" ? 'border-black' : 'border-[#E3E3E3]'} h-[60px] w-full rounded-[15px] outline-none py-2 px-3 text-center text-[20px] font-bold`} 
+                className={`border ${otperror ? "border-[#F0592A]" : inputRef?.current?.value !== "" ? 'border-black' : 'border-[#E3E3E3]'} h-[60px] w-full rounded-[15px] outline-none py-2 px-3 text-center text-[20px] font-bold`} 
                 id={`otp-${index + 1}`}
                 name='otp' 
                 type='tel' 
@@ -217,7 +217,7 @@ const Phonverify = () => {
             ))}
           </div>
           {otperror && (<p className="text-[#F0592A] inter mt-2 text-sm" style={{ fontFamily: "Eventpop" }}>รหัส OTP ไม่ถูกต้อง</p>)}
-          <p className="text-[#F0592A] inter mt-2 text-sm" style={{ fontFamily: "Eventpop" }}>{errornow}</p>
+          <p className="text-[#00000061] inter mt-2 text-sm" style={{ fontFamily: "Eventpop" }}>{errornow}</p>
 
           <p className='my-8 text-[#000000B3] text-sm text-center'>ไม่ได้รับรหัส ? <span onClick={verifyotp} className="text-sm underline text-black">ขอรหัส OTP อีกครั้ง</span></p>
           {/* <p className="mt-8 mb-[48px] text-sm text-center">ขอรหัส OTP ใหม่อีกครั้งใน 00:{seconds} วินาที</p> */}
