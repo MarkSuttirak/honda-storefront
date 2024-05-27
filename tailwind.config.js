@@ -6,7 +6,11 @@ export default {
   presets: [tailwindConfig],
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}', './node_modules/@storefront-ui/react/**/*.{js,mjs}'],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        'main': '4px -3px 30px 0px #23232326'
+      }
+    },
   },
   plugins: [],
 };

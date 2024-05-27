@@ -3,7 +3,7 @@ import { useEffect } from "react"
 const Skeleton = ({
   width="40px", 
   height="40px", 
-  borderRadius="4px",
+  borderRadius="8px",
   margin="0",
   marginTop="0",
   marginBottom="0",

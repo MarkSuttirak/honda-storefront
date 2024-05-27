@@ -119,28 +119,28 @@ export default function Home(){
           </div>
         )}
         {profileloading && (
-          <div className='flex'>
-            <div className='flex items-center w-[85%]'>
+          <div className='flex items-center'>
+            <div className='flex items-center w-[85%] gap-3'>
               <Skeleton width='64px' height='64px' borderRadius='50%' />
-              <Skeleton width='150px' height='20px' marginLeft='12px' />
+              <div className='flex flex-col gap-y-1'>
+                <Skeleton width='50px' height='15px'/>
+                <Skeleton width='150px' height='20px' />
+              </div>
             </div>
             <div className='flex flex-col items-end justify-end w-[15%] gap-1'>
-              <Skeleton width='36px' height='16px'/>
-              <Skeleton width='50px' height='32px'/>
+              <Skeleton width='36px' height='15px'/>
+              <Skeleton width='50px' height='20px'/>
             </div>
           </div>
         )}
       </header>
       {/* <img src={banner} className='w-full left-0 max-h-[240px] object-cover'/> */}
 
-      <div className={`${profileloading ? 'shadow-md' : ''} pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome`} style={{ backgroundImage: `url(https://hondanont.zaviago.com${user?.tier?.tier_thumbnail})` }}>
+      <div className={`${profileloading ? 'shadow-main' : ''} pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome`} style={{ backgroundImage: `url(https://hondanont.zaviago.com${user?.tier?.tier_thumbnail})` }}>
         {profileloading ? (
           <div className='flex justify-between items-end w-full'>
-            <div className='flex flex-col gap-y-[6px]'>
-              <Skeleton width='89px' height='29px'/>
-              <Skeleton width='160px' height='15px'/>
-            </div>
-            <Skeleton width='140px' height='39px'/>
+            <Skeleton width='100px' height='39px'/>
+            <Skeleton width='140px' height='39px' borderRadius='9999px'/>
           </div>
         ) : (
           <>
@@ -162,7 +162,7 @@ export default function Home(){
       </div> */}
 
       {!loading ? (
-        <Link to='/collect-points' state={{ url: "/" }} className='flex justify-between items-center my-[32px] mx-5 p-5 h-[54px] rounded-lg' style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)", width: "calc(100% - 40px)" }}>
+        <Link to='/collect-points' state={{ url: "/" }} className='flex justify-between items-center my-8 mx-5 p-5 h-[54px] rounded-lg' style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)", width: "calc(100% - 40px)" }}>
         <div className='flex items-center'>
           <img className='w-[17px] h-[17px]' src={bookClosed} alt="" />
           <p className='font-normal font-sm leading-[20px] ml-2 text-white'>วิธีเก็บคะแนน</p>
@@ -172,7 +172,7 @@ export default function Home(){
         </div>
       </Link>
       ) : (
-        <div className='px-5'>
+        <div className='px-5 my-8'>
           <Skeleton width="100%" height="55px"/>
         </div>
       )}
