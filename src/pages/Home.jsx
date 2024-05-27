@@ -93,31 +93,52 @@ export default function Home(){
     <>
       <NavHeader />
       <header className="pt-6 px-5 w-full">
-        {data && (
-          <div className='flex'>
-            <div className='flex items-center w-[85%]'>
-              {data.user_image ? (
-                <img src={data.user_image} width="64" className='rounded-[99px]' />
-              ) : (
-                <Skeleton width='64px' height='64px' borderRadius='50%' />
-              )}
 
-              <div className='ml-3 flex flex-col'>
-                <span className='text-[#333333] text-sm'>สวัสดี</span>
-                <span className='font-bold'>{data.full_name}</span>
-              </div>
-            </div>
-            <div className='flex flex-col items-end justify-center w-[15%]'>
-              <div className='inter text-xs text-[#4C4B4F]'>
-                Points
-              </div>
-              <div className='flex gap-x-1 text-[13px]'>
-                <img src={coin} />
-                <span className='text-2xl font-semibold'>{user?.loyalty_points}</span>
-              </div>
-            </div>
-          </div>
-        )}
+
+      
+      <div className='flex'>
+  <div className='flex items-center w-[85%]'>
+    {data?.user_image ? (
+      <img src={data.user_image} width="64" className='rounded-[99px]' />
+    ) : (
+      <Skeleton width='64px' height='64px' borderRadius='50%' />
+    )}
+    <div className='ml-3 flex flex-col'>
+      {data ? (
+        <>
+          <span className='text-[#333333] text-sm'>สวัสดี</span>
+          <span className='font-bold'>{data.full_name}</span>
+        </>
+      ) : (
+        <>
+          <Skeleton width='100px' height='20px' />
+          <Skeleton width='100px' height='20px' />
+        </>
+        
+      )}
+    </div>
+  </div>
+  <div className='flex flex-col items-end justify-center w-[15%]'>
+    <div className='inter text-xs text-[#4C4B4F]'>
+      Points
+    </div>
+    <div className='flex gap-x-1 text-[13px]'>
+      <img src={coin} />
+      {user ? (
+        <span className='text-2xl font-semibold'>{user.loyalty_points}</span>
+      ) : (
+        <Skeleton width='30px' height='20px' />
+      )}
+    </div>
+  </div>
+</div>
+
+
+      
+
+
+
+
         {profileloading && (
           <div className='flex items-center'>
             <div className='flex items-center w-[85%] gap-3'>
