@@ -15,6 +15,7 @@ import giftIcon from "../img/goftIconOrange.svg"
 import Skeleton from '../components/Skeleton';
 import { userInfoSchema } from '../components/forms/userInfoSchema';
 import { getToken, setToken ,setSessionTime,getSessionTime,removeToken} from "../utils/helper";
+import ItemSkeleton from '../components/ItemSkeleton';
 
 
 export default function Home(){
@@ -29,7 +30,6 @@ export default function Home(){
   const navigate = useNavigate();
   const [profileloading, setProfileloading] = useState(true);
 
-
   const isTokenExpired = () => {
     const sessionTime = getSessionTime();
     console.log(sessionTime);
@@ -41,13 +41,14 @@ export default function Home(){
     return sessionTime && currentTime - sessionTime > expirationTime;
   };
 
+  // Set the length of userdata and products to more than 0 to show the skeletons when they are being loaded.
   useEffect(() => {
-    if (userdata) {
+    if (userdata.length > 0) {
       setUserdata(userdata.user);
       setProfileloading(false);
     }
     updateCurrentUser();
-    if (products) {
+    if (products.length > 0) {
       setLoading(false)
     }
 
@@ -123,37 +124,45 @@ export default function Home(){
               <Skeleton width='64px' height='64px' borderRadius='50%' />
               <Skeleton width='150px' height='20px' marginLeft='12px' />
             </div>
-            <div className='flex flex-col items-end justify-end w-[15%]'>
-              <div className='inter text-xs text-[#4C4B4F]'>
-                Loading...
-              </div>
-              <div className='flex gap-x-1 text-[13px]'>
-                <img src={coin} />
-                <span className='text-2xl font-semibold'>{user?.loyalty_points}</span>
-              </div>
+            <div className='flex flex-col items-end justify-end w-[15%] gap-1'>
+              <Skeleton width='36px' height='16px'/>
+              <Skeleton width='50px' height='32px'/>
             </div>
           </div>
         )}
       </header>
       {/* <img src={banner} className='w-full left-0 max-h-[240px] object-cover'/> */}
 
-      <div className='bg-[#ADB1BB] pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome' style={{ backgroundImage: `url(https://hondanont.zaviago.com${user?.tier?.tier_thumbnail})` }}>
-        <div>
-          <h2 className='text-[32px] text-white'>{user?.tier?.tier_name}</h2>
-        </div>
-        <div className=''>
-          <Link to='/my-order' className='bg-white w-[140px] h-[40px] rounded-full flex items-center justify-center' style={{ boxShadow: "0px 3px 15px 0px #7777771A" }}>
-            <img src={giftIcon} alt="" />
-            <p className='font-normal text-sm leading-[21px] text-[#F0592A] ml-1'>รางวัลของฉัน</p>
-          </Link>
-        </div>
+      <div className={`${profileloading ? 'shadow-md' : ''} pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome`} style={{ backgroundImage: `url(https://hondanont.zaviago.com${user?.tier?.tier_thumbnail})` }}>
+        {profileloading ? (
+          <div className='flex justify-between items-end w-full'>
+            <div className='flex flex-col gap-y-[6px]'>
+              <Skeleton width='89px' height='29px'/>
+              <Skeleton width='160px' height='15px'/>
+            </div>
+            <Skeleton width='140px' height='39px'/>
+          </div>
+        ) : (
+          <>
+            <div>
+              <h2 className='text-[32px] text-white'>{user?.tier?.tier_name}</h2>
+            </div>
+            <div className=''>
+              <Link to='/my-order' className='bg-white w-[140px] h-[40px] rounded-full flex items-center justify-center' style={{ boxShadow: "0px 3px 15px 0px #7777771A" }}>
+                <img src={giftIcon} alt="" />
+                <p className='font-normal text-sm leading-[21px] text-[#F0592A] ml-1'>รางวัลของฉัน</p>
+              </Link>
+            </div>
+          </>
+        )}
       </div>
 
       {/* <div className="w-[354px] mx-[auto] mt-[32px]">
         <button style={{background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)"}} className='p-4 text-white w-[100%] rounded-lg'>วิธีเก็บคะแนน</button>
       </div> */}
 
-      <Link to='/collect-points' state={{ url: "/" }} className='flex justify-between items-center my-[32px] mx-5 p-5 h-[54px] rounded-lg' style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)", width: "calc(100% - 40px)" }}>
+      {!loading ? (
+        <Link to='/collect-points' state={{ url: "/" }} className='flex justify-between items-center my-[32px] mx-5 p-5 h-[54px] rounded-lg' style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)", width: "calc(100% - 40px)" }}>
         <div className='flex items-center'>
           <img className='w-[17px] h-[17px]' src={bookClosed} alt="" />
           <p className='font-normal font-sm leading-[20px] ml-2 text-white'>วิธีเก็บคะแนน</p>
@@ -162,32 +171,31 @@ export default function Home(){
           <img src={iconRightHead} className='w-[6px] h-[10px]' alt="" />
         </div>
       </Link>
+      ) : (
+        <div className='px-5'>
+          <Skeleton width="100%" height="55px"/>
+        </div>
+      )}
 
       <main className='relative top-[-10px] pb-[94px]'>
         <div className='mt-[27px]'>
-          <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
-            ของรางวัลทั้งหมด
-            <SfIconArrowForward className="w-[18px] text-black ml-2" />
-          </h2>
+          {!loading ? (
+            <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
+              ของรางวัลทั้งหมด
+              <SfIconArrowForward className="w-[18px] text-black ml-2" />
+            </h2>
+          ) : (
+            <div className='px-5 pb-4'>
+              <Skeleton width="172px" height='21px' />
+            </div>
+          )}
 
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
             {loading ? (
               <>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
+                <ItemSkeleton />
+                <ItemSkeleton />
+                <ItemSkeleton />
               </>
             ) : (
               <>
@@ -208,29 +216,20 @@ export default function Home(){
         </div>
 
         <div className='mt-[40px]'>
+          {!loading ? 
           <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
             ของรางวัล
             <SfIconArrowForward className="w-[18px] text-black ml-2" />
-          </h2>
+          </h2> : <div className='px-5 pb-4'>
+              <Skeleton width="172px" height='21px' />
+            </div>}
 
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
             {loading ? (
               <>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
+                <ItemSkeleton />
+                <ItemSkeleton />
+                <ItemSkeleton />
               </>
             ) : (
               <>
@@ -251,29 +250,19 @@ export default function Home(){
         </div>
 
         <div className='mt-[40px]'>
-          <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
+          {!loading ? <h2 className='text-[#3D3D3D] font-bold flex items-center px-5 mb-[14px] leading-6'>
             คูปองแทนเงินสด
             <SfIconArrowForward className="w-[18px] text-black ml-2" />
-          </h2>
+          </h2> : <div className='px-5 pb-4'>
+              <Skeleton width="172px" height='21px' />
+            </div>}
 
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
             {loading ? (
               <>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
+                <ItemSkeleton />
+                <ItemSkeleton />
+                <ItemSkeleton />
               </>
             ) : (
               <>

@@ -23,6 +23,7 @@ import {
 import ProductCard from '../components/ProductCard';
 import TitleHeader from "../components/TitleHeader";
 import Skeleton from "../components/Skeleton";
+import ItemSkeleton from "../components/ItemSkeleton";
 
 const CategoryPage = () => {
   const { cartCount, setIsOpen } = useCart()
@@ -56,21 +57,9 @@ const CategoryPage = () => {
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
             {loading ? (
               <>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
+                <ItemSkeleton />
+                <ItemSkeleton />
+                <ItemSkeleton />
               </>
             ) : (
               <>
@@ -101,21 +90,9 @@ const CategoryPage = () => {
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
             {loading ? (
               <>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
+                <ItemSkeleton />
+                <ItemSkeleton />
+                <ItemSkeleton />
               </>
             ) : (
               <>
@@ -144,21 +121,9 @@ const CategoryPage = () => {
           <div className="flex overflow-x-auto gap-x-[14px] mx-auto px-5">
             {loading ? (
               <>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
-                <div className='flex flex-col'>
-                  <Skeleton height='150px' width='150px' borderRadius='6px' />
-                  <Skeleton height='17px' width='98px' marginTop='6px' />
-                  <Skeleton height='17px' width='82px' marginTop='9px' />
-                </div>
+                <ItemSkeleton />
+                <ItemSkeleton />
+                <ItemSkeleton />
               </>
             ) : (
               <>
