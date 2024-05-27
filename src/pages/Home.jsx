@@ -43,12 +43,12 @@ export default function Home(){
 
   // Set the length of userdata and products to more than 0 to show the skeletons when they are being loaded.
   useEffect(() => {
-    if (userdata.length > 0) {
+    if (userdata) {
       setUserdata(userdata.user);
       setProfileloading(false);
     }
     updateCurrentUser();
-    if (products.length > 0) {
+    if (products) {
       setLoading(false)
     }
 
