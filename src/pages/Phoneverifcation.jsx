@@ -55,8 +55,15 @@ const Phonverify = () => {
 
   const verifyotp = () => {
     setShowConfirm(true);
-    verifyotpnow(userphone, myotp, Cookies.get('username'))
+    verifyotpnow(userphone, getOTPValue(), Cookies.get('username'))
   }
+  const getOTPValue = () => {
+    let otp = '';
+    inputRefs.forEach(ref => {
+      otp += ref.current.value;
+    });
+    return otp;
+  };
 
   const phonverifynow = (phone) => {
     try {
