@@ -54,19 +54,19 @@ export default function Home(){
 
   }, [userdata]);
 
-  useEffect(() => {
-    console.log(getToken());
-    if(getToken()){
-      if (isTokenExpired()) {
-        removeToken();
-        window.location.reload(true);
-        navigate("/login/");
-      }
-    }
-    else{
-      navigate("/login/");
-    }
-  },[getToken()]);
+  // useEffect(() => {
+  //   console.log(getToken());
+  //   if(getToken()){
+  //     if (isTokenExpired()) {
+  //       removeToken();
+  //       window.location.reload(true);
+  //       navigate("/login/");
+  //     }
+  //   }
+  //   else{
+  //     navigate("/login/");
+  //   }
+  // },[getToken()]);
 
   useEffect(() => {
     if (user) {
@@ -93,7 +93,7 @@ export default function Home(){
     <>
       <NavHeader />
       <header className="pt-6 px-5 w-full">
-        {data && (
+        {data ? (
           <div className='flex'>
             <div className='flex items-center w-[85%]'>
               {data.user_image ? (
@@ -117,8 +117,7 @@ export default function Home(){
               </div>
             </div>
           </div>
-        )}
-        {profileloading && (
+        ) : (
           <div className='flex items-center'>
             <div className='flex items-center w-[85%] gap-3'>
               <Skeleton width='64px' height='64px' borderRadius='50%' />
@@ -136,13 +135,8 @@ export default function Home(){
       </header>
       {/* <img src={banner} className='w-full left-0 max-h-[240px] object-cover'/> */}
 
-      <div className={`${profileloading ? 'shadow-main' : ''} pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome`} style={{ backgroundImage: `url(https://hondanont.zaviago.com${user?.tier?.tier_thumbnail})` }}>
-        {profileloading ? (
-          <div className='flex justify-between items-end w-full'>
-            <Skeleton width='100px' height='39px'/>
-            <Skeleton width='140px' height='39px' borderRadius='9999px'/>
-          </div>
-        ) : (
+      <div className={`${user?.tier ? '' : 'shadow-main'} pt-[160px] p-5 pb-[15px] px-[12px] flex justify-between items-end mx-[auto] rounded-[10px] theMainBannerReardHome`} style={{ backgroundImage: `url(https://hondanont.zaviago.com${user?.tier?.tier_thumbnail})` }}>
+        {user?.tier ? (
           <>
             <div>
               <h2 className='text-[32px] text-white'>{user?.tier?.tier_name}</h2>
@@ -154,6 +148,11 @@ export default function Home(){
               </Link>
             </div>
           </>
+        ) : (
+          <div className='flex justify-between items-end w-full'>
+            <Skeleton width='100px' height='39px'/>
+            <Skeleton width='140px' height='39px' borderRadius='9999px'/>
+          </div>
         )}
       </div>
 
