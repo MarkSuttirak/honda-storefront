@@ -1,4 +1,4 @@
-import { useRef, useState, Fragment } from "react"
+import { useRef, useState, Fragment, useEffect } from "react"
 import { ArrowLeft, MarkerPin01 } from '@untitled-ui/icons-react'
 import { Link } from 'react-router-dom'
 import Cookies from 'js-cookie';
@@ -9,6 +9,7 @@ import { useCountdown } from "../hooks/useCountDown";
 import { useUser } from '../hooks/useUser'
 import ThaiFlag from "../components/icons/ThaiFlag";
 import hondaLogo from '../img/hondaLogo.png'
+import OTPModal from "../components/OTPModal";
 
 const Phonverify = () => {
   const [filledInfo, setFilledInfo] = useState(false)
@@ -17,12 +18,14 @@ const Phonverify = () => {
   const [myotp, setmyotp] = useState('');
   const [errornow, seterrornow] = useState('');
   const [phonePage, setPhonePage] = useState(true);
-  const [getOTP, setGetOTP] = useState(false);
+  const [sendingOTP, setSendingOTP] = useState(false);
+  const [resendOTP, setResendOTP] = useState(false)
   const [phoneError, setPhoneError] = useState(false);
   const [phoneExist, setPhoneExist] = useState(false)
   const [otperror, setOtperror] = useState(false);
   const [pdpa, setPdpa] = useState(true);
   const [acceptPdpa, setAcceptPdpa] = useState(false);
+  const [lineurl, setlineurl] = useState("");
 
   const [showConfirm, setShowConfirm] = useState(false);
   const { refetch } = useUser()
@@ -42,6 +45,18 @@ const Phonverify = () => {
   const num6Ref = useRef(null)
   const inputRefs = [num1Ref, num2Ref, num3Ref, num4Ref, num5Ref, num6Ref]
 
+  const line = async (usr, pwd) => {
+    try {
+      return fetch("https://hondanont.zaviago.com/api/method/honda_api.api_calls.linetoken.get_oauth2_authorize_url?" + Date.now(), { method: "GET", headers: { "Content-Type": "application/json" } }).then((response) => response.json()).then((data) => {
+        setlineurl(data.message);
+      })
+    } catch (error) {
+      return error;
+    }
+  }
+
+  useEffect(() => {line()}, [])
+
   const handleChange = event => {
     const value = event.target.value.replace(/\D/g, "");
     Setuserphone(value);
@@ -51,6 +66,11 @@ const Phonverify = () => {
     if (userphone.length > 7) {
       phonverifynow(userphone);
     }
+  }
+
+  const clickToResendOTP = () => {
+    setResendOTP(true)
+    phonverifynow(userphone);
   }
 
   const verifyotp = () => {
@@ -66,6 +86,11 @@ const Phonverify = () => {
   };
 
   const phonverifynow = (phone) => {
+    if (phonePage){
+      setSendingOTP(true)
+    } else {
+      setResendOTP(true)
+    }
     try {
       return fetch("https://hondanont.zaviago.com/api/method/honda_api.api_calls.verifyuser.getphone?userphone=" + phone, {
         method: "GET",
@@ -80,12 +105,16 @@ const Phonverify = () => {
           seterrornow(res.message);
           setPhonePage(false)
           setDisabled(true)
+          setSendingOTP(false)
+          setResendOTP(false)
         }
         else {
           setPhoneExist(true);
           seterrornow(res.message);
           setPhonePage(true)
           setDisabled(false)
+          setSendingOTP(false)
+          setResendOTP(false)
         }
 
       })
@@ -172,11 +201,11 @@ const Phonverify = () => {
 
             <p className='text-[#00000061] text-sm mt-6'>กรอกหมายเลขโทรศัพท์</p>
             <div className="flex gap-x-3 mt-2">
-              <div className="border border-[#E3E3E3] rounded-[8px] py-2 px-3 inter flex items-center gap-x-2">
+              <div className="border border-[#E3E3E3] rounded-[8px] py-2 px-3 inter flex items-center gap-x-2 h-12">
                 <ThaiFlag /> +66
               </div>
 
-              <input type="tel" id="phone" autoComplete="off" ref={telRef} onChange={handleChange} className={`inter font-bold relative border ${phoneError ? "border-[#EC5454]" : "border-[#E3E3E3]"} rounded-[8px] outline-none py-2 px-3 w-full`} onInput={(e) => {
+              <input type="tel" id="phone" autoComplete="off" ref={telRef} onChange={handleChange} className={`h-12 inter font-bold relative border ${phoneError ? "border-[#EC5454]" : "border-[#E3E3E3]"} rounded-[8px] outline-none py-2 px-3 w-full`} onInput={(e) => {
                 if (e.target.value !== "") {
                   setFilledPhone(true)
                 } else {
@@ -186,7 +215,7 @@ const Phonverify = () => {
             </div>
 
             {!phoneError ? "" : (<p className="text-[#EC5454] mt-2 text-sm">เบอร์โทรศัพท์ไม่ถูกต้อง</p>)}
-            {!phoneExist ? "" : (<p className="text-[#EC5454] mt-2 text-sm">This phone number already exists. Please <a href='https://lin.ee/gv2ZwpY' className="underline">contact us</a></p>)}
+            {!phoneExist ? "" : (<p className="text-[#EC5454] mt-2 text-sm">เบอร์โทรศัพท์ลงทะเบียนเรียบร้อยแล้ว หรือ <a href='https://lin.ee/gv2ZwpY' className="underline">ติดต่อทีมงาน</a></p>)}
 
             <p className="my-[30px] text-[#00000061] text-sm text-center">คุณจะได้รับรหัสยืนยันตัวตนจำนวน 6 หลัก</p>
 
@@ -196,7 +225,9 @@ const Phonverify = () => {
               } else {
                 clickverify();
               }
-            }} className={`w-1/2 text-white rounded-[9px] p-3 text-center w-full`} style={{ background: !filledPhone ? "#C5C5C5" : "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)" }} disabled={!filledPhone}>รับรหัส OTP</button>
+            }} className={`w-1/2 text-white rounded-[9px] p-3 text-center w-full`} style={{ background: !filledPhone || sendingOTP ? "#C5C5C5" : "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)" }} disabled={!filledPhone || sendingOTP}>{sendingOTP ? "กำลังส่งรหัส OTP" : "รับรหัส OTP"}</button>
+          
+            {!phoneExist ? "" : (<p className="text-[#000000B2] mt-8 text-sm text-center">สมัครสมาชิกแล้ว ? <a onClick={() => window.location.replace(lineurl)} className="cursor-pointer text-black underline">เข้าสู่ระบบ</a></p>)}
           </main>
         </>
       ) : (
@@ -226,7 +257,7 @@ const Phonverify = () => {
           {otperror && (<p className="text-[#F0592A] inter mt-2 text-sm" style={{ fontFamily: "Eventpop" }}>รหัส OTP ไม่ถูกต้อง</p>)}
           <p className="text-[#00000061] inter mt-2 text-sm" style={{ fontFamily: "Eventpop" }}>{errornow}</p>
 
-          <p className='my-8 text-[#000000B3] text-sm text-center'>ไม่ได้รับรหัส ? <span onClick={verifyotp} className="text-sm underline text-black">ขอรหัส OTP อีกครั้ง</span></p>
+          <p className='my-8 text-[#000000B3] text-sm text-center'>ไม่ได้รับรหัส ? <span onClick={clickToResendOTP} className="text-sm underline text-black">ขอรหัส OTP อีกครั้ง</span></p>
           {/* <p className="mt-8 mb-[48px] text-sm text-center">ขอรหัส OTP ใหม่อีกครั้งใน 00:{seconds} วินาที</p> */}
 
           <button onClick={verifyotp} className={`text-white rounded-[9px] p-3 w-full bg-black flex items-center justify-center mt-[14px]`} style={{ background: !filledOTP ? "#C5C5C5" : "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)" }} >ยืนยันรหัส OTP</button>
@@ -245,55 +276,9 @@ const Phonverify = () => {
               <button onClick={verifyotp} className={`${show ? "invisible" : "visible"} text-white rounded-[9px] p-3 w-full bg-black flex items-center justify-center mt-8`}>ยืนยันรหัส OTP</button>
           </div>
       </main> */}
-
-      <Transition.Root show={showConfirm} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={() => setShowConfirm(false)}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-          </Transition.Child>
-
-          <div className="fixed inset-0 z-10 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                enterTo="opacity-100 translate-y-0 sm:scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-              >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all w-full max-w-md">
-                  <div className='my-10'>
-                    <div className="mt-3 text-center sm:mt-5">
-                      <Dialog.Title as="h3" className="text-lg font-bold leading-6 text-[#333333]">
-                        ระบบกำลังทำการสมัครสมาชิก
-                      </Dialog.Title>
-                      <div className="mt-2 mb-5">
-                        <p className="text-xs text-[#8A8A8A]">
-                          กรุณารอสักครู่
-                        </p>
-                      </div>
-                    </div>
-                    <div className="loading-icon">
-                      <div className="inner-icon"></div>
-                    </div>
-                  </div>
-                </Dialog.Panel>
-              </Transition.Child>
-            </div>
-          </div>
-        </Dialog>
-      </Transition.Root>
-
+      
+      <OTPModal show={showConfirm} onClose={() => setShowConfirm(false)} title="ระบบกำลังทำการสมัครสมาชิก" desc="กรุณารอสักครู่"/>
+      <OTPModal show={resendOTP} onClose={() => setResendOTP(false)} title="กำลังทำการส่งรหัส OTP" desc="รอสักครู่ระบบกำลังทำการรหัส OTP ใหม่อีกครั้ง"/>
 
       <Transition.Root show={pdpa} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={() => setPdpa(false)}>
