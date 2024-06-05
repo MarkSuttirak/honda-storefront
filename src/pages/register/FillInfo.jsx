@@ -60,7 +60,7 @@ export const UserInfoForm = ({
   return (
     <form className="flex flex-col gap-y-5" onSubmit={formik.handleSubmit}>
       <div className='flex flex-col'>
-        <label htmlFor='first_name'>ชื่อ</label>
+        <label htmlFor='first_name'>ชื่อ <span className='text-negative-700'>*</span></label>
         <input
           className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]'
           name='first_name'
@@ -75,7 +75,7 @@ export const UserInfoForm = ({
       </div>
 
       <div className='flex flex-col'>
-        <label htmlFor='last_name'>นามสกุล</label>
+        <label htmlFor='last_name'>นามสกุล <span className='text-negative-700'>*</span></label>
         <input
           className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]'
           name='last_name'
@@ -90,7 +90,7 @@ export const UserInfoForm = ({
       </div>
 
       <div className='flex flex-col'>
-        <label htmlFor='email'>อีเมลของคุณ</label>
+        <label htmlFor='email'>อีเมลของคุณ <span className='text-negative-700'>*</span></label>
         <input
           className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]'
           type='email'
@@ -106,7 +106,7 @@ export const UserInfoForm = ({
       </div>
 
       <div className='flex flex-col'>
-        <label htmlFor='id_card_number'>เลขบัตรประจำตัวประชาชน</label>
+        <label htmlFor='id_card_number'>เลขบัตรประจำตัวประชาชน <span className='text-negative-700'>*</span></label>
         <input
           className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]'
           name='id_card_number'
