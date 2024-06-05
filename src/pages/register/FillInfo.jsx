@@ -146,7 +146,7 @@ export const UserInfoForm = ({
           value={formik.values.phone}
         />
       </div>
-      <footer className='flex px-5 pb-5 gap-x-3'>
+      <footer className='flex gap-x-3'>
         <button
           className={`w-full text-white rounded-[9px] p-3 text-center ${(!formik.isValid || isLoading) ? "bg-[#C5C5C5] border border-[#C5C5C5]" : "bg-[#111111] border border-[#111111]"}`}
           disabled={!formik.isValid || isLoading}
