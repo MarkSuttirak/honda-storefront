@@ -68,14 +68,14 @@ export default function App() {
   useEffect(() => {
 
     if (isPhoneVerified) {
-      navigate("/phoneverify");
+      navigate("/fill-info");
     }
     if (token) {
       
       Cookies.set('username', username);
       if (phoneverify == 'true') {
         Cookies.set('phoneverify', true);
-        navigate("/phoneverify");
+        navigate("/fill-info");
       }
       else {
         navigate("/login");
