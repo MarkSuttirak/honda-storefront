@@ -63,21 +63,19 @@ export default function App() {
   const phoneverify = new URLSearchParams(search).get("phoneverify");
   const username = new URLSearchParams(search).get("username");
   const [Userverify, SetUserverify] = useState(phoneverify);
-  const [user, setUser] = useState(null);
   const isPhoneVerified = Cookies.get('phoneverify') === 'true';
 
-  
-
   useEffect(() => {
+
     if (isPhoneVerified) {
-      navigate("/phonverify");
+      navigate("/fill-info");
     }
     if (token) {
       
       Cookies.set('username', username);
       if (phoneverify == 'true') {
         Cookies.set('phoneverify', true);
-        navigate("/phonverify");
+        navigate("/fill-info");
       }
       else {
         navigate("/login");
