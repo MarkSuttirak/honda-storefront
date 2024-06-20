@@ -16,7 +16,7 @@ const FillInfo = () => {
   useEffect(() => {
     console.log(user);
     if (isCompleted) {
-      refetch().then(() => navigate("/phonverify"))
+      refetch().then(() => navigate("/"))
     }
   }, [isCompleted])
   useEffect(() => {
