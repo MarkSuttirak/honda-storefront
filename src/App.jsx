@@ -75,7 +75,7 @@ export default function App() {
       Cookies.set('username', username);
       if (phoneverify == 'true') {
         Cookies.set('phoneverify', true);
-        navigate("/phonverify");
+        navigate("/fill-info");
       }
       else {
         navigate("/login");
