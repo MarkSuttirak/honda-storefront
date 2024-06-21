@@ -81,6 +81,9 @@ export default function Home(){
         console.log("Redrecting back");
         navigate("/fill-info")
       })
+      if(!user.user.phone){
+        navigate("/phonverify")
+      }
     }
   }, [user])
 

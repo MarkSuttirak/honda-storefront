@@ -68,14 +68,14 @@ export default function App() {
   
   useEffect(() => {
     if (isPhoneVerified) {
-      navigate("/phonverify");
+      navigate("/fill-info");
     }
     if (token) {
       
       Cookies.set('username', username);
       if (phoneverify == 'true') {
         Cookies.set('phoneverify', true);
-        navigate("/phonverify");
+        navigate("/fill-info");
       }
       else {
         navigate("/login");
@@ -88,7 +88,6 @@ export default function App() {
       }
     }
   },[isPhoneVerified]);
-
 
 
   return (
@@ -142,7 +141,6 @@ export default function App() {
               <Route path="/member-conditions" element={<MemberConditions />} />
               <Route path="/single-blog/:id" element={<SingleBlog />} />
               <Route path="/points-to-be-expired" element={<ExpirationDatePage />} />
-
               <Route path="/blog-admin" element={<BlogAdmin />} />
               <Route path="/my-account" element={<MyAccount />} />
               <Route path="/my-id" element={<MyID />} />

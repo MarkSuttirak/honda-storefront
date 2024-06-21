@@ -12,17 +12,15 @@ const FillInfo = () => {
   const { call, isCompleted, loading } = useFrappePostCall("honda_api.api_calls.getuser.update_profile")
   const [pdpa, setPdpa] = useState(true);
   const [acceptPdpa, setAcceptPdpa] = useState(false);
-
   useEffect(() => {
     console.log(user);
     if (isCompleted) {
-      refetch().then(() => navigate("/"))
+      refetch().then(() => navigate("/phonverify"))
     }
   }, [isCompleted])
   useEffect(() => {
       refetch();
   }, [])
-
   return (
     <main className='px-5 py-[46px]'>
       <h1 className='text-[22px] font-bold'>ข้อมูลส่วนตัว</h1>
@@ -36,8 +34,8 @@ const FillInfo = () => {
               last_name: user?.user.full_name.split(" ").slice(1).join(" "),
               email: user?.user.email.endsWith("@line.me") ? "" : user?.user.email,
               phone: user?.user.phone,
-              id_card_number: '',
-              birth_date: '',
+              id_card_number: user?.user.id_card_number,
+              birth_date: user?.user.birth_date,
             }}
             onSubmit={call}
             isLoading={loading}
@@ -103,7 +101,7 @@ export const UserInfoForm = ({
       </div>
 
       <div className='flex flex-col'>
-        <label htmlFor='email'>อีเมลของคุณ <span className='text-negative-700'>*</span></label>
+        <label htmlFor='email'>อีเมลของคุณ</label>
         <input
           className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]'
           type='email'
@@ -134,7 +132,7 @@ export const UserInfoForm = ({
       </div>
 
       <div className='flex flex-col'>
-        <label htmlFor='birth_date'>วัน/เดือน/ปีเกิด</label>
+        <label htmlFor='birth_date'>วัน/เดือน/ปีเกิด <span className='text-negative-700'>*</span></label>
         <input
           className='border border-[#E3E3E3] rounded-[8px] outline-none py-2 px-3 mt-[11px]'
           type="date"
