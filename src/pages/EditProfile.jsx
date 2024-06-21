@@ -72,7 +72,6 @@ const EditProfile = () => {
     return <div>Loading...</div>
   }
 
-
   return (
     <>
       {editPro && (
@@ -84,9 +83,9 @@ const EditProfile = () => {
                 first_name: user?.user.first_name,
                 last_name: user?.user.last_name,
                 email: user?.user.email,
-                phone: user?.phone,
+                phone: user?.user?.phone,
                 id_card_number: user?.user?.id_card_number, 
-                birth_date: user?.customer_details?.split(" ")[1]
+                birth_date: user?.user?.birth_date
               }}
               onSubmit={call}
             />
