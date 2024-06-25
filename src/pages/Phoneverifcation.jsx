@@ -26,7 +26,7 @@ const Phonverify = () => {
   const [pdpa, setPdpa] = useState(true);
   const [acceptPdpa, setAcceptPdpa] = useState(false);
   const [lineurl, setlineurl] = useState("");
-  const [registerSuccessful, setRegisterSuccessful] = useState(true)
+  const [registerSuccessful, setRegisterSuccessful] = useState(false)
 
   const [showConfirm, setShowConfirm] = useState(false);
   const { refetch } = useUser()
