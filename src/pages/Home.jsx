@@ -54,19 +54,19 @@ export default function Home(){
 
   }, [userdata]);
 
-  useEffect(() => {
-    console.log(getToken());
-    if(getToken()){
-      if (isTokenExpired()) {
-        removeToken();
-        window.location.reload(true);
-        navigate("/login/");
-      }
-    }
-    else{
-      navigate("/login/");
-    }
-  },[getToken()]);
+  // useEffect(() => {
+  //   console.log(getToken());
+  //   if(getToken()){
+  //     if (isTokenExpired()) {
+  //       removeToken();
+  //       window.location.reload(true);
+  //       navigate("/login/");
+  //     }
+  //   }
+  //   else{
+  //     navigate("/login/");
+  //   }
+  // },[getToken()]);
 
   useEffect(() => {
     if (user) {
