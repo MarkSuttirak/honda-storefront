@@ -1,4 +1,4 @@
-import React, { useState, useRef,useEffect } from "react"
+import React, { useState, useRef,useEffect,Fragment } from "react"
 import TitleHeader from "../components/TitleHeader"
 import { ArrowLeft } from '@untitled-ui/icons-react'
 import successIcon from '../img/success.svg'
@@ -7,7 +7,8 @@ import { useUser } from '../hooks/useUser';
 import { useFrappePostCall } from "frappe-react-sdk"
 import { useFormik } from "formik"
 import { useNavigate } from "react-router-dom";
-
+import { Dialog, Transition } from '@headlessui/react'
+import checkmark from "../img/redeemed-mark.svg"
 
 const EditProfile = () => {
   const { user } = useUser()
@@ -28,6 +29,8 @@ const EditProfile = () => {
   const [filledAllOtp, setFilledAllOtp] = useState('')
   const [phoneError, setPhoneError] = useState(false);
   const [otperror, setOtperror] = useState(false)
+  const [isSaving, setIsSaving] = useState(false)
+  const [isSaved, setIsSaved] = useState(false)
 
   const telRef = useRef(null)
 
@@ -40,11 +43,12 @@ const EditProfile = () => {
 
   useEffect(() => {
     if (isCompleted) {
-      navigate("/my-account")
+      // navigate("/my-account")
+      setIsSaving(false)
+      setIsSaved(true)
+      setTimeout(() => setIsSaved(false), 2000)
     }
   }, [isCompleted])
-
-  
 
   const changeToEditPro = () => {
     setChangePhone(false);
@@ -88,6 +92,9 @@ const EditProfile = () => {
                 birth_date: user?.user?.birth_date
               }}
               onSubmit={call}
+              isSaving={isSaving}
+              isSaved={isSaved}
+              setIsSaving={() => setIsSaving(true)}
             />
           </main>
         </>
@@ -195,6 +202,54 @@ const EditProfile = () => {
           </footer>
         </>
       )}
+
+      <Transition.Root show={isSaving || isSaved} as={Fragment}>
+        <Dialog as="div" className="relative z-[999]" onClose={() => {}}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 z-10 overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center p-4 text-center">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                enterTo="opacity-100 translate-y-0 sm:scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              >
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all w-full max-w-md">
+                  <div className='my-10'>
+                    <div className="mt-3 text-center sm:mt-5">
+                      <Dialog.Title as="h3" className="text-lg font-bold leading-6 text-[#333333]">
+                        {isSaving ? "กำลังบันทึกข้อมูล" : "บันทึกข้อมูลเสร็จสิ้น"}
+                      </Dialog.Title>
+                      <div className="mt-2 mb-5">
+                        <p className="text-xs text-[#8A8A8A]">
+                          {isSaving ? "รอสักครู่ระบบกำลังทำการบันทึกข้อมูลของคุณ" : "คุณได้ทำการเปลี่ยนแปลงและบันทึกข้อมูลเรียบร้อยแล้ว"}
+                        </p>
+                      </div>
+                    </div>
+                    {isSaving ? <div className="loading-icon">
+                      <div className="inner-icon"></div>
+                    </div> : <img src={checkmark} className="mx-auto" alt="checkmark"/>}
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition.Root>
     </>
   )
 }
@@ -204,16 +259,14 @@ export default EditProfile
 
 export const ProfileForm = ({
   initialValues,
-  onSubmit
+  onSubmit,
+  setIsSaving
 }) => {
   const formik = useFormik({
     initialValues: initialValues,
     onSubmit: onSubmit
   })
 const navigate = useNavigate();
-
-
-
   return (
     <form className='flex flex-col gap-y-5' onSubmit={formik.handleSubmit}>
       <div className='flex flex-col'>
@@ -253,7 +306,7 @@ const navigate = useNavigate();
         />
       </div>
       <footer className="w-full">
-        <button type="submit" className={`block mt-5 w-1/2 text-white rounded-[9px] p-3 w-full flex items-center justify-center gap-x-4 inter`} style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)", fontFamily: "Eventpop" }}>
+        <button type="submit" onClick={setIsSaving} className={`block mt-5 w-1/2 text-white rounded-[9px] p-3 w-full flex items-center justify-center gap-x-4 inter`} style={{ background: "linear-gradient(133.91deg, #F16A28 1.84%, #F9A30F 100%)", fontFamily: "Eventpop" }}>
           บันทึก
         </button>
       </footer>
