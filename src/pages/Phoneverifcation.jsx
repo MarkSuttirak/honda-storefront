@@ -280,11 +280,8 @@ const Phonverify = () => {
               className="mx-auto"
             />
             <div className="space-y-[14px] mt-12">
-              <h2 className="font-bold text-[20px]">สิทธิพิเศษสำหรับสมาชิกใหม่ Hondanont Loyalty</h2>
-              <p className="text-[#585858] text-sm">เมื่อสมัครสมาชิกกับเรา รับไปเลย 10 คะแนนฟรี! 
-                ร่วมสนุกเก็บสะสมคะแนน แลกของรางวัลต่างๆ
-                จาก Honda Nonthaburi ที่ตั้งใจมอบให้กับลูกค้า
-                คนพิเศษ ผ่านเว็บได้ตลอดเวลา
+              <h2 className="font-bold text-[20px]">ขอบพระคุณที่ร่วมสมัครสมาชิกกับ Hondanont Loyalty Program</h2>
+              <p className="text-[#585858] text-sm">ร่วมสนุกไปกับการเก็บสะสมคะแนน เพื่อแลกของรางวัลและสิทธิประโยชน์ต่างๆ ที่ฮอนด้านนท์ตั้งใจมอบให้กับลูกค้าคนพิเศษของเรา
               </p>
             </div>
           </section>
