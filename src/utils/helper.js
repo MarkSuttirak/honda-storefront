@@ -3,9 +3,9 @@ ReactSession.setStoreType("sessionstorage");
 
 
 const TokenKey = 'token';
-const getToken = () => ReactSession.get(TokenKey);
-const setToken = (token) => ReactSession.set(TokenKey, token);
-const setSessionTime = (timestamp) => ReactSession.set('session_time', timestamp);
-const getSessionTime = () => ReactSession.get('session_time');
-const removeToken = () => sessionStorage.clear();
-export { getToken, removeToken, setToken,setSessionTime,getSessionTime };
+const getToken = () => localStorage.getItem(TokenKey);
+const setToken = (token) => localStorage.setItem(TokenKey, token);
+const setSessionTime = (timestamp) => localStorage.setItem('session_time', timestamp);
+const getSessionTime = () => localStorage.getItem('session_time');
+const removeToken = () => localStorage.clear();
+export { getToken, removeToken, setToken, setSessionTime, getSessionTime };
