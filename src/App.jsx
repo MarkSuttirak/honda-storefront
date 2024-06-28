@@ -81,7 +81,7 @@ export default function App() {
         navigate("/login");
       }
       if (Cookies.get('system_user') != 'yes') {
-        setSessionTime(Date.now());
+        //setSessionTime(Date.now());
         setToken(token);
         navigate(0);
         window.location.reload(true);
