@@ -86,7 +86,7 @@ const EditProfile = () => {
               initialValues={{
                 first_name: user?.user.first_name,
                 last_name: user?.user.last_name,
-                email: user?.user.email,
+                email: user?.user.user_email,
                 phone: user?.user?.phone,
                 id_card_number: user?.user?.id_card_number, 
                 birth_date: user?.user?.birth_date
@@ -255,7 +255,6 @@ const EditProfile = () => {
 }
 
 export default EditProfile
-
 
 export const ProfileForm = ({
   initialValues,

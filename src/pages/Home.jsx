@@ -73,7 +73,7 @@ export default function Home(){
       userInfoSchema.validate({
         first_name: user.user.full_name.split(" ")[0],
         last_name: user.user.full_name.split(" ").slice(1).join(" "),
-        email: user.user.email,
+        email: user.user.user_email,
         phone: user.user.phone,
         id_card_number: "00000000",
         birth_date: user.user.birth_date,
