@@ -68,11 +68,7 @@ export default function App() {
   
   useEffect(() => {
 
-    if(getToken() == undefined || getToken() == null || getToken() == ""){
-      removeToken();
-      navigate("/login");
-    }
-    if(!getToken()){
+    if(getToken() == undefined){
       removeToken();
       navigate("/login");
     }

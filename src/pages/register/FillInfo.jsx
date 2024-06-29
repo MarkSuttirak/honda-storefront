@@ -5,7 +5,7 @@ import { useEffect,useState, Fragment } from 'react'
 import { useUser } from '../../hooks/useUser'
 import { userInfoSchema } from '../../components/forms/userInfoSchema'
 import { Dialog, Transition } from '@headlessui/react'
-import { getToken } from "./../../utils/helper";
+import { getToken,removeToken } from "./../../utils/helper";
 
 
 
@@ -16,7 +16,6 @@ const FillInfo = () => {
   const [pdpa, setPdpa] = useState(true);
   const [acceptPdpa, setAcceptPdpa] = useState(false);
   useEffect(() => {
-    console.log(user);
     if (isCompleted) {
       refetch().then(() => navigate("/phonverify"))
     }
@@ -26,10 +25,12 @@ const FillInfo = () => {
   }, [])
 
   useEffect(() => {
-    if(getToken() == undefined || getToken() == null || getToken() == ""){
+    const token = getToken();
+    if (token === "undefined" || !token) {
       navigate("/login");
+      return;
     }
-  })
+  });
 
 
 
