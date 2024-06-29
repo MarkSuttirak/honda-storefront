@@ -5,6 +5,9 @@ import { useEffect,useState, Fragment } from 'react'
 import { useUser } from '../../hooks/useUser'
 import { userInfoSchema } from '../../components/forms/userInfoSchema'
 import { Dialog, Transition } from '@headlessui/react'
+import { getToken } from "./../../utils/helper";
+
+
 
 const FillInfo = () => {
   const navigate = useNavigate()
@@ -19,8 +22,17 @@ const FillInfo = () => {
     }
   }, [isCompleted])
   useEffect(() => {
-      refetch();
+    refetch();
   }, [])
+
+  useEffect(() => {
+    if(!getToken()){
+      navigate("/login");
+    }
+  })
+
+
+
   return (
     <main className='px-5 py-[46px]'>
       <h1 className='text-[22px] font-bold'>ข้อมูลส่วนตัว</h1>
