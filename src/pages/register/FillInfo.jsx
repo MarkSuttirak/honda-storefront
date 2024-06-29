@@ -26,7 +26,7 @@ const FillInfo = () => {
   }, [])
 
   useEffect(() => {
-    if(!getToken()){
+    if(getToken() == undefined || getToken() == null || getToken() == ""){
       navigate("/login");
     }
   })
