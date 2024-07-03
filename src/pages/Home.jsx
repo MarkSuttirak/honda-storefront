@@ -48,11 +48,15 @@ export default function Home(){
       setProfileloading(false);
     }
     updateCurrentUser();
-    if (products?.length > 0) {
-      setLoading(false)
-    }
-
   }, [userdata]);
+
+
+  useEffect(() => {
+    if (products?.length > 0) {
+     setLoading(false)
+    }
+  }, [products]);
+
 
   // useEffect(() => {
   //   console.log(getToken());
