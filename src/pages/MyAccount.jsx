@@ -32,6 +32,7 @@ export default function MyAccount(){
 
   const logoutnowuser = () => {
     sessionStorage.clear();
+    localStorage.clear();
     location.href = "/login"
 
     Cookies.remove('token');
