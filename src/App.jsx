@@ -67,17 +67,7 @@ export default function App() {
 
   
   useEffect(() => {
-
-    if(getToken() == undefined){
-      removeToken();
-      navigate("/login");
-    }
-
-    if (isPhoneVerified) {
-      navigate("/fill-info");
-    }
     if (token) {
-      
       Cookies.set('username', username);
       if (phoneverify == 'true') {
         Cookies.set('phoneverify', true);
@@ -93,6 +83,16 @@ export default function App() {
         window.location.reload(true);
       }
     }
+    
+    if(getToken() == undefined){
+      removeToken();
+      navigate("/login");
+    }
+
+    if (isPhoneVerified) {
+      navigate("/fill-info");
+    }
+    
   },[isPhoneVerified]);
 
   return (
