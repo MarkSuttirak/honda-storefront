@@ -14,9 +14,9 @@ Sentry.init({
       tracePropagationTargets: ["localhost", /^https:\/\/yourserver\.io\/api/],
     }),
     new Sentry.Replay(),
-    Sentry.replayIntegration({
-      networkDetailAllowUrls: ['https://hondanont.zaviago.com/api/'],
-    }),
+    // Sentry.replayIntegration({
+    //   networkDetailAllowUrls: ['https://hondanont.zaviago.com/api/'],
+    // }),
   ],
   // Performance Monitoring
   tracesSampleRate: 1.0, // Capture 100% of the transactions
