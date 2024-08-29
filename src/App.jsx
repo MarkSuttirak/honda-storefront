@@ -67,11 +67,13 @@ export default function App() {
 
   
   useEffect(() => {
-    if(getToken() == undefined){
-      removeToken();
-      navigate("/login");
+
+    if (!getToken()) {
+        removeToken();
+        navigate("/login");
     }
 
+    
     if (isPhoneVerified) {
       navigate("/fill-info");
     }
