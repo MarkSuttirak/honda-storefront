@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import logo from '../../img/logo.svg'
 import Cookies from 'js-cookie';
 import { ArrowLeft, MarkerPin01, ArrowCircleRight } from '@untitled-ui/icons-react'
+import { useUser } from "../../hooks/useUser";
 
 const Signup = () => {
   const [phonePage, setPhonePage] = useState(true);
@@ -12,6 +13,8 @@ const Signup = () => {
   const [filledAllOtp, setFilledAllOtp] = useState('')
   const [phoneError, setPhoneError] = useState(false);
   const [otperror, setOtperror] = useState(false)
+
+  const { user } = useUser();
 
   const telRef = useRef(null)
 
@@ -60,7 +63,7 @@ const Signup = () => {
   }
 
   const verifyotp = () => {
-    verifyotpnow(userphone, myotp, Cookies.get('username'))
+    verifyotpnow(userphone, myotp, user?.user?.name);
   }
 
   const phonverifynow = (phone) => {

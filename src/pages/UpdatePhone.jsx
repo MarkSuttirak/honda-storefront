@@ -24,7 +24,7 @@ const UpdatePhone = () => {
   const [acceptPdpa, setAcceptPdpa] = useState(false);
 
   const [showConfirm, setShowConfirm] = useState(false);
-  const { refetch } = useUser()
+  const { user, refetch } = useUser()
   const [filledPhone, setFilledPhone] = useState(false);
   const [filledOTP, setFilledOTP] = useState(true);
   const [filledAllOtp, setFilledAllOtp] = useState('')
@@ -53,7 +53,7 @@ const UpdatePhone = () => {
 
   const verifyotp = () => {
     setShowConfirm(true);
-    verifyotpnow(userphone, myotp, Cookies.get('username'))
+    verifyotpnow(userphone, myotp, user?.user?.name)
   }
 
   const phonverifynow = (phone) => {
@@ -88,7 +88,7 @@ const UpdatePhone = () => {
   const verifyotpnow = (userphone, myotp, username) => {
 
 
-    if(!myotp){
+    if (!myotp) {
       seterrornow('Please Enter OTP');
       setShowConfirm(false);
       return;
@@ -183,10 +183,10 @@ const UpdatePhone = () => {
         <>
           <main className='px-5 pt-[26px] pb-8 text-center'>
             <div className="w-[45px] h-[45px] bg-[#00B14F] rounded-full flex items-center justify-center m-auto">
-              <Check color='white' viewBox="0 0 25 23" width='32' height='32'/>
+              <Check color='white' viewBox="0 0 25 23" width='32' height='32' />
             </div>
-            <h1 className="text-3xl font-bold leading-[39px] mt-[10px]">ระบบเปลี่ยนเบอร์<br/>ใหม่สำเร็จ 👋</h1>
-            <p className="text-sm leading-[22px] text-[#424242] mt-[18px]">ระบบได้เปลี่ยนเบอร์ใหม่เรียบร้อยแล้ว<br/>คุณสามารถย้อนกลับไปหน้าอื่น ๆ ได้</p>
+            <h1 className="text-3xl font-bold leading-[39px] mt-[10px]">ระบบเปลี่ยนเบอร์<br />ใหม่สำเร็จ 👋</h1>
+            <p className="text-sm leading-[22px] text-[#424242] mt-[18px]">ระบบได้เปลี่ยนเบอร์ใหม่เรียบร้อยแล้ว<br />คุณสามารถย้อนกลับไปหน้าอื่น ๆ ได้</p>
             <button className={`text-white rounded-[9px] p-3 w-full bg-black flex items-center justify-center mt-[30px]`} onClick={() => navigate('/edit-profile')}>กลับไปหน้าเดิม</button>
           </main>
         </>
